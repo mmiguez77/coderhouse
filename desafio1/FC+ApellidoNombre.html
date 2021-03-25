@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC+ApellidoNombre</title>
+</head>
+<body>
+    <h1>FC+ApellidoNombre</h1>
+
+
+    
+
+    <script>
+
+        function Usuario ( nombre, apellido ) {
+            {
+                this.nombre     = nombre;
+                this.apellido   = apellido;
+                this.libros     = [];
+                this.mascotas   = [];
+            }
+                Usuario.prototype.getFullName = () => {
+
+                return `Mi nombre es ${this.nombre} y mi apellido es ${this.apellido}`;
+                
+                }
+
+                Usuario.prototype.addMascota = ( mascota ) => {
+
+                    this.mascotas.push(mascota);
+
+                }
+
+                Usuario.prototype.getMascotas = () => {
+
+                    return `${this.nombre}, tiene ${this.mascotas.length} mascotas`;
+                    
+                }
+
+                Usuario.prototype.addBook = (book, autor) => {
+
+
+                        let nuevoLibro = new Object(
+                        {   
+                            nombreDelLibro: book, 
+                            autor: autor
+                        })
+                                                                           
+                        //console.log(nuevoLibro);
+                        
+                            this.libros.push(nuevoLibro);
+                            //console.log(nuevoLibro.nombreDelLibro);
+                }
+
+                Usuario.prototype.getBooks = () => {
+                    
+
+                    let array = this.libros[0].nombreDelLibro;
+                    
+                    //console.log(array);
+                    
+
+                    try {
+                        for (let i = 0; i < array.length; i++) {
+                            console.log("El nombre del libro es " + this.libros[i].nombreDelLibro);
+                        } 
+                    } catch(error){
+                        console.log(error);
+                    };
+                        
+                    
+                                        
+                    
+                    
+                } 
+        }
+            
+        
+
+        console.log(`/* --------------------------------- */`)
+        console.log(`/* -----------PUNTO 1 -------------- */`)
+
+        
+        let usuario = new Usuario("Pedro","Sanchez");
+        console.log(usuario.getFullName());
+
+        console.log(`/* --------------------------------- */`)
+        console.log(`/* -----------PUNTO 2 -------------- */`)
+
+
+        usuario.addMascota("Perro");
+        usuario.addMascota("Chancho");
+        usuario.addMascota("Conejo");
+        usuario.addMascota("Gato");
+        console.log(usuario.getMascotas());
+        
+
+        console.log(`/* --------------------------------- */`)
+        console.log(`/* -----------PUNTO 3 -------------- */`)
+
+        usuario.addBook("El Hobbit" ,"JRR Tolkien");
+        usuario.addBook("El Túnel" ,"Ernesto Sábato");
+        console.log(usuario.getBooks());
+        
+
+    </script>
+
+
+
+</body>
+</html>
