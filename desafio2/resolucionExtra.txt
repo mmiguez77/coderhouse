@@ -1,0 +1,35 @@
+export class Suma {
+    private a:number
+    private b:number
+    constructor(a:number, b:number) {
+        this.a = a
+        this.b = b
+    }
+    resultado():number {
+        return this.a + this.b
+    }
+}
+
+----------------------------------------------------------------
+
+async function operacion(a:number,b:number,operacion:string) {
+    let resultado = 0
+    let modulo
+    switch(operacion) {
+        case 'suma':
+            modulo = await import('./suma')
+            let suma = new modulo.Suma(a,b)
+            resultado = suma.resultado()
+            return Promise.resolve(resultado)
+        case 'resta':
+            modulo = await import('./resta')
+            let resta = new modulo.Resta(a,b)
+            resultado = resta.resultado()
+            return Promise.resolve(resultado)
+    }
+}
+async function operaciones() {
+    console.log(await operacion(16,6,'suma'))
+    console.log(await operacion(16,6,'resta'))
+}
+operaciones()
