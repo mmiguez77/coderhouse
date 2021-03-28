@@ -6,7 +6,7 @@ function espejarTexto() {
         function textoInput() {
             let texto = document.querySelector('input').value;
             let textoEspejado = texto.split('').reverse().join('');
-            //console.log(texto)
+            //console.log(textoEspejado)
             if (texto == 'error') {
                 suscriber.error('Escribir la palabra ERROR produce un... ERROR');
             } else if (texto == 'complete') {

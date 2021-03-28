@@ -1,39 +1,46 @@
-const { Observable } = rxjs;
+const { tap, map } = rxjs.operators;
+const { Observable, pipe } = rxjs;
 
-function espejarTexto() {
-    return new Observable(suscriber => {
+const espejarTexto = new Observable(suscriber => {
+    console.log('Obs Creado');
 
-        function textoInput() {
-            let texto = document.querySelector('input').value;
-            let textoEspejado = texto.split('').reverse().join('');
-            //console.log(texto)
-            if (texto == 'error') {
-                suscriber.error('Escribir la palabra ERROR produce un... ERROR');
-            } else if (texto == 'complete') {
-                suscriber.next('Continua el curso normal de la operacion' + textoEspejado);
-            }
-            suscriber.next(textoEspejado);
+    function textoInput() {
+        let texto = document.querySelector('input').value;
 
+        if (texto == 'error') {
+            suscriber.error(texto);
+        } else if (texto == 'complete') {
+            suscriber.next('Continua el curso normal de la operacion');
         }
-        document.querySelector('input').addEventListener('input', textoInput);
+        suscriber.next(texto);
 
-        return () => {
-            console.warn('Tiempo Agotado: Desuscripción Realizada');
-            document.querySelector('input').removeEventListener('input', textoInput);
-            document.querySelector('input').value = "";
-            document.querySelector('span').innerText = "";
-            document.querySelector('input').disabled = "true";
-        }
-    })
-}
+    }
+    document.querySelector('input').addEventListener('input', textoInput);
+
+    return () => {
+        console.warn('Tiempo Agotado: Desuscripción Realizada');
+        document.querySelector('input').value = "";
+        document.querySelector('span').innerText = "";
+        document.querySelector('input').disabled = "true";
+    }
+})
+
+
 
 //Suscripcion
-let suscripcion = espejarTexto()
+let suscripcion = espejarTexto
+    .pipe(
+        map((val) => val.split("").reverse().join("")),
+        tap({
+            next: val => console.log('*** Texto desde el TAP: ' + val.split("").reverse().join("")),
+            error: error => console.error('*** Error desde el TAP: ¡Oh, no. Se produjo una falla!'),
+        })
+    )
     .subscribe(
         texto => {
             console.log(texto);
             document.querySelector('span').innerText = texto;
-        }, error => console.error(error)
+        }, error => console.error(error),
     );
 
 //Desuscripción
