@@ -18,7 +18,7 @@ class Archivo {
             obj['Price'] = price,
             obj['Thumbnail'] = thumbnail,
             obj['id'] = id();
-        let objArray = JSON.stringify(obj, null, 2);
+        let objArray = JSON.stringify(obj);
         //console.log(objArray)
         this.array.push(objArray);
     } // método para cargar los productos en el array a traves de un objeto, segun la cantidad que se ejecutan se va autoincrementando el id
