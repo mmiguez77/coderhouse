@@ -20,3 +20,6 @@ Manejo de Archivos
 
 #Desafio 7:
 Servidor con Express
+
+#Desafio 8:
+Array de Productos
