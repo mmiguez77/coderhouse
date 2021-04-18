@@ -1,17 +1,16 @@
-import express from 'express';
-import { agregarProducto } from './class/Producto.js';
-
+// LINK POSTMAN: https://www.getpostman.com/collections/63df217239eed29c7379
+const express = require('express');
 const app = express();
+const productoRouter = require('./routes/productosRouter.js')
+
 const PORT = 8080;
 
-app.use('/api/', agregarProducto())
-// app.use('/api/', nuevoProducto.verProductosPorId())
-// app.use('/api/', nuevoProducto.agregarProducto())
-// app.use('/api/', nuevoProducto.actualizarProducto())
-// app.use('/api/', nuevoProducto.eliminarProducto())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/inicio', express.static('public'))
+app.use('/api/productos', productoRouter);
 
+/* ---- SERVIDOR ---- */
 const server = app.listen(PORT, () => {
     console.log(`Servidor http en puerto: ${server.address().port}`)
 }) 
