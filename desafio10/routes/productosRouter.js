@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import ProductoController from '../controllers/Producto.js';
 const router = express.Router();
-const producto = require('../controllers/Producto.js');
+const producto = new ProductoController();
 
 
 /* ---- AGREGAR PRODUCTO ---- */
@@ -43,4 +44,4 @@ router.delete('/:id', (req, res) => {
     res.send()
 })
 
-module.exports = router;
+export default router;

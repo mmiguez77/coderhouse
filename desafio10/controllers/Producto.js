@@ -42,4 +42,5 @@ class ProductoController {
     
 }
 
-module.exports = new ProductoController();
+//const producto = new ProductoController()
+export default ProductoController

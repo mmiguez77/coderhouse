@@ -1,15 +1,14 @@
 // LINK POSTMAN: https://www.getpostman.com/collections/63df217239eed29c7379
 
 /* -- DEPENDENCIAS -- */
-const express = require('express');
-const app = express();
-const productoRouter = require('./routes/productosRouter.js')
-const indexRouter = require('./routes/indexRouter.js')
-const path = require('path');
-const handlebars  = require('express-handlebars');
-
+import express from 'express';
+import router from './routes/productosRouter.js';
+import handlebars  from 'express-handlebars';
+import path from 'path';
+const __dirname = path.resolve();
 // COMIENZO APP
 /* -- PUERTO DEL SERVER -- */
+const app = express();
 const PORT = 8080;
 
 /* -- MIDDLEWARES -- */
@@ -17,19 +16,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /* -- ENDPOINTS -- */
-app.use('/api/productos', productoRouter);
+app.use('/api/productos', router);
 
 /* -- STATIC FILES -- */
-//app.use(express.static('public'));
-app.use('/inicio', indexRouter ); //acceder a traves del puerto 8080/public
 
 /* -- HANDLEBARS -- */
-app.set('view engine', 'handlebars');
-app.engine('handlebars', handlebars({
+app.set('view engine', 'hbs');
+app.engine('hbs', handlebars({
         extname: 'hbs',
         defaultLayout: 'index',
         layoutsDir: __dirname + '/views/layouts',
-        partialsDir: __dirname + '/views/partials'
+        partialsDir: __dirname + '/views/partials',
     })
 );
 app.set('views', './views')
