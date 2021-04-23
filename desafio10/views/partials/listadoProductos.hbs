@@ -1,21 +1,29 @@
 <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
-<div class="container">
+<div class="container bg-light text-dark p-2">
+  {{#if validacion }}
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Titulo</th>
-        <th>Precio</th>
-        <th>Imagen</th>
+        <th>ID</th>
+        <th>TITULO</th>
+        <th>PRECIO</th>
+        <th>IMAGEN</th>
       </tr>
     </thead>
     <tbody>
+     {{#each array }}
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+        <td>{{id}}</td>
+        <td>{{title}}</td>
+        <td>{{price}}</td>
+        <td>{{thumbnail}}</td>
       </tr>
+    {{/each}}
     </tbody>
   </table>
+  {{else}}
+    <h3 class="alert alert-warning">Sin Productos</h1>
+   {{/if}}
 </div>
 
 

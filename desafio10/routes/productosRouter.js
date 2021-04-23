@@ -3,12 +3,11 @@ import ProductoController from '../controllers/Producto.js';
 const router = express.Router();
 const producto = new ProductoController();
 
-
 /* ---- AGREGAR PRODUCTO ---- */
 router.post('/', (req, res) => {
     const data = req.body;
     if (producto.agregarProducto(data)) {
-        if (!data.title == "") {res.redirect('http://localhost:8080 inicio')}
+        if (!data.title == "") {res.redirect('/home')}
     }
     res.status(400).send();
 });

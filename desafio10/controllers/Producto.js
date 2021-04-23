@@ -1,36 +1,46 @@
-let productosArray = [];
-
 class ProductoController {
     
-    constructor() {}
+    constructor() {
+        this.productosArray = [{
+            "title": "Lechuga3",
+            "price": 50,
+            "thumbnail": "http://www.img.com/lechuga3.jpg",
+            "id": 1
+        },
+        {
+            "title": "123",
+            "price": "123",
+            "thumbnail": "123",
+            "id": 2
+        }];
+    }
 
     /* ---- AGREGAR PRODUCTO ---- */
     agregarProducto(data) {
-        data.id = productosArray.length + 1;
-        productosArray.push(data);
+        data.id = this.productosArray.length + 1;
+        this.productosArray.push(data);
         return true 
     }
-
     
     /* ---- VER TOTAL DE PRODUCTOS ---- */
     verProductos() {
-        if (productosArray.length < 1) return false;
-        return productosArray;
+        if (this.productosArray.length < 1) return false;
+        return this.productosArray;
     }
 
     /* ---- VER PRODUCTO POR ID ---- */
     verProductoPorId(id) {
-        return productosArray.filter((prod) => prod.id === parseInt(id))[0]
+        return this.productosArray.filter((prod) => prod.id === parseInt(id))[0]
     }
     
     /* ----  ELIMINAR PRODUCTO ---- */
     eliminarProducto(id){
-        return productosArray = productosArray.filter((prod) => prod.id !== parseInt(id));
+        return this.productosArray = this.productosArray.filter((prod) => prod.id !== parseInt(id));
     }
 
     /* ----  ACTUALIZAR PRODUCTO ---- */
     actualizarProducto(id, data){
-        productosArray = productosArray.map(prod => {
+        this.productosArray = this.productosArray.map(prod => {
             if ( prod.id === parseInt(id)) {
                 prod.title = data.title;
                 prod.price = data.price;
@@ -39,8 +49,18 @@ class ProductoController {
             return prod
         });
     }
-    
+
+    /* ---- FUNCION QUE VALIDA BOOLEAN PARA HANDLEBARS ---- */
+    validar(){
+        if (this.productosArray.length >= 1){
+            return true
+        }   else  {
+            return false
+        }
+    }
+
+      
 }
 
-//const producto = new ProductoController()
 export default ProductoController
+

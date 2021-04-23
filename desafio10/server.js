@@ -1,11 +1,16 @@
 // LINK POSTMAN: https://www.getpostman.com/collections/63df217239eed29c7379
-
 /* -- DEPENDENCIAS -- */
 import express from 'express';
 import router from './routes/productosRouter.js';
 import handlebars  from 'express-handlebars';
 import path from 'path';
 const __dirname = path.resolve();
+
+import ProductoController from './controllers/Producto.js';
+const producto = new ProductoController();
+console.log(producto.validar())
+console.log(producto.productosArray)
+
 // COMIENZO APP
 /* -- PUERTO DEL SERVER -- */
 const app = express();
@@ -31,8 +36,10 @@ app.engine('hbs', handlebars({
 );
 app.set('views', './views')
 app.get('/home', (req, res) => {
-    res.render('main');
-});
+    res.render('main' ,  { 
+        validacion: producto.validar(),
+        array: producto.productosArray});
+}); 
 
 /* ---- SERVIDOR ---- */
 const server = app.listen(PORT, () => {

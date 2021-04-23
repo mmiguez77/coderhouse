@@ -1,7 +1,7 @@
-<h1 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h1>
+<h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
 
-<div class="container">  
-<form action="/api/productos" method="post" style="margin:2rem">
+<div class="container bg-secondary text-white p-2">  
+<form action="/api/productos" method="post" autocomplete="off" style="margin:2rem">
     <div class="mb-3">
         <label for="title" class="form-label">Nombre del producto</label>
         <input type="text" class="form-control" id="title" name="title">
@@ -14,6 +14,6 @@
         <label for="thumbnail" class="form-label">URL</label>
         <input type="text" class="form-control" id="thumbnail" name="thumbnail">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">ENVIAR</button>
   </form>
 </div>
