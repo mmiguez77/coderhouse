@@ -26,7 +26,14 @@ class ProductoController {
     
     /* ----  ELIMINAR PRODUCTO ---- */
     deleteProducto(id){
-        return productosArray = productosArray.filter((prod) => prod.id !== parseInt(id));
+        const i = productosArray.findIndex(prod => prod.id == parseInt(id))
+        if (i !== -1) {
+            return productosArray.splice(i, 1)
+        } else {
+            return { error: 'producto no encontrado' }
+        }
+    
+    
     }
 
     /* ----  ACTUALIZAR PRODUCTO ---- */

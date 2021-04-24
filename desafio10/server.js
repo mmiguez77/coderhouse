@@ -6,9 +6,7 @@ import handlebars  from 'express-handlebars';
 import path from 'path';
 const __dirname = path.resolve();
 
-//import ProductoController from './controllers/Producto.js';
 import {productosArray} from './controllers/Producto.js'
-//const producto = new ProductoController();
 const array = productosArray
 const trueFalse = () => { if (productosArray.length >= 1){return true} else { return false } }
 //console.log(array)
