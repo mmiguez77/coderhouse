@@ -6,10 +6,13 @@ import handlebars  from 'express-handlebars';
 import path from 'path';
 const __dirname = path.resolve();
 
-import ProductoController from './controllers/Producto.js';
-const producto = new ProductoController();
-console.log(producto.validar())
-console.log(producto.productosArray)
+//import ProductoController from './controllers/Producto.js';
+import {productosArray} from './controllers/Producto.js'
+//const producto = new ProductoController();
+const array = productosArray
+const trueFalse = () => { if (productosArray.length >= 1){return true} else { return false } }
+//console.log(array)
+//console.log(trueFalse())
 
 // COMIENZO APP
 /* -- PUERTO DEL SERVER -- */
@@ -37,8 +40,8 @@ app.engine('hbs', handlebars({
 app.set('views', './views')
 app.get('/home', (req, res) => {
     res.render('main' ,  { 
-        validacion: producto.validar(),
-        array: producto.productosArray});
+        validacion: trueFalse,
+        array: array});
 }); 
 
 /* ---- SERVIDOR ---- */
