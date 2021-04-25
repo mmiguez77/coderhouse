@@ -1,0 +1,23 @@
+extends form
+block main
+    
+    h2(style="text-align:center; margin:1rem") PRODUCTOS
+    #array
+      if trueFalse() === true
+        div.container.text-dark.p-1
+        table.table.table-striped.p-2
+          thead
+            tr
+              th ID
+              th TITULO
+              th PRECIO
+              th IMAGEN
+          tbody
+            each n in array
+              tr
+                td= n.id
+                td= n.title
+                td= n.price
+                td: img(src=n.thumbnail style='width:32px; heigth:32px')
+      else       
+          h3.alert.alert-warning  SIN PRODUCTOS

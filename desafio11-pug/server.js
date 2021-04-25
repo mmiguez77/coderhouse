@@ -1,0 +1,41 @@
+// LINK POSTMAN: https://www.getpostman.com/collections/63df217239eed29c7379
+/* -- DEPENDENCIAS -- */
+import express from 'express';
+import router from './routes/productosRouter.js';
+import path from 'path';
+const __dirname = path.resolve();
+
+import {productosArray} from './controllers/Producto.js'
+const array = productosArray
+const trueFalse = () => { if (array.length >= 1){return true} else {return false}}
+
+// COMIENZO APP
+/* -- PUERTO DEL SERVER -- */
+const app = express();
+const PORT = 8080;
+
+/* -- MIDDLEWARES -- */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+/* -- ENDPOINTS -- */
+app.use('/api/productos', router);
+
+/* -- STATIC FILES -- */
+
+/* -- PUG -- */
+app.set('view engine', 'pug');
+app.set('views', './views')
+app.get('/home', (req, res) => {
+    res.render('main', {array, trueFalse});
+}); 
+
+/* ---- SERVIDOR ---- */
+const server = app.listen(PORT, () => {
+    console.log(`Servidor http en puerto: ${server.address().port}`)
+    console.log('Para cancelar el server presionar CTRL + C')
+}) 
+server.on("error", error => console.log(`Error en servidor ${error}`))
+
+
+
