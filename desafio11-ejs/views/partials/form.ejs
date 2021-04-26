@@ -1,0 +1,19 @@
+<h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
+
+<div class="container bg-secondary text-white p-2">  
+<form action="/api/productos" method="post" autocomplete="off" style="margin:2rem">
+    <div class="mb-3">
+        <label for="title" class="form-label">PRODUCTO</label>
+        <input type="text" class="form-control" id="title" name="title">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">PRECIO</label>
+        <input type="number" class="form-control" id="price" name="price">
+    </div>
+    <div class="mb-3">
+        <label for="thumbnail" class="form-label">IMAGEN</label>
+        <input type="text" class="form-control" id="thumbnail" name="thumbnail">
+    </div>
+    <button type="submit" class="btn btn-primary">ENVIAR</button>
+  </form>
+</div>
