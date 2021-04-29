@@ -2,11 +2,11 @@
 import express from 'express';
 import {Server as HttpServer} from 'http';
 import {Server as IOServer} from 'socket.io';
-
 import router from './routes/productosRouter.js';
 import path from 'path';
-import {productosArray} from './controllers/Producto.js';
 const __dirname = path.resolve();
+
+import {productosArray} from './controllers/Producto.js';
 const array = productosArray;
 
 // COMIENZO APP
@@ -22,19 +22,18 @@ app.use(express.urlencoded({ extended: true }));
 
 /* -- ENDPOINTS -- */
 app.use('/api/productos', router);
-app.use(express.static('./public'));
+app.use(express.static('public'));
 
 /* -- IO SERVER -- */
 io.on('connection', socket => {
     console.log('Nuevo Cliente Conectado')
-    socket.emit()
+    socket.emit('productos', array)
+
 })
 
-
 /* -- VISTAS · EJS -- */
-app.set('view engine', 'ejs');
-app.set('views', './views')
-app.get('/home', (req, res) => {res.render('pages/index', {array: array,})}); 
+// app.set('view engine', 'ejs');
+// app.get('/', (req, res) => {res.render('./public/', {array: array,})}); 
 
 /* ---- SERVIDOR ---- */
 const server = httpServer.listen(PORT, () => {

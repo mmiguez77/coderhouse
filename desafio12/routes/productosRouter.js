@@ -3,45 +3,37 @@ import ProductoController from '../controllers/Producto.js';
 const router = express.Router();
 const producto = new ProductoController();
 
+router.use(express.json());
+router.unsubscribe(express.urlencoded({ extended: true }));
+
 /* ---- AGREGAR PRODUCTO ---- */
 router.post('/', (req, res) => {
     const data = req.body;
-    
-    if (producto.addProducto(data)) {
-        if (!data.title == "") {res.redirect('/home')}
-    }
-    res.status(400).send();
+    res.json(producto.addProducto(data))
 });
 
 /* ---- VER TOTAL DE PRODUCTOS ---- */
 router.get('/', (req, res) => {
-    const productos = producto.viewProductos();
-    if (!productos) {
-        return res.status(404).json({ error: 'Productos no encontrado' })
-    } res.json(productos);
+    res.json(producto.viewProductos())
 });
 
 /* ---- VER PRODUCTO POR ID ---- */
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    const prodFiltro = producto.viewProductoPorId(id);
-    if (prodFiltro) { return res.json(prodFiltro) };
-    res.status(404).json({ error: 'Producto no encontrado' })
+    res.json(producto.viewProductoPorId(id));
 });
 
 /* ----  ACTUALIZAR PRODUCTO ---- */
 router.put('/:id', (req, res) => {
     const data = req.body;
     const { id } = req.params;
-    if (producto.updateProducto(id, data)) { res.status(201).json(data) }
-    res.status(400).send();
+    res.json(producto.updateProducto(data,id))
 })
 
 /* ----  ELIMINAR PRODUCTO ---- */
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    producto.deleteProducto(id);
-    res.send()
+    res.json(producto.deleteProducto(id));
 })
 
 export default router;
