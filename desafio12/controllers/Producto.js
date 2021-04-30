@@ -1,22 +1,20 @@
-export let productosArray = []
+export let productosArray = [{
+    title: "manzana",
+    price: 123,
+    thumbnail: "www.mzn.jpg"
+}]
 
 class ProductoController {
     constructor() {}
     
     /* ---- AGREGAR PRODUCTO ---- */
-    addProducto(data) {
-        
+    addProducto(data, res) {
         data.id = productosArray.length + 1;
         let newProducto = { ...data, id: data.id };
-        if (data.title === "number") {
-            console.log("No puede estar el campo vacio");
-        } else {
-            productosArray.push(newProducto);
-            console.log (newProducto);
-        }
-        return newProducto
+        console.log ('log Class', newProducto);
+        productosArray.push(newProducto) 
     }
-    
+        
     /* ---- VER TOTAL DE PRODUCTOS ---- */
     viewProductos() {
         if (productosArray.length < 1) return false;

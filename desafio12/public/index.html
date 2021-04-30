@@ -1,70 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS BOOTSTRAP -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <!-- DEPENDECIAS CLIENTE SOCKET IO -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="./main.js"></script>
-    <title>Desafio 12 - Parte 1</title>
-</head>
-<body>
-    
-    <h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
+<html lang="es">
 
-    <div class="container bg-secondary text-white p-2">  
-    <form action="/" method="post" autocomplete="off" style="margin:2rem">
-        <div class="mb-3">
-            <label for="title" class="form-label">PRODUCTO</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" 
-            required>
-        </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">PRECIO</label>
-            <input type="number" class="form-control" id="price" name="price" 
-            placeholder="Ejemplo: 123" required>
-        </div>
-        <div class="mb-3">
-            <label for="thumbnail" class="form-label">IMAGEN</label>
-            <input type="text" class="form-control" id="thumbnail" name="thumbnail" 
-            placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-sm">AGREGAR</button>
-        <!-- <button type="submit" class="btn btn-warning btn-sm" style="margin-left: 15px;">ACTUALIZAR</button>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS BOOTSTRAP -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <!-- CSS PROPIO -->
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- DEPENDECIAS CLIENTE SOCKET IO -->
+  <script src="/socket.io/socket.io.js"></script>
+  <title>Desafio 12</title>
+</head>
+
+<body>
+  <!-- Inicio Formulario Producto -->
+  <h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
+  <div class="container bg-secondary text-white p-2">
+    <form action="/productos" method="post" autocomplete="off" style="margin:2rem">
+      <div class="mb-3">
+        <label for="title" class="form-label">PRODUCTO</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" required>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">PRECIO</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 123" required>
+      </div>
+      <div class="mb-3">
+        <label for="thumbnail" class="form-label">IMAGEN</label>
+        <input type="text" class="form-control" id="thumbnail" name="thumbnail"
+          placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm" id="btnForm">AGREGAR</button>
+      <!-- <button type="submit" class="btn btn-warning btn-sm" style="margin-left: 15px;">ACTUALIZAR</button>
         <button type="submit" class="btn btn-danger btn-sm" style="margin-left: 15px;">ELIMINAR</button> -->
-        
+
+      <!-- Fin Formulario Producto -->
+      <!-- Inicio Listado Productos -->
     </form>
+  </div>
+  <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
+  <div class="container bg-light text-dark p-2">
+
+    <div id="divTest"></div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>TITULO</th>
+          <th>PRECIO</th>
+          <th>IMAGEN</th>
+        </tr>
+      </thead>
+      <tbody id="tableProd">
+
+
+      </tbody>
+    </table>
+    <!-- Fin Listado Productos -->
+    <!-- Alerta en caso que no haya productos cargados -->
+    <h3 class="alert alert-warning">No hay productos cargados</h1>
+  </div>
+  <!-- Inicio Chat -->
+
+  <div class="container bg-secondary text-white p-2" id="divChat">
+    <div id="ventana">
+      <div id="pantalla"></div>
+      <div id="action"></div>
     </div>
-    <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
-    <div class="container bg-light text-dark p-2">
-      
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>TITULO</th>
-            <th>PRECIO</th>
-            <th>IMAGEN</th>
-          </tr>
-        </thead>
-        <tbody>
-        
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td><img src="#"  style="width:32px; height:32px"></td>
-          </tr> 
-         
-        </tbody>
-      </table>  
-      
-        <h3 class="alert alert-warning">No hay productos cargados</h1>
-          </div>
-    
+    <input type="text" id="userChat" placeholder="Nombre de usuario">
+    <input type="text" id="messageChat" placeholder="Mensaje">
+    <button id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
+  </div>
+
+  <!-- Fin Chat -->
+
+  <script src="client.js"></script>
 
 </body>
+
 </html>
