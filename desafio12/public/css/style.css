@@ -33,3 +33,10 @@
     height: 300px;
     color: black;
 }
+
+
+#clearfix {
+    clear: both;
+    float: none;
+    height: 300px;
+}

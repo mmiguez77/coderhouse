@@ -19,7 +19,7 @@
   <!-- Inicio Formulario Producto -->
   <h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
   <div class="container bg-secondary text-white p-2">
-    <form action="/productos" method="post" autocomplete="off" style="margin:2rem">
+    <form method="post" action="/api/productos" autocomplete="off" style="margin:2rem">
       <div class="mb-3">
         <label for="title" class="form-label">PRODUCTO</label>
         <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" required>
@@ -44,8 +44,7 @@
   <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
   <div class="container bg-light text-dark p-2">
 
-    <div id="divTest"></div>
-
+    
     <table class="table table-striped">
       <thead>
         <tr>
@@ -56,16 +55,15 @@
         </tr>
       </thead>
       <tbody id="tableProd">
-
-
       </tbody>
     </table>
     <!-- Fin Listado Productos -->
     <!-- Alerta en caso que no haya productos cargados -->
-    <h3 class="alert alert-warning">No hay productos cargados</h1>
+    <h3 id="aviso"></h3>
   </div>
-  <!-- Inicio Chat -->
-
+  
+  <h1>Inicio Chat</h1>
+    <!-- Inicio Chat -->
   <div class="container bg-secondary text-white p-2" id="divChat">
     <div id="ventana">
       <div id="pantalla"></div>
@@ -73,7 +71,7 @@
     </div>
     <input type="text" id="userChat" placeholder="Nombre de usuario">
     <input type="text" id="messageChat" placeholder="Mensaje">
-    <button id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
+    <button type="submit" id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
   </div>
 
   <!-- Fin Chat -->
