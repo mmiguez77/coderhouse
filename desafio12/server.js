@@ -6,9 +6,9 @@ import path from 'path';
 const __dirname = path.resolve();
 
 import router from './routes/productos.routes.js';
-import { productosArray } from './controllers/Producto.js';
-const array = productosArray;
-console.log('** Console.log de Array en Server.js',array)
+import productoController from './controllers/Producto.js';
+const productosArray = new productoController();
+//console.log('** Console.log de productosArray en Server.js', productosArray.viewProductos())
 
 
 // COMIENZO APP
@@ -35,7 +35,7 @@ const mensajes = []
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
     socket.emit('message', mensajes)
-    socket.emit('all-productos', array)
+    socket.emit('all-productos', productosArray.viewProductos())
 
     socket.on('new-message', (data) => {
         //console.log('*** console.log de nuevoMensaje',data)
@@ -43,10 +43,10 @@ io.on('connection', socket => {
         io.sockets.emit('message', mensajes)
     });
     
-    io.sockets.emit('all-productos', array)
-    // socket.on('new-producto', (data) => {
-    //     console.log('**** console.log de socket.on addProducto:', data)
-    // })  
+    io.sockets.emit('all-productos', productosArray.viewProductos())
+    socket.on('update', () => {
+        io.sockets.emit('updateProductos', productosArray.viewProductos())
+    })  
 });
 
 

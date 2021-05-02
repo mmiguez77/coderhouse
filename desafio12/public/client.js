@@ -1,20 +1,9 @@
 const socket = io.connect();
 
-/* -- VARIABLES Y FUNCIONES FORMULARIO -- */
-// let title = document.getElementById('title');
-// let price = document.getElementById('price');
-// let thumbnail = document.getElementById('thumbnail');
-// let btnFormAdd = document.getElementById('btnForm');
-//let table = document.getElementById('tableProd');
+/* ------------------- FORMULARIO ------------------- */
 let aviso = document.getElementById('aviso');
 
-// btnFormAdd.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     let producto = (title.value, price.value, thumbnail.value);
-//     socket.emit('new-producto', producto)
-//     return producto
-// });
-
+// ADD
 socket.on('all-productos', (data) => {
     console.log('** Array de Productos en client.js:', data)
     renderProducto(data)
@@ -22,20 +11,25 @@ socket.on('all-productos', (data) => {
 
 function renderProducto(data) {
     console.log('renderProducto', data)
-    let prod = data.map((elem,id) => {
-        
+    let prod = data.map((elem, id) => {
         return (
-            `<td>${elem.id}</td>   
+            `<tr><td>${elem.id}</td>
         <td>${elem.title}</td>
         <td>${elem.price}</td>
-        <td><img src= ${elem.thumbnail} style="width:32px; heigth:32px"></td>`);
+        <td><img src=${elem.thumbnail} style="width:32px; heigth:32px"></td></tr>`)
     });
-    document.getElementById('tableProd').innerHTML = prod;
+    document.getElementById('tableProd').innerHTML = prod
 }
 
+// UPDATE
+let btnUpdate = document.getElementById('btnUpdate');
+
+btnUpdate.addEventListener('click', (e) => {
+    location.reload();
+});
 
 
-/* -- VARIABLES Y FUNCIONES CHAT --*/
+/* ------------------- CHAT ------------------- */
 let botonChat = document.getElementById('btnChat');
 let pantalla = document.getElementById('pantalla');
 

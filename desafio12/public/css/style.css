@@ -40,3 +40,21 @@
     float: none;
     height: 300px;
 }
+
+#tituloListaProductos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#btnUpdate{
+    max-height: 40px;
+}
+
+#divChat {
+    margin-top: 30px;
+}
+
+
+
