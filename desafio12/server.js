@@ -38,15 +38,15 @@ io.on('connection', socket => {
     socket.emit('all-productos', productosArray.viewProductos())
 
     socket.on('new-message', (data) => {
-        //console.log('*** console.log de nuevoMensaje',data)
         mensajes.push(data)
         io.sockets.emit('message', mensajes)
     });
-    
+
     io.sockets.emit('all-productos', productosArray.viewProductos())
+
     socket.on('update', () => {
         io.sockets.emit('updateProductos', productosArray.viewProductos())
-    })  
+    })
 });
 
 

@@ -34,19 +34,16 @@
           placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon" required>
       </div>
       <button type="submit" class="btn btn-primary btn-sm" id="btnForm">AGREGAR</button>
-      <!--  <button type="submit" class="btn btn-danger btn-sm" style="margin-left: 15px;">ELIMINAR</button> -->
-      
       <!-- Fin Formulario Producto -->
       <!-- Inicio Listado Productos -->
     </form>
   </div>
   <div id="tituloListaProductos">
-  <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
-  <button type="submit" class="btn btn-warning btn-sm" id="btnUpdate" style="margin-left: 15px;">ACTUALIZAR</button>
-</div>
+    <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
+    <button type="submit" class="btn btn-warning btn-sm" id="btnUpdate" style="margin-left: 15px;">ACTUALIZAR
+      LISTA</button>
+  </div>
   <div class="container bg-light text-dark p-2">
-
-
     <table class="table table-striped" id="table">
       <thead>
         <tr>
@@ -54,10 +51,11 @@
           <th>TITULO</th>
           <th>PRECIO</th>
           <th>IMAGEN</th>
+
         </tr>
       </thead>
       <tbody id="tableProd">
-      
+
       </tbody>
 
     </table>
@@ -65,16 +63,17 @@
     <!-- Alerta en caso que no haya productos cargados -->
     <h3 id="aviso"></h3>
   </div>
-  
+
+  <hr>
   <!-- Inicio Chat -->
   <div class="container bg-secondary text-white p-2" id="divChat">
-  <h1>Chat</h1>
+    <h1>Chat</h1>
     <div id="ventana">
       <div id="pantalla"></div>
-      <div id="action"></div>
+      
     </div>
-    <input type="text" id="userChat" placeholder="Nombre de usuario">
-    <input type="text" id="messageChat" placeholder="Mensaje">
+    <input type="text" id="userChat" placeholder="E-mail" required>
+    <input type="text" id="messageChat" placeholder="Mensaje" required>
     <button type="submit" id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
   </div>
 

@@ -1,8 +1,4 @@
-export let productosArray = [{
-    "id": 1,
-    "title":"Pepsi",
-    "price":20,
-    "thumbnail":"https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/49-pepsi-128.png"},]
+export let productosArray = []
 
 class ProductoController {
     constructor() {}
