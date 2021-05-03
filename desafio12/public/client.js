@@ -23,7 +23,6 @@ function renderProducto(data) {
     document.getElementById('tableProd').innerHTML = prod
 }
 
-
 function sinProd() {
     let aviso = document.getElementById('aviso');
     aviso.innerHTML = `<h3 class="alert alert-warning">No hay productos cargados</h3>`
@@ -34,9 +33,13 @@ function sinProd() {
 let btnUpdate = document.getElementById('btnUpdate');
 
 btnUpdate.addEventListener('click', () => {
-    location.reload();
+    socket.emit('update')
+    //location.reload();
 });
 
+socket.on('updateProductos', (data) => {
+    renderProducto(data)
+})
 
 /* ------------------- CHAT ------------------- */
 let botonChat = document.getElementById('btnChat');

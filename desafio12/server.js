@@ -1,3 +1,5 @@
+// LINK POSTMAN: https://www.getpostman.com/collections/63df217239eed29c7379
+
 /* -- DEPENDENCIAS -- */
 import express from 'express';
 import { Server as HttpServer } from 'http';
@@ -7,7 +9,7 @@ const __dirname = path.resolve();
 
 import router from './routes/productos.routes.js';
 import productoController from './controllers/Producto.js';
-const productosArray = new productoController();
+const productos = new productoController();
 //console.log('** Console.log de productosArray en Server.js', productosArray.viewProductos())
 
 
@@ -35,17 +37,17 @@ const mensajes = []
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
     socket.emit('message', mensajes)
-    socket.emit('all-productos', productosArray.viewProductos())
+    socket.emit('all-productos', productos.findAll())
 
     socket.on('new-message', (data) => {
         mensajes.push(data)
         io.sockets.emit('message', mensajes)
     });
 
-    io.sockets.emit('all-productos', productosArray.viewProductos())
+    io.sockets.emit('all-productos', productos.findAll())
 
     socket.on('update', () => {
-        io.sockets.emit('updateProductos', productosArray.viewProductos())
+        io.sockets.emit('updateProductos', productos.findAll())
     })
 });
 
