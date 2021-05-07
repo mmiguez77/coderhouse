@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('../partials/head') -%>
+        <title>PROYECTO FINAL</title>
+</head>
+
+<body>
+    <%- include ('../partials/navbar') -%>
+        <!-- Inicio Formulario Producto -->
+        <h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
+        <div class="container bg-secondary text-white p-5">
+            <form method="post" action="/productos" autocomplete="off">
+                <div class="mb-3">
+                    <label for="title" class="form-label">PRODUCTO</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">PRECIO</label>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 23">
+                </div>
+                <div class="mb-3">
+                    <label for="stock" class="form-label">STOCK</label>
+                    <input type="number" class="form-control" id="stock" name="stock" placeholder="Ejemplo: 23">
+                </div>
+                <div class="mb-3">
+                    <label for="codigo" class="form-label">CODIGO</label>
+                    <input type="number" class="form-control" id="codigo" name="codigo" placeholder="Ejemplo: 23">
+                </div>
+                <div class="mb-3">
+                    <label for="thumbnail" class="form-label">IMAGEN</label>
+                    <input type="text" class="form-control" id="thumbnail" name="thumbnail"
+                        placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">DESCRIPCION</label><br>
+                    <textarea name="descripcion" id="descrpcion" cols="142" rows="10"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-sm" id="btnForm">AGREGAR</button>
+                <!-- Fin Formulario Producto -->
+                <!-- Inicio Listado Productos -->
+            </form>
+        </div>
+        <div id="tituloListaProductos">
+            <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
+
+        </div>
+        <div class="container bg-light text-dark p-2">
+            <table class="table table-striped" id="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>TITULO</th>
+                        <th>PRECIO</th>
+                        <th>IMAGEN</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <%# array.forEach(function(arr) { %>
+                        <tr>
+                            <td>
+                                <%#= arr.id %>
+                            </td>
+                            <td>
+                                <%#= arr.title %>
+                            </td>
+                            <td>
+                                <%#= arr.price %>
+                            </td>
+                            <td><img src=<%#=arr.thumbnail %> style="width:32px; heigth:32px"></td>
+                        </tr>
+                        <%# }) %>
+                </tbody>
+            </table>
+            <%# } else { %>
+                <h3 class="alert alert-warning">No hay productos cargados</h1>
+                    <%# } %>
+        </div>
+
+
+        <%- include ('../partials/footer') -%>

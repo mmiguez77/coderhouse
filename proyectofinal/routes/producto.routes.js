@@ -4,8 +4,9 @@ const productosRoutes = express.Router();
 import Producto from '../controllers/Producto.js';
 const producto = new Producto();
 
+productosRoutes.get('/', producto.get);
 
-productosRoutes.get('/', producto.viewAll);
+productosRoutes.post('/', producto.add)
 
 /*
 routerProduct.get('/', (req, res) => {
