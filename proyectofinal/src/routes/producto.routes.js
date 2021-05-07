@@ -1,11 +1,11 @@
 import express from 'express';
-const routerProduct = express.Router();
+const productosRoutes = express.Router();
 
 import Producto from '../controllers/Producto.js';
 const producto = new Producto();
 
 
-routerProduct.get('/', producto.viewAll);
+productosRoutes.get('/', producto.viewAll);
 
 /*
 routerProduct.get('/', (req, res) => {
@@ -38,4 +38,4 @@ routerProduct.delete('/:id', (req, res) => {
     res.send()
 }) */
 
-export default routerProduct;
+export default productosRoutes;

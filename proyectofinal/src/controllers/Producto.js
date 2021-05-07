@@ -11,16 +11,14 @@ class Producto {
     }
 
     /* ---- VER TOTAL DE PRODUCTOS ---- */
-     viewAll() {
-         return this.productos;
-        // try {
-        //     const productos = await this.productos.findAll();
-        //     console.log(productos)
-        //     return this.productos;
-        // } catch (error) {
-        //     console.log(error)
-        //     return res.status(404).json({ error: 'Productos no encontrado' })
-        // }
+    viewAll(req, res) {
+        try {
+            res.send(this.productos)
+            console.log(this.productos)
+        } catch (error) {
+            console.log(error)
+            return res.status(404).json({ error: 'Productos no encontrado' })
+        }
     }
 
 
