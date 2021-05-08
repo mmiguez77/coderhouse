@@ -4,10 +4,12 @@ const productosRoutes = express.Router();
 import Producto from '../controllers/Producto.js';
 const producto = new Producto();
 
-productosRoutes.get('/', producto.get);
+productosRoutes.get('/', (req, res)=>{res.render('pages/productos')})
+
 
 productosRoutes.post('/', producto.add)
 
+productosRoutes.get('/', producto.view)
 /*
 routerProduct.get('/', (req, res) => {
     const productos = producto.findAll();

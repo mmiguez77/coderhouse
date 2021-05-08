@@ -4,24 +4,54 @@ class Producto {
 
     constructor() {
         this.productos = []
-    }
-
-    /* ---- TRAER VISTA DE PRODUCTOS.EJS ---- */
-    get(req, res) {
-        res.render('pages/productos')
-    }
-
-    /* ---- AGREGAR PRODUCTO ---- */
-
-    add(res, req) {
-
-
-        let newProd = {
-            id, timestamp, nombre, descripcion, codigo, foto, precio, stock
-        }
+        //this.id = 0
     }
 
     /* ---- VER TODOS LOS PRODUCTOS ---- */
+    async view() {
+        return console.log(this.productos)
+    }
+
+    /* ---- AGREGAR PRODUCTO ---- */
+    async add(req, res) {
+
+        try {
+            let newProducto = await { ...req.body };
+            let id = 0
+            if (newProducto) {
+                newProducto.id = ++id;
+                res.redirect('/productos');
+                return console.log('Log de NewProduct', newProducto)
+            }
+            // req.id = this.productos.length + 1;
+            // if (!newProducto.ok) {
+            //     throw new Error
+            // } else {
+            //     this.productos.push(newProducto);
+            // }
+        } catch (err) {
+            console.log(err);
+        }
+
+
+
+        /* if (req.body) {
+            this.productos.id = ++this.id
+            let newProducto = { ...req.body, id: this.productos.id };
+            this.productos.push(newProducto)
+            return console.log(newProducto)
+            // const jsonProd = JSON.stringify(newProducto);
+            // await fs.promises.appendFile(urlWrite, jsonProd, 'utf-8')
+        } */
+
+
+
+
+
+
+    }
+
+
 
     /* ---- VER PRODUCTO POR ID ---- */
 
