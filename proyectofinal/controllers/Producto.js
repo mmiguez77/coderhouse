@@ -1,54 +1,41 @@
 import fs from 'fs'
+export let productos = [1]
 
 class Producto {
 
     constructor() {
-        this.productos = []
+        //this.productos = []
         //this.id = 0
     }
 
     /* ---- VER TODOS LOS PRODUCTOS ---- */
-    async view() {
-        return console.log(this.productos)
-    }
+   /*  async viewAll() {
+        const prodEnJson = await fs.promises.readFile('../productos.json', 'utf-8');
+        const jsonToArray = JSON.parse(prodEnJson);
+        console.log(jsonToArray)
+        productos.push(jsonToArray)
+        return res.render('../views/pages/index', { prods: productos })
+
+    } */
 
     /* ---- AGREGAR PRODUCTO ---- */
     async add(req, res) {
-
         try {
             let newProducto = await { ...req.body };
-            let id = 0
+            newProducto.id = productos.length + 1;
+            newProducto.timestamp = new Date();
+            //console.log('newprod', newProducto)
             if (newProducto) {
-                newProducto.id = ++id;
-                res.redirect('/productos');
-                return console.log('Log de NewProduct', newProducto)
+                productos.push(newProducto)
+                const arrayToJson = JSON.stringify(productos);
+                fs.writeFileSync('./productos.json', arrayToJson, 'utf-8')
+                res.redirect('/');
+            } else {
+                return res.status(400).json({ error: 'No se pudo cargar el producto' });
             }
-            // req.id = this.productos.length + 1;
-            // if (!newProducto.ok) {
-            //     throw new Error
-            // } else {
-            //     this.productos.push(newProducto);
-            // }
         } catch (err) {
             console.log(err);
         }
-
-
-
-        /* if (req.body) {
-            this.productos.id = ++this.id
-            let newProducto = { ...req.body, id: this.productos.id };
-            this.productos.push(newProducto)
-            return console.log(newProducto)
-            // const jsonProd = JSON.stringify(newProducto);
-            // await fs.promises.appendFile(urlWrite, jsonProd, 'utf-8')
-        } */
-
-
-
-
-
-
     }
 
 
@@ -60,37 +47,30 @@ class Producto {
 
     /* ---- MODIFICAR PRODUCTO ---- */
 
-    /*  add(data) {
-         data.id = productosArray.length + 1;
-         let newProducto = { ...data, id: data.id };
-         productosArray.push(newProducto);
-         return newProducto
-     }
+
+
+
+    /*viewByID(id) { return productosArray.filter((prod) => prod.id === parseInt(id))[0] }
  
+    
+    delete(id) {
+        const i = productosArray.findIndex(prod => prod.id == parseInt(id))
+        if (i !== -1) {
+            return productosArray.splice(i, 1)
+        } else { return { error: 'producto no encontrado' } }
+    }
  
- 
-     
-     viewByID(id) { return productosArray.filter((prod) => prod.id === parseInt(id))[0] }
- 
-     
-     delete(id) {
-         const i = productosArray.findIndex(prod => prod.id == parseInt(id))
-         if (i !== -1) {
-             return productosArray.splice(i, 1)
-         } else { return { error: 'producto no encontrado' } }
-     }
- 
-     
-     update(id, data) {
-         productosArray = productosArray.map(prod => {
-             if (prod.id === parseInt(id)) {
-                 prod.title = data.title;
-                 prod.price = data.price;
-                 prod.thumbnail = data.thumbnail;
-             }
-             return prod
-         });
-     } */
+    
+    update(id, data) {
+        productosArray = productosArray.map(prod => {
+            if (prod.id === parseInt(id)) {
+                prod.title = data.title;
+                prod.price = data.price;
+                prod.thumbnail = data.thumbnail;
+            }
+            return prod
+        });
+    } */
 }
 
 export default Producto

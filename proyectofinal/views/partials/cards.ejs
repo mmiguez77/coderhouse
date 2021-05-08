@@ -1,0 +1,48 @@
+<div id="tituloListaProductos">
+    <h2 style="text-align:center; margin:1rem">PRODUCTOS</h2>
+</div>
+<div class="container bg-light text-dark p-2">
+    <div class="container p-4">
+        <div class="row">
+
+            <%if (prods.length >= 1) {%>
+
+                <% prods.forEach(function(prod) { %>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <%= prod.title %>
+                            </div>
+                            <img class="card-img-top" src="<%= prod.thumbnail %>">
+                            <div class="card card-body">
+                                <%= prod.description %>
+                               
+                            </div>
+                            <div class="card card-body">
+                                $ <%= prod.price %>
+                            </div>
+                            <div class="card card-body">
+                              <div>SKU: <%= prod.code %></div> 
+                              <div>STOCK:<%= prod.stock %> Unidades</div> 
+                            
+                            </div>
+                            <div class="card-footer">
+                                <a href="/update/<%= prod.id %>" class="btn btn-danger btn-block btn-sm">
+                                    Delete
+                                </a>
+                                <a href="/delete/<%= prod.id %>" class="btn btn-danger btn-block btn-sm">
+                                    Delete
+                                </a>
+                                <a href="/delete/<%= prod.id %>" class="btn btn-danger btn-block btn-sm">
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <%})%>
+
+                        <%} else {%>
+                            <h3 class="alert alert-warning">No hay productos cargados</h3>
+                                <%}%>
+        </div>
+    </div>

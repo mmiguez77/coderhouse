@@ -4,6 +4,9 @@ import productosRoutes from './routes/producto.routes.js';
 import path from 'path';
 const __dirname = path.resolve();
 
+import { productos } from './controllers/Producto.js'
+let prods = productos
+
 // COMIENZO APP
 /* -- PUERTO DEL SERVER -- */
 const app = express();
@@ -19,7 +22,7 @@ app.use('/productos', productosRoutes);
 /* -- EJS -- */
 app.set('view engine', 'ejs');
 app.set('views', './views')
-app.get('/', (req, res) => {res.render('pages/index')}); 
+app.get('/', (req, res) => {res.render('pages/index', {prods: prods})}); 
 
 /* ---- SERVIDOR ---- */
 const server = app.listen(PORT, () => {
@@ -27,6 +30,3 @@ const server = app.listen(PORT, () => {
     
 }) 
 server.on("error", error => console.log(`Error en servidor ${error}`))
-
-
-
