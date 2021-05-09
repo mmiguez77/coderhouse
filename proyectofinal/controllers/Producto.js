@@ -3,12 +3,19 @@ export let productos = []
 
 
     /* ---- VER TODOS LOS PRODUCTOS ---- */
-export const viewAll = (req, res) => {
-        
-            const prodEnJson = fs.readFileSync('productos.json', 'utf-8');
-            const jsonToArray = JSON.parse(prodEnJson);
-            console.log('Class Producto',jsonToArray)
-            productos.push(jsonToArray)   
+export const viewAll = async (req, res) => {
+        try {
+            const prodEnJson = await fs.promises.readFile('productos.json', 'utf-8');
+            const jsonToArray = JSON.parse(prodEnJson)
+            for (let i = 0; i < jsonToArray.length; i++) {
+                console.log('Class Producto',jsonToArray)
+                productos.push(jsonToArray)  
+            }
+        } catch (error) {
+            console.log(`Error en la carga de productos ${error}`)
+        }
+
+            
       
 } 
 viewAll()
@@ -17,17 +24,16 @@ viewAll()
     /* ---- AGREGAR PRODUCTO ---- */
 export const add = async (req, res) => {
         try {
+            if(!req.body) {
+                return res.status(400).json({ error: 'Campos incompletos'});
+            } else  {
             let newProducto = await {...req.body };
             newProducto.id = productos.length + 1;
             newProducto.timestamp = new Date();
-            if (newProducto) {
-                productos.push(newProducto)
-                const arrayToJson = JSON.stringify(productos);
-                fs.promises.appendFile('productos.json', arrayToJson, 'utf-8')
-                //viewAll()
-                res.redirect('/');
-            } else {
-                return res.status(400).json({ error: 'No se pudo cargar el producto' });
+            productos.push(newProducto)
+            const arrayToJson = JSON.stringify(productos);
+            fs.writeFileSync('productos.json', arrayToJson, 'utf-8')
+            res.redirect('/');
             }
         } catch (err) {
             console.log(err);

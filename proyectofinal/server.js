@@ -23,6 +23,9 @@ app.use('/', indexRoutes)
 app.set('view engine', 'ejs');
 app.set('views', './views')
 
+/* -- 404 -- */ 
+app.use((req, res) => {res.status(404).render('./pages/404')});
+
 /* ---- SERVIDOR ---- */
 const server = app.listen(PORT, () => {
     console.log(`Servidor http en puerto: ${server.address().port}`)
