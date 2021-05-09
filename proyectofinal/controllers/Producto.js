@@ -1,34 +1,30 @@
 import fs from 'fs'
-export let productos = [1]
+export let productos = []
 
-class Producto {
-
-    constructor() {
-        //this.productos = []
-        //this.id = 0
-    }
 
     /* ---- VER TODOS LOS PRODUCTOS ---- */
-   /*  async viewAll() {
-        const prodEnJson = await fs.promises.readFile('../productos.json', 'utf-8');
-        const jsonToArray = JSON.parse(prodEnJson);
-        console.log(jsonToArray)
-        productos.push(jsonToArray)
-        return res.render('../views/pages/index', { prods: productos })
+export const viewAll = (req, res) => {
+        
+            const prodEnJson = fs.readFileSync('productos.json', 'utf-8');
+            const jsonToArray = JSON.parse(prodEnJson);
+            console.log('Class Producto',jsonToArray)
+            productos.push(jsonToArray)   
+      
+} 
+viewAll()
 
-    } */
-
+ 
     /* ---- AGREGAR PRODUCTO ---- */
-    async add(req, res) {
+export const add = async (req, res) => {
         try {
-            let newProducto = await { ...req.body };
+            let newProducto = await {...req.body };
             newProducto.id = productos.length + 1;
             newProducto.timestamp = new Date();
-            //console.log('newprod', newProducto)
             if (newProducto) {
                 productos.push(newProducto)
                 const arrayToJson = JSON.stringify(productos);
-                fs.writeFileSync('./productos.json', arrayToJson, 'utf-8')
+                fs.promises.appendFile('productos.json', arrayToJson, 'utf-8')
+                //viewAll()
                 res.redirect('/');
             } else {
                 return res.status(400).json({ error: 'No se pudo cargar el producto' });
@@ -46,6 +42,8 @@ class Producto {
     /* ---- ELIMINAR PRODUCTO ---- */
 
     /* ---- MODIFICAR PRODUCTO ---- */
+
+
 
 
 
@@ -71,9 +69,6 @@ class Producto {
             return prod
         });
     } */
-}
-
-export default Producto
 
 
 /* class Archivo {

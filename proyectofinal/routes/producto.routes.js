@@ -1,14 +1,12 @@
 import express from 'express';
 const productosRoutes = express.Router();
-import Producto from '../controllers/Producto.js';
-const producto = new Producto();
+import { productos, add, viewAll } from '../controllers/Producto.js';
 
+productosRoutes.get('/', (req, res) => { res.render('pages/productos', { prods: productos }) })
 
-productosRoutes.get('/', (req, res)=>{res.render('pages/productos')})
+productosRoutes.get('/', viewAll)
 
-//productosRoutes.get('/', producto.viewAll)
-
-productosRoutes.post('/', producto.add)
+productosRoutes.post('/', add)
 
 
 /*

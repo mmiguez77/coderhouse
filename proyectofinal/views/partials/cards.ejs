@@ -8,37 +8,22 @@
             <%if (prods.length >= 1) {%>
 
                 <% prods.forEach(function(prod) { %>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header bg-primary text-white">
-                                <%= prod.title %>
-                            </div>
-                            <img class="card-img-top" src="<%= prod.thumbnail %>">
-                            <div class="card card-body">
-                                <%= prod.description %>
-                               
-                            </div>
-                            <div class="card card-body">
-                                $ <%= prod.price %>
-                            </div>
-                            <div class="card card-body">
-                              <div>SKU: <%= prod.code %></div> 
-                              <div>STOCK:<%= prod.stock %> Unidades</div> 
-                            
-                            </div>
-                            <div class="card-footer">
-                                <a href="/update/<%= prod.id %>" class="btn btn-danger btn-block btn-sm">
-                                    Delete
-                                </a>
-                                <a href="/delete/<%= prod.id %>" class="btn btn-danger btn-block btn-sm">
-                                    Delete
-                                </a>
-                                <a href="/delete/<%= prod.id %>" class="btn btn-danger btn-block btn-sm">
-                                    Delete
-                                </a>
-                            </div>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="<%= prod.thumbnail %> " alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= prod.title  %> </h5>
+                          <p class="card-text"><%= prod.description %>   </p>
                         </div>
-                    </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">$ <%= prod.price %> </li>
+                          <li class="list-group-item">Stock: <%= prod.stock %> </li>
+                          <li class="list-group-item">SKU: <%= prod.code %> </li>
+                        </ul>
+                        <div class="card-body">
+                          <a href="#" class="card-link">Update</a>
+                          <a href="#" class="card-link">Delete</a>
+                        </div>
+                      </div>
                     <%})%>
 
                         <%} else {%>

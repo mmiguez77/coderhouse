@@ -1,11 +1,10 @@
 /* -- DEPENDENCIAS -- */
 import express from 'express';
 import productosRoutes from './routes/producto.routes.js';
+import indexRoutes from './routes/index.routes.js';
+
 import path from 'path';
 const __dirname = path.resolve();
-
-import { productos } from './controllers/Producto.js'
-let prods = productos
 
 // COMIENZO APP
 /* -- PUERTO DEL SERVER -- */
@@ -18,15 +17,15 @@ app.use(express.urlencoded({ extended: true }));
 
 /* -- ENDPOINTS -- */
 app.use('/productos', productosRoutes);
+app.use('/', indexRoutes)
 
 /* -- EJS -- */
 app.set('view engine', 'ejs');
 app.set('views', './views')
-app.get('/', (req, res) => {res.render('pages/index', {prods: prods})}); 
 
 /* ---- SERVIDOR ---- */
 const server = app.listen(PORT, () => {
     console.log(`Servidor http en puerto: ${server.address().port}`)
-    
-}) 
+
+})
 server.on("error", error => console.log(`Error en servidor ${error}`))
