@@ -1,3 +1,4 @@
 #Ignorar modulos de Node
 node_modules
 *.xlsx
+exit

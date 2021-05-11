@@ -1,7 +1,7 @@
 import fs from 'fs'
-/* ------- FUNCIONES ADICIONALES  -------- */
+/* -------  ADICIONALES  -------- */
 
-let productos = []
+export let productos = []
 
 const readJson = () => {
 
@@ -17,8 +17,6 @@ const saveJson = (data) => {
     let stringifyData = JSON.stringify(data)
     fs.writeFileSync('productos.json', stringifyData)
 }
-
-
 /*------------------------------------------------*/
 
 /* ---- AGREGAR PRODUCTO ---- */
@@ -34,6 +32,7 @@ export const add = async (req, res) => {
             productos.push(newProducto)
             //console.log('Productos en Array', productos)
             saveJson(productos);
+            res.redirect('/productos')
             res.json(`${newProducto.title} cargado corretamente`)
         }
     } catch (err) {
@@ -44,9 +43,11 @@ export const add = async (req, res) => {
 /* ---- VER TOTAL DE PRODUCTOS ---- */
 export const viewAll = (req, res) => {
     const viewProductos = readJson();
+    console.log('view prod',viewProductos)
     if (!viewProductos) { res.status(404).json({ error: 'Producto no encontrado' }) }
-    res.json(viewProductos)
-    //res.render('pages/productos', { prods: productos })
+    // productos.push(viewProductos)
+    //res.json(viewProductos)
+    res.render('pages/productos', {prods: viewProductos})
 }
 
 /* ---- VER PRODUCTO POR ID ---- */
