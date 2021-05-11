@@ -1,5 +1,5 @@
 import express from 'express';
-import { viewAll, add, viewByID, drop } from '../controllers/Producto.js';
+import { viewAll, add, viewByID, drop, update } from '../controllers/Producto.js';
 const productosRoutes = express.Router();
 
 
@@ -17,7 +17,7 @@ productosRoutes.post('/', add)
 productosRoutes.delete('/:id', drop)
 
 // metodo para actulizar producto
-//productosRoutes.put('/:id', producto.update)
+productosRoutes.put('/:id', update)
 
 
 export default productosRoutes;

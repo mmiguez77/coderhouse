@@ -63,37 +63,32 @@ export const viewByID = (req, res) => {
 /* ----  ELIMINAR PRODUCTO ---- */
 export const drop = (req, res) => {
     const { id } = req.params;
-    const viewProdDrop = readJson();
+    let viewProdDrop = readJson();
     let prodDrop = viewProdDrop.filter(prod => prod.id != req.params.id)
     saveJson(prodDrop)
-    console.log('Producto que quedan', prodDrop)
+    productos.push(prodDrop)
+    //console.log('Producto que quedan', prodDrop)
     res.json(prodDrop)
     if (!prodDrop) { return { error: 'producto no encontrado' } }
 };
 
-
-    // delete (req, res, id){
-    //     const i = productos.findIndex(prod => prod.id == parseInt(id))
-    //         if (i !== -1) {
-    //             const arrayToJson = JSON.stringify(productos);
-    //             fs.writeFileSync('productos.json', arrayToJson, 'utf-8')
-    //             res.redirect('/')
-    //             return productos.splice(i, 1)
-    //         } else {
-    //             return { error: 'producto no encontrado' }
-    //         }
-    // }
-
 /* ----  ACTUALIZAR PRODUCTO ---- */
-    // update(req, res, id){
-    //     productos = productos.map(prod => {
-    //         if (prod.id === parseInt(id)) {
-    //             prod.title = req.body.title;
-    //             prod.price = req.body.price;
-    //             prod.thumbnail = req.body.thumbnail;
-    //             prod.code = req.body.code;
-    //             prod.description = req.body.description;
-    //         }
-    //         return prod
-    //     });
-    //     }
+export const update = (req, res) => {
+    const { id } = req.params;
+    const data = { ...req.body };
+    let viewProdUpdate = readJson();
+    viewProdUpdate = viewProdUpdate.map(prod => {
+        if (prod.id === parseInt(id)) {
+            prod.title = data.title;
+            prod.price = data.price;
+            prod.stock = data.stock;
+            prod.thumbnail = data.thumbnail;
+            prod.code = data.code;
+            prod.description = data.description;
+        }
+        saveJson(viewProdUpdate)
+        productos.push(viewProdUpdate)
+        //console.log('Producto actualizado', viewProdUpdate)
+        res.json(viewProdUpdate)
+    });
+}
