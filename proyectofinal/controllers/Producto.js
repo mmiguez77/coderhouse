@@ -1,9 +1,6 @@
 import fs from 'fs'
-//export let productos = readJson();
-
 
 /* ------- FUNCIONES ADICIONALES  -------- */
-
 let productos = []
 
 const readJson = () => {
@@ -20,8 +17,6 @@ const saveJson = (data) => {
     let stringifyData = JSON.stringify(data)
     fs.writeFileSync('productos.json', stringifyData)
 }
-
-
 /*------------------------------------------------*/
 
 /* ---- AGREGAR PRODUCTO ---- */
@@ -53,10 +48,13 @@ export const viewAll = (req, res) => {
 
 /* ---- VER PRODUCTO POR ID ---- */
 export const viewByID = (req, res) => {
+    const viewProductos = readJson();
     const { id } = req.params;
-    let prodFiltro = productos.filter((prod) => prod.id === parseInt(id))[0]
+    let prodFiltro = viewProductos.filter((prod) => prod.id === parseInt(id))[0]
     if (prodFiltro) {return res.json(prodFiltro)};
     res.status(404).json({error: 'Producto no encontrado'})
+
+    //console.log('viewById',prodFiltro)
 }
 
 
