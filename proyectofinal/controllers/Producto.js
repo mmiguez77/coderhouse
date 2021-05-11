@@ -43,7 +43,7 @@ export const add = async (req, res) => {
 /* ---- VER TOTAL DE PRODUCTOS ---- */
 export const viewAll = (req, res) => {
     const viewProductos = readJson();
-    console.log('view prod',viewProductos)
+    //console.log('view prod',viewProductos)
     if (!viewProductos) { res.status(404).json({ error: 'Producto no encontrado' }) }
     // productos.push(viewProductos)
     //res.json(viewProductos)
