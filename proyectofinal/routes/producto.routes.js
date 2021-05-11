@@ -1,5 +1,5 @@
 import express from 'express';
-import {viewAll, add, viewByID} from '../controllers/Producto.js';
+import { viewAll, add, viewByID, drop } from '../controllers/Producto.js';
 const productosRoutes = express.Router();
 
 
@@ -14,7 +14,7 @@ productosRoutes.get('/:id', viewByID)
 productosRoutes.post('/', add)
 
 // metodo para eliminar producto
-//productosRoutes.delete('/:id', producto.delete)
+productosRoutes.delete('/:id', drop)
 
 // metodo para actulizar producto
 //productosRoutes.put('/:id', producto.update)
