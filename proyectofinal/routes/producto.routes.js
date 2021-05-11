@@ -1,5 +1,5 @@
 import express from 'express';
-import {viewAll, add} from '../controllers/Producto.js';
+import {viewAll, add, viewByID} from '../controllers/Producto.js';
 const productosRoutes = express.Router();
 
 
@@ -8,7 +8,7 @@ const productosRoutes = express.Router();
 
 // metodo para ver todos los productos y por ID
 productosRoutes.get('/', viewAll)
-//productosRoutes.get('/:id', producto.viewByID)
+productosRoutes.get('/:id', viewByID)
 
 // metodo para agregar producto
 productosRoutes.post('/', add)

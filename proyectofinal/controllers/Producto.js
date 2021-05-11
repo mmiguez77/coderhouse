@@ -34,8 +34,8 @@ export const add = async (req, res) => {
             let newProducto = await { ...req.body };
             newProducto.id = productos.length + 1;
             newProducto.timestamp = new Date();
-            console.log(newProducto)
             productos.push(newProducto)
+            console.log('Productos en Array', productos)
             saveJson(productos);
             res.json(`${newProducto.title} cargado corretamente`)
         }
@@ -44,10 +44,6 @@ export const add = async (req, res) => {
     }
 }
 
-
-
-
-
 /* ---- VER TOTAL DE PRODUCTOS ---- */
 export const viewAll = (req, res) => {
     const viewProductos = readJson();
@@ -55,7 +51,13 @@ export const viewAll = (req, res) => {
     //res.render({ viewProductos })
 }
 
-
+/* ---- VER PRODUCTO POR ID ---- */
+export const viewByID = (req, res) => {
+    const { id } = req.params;
+    let prodFiltro = productos.filter((prod) => prod.id === parseInt(id))[0]
+    if (prodFiltro) {return res.json(prodFiltro)};
+    res.status(404).json({error: 'Producto no encontrado'})
+}
 
 
 
