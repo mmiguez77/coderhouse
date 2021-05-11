@@ -32,17 +32,11 @@ export const addCart = async (req, res) => {
             let prodFiltro = productoById.filter((prod) => prod.id === parseInt(id))[0]
             //console.log('PROD FILTRADO', prodFiltro.id)
             if (parseInt(id) === prodFiltro.id) {
-                let idCart = carrito.length + 1
-                let timestampCart = new Date()
+                prodFiltro.idCart = carrito.length + 1
+                prodFiltro.timestampCart = new Date()
                 //console.log('ID TIMESTAMP' ,idCart, timestampCart)
-                let addIdTime = [{
-                    producto: prodFiltro,
-                    id: idCart,
-                    timestamp: timestampCart
-                }]
-                //console.log('addtime' ,addIdTime)
-                carrito.push(addIdTime)
-                saveJson(addIdTime)
+                carrito.push(prodFiltro)
+                saveJson(carrito)
                 res.redirect('/cart')
                 res.json(`${prodFiltro.title} cargado corretamente`)
             }
@@ -56,8 +50,8 @@ export const addCart = async (req, res) => {
 /* ---- VER TOTAL DE CARRITO ---- */
 export const viewAllCart = (req, res) => {
     const viewCarrito = readJson();
-    //console.log('VIEW ALL CART',viewCarrito)
-    if (!viewCarrito) { res.status(404).json({ error: 'Producto no agregado' }) }
+    console.log('VIEW ALL CART',viewCarrito)
+    if (!viewCarrito) { res.status(404).send({ error: 'No hay productos en el carrito' }) }
     res.render('pages/carrito', {prods: viewCarrito})
 }
 
