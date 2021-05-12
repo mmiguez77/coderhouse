@@ -7,6 +7,7 @@ import cartRoutes from './routes/carrito.routes.js'
 import path from 'path';
 const __dirname = path.resolve();
 
+
 // COMIENZO APP
 /* -- PUERTO DEL SERVER -- */
 const app = express();
@@ -27,6 +28,9 @@ app.use((req, res) => {res.status(404).render('./pages/404')});
 /* -- EJS -- */
 app.set('view engine', 'ejs');
 app.set('views', './views')
+
+///// VARIABLE ADMINISTRADORA  
+const administrador = false;
 
 /* ---- SERVIDOR ---- */
 const server = app.listen(PORT, () => {

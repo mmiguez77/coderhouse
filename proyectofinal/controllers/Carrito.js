@@ -59,22 +59,21 @@ export const viewAllCart = (req, res) => {
 export const viewByIDCart = (req, res) => {
     const viewCarrito = readJson();
     const { id } = req.params;
-    let prodFiltro = viewCarrito.filter((prod) => prod.id === parseInt(id))[0]
+    let prodFiltro = viewCarrito.filter((prod) => prod.idCart === parseInt(id))[0]
     if (prodFiltro) { return res.json(prodFiltro) };
     res.status(404).json({ error: 'Producto no encontrado' })
-
-    //console.log('viewById',prodFiltro)
 }
 
 /* ----  ELIMINAR PRODUCTO ---- */
 export const dropCart = (req, res) => {
     const { id } = req.params;
     let viewProdDrop = readJson();
-    let prodDrop = viewProdDrop.filter(prod => prod.id != req.params.id)
+    let prodDrop = viewProdDrop.filter(prod => prod.idCart != req.params.id)
     saveJson(prodDrop)
     carrito.push(prodDrop)
     //console.log('Producto que quedan', prodDrop)
     res.json(prodDrop)
+    res.redirect('/cart')
     if (!prodDrop) { return { error: 'producto no encontrado' } }
 };
 
