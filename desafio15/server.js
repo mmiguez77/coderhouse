@@ -6,7 +6,9 @@ import { Server as IOServer } from 'socket.io';
 import { sqlite3, mysql } from './db/config.js'
 import router from './routes/productos.routes.js';
 
-import MensajeDB from './controllers/Mensaje.js';
+import {createTableMessage, newMessage, readMessage} from './controllers/Mensaje.js';
+createTableMessage(sqlite3)
+
 
 import { createTableProd, findAll, close } from './controllers/Producto.js';
 createTableProd(mysql)
@@ -35,27 +37,30 @@ app.use('/api/productos', router);
 
 /* -------------------- Web Sockets ---------------------- */
 const mensajes = []
+let mnjDB = await readMessage();
+
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
-    socket.emit('message', mensajes)
+    socket.emit('message', mnjDB)
     socket.emit('all-productos', productoInDB)
-    
 
     socket.on('new-message', (data) => {
-        mensajes.push(data)
-        io.sockets.emit('message', mensajes)
+        //mensajes.push(data)
+        newMessage(data)
+        io.sockets.emit('message', mnjDB )
     });
 
     io.sockets.emit('all-productos', productoInDB)
-
-       socket.on('update', () => {
+    socket.on('update', () => {
         io.sockets.emit('updateProductos', productoInDB)
     })
+
+    // socket.disconnect('disconnect', async () => {
+    //     console.log(`Cliente ID:${socket.id} desconectado`)
+    //     await close()
+    // })
 });
 
-io.on('disconnect', async () => {
-    await close()
-})
 
 
 

@@ -1,39 +1,31 @@
-import knex from 'knex';
+import { sqlite3 } from '../db/config.js'
+import knexFn from 'knex';
+const knex = knexFn(sqlite3)
 
-class MensajeDB {
 
-    constructor(config) {
-        this.knex = knex(config)
-    };
-
-    async createTable() {
-        try {
-            await this.knex.schema.dropTableIfExists('mensajes')
-            await this.knex.schema.createTableIfNotExists('mensajes', table => {
-                table.increments('id').primary();
-                table.string('usuario', 50).notNullable();
-                table.string('mensaje', 200).notNullable();
-                console.log('DB CREADA CON EXITO')
-            });
-        } catch (error) {
-            console.log('ERROR CREATE TABLE',error)
-        }
-
-    };
-
-    newMessage(mensaje) {
-        return this.knex('mensajes').insert(mensaje);
-    };
-
-    readMessage() {
-        return this.knex('mensajes').select();
+export async function createTableMessage() {
+    try {
+        await knex.schema.hasTable('mensajes')
+        await knex.schema.createTableIfNotExists('mensajes', table => {
+            table.increments('id').primary();
+            table.string('usuario', 50).notNullable();
+            table.string('mensaje', 200).notNullable();
+            console.log('DB MENSAJES CREADA CON EXITO')
+        });
+    } catch (error) {
+        console.log('ERROR CREATE TABLE', error)
     }
 
-    close() {
-        return this.knex.destroy();
-    }
+};
 
+export async function newMessage(mensaje) {
+    return knex('mensajes').insert(mensaje);
+};
 
+export async function readMessage() {
+    return knex('mensajes').select();
 }
 
-export default MensajeDB;
+export async function close() {
+    return knex.destroy();
+}
