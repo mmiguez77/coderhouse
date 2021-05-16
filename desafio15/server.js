@@ -8,7 +8,7 @@ import router from './routes/productos.routes.js';
 
 import MensajeDB from './controllers/Mensaje.js';
 
-import { createTableProd, findAll } from './controllers/Producto.js';
+import { createTableProd, findAll, close } from './controllers/Producto.js';
 createTableProd(mysql)
 let productoInDB = await findAll()
 console.log('ARRAY PRODUCTOS EN LOG DEL SERVER', productoInDB)
@@ -34,49 +34,28 @@ app.use('/api/productos', router);
 
 
 /* -------------------- Web Sockets ---------------------- */
-// mensajeSqlite3.createTable()
-
-// //const mensajes = []
+const mensajes = []
 io.on('connection', socket => {
-    //     try {
-    //         console.log(`Cliente ID:${socket.id} inició conexión`)
-    //         const mensajes = await mensajeSqlite3.readMessage();
-    //         console.log('LOG DE MENSAJES EN CONEXION', mensajes)
-    //         socket.emit('message', mensajes)
-    //         mensajeSqlite3.close()
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-
-    //     socket.on('new-message', async (data) => {
-    //         try {
-    //             console.log(data)
-    //             await mensajeSqlite3.newMessage(data);
-    //             const newMensaje = await mensajeSqlite3.readMessage();
-    //             io.sockets.emit('message', newMensaje)
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-
-    //     });
-
-
+    console.log(`Cliente ID:${socket.id} inició conexión`)
+    socket.emit('message', mensajes)
     socket.emit('all-productos', productoInDB)
+    
 
-    socket.on('nuevo-producto', async () => {
-        const products = await findAll();
-        io.sockets.emit('all-productos', products);
-      });
+    socket.on('new-message', (data) => {
+        mensajes.push(data)
+        io.sockets.emit('message', mensajes)
+    });
 
+    io.sockets.emit('all-productos', productoInDB)
 
-    socket.on('update', () => {
+       socket.on('update', () => {
         io.sockets.emit('updateProductos', productoInDB)
     })
 });
 
-/* io.off('disconnect', async () => {
-    mensajeSqlite3.close()
-}) */
+io.on('disconnect', async () => {
+    await close()
+})
 
 
 

@@ -19,11 +19,11 @@ export async function createTableProd() {
 /* ---- AGREGAR PRODUCTO ---- */
 export async function add(req, res) {
     try {
-        if (!req) {
+        if (!req.body) {
             res.status(404).send('CAMPOS VACIOS, NO SE PUEDE AGREGAR EL PRODUCTO')
         }
         let data = await { ...req.body };
-        console.log('NUEVO PRODUCTO AGREGADO: ', data.title, data.price, data.thumbnail)
+        //console.log('NUEVO PRODUCTO AGREGADO: ', data.title, data.price, data.thumbnail)
         return await knex('productos').insert({
             title: data.title,
             price: data.price,
@@ -33,19 +33,13 @@ export async function add(req, res) {
         })
     } catch (error) {
         console.log(error)
-    } finally {
-        close()
     }
 }
 
 /* ---- VER TOTAL DE PRODUCTOS ---- */
 export async function findAll(req, res) {
     try {
-        let allProducts;
-        return allProducts = await knex('productos').select()
-        // .then((allProducts) => {
-        //     res.status(200).send(allProducts)
-        // })
+        return await knex('productos').select()
     } catch (error) {
         console.log(error)
     }
@@ -54,8 +48,10 @@ export async function findAll(req, res) {
 /* ---- VER PRODUCTO POR ID ---- */
 export async function findByID(req, res) {
     try {
-        if (req) {
-            let id = req.params.id;
+        let id = req.params.id;
+        if (!id) {
+            res.status(404).json(`PRODUCTO CON ID: ${id} NO ENCONTRADO`)
+        } else {
             let prodId;
             return prodId = await knex('productos').select().where('id', id)
                 .then((prodId) => {
@@ -64,8 +60,6 @@ export async function findByID(req, res) {
         }
     } catch (error) {
         console.log(error);
-    } finally {
-        close()
     }
 }
 
@@ -74,16 +68,13 @@ export async function del(req, res) {
     try {
         if (req) {
             let id = req.params.id;
-            let prodDel;
-            return prodDel = await knex('productos').select().where('id', id).del()
-                .then((prodDel) => {
-                    res.status(200).json(prodDel)
+            return await knex('productos').select().where('id', id).del()
+                .then(() => {
+                    res.status(200).json(`PRODUCTO CON ID ${req.params.id} ELIMINADO`)
                 })
         }
     } catch (error) {
         console.log(error);
-    } finally {
-        close()
     }
 }
 
@@ -99,25 +90,22 @@ export async function update(req, res) {
                 title: req.body.title,
                 price: req.body.price,
                 thumbnail: req.body.thumbnail
-            }).then((prodUpdate) => {
+            }).then(() => {
                 res.status(200).json(`PRODUCTO ${req.body.title} ACTUALIZADO CON EXITO`)
             });
         };
     } catch (error) {
         console.log(error);
-    } finally {
-        close()
-    };
+    }
 
 }
 
-async function close() {
+export async function close() {
     try {
         return await knex.destroy();
     } catch (error) {
         console.log(error)
     }
-
 }
 
 

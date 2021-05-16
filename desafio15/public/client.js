@@ -4,16 +4,11 @@ const socket = io.connect();
 
 // ADD
 let btnAdd = document.getElementById('btnForm');
-
-btnAdd.addEventListener('click', () => {
-    socket.emit('nuevo-producto', () => {
-        socket.on('all-productos', async (data) => {
-             renderProducto(await data)})
-    })
-});
+let title = document.getElementById('title');
+console.log(title);
 
 socket.on('all-productos', (data) => {
-    if (data === false) {
+    if (data == "") {
         sinProd()
     } else {
         renderProducto(data)
