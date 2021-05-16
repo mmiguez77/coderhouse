@@ -3,13 +3,21 @@ const socket = io.connect();
 /* ------------------- FORMULARIO ------------------- */
 
 // ADD
+let btnAdd = document.getElementById('btnForm');
+
+btnAdd.addEventListener('click', () => {
+    socket.emit('nuevo-producto', () => {
+        socket.on('all-productos', async (data) => {
+             renderProducto(await data)})
+    })
+});
+
 socket.on('all-productos', (data) => {
     if (data === false) {
         sinProd()
     } else {
         renderProducto(data)
     }
-
 });
 
 function renderProducto(data) {
@@ -37,8 +45,8 @@ btnUpdate.addEventListener('click', () => {
     //location.reload();
 });
 
-socket.on('updateProductos', (data) => {
-    renderProducto(data)
+socket.on('updateProductos', async (data) => {
+    renderProducto(await data)
 })
 
 /* ------------------- CHAT ------------------- */
@@ -49,14 +57,14 @@ botonChat.addEventListener('click', () => { validar() });
 
 // Funcion que valida que los input no esten vacios y si estan OK envia la informacion
 function validar() {
-    let mensaje = document.getElementById('messageChat').value
     let usuario = document.getElementById('userChat').value
+    let mensaje = document.getElementById('messageChat').value
     if (mensaje === "" || usuario === "") {
         alert(`CAMPOS REQUERIDOS`)
     } else {
         let nuevoMensaje = {
-            mensaje: document.getElementById('messageChat').value,
-            usuario: document.getElementById('userChat').value
+            usuario: document.getElementById('userChat').value,
+            mensaje: document.getElementById('messageChat').value
         };
         socket.emit('new-message', nuevoMensaje);
         document.getElementById('messageChat').value = ""

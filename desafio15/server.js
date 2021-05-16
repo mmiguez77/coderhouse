@@ -3,16 +3,16 @@
 import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
-
 import { sqlite3, mysql } from './db/config.js'
-import Mensaje from './controllers/Mensaje.js';
-const mensajeSqlite3 = new Mensaje(sqlite3);
-const mensajeMysql = new Mensaje(mysql);
-
 import router from './routes/productos.routes.js';
 
-import productoController from './controllers/Producto.js';
-const productos = new productoController();
+import MensajeDB from './controllers/Mensaje.js';
+
+import { createTableProd, findAll } from './controllers/Producto.js';
+createTableProd(mysql)
+let productoInDB = await findAll()
+console.log('ARRAY PRODUCTOS EN LOG DEL SERVER', productoInDB)
+
 
 
 // COMIENZO APP
@@ -34,26 +34,50 @@ app.use('/api/productos', router);
 
 
 /* -------------------- Web Sockets ---------------------- */
-const mensajes = []
+// mensajeSqlite3.createTable()
 
+// //const mensajes = []
 io.on('connection', socket => {
-    console.log(`Cliente ID:${socket.id} inició conexión`)
-//productos
-    socket.emit('all-productos', productos.findAll()) // envio de productos a una nueva conexión 1:1
-    io.sockets.emit('all-productos', productos.findAll()) // envio de productos a todos los sockets
-//mensajes
-    socket.emit('message', mensajes) // envio de mensaje a una nueva conexión 1:1
+    //     try {
+    //         console.log(`Cliente ID:${socket.id} inició conexión`)
+    //         const mensajes = await mensajeSqlite3.readMessage();
+    //         console.log('LOG DE MENSAJES EN CONEXION', mensajes)
+    //         socket.emit('message', mensajes)
+    //         mensajeSqlite3.close()
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
 
-    socket.on('new-message', (data) => {        // recibo el mensaje desde el cliente con "new-message"
-        console.log('MENSAJE RECIBIDO', data)
-        mensajes.push(data)                     // los agrego al array
-        io.sockets.emit('message', mensajes)    // envio el mensaje recibido a todos los sockets
-    });
+    //     socket.on('new-message', async (data) => {
+    //         try {
+    //             console.log(data)
+    //             await mensajeSqlite3.newMessage(data);
+    //             const newMensaje = await mensajeSqlite3.readMessage();
+    //             io.sockets.emit('message', newMensaje)
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
 
-    socket.on('update', () => {                                     // recibo la actualizacion del producto
-        io.sockets.emit('updateProductos', productos.findAll())     // envio a todos los sockets el nvo producto
+    //     });
+
+
+    socket.emit('all-productos', productoInDB)
+
+    socket.on('nuevo-producto', async () => {
+        const products = await findAll();
+        io.sockets.emit('all-productos', products);
+      });
+
+
+    socket.on('update', () => {
+        io.sockets.emit('updateProductos', productoInDB)
     })
 });
+
+/* io.off('disconnect', async () => {
+    mensajeSqlite3.close()
+}) */
+
 
 
 /* ---- SERVIDOR ---- */
