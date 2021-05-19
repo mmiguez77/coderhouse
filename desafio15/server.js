@@ -45,9 +45,9 @@ io.on('connection', socket => {
     socket.emit('message', mnjDB)
     socket.emit('all-productos', productoInDB)
 
-    socket.on('new-message', (data) => {
+    socket.on('new-message', async (data) => {
         mnjDB.push(data)
-        newMessage(data)
+        await newMessage(data)
         io.sockets.emit('message', mnjDB )
     });
 
