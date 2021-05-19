@@ -37,7 +37,7 @@ app.use('/api/productos', router);
 
 /* -------------------- Web Sockets ---------------------- */
 
-let mnjDB = await readMessage();
+let mnjDB = []
 //console.log('mnjDB',mnjDB)
 
 io.on('connection', socket => {
@@ -46,7 +46,7 @@ io.on('connection', socket => {
     socket.emit('all-productos', productoInDB)
 
     socket.on('new-message', (data) => {
-        //mensajes.push(data)
+        mnjDB.push(data)
         newMessage(data)
         io.sockets.emit('message', mnjDB )
     });
@@ -56,7 +56,7 @@ io.on('connection', socket => {
         io.sockets.emit('updateProductos', productoInDB)
     })
 
-    // socket.disconnect('disconnect', async () => {
+    // io.on('disconnect', async () => {
     //     console.log(`Cliente ID:${socket.id} desconectado`)
     //     await close()
     // })
