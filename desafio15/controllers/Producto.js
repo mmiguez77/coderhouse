@@ -2,6 +2,9 @@ import { mysql } from '../db/config.js'
 import knexFn from 'knex';
 const knex = knexFn(mysql)
 
+export const productosInArray = await findAll()
+
+
 export async function createTableProd() {
     try {
         await knex.schema.hasTable('productos');
@@ -28,9 +31,10 @@ export async function add(req, res) {
             title: data.title,
             price: data.price,
             thumbnail: data.thumbnail
-        }).then(() => {
-            res.redirect('/')
-        })
+        }).then(console.log(productosInArray))
+            .then(() => {
+                res.redirect('/')
+            })
     } catch (error) {
         console.log(error)
     }
@@ -40,6 +44,9 @@ export async function add(req, res) {
 export async function findAll(req, res) {
     try {
         return await knex('productos').select()
+        .then((data) => {
+            res.send(data)
+        })
     } catch (error) {
         console.log(error)
     }

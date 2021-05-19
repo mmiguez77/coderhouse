@@ -13,7 +13,7 @@ createTableMessage(sqlite3)
 import { createTableProd, findAll, close } from './controllers/Producto.js';
 createTableProd(mysql)
 let productoInDB = await findAll()
-console.log('ARRAY PRODUCTOS EN LOG DEL SERVER', productoInDB)
+//console.log('ARRAY PRODUCTOS EN LOG DEL SERVER', productoInDB)
 
 
 
@@ -36,8 +36,9 @@ app.use('/api/productos', router);
 
 
 /* -------------------- Web Sockets ---------------------- */
-const mensajes = []
+
 let mnjDB = await readMessage();
+//console.log('mnjDB',mnjDB)
 
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)

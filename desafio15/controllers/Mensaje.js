@@ -19,6 +19,8 @@ export async function createTableMessage() {
 };
 
 export async function newMessage(mensaje) {
+    console.log('MENSAJE EN CLASS MENSAJE',mensaje)
+    mensajes.push(mensaje)
     return knex('mensajes').insert(mensaje);
 };
 

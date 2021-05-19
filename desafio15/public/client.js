@@ -8,6 +8,8 @@ let title = document.getElementById('title');
 console.log(title);
 
 socket.on('all-productos', (data) => {
+    
+    console.log('data en cliente',data);
     if (data == "") {
         sinProd()
     } else {
