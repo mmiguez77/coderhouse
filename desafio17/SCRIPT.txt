@@ -1,0 +1,113 @@
+> use ecommerce
+switched to db ecommerce
+
+****************** PUNTOS 1 Y 2 *********************
+
+db.productos.insert([{title: "Fideos", price: 110, thumbnail: "www.fotosfideos.jpg.com"},{title: "Leche", price: 570, thumbnail: "www.fotosleche.jpg.com"},{title: "Crema", price: 890, thumbnail: "www.fotoscrema.jpg.com"},{title: "Cafe", price: 1270, thumbnail: "www.fotoscafe.jpg.com"},{title: "Te", price: 1690, thumbnail: "www.fotoste.jpg.com"},{title: "Harina", price: 2290, thumbnail: "www.fotosharina.jpg.com"},{title: "Pescado", price: 2850, thumbnail: "www.fotospescado.jpg.com"},{title: "Huevos", price: 3340, thumbnail: "www.fotoshuevos.jpg.com"},{title: "Yerba", price: 4310, thumbnail: "www.fotosyerba.jpg.com"},{title: "Polenta", price: 4980, thumbnail: "www.fotospolenta.jpg.com"}])
+db.mensajes.insert([{mail:"a@a.com", mensaje:"Hola"},{mail:"b@b.com", mensaje:"Hola"},{mail:"a@a.com", mensaje:"Que tal?"},{mail:"b@b.com", mensaje:"Bien, vos?"},{mail:"a@a.com", mensaje:"Bien."},{mail:"b@b.com", mensaje:"Buenisimo"},{mail:"a@a.com", mensaje:"Si"},{mail:"b@b.com", mensaje:"Ok"},{mail:"a@a.com", mensaje:"Bueno, me voy"},{mail:"b@b.com", mensaje:"Chau"}])
+
+******************** PUNTO 3 ************************
+
+> db.productos.find()
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f341"), "title" : "Fideos", "price" : 110, "thumbnail" : "www.fotosfideos.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f342"), "title" : "Leche", "price" : 570, "thumbnail" : "www.fotosleche.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f343"), "title" : "Crema", "price" : 890, "thumbnail" : "www.fotoscrema.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f344"), "title" : "Cafe", "price" : 1270, "thumbnail" : "www.fotoscafe.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f345"), "title" : "Te", "price" : 1690, "thumbnail" : "www.fotoste.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f346"), "title" : "Harina", "price" : 2290, "thumbnail" : "www.fotosharina.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f347"), "title" : "Pescado", "price" : 2850, "thumbnail" : "www.fotospescado.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f348"), "title" : "Huevos", "price" : 3340, "thumbnail" : "www.fotoshuevos.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f349"), "title" : "Yerba", "price" : 4310, "thumbnail" : "www.fotosyerba.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f34a"), "title" : "Polenta", "price" : 4980, "thumbnail" : "www.fotospolenta.jpg.com" }
+> db.mensajes.find()
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f34b"), "mail" : "a@a.com", "mensaje" : "Hola" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f34c"), "mail" : "b@b.com", "mensaje" : "Hola" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f34d"), "mail" : "a@a.com", "mensaje" : "Que tal?" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f34e"), "mail" : "b@b.com", "mensaje" : "Bien, vos?" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f34f"), "mail" : "a@a.com", "mensaje" : "Bien." }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f350"), "mail" : "b@b.com", "mensaje" : "Buenisimo" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f351"), "mail" : "a@a.com", "mensaje" : "Si" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f352"), "mail" : "b@b.com", "mensaje" : "Ok" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f353"), "mail" : "a@a.com", "mensaje" : "Bueno, me voy" }
+{ "_id" : ObjectId("60aabf4ca4b4e90c8fa4f354"), "mail" : "b@b.com", "mensaje" : "Chau" }
+
+******************** PUNTO 4 ************************
+
+> db.mensajes.estimatedDocumentCount()
+10
+> db.productos.estimatedDocumentCount()
+10
+
+******************** PUNTO 5 ************************
+** a)
+>db.productos.insert([{title: "Tomate", price: 190, thumbnail: "www.fotostomate.jpg.com"}
+WriteResult({ "nInserted" : 1})
+
+** b)
+i)
+> db.productos.find({price:{$lt:1000}})
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f341"), "title" : "Fideos", "price" : 110, "thumbnail" : "www.fotosfideos.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f342"), "title" : "Leche", "price" : 570, "thumbnail" : "www.fotosleche.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f343"), "title" : "Crema", "price" : 890, "thumbnail" : "www.fotoscrema.jpg.com" }
+{ "_id" : ObjectId("60aac4417f97524044a8ae9f"), "title" : "Tomate", "price" : 190, "thumbnail" : "www.fotostomate.jpg.com" }
+
+ii)
+> db.productos.find({$and:[{price:{$gt:1000}},{price:{$lt:3000}}]})
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f344"), "title" : "Cafe", "price" : 1270, "thumbnail" : "www.fotoscafe.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f345"), "title" : "Te", "price" : 1690, "thumbnail" : "www.fotoste.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f346"), "title" : "Harina", "price" : 2290, "thumbnail" : "www.fotosharina.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f347"), "title" : "Pescado", "price" : 2850, "thumbnail" : "www.fotospescado.jpg.com" }
+
+iii)
+> db.productos.find({price:{$gt:3000}})                                                                                 
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f348"), "title" : "Huevos", "price" : 3340, "thumbnail" : "www.fotoshuevos.jpg.com"}
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f349"), "title" : "Yerba", "price" : 4310, "thumbnail" : "www.fotosyerba.jpg.com" }
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f34a"), "title" : "Polenta", "price" : 4980, "thumbnail" : "www.fotospolenta.jpg.com"}
+
+iv)
+> db.productos.find({price:{$lt:1000}}).skip(2).limit(1).sort({price:1})                                                
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f342"), "title" : "Leche", "price" : 570, "thumbnail" : "www.fotosleche.jpg.com" }
+
+** c)
+> db.productos.update({},{$set:{"stock":100}},{upsert:false,multi:true})     
+WriteResult({ "nMatched" : 11, "nUpserted" : 0, "nModified" : 11 })
+
+** d)
+> db.productos.update({price:{$gt:4000}},{$set:{"stock":0}},{"multi":true})
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
+> db.productos.find({price:{$gt:4000}}) 
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f349"), "title" : "Yerba", "price" : 4310, "thumbnail" : "www.fotosyerba.jpg.com", "stock" : 0 }          
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f34a"), "title" : "Polenta", "price" : 4980, "thumbnail" : "www.fotospolenta.jpg.com", "stock" : 0 } 
+
+** e)
+> db.productos.deleteMany({price:{$lt:1000}})                                                                                           
+{ "acknowledged" : true, "deletedCount" : 4 }                                                                                           
+> db.productos.find({price:{$lt:1000}})                                                                                                 
+> db.productos.find()                                                                                                                   
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f344"), "title" : "Cafe", "price" : 1270, "thumbnail" : "www.fotoscafe.jpg.com", "stock" :100}                                                                                                                                        
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f345"), "title" : "Te", "price" : 1690, "thumbnail" : "www.fotoste.jpg.com", "stock" : 100 }    
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f346"), "title" : "Harina", "price" : 2290, "thumbnail" : "www.fotosharina.jpg.com", "stock" : 100 }                                                                                                                                    
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f347"), "title" : "Pescado", "price" : 2850, "thumbnail" : "www.fotospescado.jpg.com", "stock" : 100 }                                                                                                                                  
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f348"), "title" : "Huevos", "price" : 3340, "thumbnail" : "www.fotoshuevos.jpg.com", "stock" : 100 }                                                                                                                                    
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f349"), "title" : "Yerba", "price" : 4310, "thumbnail" : "www.fotosyerba.jpg.com", "stock" : 0 }                                                                                                                                        
+{ "_id" : ObjectId("60aabb6ca4b4e90c8fa4f34a"), "title" : "Polenta", "price" : 4980, "thumbnail" : "www.fotospolenta.jpg.com", "stock" : 0 }    
+
+******************** PUNTO 5 ************************
+
+> db.createUser({user: "pepe", pwd: "asd456", roles:[{role: "read", db: "ecommerce"}]})                     
+Successfully added user: { 
+    "user" : "pepe",  
+    "roles" : [{ 
+        "role" : "read", 
+        "db" : "ecommerce"
+    }]}
+
+> db.getUsers()    
+    [{ "_id" : "admin.pepe",    
+        "userId" : UUID("bb1b4837-b0c2-446e-98e8-34f417ca8aa2"),    
+        "user" : "pepe",
+        "db" : "admin",
+        "roles" : [{ 
+            "role" : "read", 
+            "db" : "ecommerce" 
+        }],"mechanisms" :["SCRAM-SHA-1", "SCRAM-SHA-256"]}] 
