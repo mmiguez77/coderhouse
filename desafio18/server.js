@@ -3,7 +3,15 @@ import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
 import router from './routes/productos.routes.js'
+import routerMsg from './routes/mensajes.routes.js'
 import mongoose from 'mongoose';
+
+import Mensaje from './controllers/Mensaje.js';
+const msg = new Mensaje();
+
+import Producto from './controllers/Producto.js';
+const producto = new Producto();
+
 
 // COMIENZO APP
 /* -- CONFIG DEL SERVER -- */
@@ -29,32 +37,28 @@ app.use(express.urlencoded({ extended: true }));
 
 /* -- ENDPOINTS -- */
 app.use('/api/productos', router);
+app.use('/mensajes', routerMsg);
 
 
 /* -------------------- Web Sockets ---------------------- */
 
 let mnjDB = []
 
+
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
-    // socket.emit('message', mnjDB)
-    socket.emit('all-productos', )
+    socket.emit('message', mnjDB)
 
-    // socket.on('new-message', async (data) => {
-    //     mnjDB.push(data)
-    //     await newMessage(data)
-    //     io.sockets.emit('message', mnjDB )
-    // });
 
-    io.sockets.emit('all-productos', )
-    socket.on('update', () => {
-        io.sockets.emit('updateProductos', )
-    })
+    socket.on('new-message', async (data) => {
+        const infoMsg = await { ...data }
+        //console.log(infoMsg.user, infoMsg.mensaje)
+        msg.addMsg(infoMsg)
+        io.sockets.emit('message', mnjDB)
+    });
 
-    // io.on('disconnect', async () => {
-    //     console.log(`Cliente ID:${socket.id} desconectado`)
-    //     await close()
-    // })
+
+
 });
 
 

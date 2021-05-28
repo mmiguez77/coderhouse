@@ -1,66 +1,20 @@
 const socket = io.connect();
 
-/* ------------------- FORMULARIO ------------------- */
-
-// ADD
-let btnAdd = document.getElementById('btnForm');
-let title = document.getElementById('title');
-console.log(title);
-
-socket.on('all-productos', (data) => {
-    
-    console.log('data en cliente',data);
-    if (data == "") {
-        sinProd()
-    } else {
-        renderProducto(data)
-    }
-});
-
-function renderProducto(data) {
-    let prod = data.map((elem, id) => {
-        return (
-            `<tr><td>${elem.id}</td>
-        <td>${elem.title}</td>
-        <td>${elem.price}</td>
-        <td><img src=${elem.thumbnail} style="width:32px; heigth:32px"></td></tr>`)
-    });
-    document.getElementById('tableProd').innerHTML = prod
-}
-
-function sinProd() {
-    let aviso = document.getElementById('aviso');
-    aviso.innerHTML = `<h3 class="alert alert-warning">No hay productos cargados</h3>`
-    table.style.display = "none";
-}
-
-// UPDATE
-let btnUpdate = document.getElementById('btnUpdate');
-
-btnUpdate.addEventListener('click', () => {
-    socket.emit('update')
-    //location.reload();
-});
-
-socket.on('updateProductos', async (data) => {
-    renderProducto(await data)
-})
-
 /* ------------------- CHAT ------------------- */
 let botonChat = document.getElementById('btnChat');
 let pantalla = document.getElementById('pantalla');
 
 botonChat.addEventListener('click', () => { validar() });
 
-// Funcion que valida que los input no esten vacios y si estan OK envia la informacion
+// Funcion que valida que los input no esten vacios y si estan OK envia la informacion al server
 function validar() {
-    let usuario = document.getElementById('userChat').value
+    let user = document.getElementById('userChat').value
     let mensaje = document.getElementById('messageChat').value
-    if (mensaje === "" || usuario === "") {
+    if (mensaje === "" || user === "") {
         alert(`CAMPOS REQUERIDOS`)
     } else {
         let nuevoMensaje = {
-            usuario: document.getElementById('userChat').value,
+            user: document.getElementById('userChat').value,
             mensaje: document.getElementById('messageChat').value
         };
         socket.emit('new-message', nuevoMensaje);
@@ -68,7 +22,7 @@ function validar() {
     }
 }
 
-// Funcion para ver la fecha
+// Funcion para generar la fecha
 let date = new Date()
 newDate = [
     date.getDate(),
@@ -77,14 +31,13 @@ newDate = [
     [date.getHours(),
     date.getMinutes(),
     date.getSeconds()].join(':');
-console.log(newDate);
 
-// Funcion que renderiza el array para poder ser visto
+// Funcion que renderiza el array para poder ser visto en el document
 function renderMessage(data) {
     let html = data.map((elem, i) => {
         return (`
         <div>
-        Usuario: <strong style="color:blue">${elem.usuario}</strong></span>
+        Usuario: <strong style="color:blue">${elem.user}</strong></span>
         (a las <span>${newDate.toString()}</span>)
         dijo: <i style="color:green">${elem.mensaje}</i></div>`);
     }).join(' ');

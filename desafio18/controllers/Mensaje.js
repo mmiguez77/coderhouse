@@ -1,33 +1,30 @@
-import { sqlite3 } from '../db/config.js'
-import knexFn from 'knex';
-const knex = knexFn(sqlite3)
+import MensajeModel from '../models/mensajeSchema.js';
 
+class Mensaje {
 
-export async function createTableMessage() {
-    try {
-        await knex.schema.hasTable('mensajes')
-        await knex.schema.createTableIfNotExists('mensajes', table => {
-            table.increments('id').primary();
-            table.string('usuario', 50).notNullable();
-            table.string('mensaje', 200).notNullable();
-            console.log('DB MENSAJES CREADA CON EXITO')
-        });
-    } catch (error) {
-        console.log('ERROR CREATE TABLE', error)
+    constructor() { }
+
+    async addMsg(req, res) {
+        try {
+            if (!req) {
+                return res.status(404).json({ mensaje: 'Error al agregar un producto' })
+            }
+            const data = await { ...req.body }
+            const newMsg = await MensajeModel.create(data);
+            return res.status(200).json(newMsg)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-};
-
-export async function newMessage(mensaje) {
-    console.log('MENSAJE EN CLASS MENSAJE',mensaje)
-    //mensajes.push(mensaje)
-    return knex('mensajes').insert(mensaje);
-};
-
-export async function readMessage() {
-    return knex('mensajes').select();
+    async findAllMsg(req, res) {
+        try {
+            const msgInDb = await MensajeModel.find({});
+            return res.status(200).json(msgInDb);
+        } catch (error) {
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+        }
+    }
 }
 
-export async function close() {
-    return knex.destroy();
-}
+export default Mensaje;

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const mensajeSchema = new Schema({
     user: {type: String, required: true},
-    mensaje: {type: Number, required: true}, 
+    mensaje: {type: String, required: true}, 
 })
 
 const MensajeModel = mongoose.model('MensajeModel', mensajeSchema);
