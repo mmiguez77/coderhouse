@@ -42,19 +42,18 @@ app.use('/mensajes', routerMsg);
 
 /* -------------------- Web Sockets ---------------------- */
 
-let mnjDB = []
-
 
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
-    socket.emit('message', mnjDB)
+    socket.emit('message')
 
 
-    socket.on('new-message', async (data) => {
-        const infoMsg = await { ...data }
-        //console.log(infoMsg.user, infoMsg.mensaje)
-        msg.addMsg(infoMsg)
-        io.sockets.emit('message', mnjDB)
+    socket.on('new-message', async data => {
+        const user = await data.user;
+        const mensaje = await data.mensaje
+        console.log('DATA EN SERVER', user, mensaje)
+        
+        msg.addMsg({user, mensaje})
     });
 
 

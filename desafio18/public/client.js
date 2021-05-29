@@ -1,10 +1,9 @@
 const socket = io.connect();
 
 /* ------------------- CHAT ------------------- */
-let botonChat = document.getElementById('btnChat');
-let pantalla = document.getElementById('pantalla');
 
-botonChat.addEventListener('click', () => { validar() });
+let botonChat = document.getElementById('btnChat'); // referencia del btn que envia los msg
+botonChat.addEventListener('click', () => { validar() }); // al apretar el boton ejecuta la fn valida()
 
 // Funcion que valida que los input no esten vacios y si estan OK envia la informacion al server
 function validar() {
@@ -18,11 +17,12 @@ function validar() {
             mensaje: document.getElementById('messageChat').value
         };
         socket.emit('new-message', nuevoMensaje);
+        console.log(nuevoMensaje)
         document.getElementById('messageChat').value = ""
     }
 }
 
-// Funcion para generar la fecha
+// Generar la fecha
 let date = new Date()
 newDate = [
     date.getDate(),
@@ -32,21 +32,21 @@ newDate = [
     date.getMinutes(),
     date.getSeconds()].join(':');
 
-// Funcion que renderiza el array para poder ser visto en el document
-function renderMessage(data) {
-    let html = data.map((elem, i) => {
-        return (`
-        <div>
-        Usuario: <strong style="color:blue">${elem.user}</strong></span>
-        (a las <span>${newDate.toString()}</span>)
-        dijo: <i style="color:green">${elem.mensaje}</i></div>`);
-    }).join(' ');
-    document.getElementById('pantalla').innerHTML = html;
-}
+// Funcion que renderiza el array que viene del server para poder ser visto en el document
+// function renderMessage(data) {
+//     let html = data.map((elem, i) => {
+//         return (`
+//         <div>
+//         Usuario: <strong style="color:blue">${elem.user}</strong></span>
+//         (a las <span>${newDate.toString()}</span>)
+//         dijo: <i style="color:green">${elem.mensaje}</i></div>`);
+//     }).join(' ');
+//     document.getElementById('pantalla').innerHTML = html;
+// }
 
-socket.on('message', (data) => {
-    renderMessage(data)
-});
+// socket.on('message', (data) => {
+//     renderMessage(data)
+// });
 
 
 

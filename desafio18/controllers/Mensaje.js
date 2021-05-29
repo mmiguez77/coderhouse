@@ -9,7 +9,8 @@ class Mensaje {
             if (!req) {
                 return res.status(404).json({ mensaje: 'Error al agregar un producto' })
             }
-            const data = await { ...req.body }
+            console.log('ADDMSG', await req)
+            const data = await { ...req }
             const newMsg = await MensajeModel.create(data);
             return res.status(200).json(newMsg)
         } catch (error) {
@@ -19,7 +20,7 @@ class Mensaje {
 
     async findAllMsg(req, res) {
         try {
-            const msgInDb = await MensajeModel.find({});
+            const msgInDb = await MensajeModel.find();
             return res.status(200).json(msgInDb);
         } catch (error) {
             return res.status(400).json({ mensaje: 'Ocurrió un error', error })
