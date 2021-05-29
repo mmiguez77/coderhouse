@@ -17,7 +17,6 @@ function validar() {
             mensaje: document.getElementById('messageChat').value
         };
         socket.emit('new-message', nuevoMensaje);
-        console.log(nuevoMensaje)
         document.getElementById('messageChat').value = ""
     }
 }
@@ -32,21 +31,25 @@ newDate = [
     date.getMinutes(),
     date.getSeconds()].join(':');
 
-// Funcion que renderiza el array que viene del server para poder ser visto en el document
-// function renderMessage(data) {
-//     let html = data.map((elem, i) => {
-//         return (`
-//         <div>
-//         Usuario: <strong style="color:blue">${elem.user}</strong></span>
-//         (a las <span>${newDate.toString()}</span>)
-//         dijo: <i style="color:green">${elem.mensaje}</i></div>`);
-//     }).join(' ');
-//     document.getElementById('pantalla').innerHTML = html;
-// }
+//Funcion que renderiza el array que viene del server para poder ser visto en el document
+function renderMessage(data) {
 
-// socket.on('message', (data) => {
-//     renderMessage(data)
-// });
+    let html = data.map((elem, i) => {
+        console.log('ELEMENTO', elem.user);
+        // return (`
+        // <div>
+        // Usuario: <strong style="color:blue">${elem.user}</strong></span>
+        // (a las <span>${newDate.toString()}</span>)
+        // dijo: <i style="color:green">${elem.mensaje}</i></div>`);
+    })/* .join(' ');
+    document.getElementById('pantalla').innerHTML = html; */
+}
+
+socket.on('message', (data) => {
+    console.log(data)
+    //renderMessage(data)
+
+});
 
 
 

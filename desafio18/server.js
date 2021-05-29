@@ -42,6 +42,7 @@ app.use('/mensajes', routerMsg);
 
 /* -------------------- Web Sockets ---------------------- */
 
+const toChat = []
 
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
@@ -49,11 +50,10 @@ io.on('connection', socket => {
 
 
     socket.on('new-message', async data => {
-        const user = await data.user;
-        const mensaje = await data.mensaje
-        console.log('DATA EN SERVER', user, mensaje)
-        
-        msg.addMsg({user, mensaje})
+        const message = await data;
+        msg.addMsg({ message })
+        toChat.push(message);
+        io.sockets.emit('message', toChat)
     });
 
 

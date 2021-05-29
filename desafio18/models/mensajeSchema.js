@@ -2,8 +2,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const mensajeSchema = new Schema({
-    user: {type: String},
-    mensaje: {type: String}
+    message : {
+        user: { type: String },
+        mensaje: { type: String }
+    }
 })
 
 const MensajeModel = mongoose.model('MensajeModel', mensajeSchema);
