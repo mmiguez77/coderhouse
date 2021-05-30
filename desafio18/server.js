@@ -46,14 +46,17 @@ let toChat = []
 
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
-    io.sockets.emit('connection')
-
+    io.sockets.emit('new-message-server', toChat)
+    
     socket.on('new-message', async data => {
         const message = await data;
         toChat.push(data);
         msg.addMsg({ message })
         io.sockets.emit('new-message-server', toChat)
     });
+
+
+
 });
 
 
