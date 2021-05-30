@@ -12,13 +12,12 @@
   <link rel="stylesheet" href="./css/style.css">
   <!-- DEPENDECIAS CLIENTE SOCKET IO -->
   <script src="/socket.io/socket.io.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <title>Desafio 15</title>
+  <title>DESAFIO 18</title>
 </head>
 
 <body>
   <div id="app">
-    
+
 
     <!-- Inicio Formulario Producto -->
     <h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
@@ -35,8 +34,7 @@
         <div class="mb-3">
           <label for="thumbnail" class="form-label">IMAGEN</label>
           <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-            placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon" 
-            required>
+            placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon" required>
         </div>
         <button type="submit" class="btn btn-primary btn-sm" id="btnForm">AGREGAR</button>
         <!-- Fin Formulario Producto -->
@@ -64,7 +62,7 @@
         </tbody>
 
       </table>
-      
+
       <!-- Fin Listado Productos -->
       <!-- Alerta en caso que no haya productos cargados -->
       <h3 id="aviso"></h3>
@@ -75,19 +73,29 @@
   <hr>
   <!-- Inicio Chat -->
   <div class="container bg-secondary text-white p-2" id="divChat">
-    <h1>Chat</h1>
-    <div id="ventana">
-      <div id="pantalla"></div>
 
+    <h1>Chat</h1>
+    <div style="display:flex; justify-content:space-around">
+      <div>
+        <div id="ventana">
+          <div id="pantallaOld"></div>
+          <hr>
+          <div id="pantalla"></div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" id="btnOldMsg" class="btn btn-warning btn-sm">Mensaje Antiguos</button>
+        <input type="text" id="userChat" placeholder="E-mail" required>
+        <input type="text" id="messageChat" placeholder="Mensaje" required>
+        <button type="submit" id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
+      </div>
     </div>
-    <input type="text" id="userChat" placeholder="E-mail" required>
-    <input type="text" id="messageChat" placeholder="Mensaje" required>
-    <button type="submit" id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
+
   </div>
 
   <!-- Fin Chat -->
   <script src="client.js"></script>
-  
+
 </body>
 
 </html>

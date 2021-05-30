@@ -1,7 +1,6 @@
 const socket = io.connect();
 
-/* ------------------- CHAT ------------------- */
-
+let pantalla = document.getElementById('pantalla'); // referencia del btn que envia los msg
 let botonChat = document.getElementById('btnChat'); // referencia del btn que envia los msg
 botonChat.addEventListener('click', () => { validar() }); // al apretar el boton ejecuta la fn valida()
 
@@ -31,25 +30,45 @@ newDate = [
     date.getMinutes(),
     date.getSeconds()].join(':');
 
-//Funcion que renderiza el array que viene del server para poder ser visto en el document
-function renderMessage(data) {
 
+//Funcion que renderiza el array que viene del server para poder ser visto en el document
+
+function renderMessage(data) {
     let html = data.map((elem, i) => {
-        console.log('ELEMENTO', elem.user);
-        // return (`
-        // <div>
-        // Usuario: <strong style="color:blue">${elem.user}</strong></span>
-        // (a las <span>${newDate.toString()}</span>)
-        // dijo: <i style="color:green">${elem.mensaje}</i></div>`);
-    })/* .join(' ');
-    document.getElementById('pantalla').innerHTML = html; */
+        return (`
+        <div>
+        Usuario: <strong style="color:blue">${elem.user}</strong></span>
+        (a las <span>${newDate.toString()}</span>)
+        dijo: <i style="color:green">${elem.mensaje}</i></div>`);
+    }).join(' ');
+    document.getElementById('pantalla').innerHTML = html;
 }
 
-socket.on('message', (data) => {
-    console.log(data)
-    //renderMessage(data)
-
+socket.on('new-message-server', (data) => {
+    renderMessage(data)
 });
+
+
+// mensajes en DB
+function oldMsg(data) {
+    let html = data.map((elem, i) => {
+        return (`
+        <div>
+        Usuario: <strong style="color:blue">${elem.message.user}</strong></span>
+        (a las <span>${newDate.toString()}</span>)
+        dijo: <i style="color:green">${elem.message.mensaje}</i></div>`);
+    }).join(' ');
+    document.getElementById('pantallaOld').innerHTML = html;
+}
+
+document.getElementById("btnOldMsg").addEventListener("click", function () {
+    fetch('http://localhost:8080/mensajes')
+        .then(res => res.json())
+        .then(data => oldMsg(data))
+        .catch(err => console.log(err))
+});
+
+
 
 
 

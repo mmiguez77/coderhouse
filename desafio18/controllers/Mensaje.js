@@ -18,8 +18,8 @@ class Mensaje {
 
     async findAllMsg(req, res) {
         try {
-            return msgInDb = await MensajeModel.find();
-            // return res.status(200).json(msgInDb);
+            let msgInDb = await MensajeModel.find();
+            return res.status(200).json(msgInDb);
         } catch (error) {
             return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }

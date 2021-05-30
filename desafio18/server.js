@@ -23,10 +23,10 @@ const PORT = 8080;
 /* -- MOONGOSE -- */
 const uri = 'mongodb://localhost:27017/ecommerce'
 const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-mongoose.connect(uri, options).then(
-    () => { console.log('Conectado a Mongo') },
-    err => { err }
-);
+mongoose.connect(uri, options)
+    .then(() => { console.log('Conectado a Mongo') },
+        err => { err }
+    )
 
 /* -- ARCHIVOS ESTATICOS -- */
 app.use(express.static('public'));
@@ -42,22 +42,18 @@ app.use('/mensajes', routerMsg);
 
 /* -------------------- Web Sockets ---------------------- */
 
-const toChat = []
+let toChat = []
 
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
-    socket.emit('message')
-
+    io.sockets.emit('connection')
 
     socket.on('new-message', async data => {
         const message = await data;
+        toChat.push(data);
         msg.addMsg({ message })
-        toChat.push(message);
-        io.sockets.emit('message', toChat)
+        io.sockets.emit('new-message-server', toChat)
     });
-
-
-
 });
 
 
