@@ -72,33 +72,7 @@ document.getElementById("btnOldMsg").addEventListener("click", function () {
 
 /* -------------------  PRODUCTOS -------------------------- */
 
-const fragment = document.createDocumentFragment();
-const tabla = document.getElementById('tableProd');
-const template = document.getElementById('templateList').content;
-
-// Traer productos
-document.addEventListener('DOMContentLoaded', e => { fetchData() });
-
-const fetchData = async () => {
-    const res = await fetch('http://localhost:8080/api/productos');
-    const data = await res.json();
-    traerProductos(data);
-};
-
-const traerProductos = data => {
-    data.forEach(producto => {
-        template.getElementById('prodTitle').textContent = producto.title;
-        template.getElementById('prodPrice').textContent = producto.price;
-        template.getElementById('prodImg').setAttribute("src", producto.thumbnail);
-
-        const clone = template.cloneNode(true)
-        fragment.appendChild(clone)
-    });
-    tabla.appendChild(fragment)
-};
-
-
-
+// ENVIAR PRODUCTOS POR SOCKET
 document.getElementById('btnForm').addEventListener('click', () => { validarForm() }); // al apretar el boton ejecuta la fn valida()
 
 // Funcion que valida que los input no esten vacios y si estan OK envia la informacion al server
@@ -114,7 +88,8 @@ function validarForm() {
             price: document.getElementById('price').value,
             thumbnail: document.getElementById('thumbnail').value
         };
-        socket.emit('new-producto', newProd);
+        socket.emit('new-producto', newProd)
+        
         document.getElementById('title').value = ""
         document.getElementById('price').value = ""
         document.getElementById('thumbnail').value = ""
@@ -122,3 +97,38 @@ function validarForm() {
 };
 
 
+// GET 
+const fragment = document.createDocumentFragment();
+const tabla = document.getElementById('tableProd');
+const template = document.getElementById('templateList').content;
+
+// Traer productos
+document.addEventListener('DOMContentLoaded', e => { fetchData() });
+
+const fetchData = async () => {
+    const res = await fetch('http://localhost:8080/api/productos');
+    const data = await res.json();
+    console.log(data)
+    verProdHtml(data);
+};
+
+const verProdHtml = data => {
+    data.forEach(producto => {
+
+        template.getElementById('prodTitle').textContent = producto.title;
+        template.getElementById('prodPrice').textContent = producto.price;
+        template.getElementById('prodImg').setAttribute("src", producto.thumbnail);
+
+        const clone = template.cloneNode(true)
+        fragment.appendChild(clone)
+    });
+    tabla.appendChild(fragment)
+};
+
+
+socket.on('new-prod-server', async data => {
+    let array = [] 
+    array.push(await data)
+    verProdHtml(array)
+    
+})

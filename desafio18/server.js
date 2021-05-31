@@ -58,7 +58,7 @@ io.on('connection', socket => {
     socket.on('new-producto', async data => {
         const producto = await data;
         prodClass.add({ producto })
-        // io.sockets.emit('new-message-server', toChat)
+        io.sockets.emit('new-prod-server', producto)
     });
 
 });

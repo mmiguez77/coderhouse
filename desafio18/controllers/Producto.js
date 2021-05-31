@@ -9,12 +9,11 @@ class Producto {
             if (!req) {
                 return res.status(404).json({ mensaje: 'Error al agregar un producto' })
             }
-            const data = { 
+            const data = {
                 title: req.producto.title,
                 price: req.producto.price,
                 thumbnail: req.producto.thumbnail
             }
-            console.log(data)
             const newProducto = await ProductoModel.create(data);
 
         } catch (error) {
