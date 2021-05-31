@@ -87,7 +87,6 @@ const fetchData = async () => {
 
 const traerProductos = data => {
     data.forEach(producto => {
-        console.log(producto.thumbnail)
         template.getElementById('prodTitle').textContent = producto.title;
         template.getElementById('prodPrice').textContent = producto.price;
         template.getElementById('prodImg').setAttribute("src", producto.thumbnail);

@@ -10,7 +10,7 @@ import Mensaje from './controllers/Mensaje.js';
 const msg = new Mensaje();
 
 import Producto from './controllers/Producto.js';
-const producto = new Producto();
+const prodClass = new Producto();
 
 
 // COMIENZO APP
@@ -55,7 +55,11 @@ io.on('connection', socket => {
         io.sockets.emit('new-message-server', toChat)
     });
 
-
+    socket.on('new-producto', async data => {
+        const producto = await data;
+        prodClass.add({ producto })
+        // io.sockets.emit('new-message-server', toChat)
+    });
 
 });
 
