@@ -4,8 +4,8 @@ const productosRoutes = express.Router();
 //import Producto from '../controllers/ProductoMongo.js';
 // const producto = new Producto()
 
-import Array from '../controllers/ProductoArray.js'
-const array = new Array()
+import ArrayProducto from '../controllers/ProductoArray.js'
+const array = new ArrayProducto()
 
 
 

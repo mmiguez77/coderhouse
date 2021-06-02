@@ -1,6 +1,6 @@
-let productosArray = []
+export let productosArray = []
 
-export default class Array {
+export default class ArrayProducto {
 
     /* ---- AGREGAR PRODUCTO ---- */
     add = async (req, res) => {
