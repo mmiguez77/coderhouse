@@ -1,14 +1,16 @@
+import MongooseCnx from '../config/mongoose.js'
 import CartModel from '../models/cartSchema.js';
 import ProductoModel from '../models/productoSchema.js';
 
-export default class Cart {
+
+export default class Cart extends MongooseCnx {
+
 
     // agrega nuevo producto al carrito con datos del producto
     addCart = async (req, res) => {
         try {
             const _id = req.params.id;
             const prodById = await ProductoModel.findOne({ _id });
-            console.log('CARRITO MONGO', prodById)
             if (!prodById) {
                 return res.status(400).json({ mensaje: 'No se ha podido agregar producto', error });
             } else {

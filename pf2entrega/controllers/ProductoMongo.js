@@ -1,6 +1,7 @@
 import ProductoModel from '../models/productoSchema.js';
+import MongooseCnx from '../config/mongoose.js'
 
-export default class Producto {
+export default class Producto extends MongooseCnx {
 
 /* ---- AGREGAR PRODUCTO ---- */
 add = async (req, res) => {

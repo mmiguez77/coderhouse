@@ -1,6 +1,5 @@
 /* -- DEPENDENCIAS -- */
 import express from 'express';
-import mongoose from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors';
 import history from 'connect-history-api-fallback'
@@ -21,13 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 app.use(cors());
 
-/* -- MOONGOSE -- */
-const uri = 'mongodb://localhost:27017/proyecto'
-const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-mongoose.connect(uri, options).then(
-    () => { console.log('Conectado a Mongo') },
-    err => { err }
-);
 
 /* -- ENDPOINTS -- */
 //app.use('/', indexRoutes);
