@@ -1,12 +1,14 @@
 import express from 'express';
-import { viewAll, add, viewByID, drop, update } from '../controllers/ProductoMongo.js';
+import Producto from '../controllers/ProductoMongo.js';
+const producto = new Producto()
 const productosRoutes = express.Router();
 
-productosRoutes.get('/', viewAll)
-productosRoutes.get('/:id', viewByID)
-productosRoutes.post('/', add)
-productosRoutes.delete('/:id', drop)
-productosRoutes.put('/:id', update)
+
+productosRoutes.get('/', producto.viewAll)
+productosRoutes.get('/:id', producto.viewByID)
+productosRoutes.post('/', producto.add)
+productosRoutes.delete('/:id', producto.drop)
+productosRoutes.put('/:id', producto.update)
 
 
 export default productosRoutes;

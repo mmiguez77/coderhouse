@@ -1,5 +1,8 @@
 let productosArray = []
 
+export default class Array {
+
+
 
 /* ---- AGREGAR PRODUCTO ---- */
 function add(data) {
@@ -39,5 +42,5 @@ function update(id, data) {
 }
 
 
+}
 
-module.exports = { productosArray, add, del, findAll, findByID, update }

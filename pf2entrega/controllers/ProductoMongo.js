@@ -1,7 +1,9 @@
 import ProductoModel from '../models/productoSchema.js';
 
+export default class Producto {
+
 /* ---- AGREGAR PRODUCTO ---- */
-export const add = async (req, res) => {
+add = async (req, res) => {
     try {
         if (!req.body) {
             return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
@@ -16,7 +18,7 @@ export const add = async (req, res) => {
 }
 
 /* ---- VER TOTAL DE PRODUCTOS ---- */
-export const viewAll = async (req, res) => {
+viewAll = async (req, res) => {
     try {
         const prod = await ProductoModel.find({});
         return res.status(200).json(prod);
@@ -27,7 +29,7 @@ export const viewAll = async (req, res) => {
 }
 
 /* ---- VER PRODUCTO POR ID ---- */
-export const viewByID = async (req, res) => {
+viewByID = async (req, res) => {
     const _id = req.params.id;
     try {
         if (_id === "") {
@@ -42,7 +44,7 @@ export const viewByID = async (req, res) => {
 }
 
 /* ----  ELIMINAR PRODUCTO ---- */
-export const drop = async (req, res) => {
+drop = async (req, res) => {
     const _id = req.params.id;
     try {
         if (_id === "") {
@@ -58,7 +60,7 @@ export const drop = async (req, res) => {
 };
 
 /* ----  ACTUALIZAR PRODUCTO ---- */
-export const update = async (req, res) => {
+update = async (req, res) => {
 
     const _id = req.params.id;
     const data = { ...req.body };
@@ -70,5 +72,6 @@ export const update = async (req, res) => {
         return res.status(400).json({ mensaje: 'Ocurrió un error', error })
     }
 
+}
 
 }
