@@ -4,17 +4,18 @@ const productosRoutes = express.Router();
 //import Producto from '../controllers/ProductoMongo.js';
 // const producto = new Producto()
 
-import ArrayProducto from '../controllers/ProductoArray.js'
-const array = new ArrayProducto()
+// import ArrayProducto from '../controllers/ProductoArray.js'
+// const producto = new ArrayProducto()
+
+import FsProducto from '../controllers/ProductoFS.js'
+const producto = new FsProducto();
 
 
-
-
-productosRoutes.get('/', array.viewAll)
-productosRoutes.get('/:id', array.viewByID)
-productosRoutes.post('/', array.add)
-productosRoutes.delete('/:id', array.drop)
-productosRoutes.put('/:id', array.update)
+productosRoutes.get('/', producto.viewAll)
+productosRoutes.get('/:id', producto.viewByID)
+productosRoutes.post('/', producto.add)
+productosRoutes.delete('/:id', producto.drop)
+// productosRoutes.put('/:id', producto.update)
 
 
 export default productosRoutes;

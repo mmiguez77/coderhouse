@@ -1,5 +1,5 @@
 PRODUCTO
-0) Memoria
+0) Memoria          OK
 1) FS
 2) Sql Local
 3) Sql Cloud
@@ -10,7 +10,7 @@ PRODUCTO
 
 
 CARRITO
-0) Memoria
+0) Memoria          OK
 1) FS               OK
 2) Sql Local
 3) Sql Cloud
