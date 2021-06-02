@@ -18,7 +18,7 @@
               </div>
               <div class="card-text">$ {{item.price}} </div>
               <div>
-                <a href="#" type="submit" @click="addToCart(item._id)"><img src="../assets/shopping-cart.png" alt="" class="my-1 mx-4"></a>
+                <a href="#" type="submit" @click="addCart(item._id)"><img src="../assets/shopping-cart.png" alt="" class="my-1 mx-4"></a>
                 <a href="#"><img src="../assets/magnifying-glass.png" alt="" class="my-1 mx-4"></a>
               </div>
 
@@ -56,15 +56,8 @@ export default {
           console.log(error.response);
         })
     },
-    async addToCart(id){
-      //const prodToCart = await this.productos.find(prod => prod._id === id )
-      console.log('PRODUCTO ENVIADO', id)
+    async addCart(id){
       this.axios.post(`/cart/${id}`)
-      // .then(res => {
-       // console.log('ESTA ES LA RTA EN RES.DATA',res.data)
-      //   this.cart.push(res.data)
-    // })
-
     }
   }
 }

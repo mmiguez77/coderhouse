@@ -5,21 +5,16 @@
         <div class="col-lg-10 offset-lg-1">
           <div class="cart_container">
             <div class="cart_title">
-              Resumen de Compra<small> (1 producto en el carrito) </small>
+              Resumen de Compra<small> {{lengthCart}} </small>
             </div>
             <div class="cart_items">
               <ul
-                class="cart_list"
-                v-for="item in productsInCart"
-                :key="item.id"
-              >
+                class="cart_list" v-for="item in productsInCart" :key="item.id">
                 <li class="cart_item clearfix">
                   <div class="cart_item_image">
                     <img :src="item.thumbnail" alt="" />
                   </div>
-                  <div
-                    class="cart_item_info d-flex flex-md-row flex-column justify-content-between"
-                  >
+                  <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                     <div class="cart_item_name cart_info_col">
                       <div class="cart_item_title">Producto</div>
                       <div class="cart_item_text">
@@ -39,6 +34,9 @@
                     <div class="cart_item_total cart_info_col">
                       <div class="cart_item_title">Total</div>
                       <div class="cart_item_text">$22000</div>
+                    </div>
+                    <div class="cart_item_total cart_info_col">
+                        <button @click="deleteCart(item._id)" class="btn-sm btn-bg-secondary">x</button>
                     </div>
                   </div>
                 </li>
@@ -70,6 +68,7 @@ export default {
   data() {
     return {
       productsInCart: [],
+      lengthCart: ""
     };
   },
   created() {
@@ -86,6 +85,22 @@ export default {
           console.log(error.response);
         });
     },
+    deleteCart(id){
+      console.log(id)
+      this.axios.delete(`/cart/${id}`)
+      .then(res => {
+        const index = this.productsInCart.findIndex(prod => prod._id === res.data._id );
+        this.productsInCart.splice(index, 1)
+            
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    },
+    length() {
+        let cant = this.productsInCart.length
+        return cant
+    } 
   },
 };
 </script>
