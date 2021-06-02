@@ -1,44 +1,80 @@
-let productosArray = []
-
 export default class Array {
 
-
+contructor () {
+    this.productosArray = []
+}
 
 /* ---- AGREGAR PRODUCTO ---- */
-function add(data) {
-    data.id = productosArray.length + 1;
-    let newProducto = { ...data, id: data.id };
-    productosArray.push(newProducto);
-    return newProducto
+add = async (req, res) => {
+    try {
+        if(!req){
+            return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
+        }
+    const data = await { ... req.body}
+    const {id} = this.productosArray.length + 1;
+    let newProducto = await { ...data, id };
+    this.productosArray.push(newProducto);
+    return res.status(200).json(newProducto)    
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
 
 /* ---- VER TOTAL DE PRODUCTOS ---- */
-function findAll() {
-    if (productosArray.length < 1) return false;
-    return productosArray;
+viewAll = () => {
+    try {
+    if (this.productosArray.length < 1) return false;
+    return res.status(200).json(this.productosArray);
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 /* ---- VER PRODUCTO POR ID ---- */
-function findByID(id) { return productosArray.filter((prod) => prod.id === parseInt(id))[0] }
+viewByID = async (req, res) => { 
+    try {
+        if(!req)
+            return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
+    const {id} = req.params
+    let prodById = this.productosArray.filter((prod) => prod.id === parseInt(id))[0] 
+    return res.status(200).json(prodById)
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
 
 /* ----  ELIMINAR PRODUCTO ---- */
-function del(id) {
-    const i = productosArray.findIndex(prod => prod.id == parseInt(id))
+drop = async (req,res) => {
+    try {
+        const {id} = req.params
+    const i = this.productosArray.findIndex(prod => prod.id == parseInt(id))
     if (i !== -1) {
-        return productosArray.splice(i, 1)
+        let prodDrop = this.productosArray.splice(i, 1)
+        return res.status(200).json(prodDrop)
     } else { return { error: 'producto no encontrado' } }
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 /* ----  ACTUALIZAR PRODUCTO ---- */
-function update(id, data) {
-    productosArray = productosArray.map(prod => {
+update = async (req, res) => {
+    try {
+        const {id} = await req.params
+    const data = await {... req.body}
+    this.productosArray = this.productosArray.map(prod => {
         if (prod.id === parseInt(id)) {
             prod.title = data.title;
             prod.price = data.price;
             prod.thumbnail = data.thumbnail;
         }
-        return prod
-    });
+        return res.status(200).json(prod)
+    })
+    } catch (error) {
+        console.log(error)
+    }    
 }
 
 
