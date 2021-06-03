@@ -1,7 +1,7 @@
 import fs from 'fs'
 export let carrito = []
 
-class FsCart {
+export default class FsCart {
 
     constructor() {
         this.createJson = this.readJson
@@ -20,23 +20,21 @@ class FsCart {
         let stringifyData = JSON.stringify(data)
         fs.writeFileSync('cart.json', stringifyData)
     }
-   
+
 
     /* ---- AGREGAR PRODUCTO AL CARRITO---- */
-   addToCart = async (req, res) => {
-        const producto = await { ...req.body };
-        const idCart = await req.body._id;
-        const timestampCart = Date.now();
+    addCart = async (req, res) => {
         try {
             if (!req.body) {
                 return res.status(400).json({ error: 'No se pudo agregar producto al carrito de compra' });
             } else {
-                const newProdToCart = { producto, idCart, timestampCart }
-                //console.log(newProdToCart)
-                carrito.push(newProdToCart)
-                readJson()
-                saveJson(carrito)
-                res.status(200).json({ mensaje: `Produco cargado corretamente` })
+                let data = fs.readFileSync('productos.json')
+                const prodById = JSON.parse(data)
+                const _id = await req.params.id;
+                let prodFiltro = await prodById.find(prod => prod._id == parseInt(_id))
+                carrito.push(prodFiltro)
+                this.saveJson(prodFiltro)
+                res.status(200).json({ mensaje: `Produco cargado correctamente` })
             }
         } catch (err) {
             console.log(err);
@@ -45,31 +43,45 @@ class FsCart {
 
     /* ---- VER TOTAL DE CARRITO ---- */
     viewAllCart = async (req, res) => {
-        const viewCarrito = await readJson();
-        if (!viewCarrito) { res.status(404).send({ error: 'No hay productos en el carrito' }) }
-        res.status(200).json(viewCarrito)
+        try {
+            const viewCarrito = await this.readJson();
+            if (!viewCarrito) { res.status(404).send({ error: 'No hay productos en el carrito' }) }
+            res.status(200).json(viewCarrito)
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     /* ---- VER PRODUCTO POR ID ---- */
-    viewByIDCart = (req, res) => {
-        const viewCarrito = readJson();
-        const { id } = req.params;
-        let prodFiltro = viewCarrito.filter((prod) => prod.idCart === parseInt(id))[0]
-        if (prodFiltro) { return res.json(prodFiltro) };
-        res.status(404).json({ error: 'Producto no encontrado' })
+    viewByIdCart = async (req, res) => {
+        try {
+            const prodById = await this.readJson();
+            const _id = await req.params.id;
+            let prodFiltro = await prodById.find(prod => prod._id == parseInt(_id))
+            if (prodFiltro) { return res.json(prodFiltro) };
+            res.status(404).json({ error: 'Producto no encontrado' })
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     /* ----  ELIMINAR PRODUCTO ---- */
-    dropCart = (req, res) => {
-        const { id } = req.params;
-        let viewProdDrop = readJson();
-        let prodDrop = viewProdDrop.filter(prod => prod.idCart != req.params.id)
-        saveJson(prodDrop)
-        carrito.push(prodDrop)
-        //console.log('Producto que quedan', prodDrop)
-        res.json(prodDrop)
-        res.redirect('/cart')
-        if (!prodDrop) { return { error: 'producto no encontrado' } }
+    deleteCart = async (req, res) => {
+
+        try {
+            const _id = await req.params.id;
+            let viewProdDrop = await this.readJson();
+            let prodDrop = await viewProdDrop.filter(prod => prod._id !== parseInt(_id))
+            this.saveJson(prodDrop)
+            carrito.push(prodDrop)
+            res.json(prodDrop)
+            if (!prodDrop) { return { error: 'producto no encontrado' } }
+        } catch (error) {
+            console.log(error)
+        }
+
     };
 
 }

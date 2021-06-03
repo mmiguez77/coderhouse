@@ -57,7 +57,7 @@ export default {
         })
     },
     async addCart(id){
-      this.axios.post(`/cart/${id}`)
+      this.axios.post(`/cart/${_id}`)
     }
   }
 }
