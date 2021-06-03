@@ -29,7 +29,7 @@ export default class FsProducto {
             } else {
                 const _id = producto.length + 1;
                 const timestamp = Date.now();
-                const newProd = { ...req.body, _id, timestamp }
+                let newProd = { ...req.body, _id, timestamp }
                 producto.push(newProd)
                 this.saveJson(producto)
                 res.status(200).json(newProd)
@@ -67,12 +67,12 @@ export default class FsProducto {
     /* ----  ELIMINAR PRODUCTO ---- */
     drop = async (req, res) => {
         try {
-            const _id = req.params.id;
-            let viewProdDrop = this.readJson();
-            let prodDrop = producto.filter(prod => prod._id != req.params.id)
+            const _id = await req.params.id;
+            let viewProdDrop = await this.readJson();
+            let prodDrop = await viewProdDrop.filter(prod => prod._id !== parseInt(_id))
             this.saveJson(prodDrop)
             producto.push(prodDrop)
-            res.json(prodDrop)
+            res.status(200).json(prodDrop)
             if (!prodDrop) { return { error: 'producto no encontrado' } }
         } catch (error) {
             console.log(error)
@@ -80,24 +80,26 @@ export default class FsProducto {
     };
 
     /* ----  ACTUALIZAR PRODUCTO ---- */
-    // update = (req, res) => {
-    //     const { id } = req.params;
-    //     const data = { ...req.body };
-    //     let viewProdUpdate = readJson();
-    //     viewProdUpdate = viewProdUpdate.map(prod => {
-    //         if (prod.id === parseInt(id)) {
-    //             prod.title = data.title;
-    //             prod.price = data.price;
-    //             prod.stock = data.stock;
-    //             prod.thumbnail = data.thumbnail;
-    //             prod.code = data.code;
-    //             prod.description = data.description;
-    //         }
-    //         saveJson(viewProdUpdate)
-    //         carrito.push(viewProdUpdate)
-    //         //console.log('Producto actualizado', viewProdUpdate)
-    //         res.json(viewProdUpdate)
-    //     });
-    // }
-
+    update = async (req, res) => {
+        try {
+            const _id = await req.params.id;
+            const data = await { ...req.body };
+            let viewProdUpdate = await this.readJson();
+            viewProdUpdate = await viewProdUpdate.map(prod => {
+                if (prod._id == parseInt(_id)) {
+                    prod.title = data.title;
+                    prod.price = data.price;
+                    prod.stock = data.stock;
+                    prod.thumbnail = data.thumbnail;
+                    prod.code = data.code;
+                    prod.description = data.description;
+                }
+                this.saveJson(viewProdUpdate)
+                producto.push(viewProdUpdate)
+                res.status(200).json(viewProdUpdate)
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
