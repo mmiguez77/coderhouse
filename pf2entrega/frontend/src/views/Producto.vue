@@ -16,37 +16,37 @@
                     <label class="form-control-label px-3"
                       >Nombre del Producto<span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" 
-                    v-model="productosUpdate.title"/>
+                    v-model="productosUpdate.title" required/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Precio<span class="text-danger"> *</span></label>
-                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="productosUpdate.price"/>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="productosUpdate.price" required/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex">
                     <label class="form-control-label px-3">Código<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="productosUpdate.code"/>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="productosUpdate.code" required/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left mb-2">
                     <div class="form-group col-sm-6 flex-column d-flex">
                       <label class="form-control-label px-3">Stock<span class="text-danger"> *</span></label>
                       <input type="number" class="form-control" id="stock" name="stock" placeholder="Ejemplo: 10" 
-                      v-model.number="productosUpdate.stock"/>
+                      v-model.number="productosUpdate.stock" required/>
                     </div>
                   </div>
                   <!--  -->
                   <div class="form-group col-12 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Imagen (url) <span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="productosUpdate.thumbnail"/>
+                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="productosUpdate.thumbnail" required/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left">
                     <div class="form-group col-12 flex-column d-flex">
                       <label class="form-control-label px-3">Descripción<span class="text-danger"> *</span></label>
-                      <textarea name="description" id="description" rows="10" v-model="productosUpdate.description"></textarea>
+                      <textarea name="description" id="description" rows="10" v-model="productosUpdate.description" required></textarea>
                     </div>
                   </div>
                 </div>
@@ -71,37 +71,37 @@
                     <label class="form-control-label px-3"
                       >Nombre del Producto<span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" 
-                    v-model="inputProducto.title"/>
+                    v-model="inputProducto.title" required/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Precio<span class="text-danger"> *</span></label>
-                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="inputProducto.price"/>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="inputProducto.price" required/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex">
                     <label class="form-control-label px-3">Código<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="inputProducto.code"/>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="inputProducto.code" required/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left mb-2">
                     <div class="form-group col-sm-6 flex-column d-flex">
                       <label class="form-control-label px-3">Stock<span class="text-danger"> *</span></label>
                       <input type="number" class="form-control" id="stock" name="stock" placeholder="Ejemplo: 10" 
-                      v-model.number="inputProducto.stock"/>
+                      v-model.number="inputProducto.stock" required/>
                     </div>
                   </div>
                   <!--  -->
                   <div class="form-group col-12 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Imagen (url) <span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="inputProducto.thumbnail"/>
+                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="inputProducto.thumbnail" required/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left">
                     <div class="form-group col-12 flex-column d-flex">
                       <label class="form-control-label px-3">Descripción<span class="text-danger"> *</span></label>
-                      <textarea name="description" id="description" rows="5" v-model="inputProducto.description"></textarea>
+                      <textarea name="description" id="description" rows="5" v-model="inputProducto.description" required></textarea>
                     </div>
                   </div>
                 </div>

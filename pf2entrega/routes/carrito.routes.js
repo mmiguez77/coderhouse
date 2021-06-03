@@ -13,7 +13,7 @@ const cart = new FsCart();
 
 cartRoutes.get('/', cart.viewAllCart)
 cartRoutes.get('/:id', cart.viewByIdCart)
-cartRoutes.post('/:id', cart.addCart)
+cartRoutes.post('/', cart.addCart)
 cartRoutes.delete('/:id', cart.deleteCart)
 
 

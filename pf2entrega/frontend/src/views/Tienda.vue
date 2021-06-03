@@ -57,7 +57,13 @@ export default {
         })
     },
     async addCart(id){
-      this.axios.post(`/cart/${_id}`)
+      const prodToCart = await this.productos.find(prod => prod._id === id )
+      console.log('PRODUCTO ENVIADO', prodToCart)
+      this.axios.post("/cart", prodToCart)
+      // .then(res => {
+       // console.log('ESTA ES LA RTA EN RES.DATA',res.data)
+      //   this.cart.push(res.data)
+    // })
     }
   }
 }

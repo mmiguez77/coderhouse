@@ -26,15 +26,12 @@ export default class FsCart {
     addCart = async (req, res) => {
         try {
             if (!req.body) {
-                return res.status(400).json({ error: 'No se pudo agregar producto al carrito de compra' });
+                return res.status(400).json({ error: 'No se pudo agregar producto' });
             } else {
-                let data = fs.readFileSync('productos.json')
-                const prodById = JSON.parse(data)
-                const _id = await req.params.id;
-                let prodFiltro = await prodById.find(prod => prod._id == parseInt(_id))
-                carrito.push(prodFiltro)
-                this.saveJson(prodFiltro)
-                res.status(200).json({ mensaje: `Produco cargado correctamente` })
+                let prodToCart = { ...req.body }
+                carrito.push(prodToCart)
+                this.saveJson(carrito)
+                res.status(200).json(prodToCart)
             }
         } catch (err) {
             console.log(err);

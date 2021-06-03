@@ -1,6 +1,4 @@
-import {productosArray} from './ProductoArray.js';
 let cartArray = []
-
 
 export default class ArrayCart {
 
@@ -8,11 +6,10 @@ export default class ArrayCart {
     addCart = async (req, res) => {
         try {
             if (!req) {
-                return res.status(400).json({ mensaje: 'No se ha podido agregar producto al carrito' });
+                return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
             }
-            const _id = await req.params.id
-            let prodById = await productosArray.find(prod => prod._id == parseInt(_id))
-            let prodToCart = prodById;
+            const data = await { ...req.body }
+            let prodToCart = await { ...data};
             cartArray.push(prodToCart);
             return res.status(200).json(prodToCart)
         } catch (error) {
