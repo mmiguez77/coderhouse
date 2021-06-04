@@ -2,19 +2,19 @@ PRODUCTO
 0) Memoria          OK
 1) FS               OK
 2) Sql Local        OK
-3) Sql Cloud
-4) SQLite3
+3) Sql Cloud        OK
+4) SQLite3          OK
 5) Mongo DB Local   OK
 6) Mongo DB Cloud   OK
-7) Firebase
+7) Firebase 
 
 
 CARRITO
 0) Memoria          OK
 1) FS               OK
 2) Sql Local        OK
-3) Sql Cloud
-4) SQLite3  
+3) Sql Cloud        OK
+4) SQLite3          OK
 5) Mongo DB Local   OK
 6) Mongo DB Cloud   OK
 7) Firebase
