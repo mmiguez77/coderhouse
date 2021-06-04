@@ -233,17 +233,18 @@ export default {
     edit(prodUpdate){
       this.axios.put(`/api/productos/${prodUpdate._id}`, prodUpdate)
       .then(res => {
-        let index = this.productos.findIndex(prod => prod._id === res.data._id );
-        this.productos[index].title= res.data.title; 
-        this.productos[index].price= res.data.price,
-        this.productos[index].stock= res.data.stock; 
-        this.productos[index].thumbnail= res.data.thumbnail;
-        this.productos[index].code= res.data.code; 
-        this.productos[index].description=res.data.description;
-        this.mensaje.color = "success",
-        this.mensaje.texto = 'Producto modificado con éxito',
-        this.showAlert();         
-        this.editar = false
+        console.log(res)
+        // let index = this.productos.findIndex(prod => prod._id === res.data._id );
+        // this.productos[index].title= res.data.title; 
+        // this.productos[index].price= res.data.price,
+        // this.productos[index].stock= res.data.stock; 
+        // this.productos[index].thumbnail= res.data.thumbnail;
+        // this.productos[index].code= res.data.code; 
+        // this.productos[index].description=res.data.description;
+        // this.mensaje.color = "success",
+        // this.mensaje.texto = 'Producto modificado con éxito',
+        // this.showAlert();         
+        // this.editar = false
       })
       .catch(error => {
         console.log(error)
