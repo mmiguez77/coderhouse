@@ -178,7 +178,7 @@ export default {
       this.axios
         .get("/api/productos")
         .then((res) => {
-          //console.log(res.data);
+          console.log(res.data);
           this.productos = res.data;
         })
         .catch((error) => {

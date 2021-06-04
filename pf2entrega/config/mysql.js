@@ -4,7 +4,7 @@ const mysql = {
         host: 'localhost',
         user: 'root',
         password: 'root',
-        database: 'dbproductos'
+        database: 'pfcoderhouse'
     }
 };
 

@@ -4,12 +4,14 @@ const productosRoutes = express.Router();
 //import Producto from '../controllers/ProductoMongo.js';
 //const producto = new Producto()
 
-import ArrayProducto from '../controllers/ProductoArray.js'
-const producto = new ArrayProducto()
+//import ArrayProducto from '../controllers/ProductoArray.js'
+//const producto = new ArrayProducto()
 
 //import FsProducto from '../controllers/ProductoFS.js'
 //const producto = new FsProducto();
 
+import ProductoSql from '../controllers/ProductoSqlLocal.js'
+const producto = new ProductoSql()
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)
