@@ -1,8 +1,8 @@
-import mysql from '../config/mysql.js'
+import sqlite3 from '../config/sqlite3.js'
 import knexFn from 'knex';
-const knex = knexFn(mysql)
+const knex = knexFn(sqlite3)
 
-export default class ProductoSql {
+export default class ProductoSqlite3 {
 
     constructor() {
         this.createTable = this.createTableProd()
@@ -19,7 +19,7 @@ export default class ProductoSql {
                 table.integer('stock').notNullable();
                 table.string('description', 250).notNullable();
                 table.string('code', 20).notNullable();
-                table.timestamp('timestamp')
+                table.timestamp('timestamp').defaultTo(knex.fn.now());
             });
         } catch (error) {
             console.log(error)

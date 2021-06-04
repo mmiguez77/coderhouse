@@ -1,8 +1,8 @@
-import mysql from '../config/mysql.js'
+import sqlite3 from '../config/sqlite3.js'
 import knexFn from 'knex';
-const knex = knexFn(mysql)
+const knex = knexFn(sqlite3)
 
-export default class ProductoSql {
+export default class CarritoSqlite3 {
 
     constructor() {
         this.createTable = this.createTableProd()
@@ -10,8 +10,8 @@ export default class ProductoSql {
 
     createTableProd = async () => {
         try {
-            await knex.schema.hasTable('productos');
-            return await knex.schema.createTableIfNotExists('productos', table => {
+            await knex.schema.hasTable('carrito');
+            return await knex.schema.createTableIfNotExists('carrito', table => {
                 table.increments('_id').primary();
                 table.string('title', 50).notNullable();
                 table.integer('price').notNullable();
@@ -28,13 +28,13 @@ export default class ProductoSql {
     }
 
     /* ---- AGREGAR PRODUCTO ---- */
-    add = async (req, res) => {
+    addCart = async (req, res) => {
         try {
             if (!req.body) {
                 res.status(404).send('CAMPOS VACIOS, NO SE PUEDE AGREGAR EL PRODUCTO')
             }
             let data = await { ...req.body };
-            const nvoProd = await knex('productos').insert({
+            const nvoProd = await knex('carrito').insert({
                 title: data.title,
                 price: data.price,
                 thumbnail: data.thumbnail,
@@ -49,9 +49,9 @@ export default class ProductoSql {
     }
 
     /* ---- VER TOTAL DE PRODUCTOS ---- */
-    viewAll = async (req, res) => {
+    viewAllCart = async (req, res) => {
         try {
-            const productos = await knex('productos').select()
+            const productos = await knex('carrito').select()
             res.status(200).json(productos)
         } catch (error) {
             console.log(error)
@@ -59,13 +59,13 @@ export default class ProductoSql {
     }
 
     /* ---- VER PRODUCTO POR ID ---- */
-    viewByID = async (req, res) => {
+    viewByIdCart = async (req, res) => {
         try {
             let _id = req.params.id;
             if (!_id) {
                 res.status(404).json(`PRODUCTO CON ID: ${_id} NO ENCONTRADO`)
             } else {
-                const prodId = await knex('productos').select().where('_id', _id)
+                const prodId = await knex('carrito').select().where('_id', _id)
                 res.status(200).json(prodId)
             }
         } catch (error) {
@@ -74,11 +74,11 @@ export default class ProductoSql {
     }
 
     /* ----  ELIMINAR PRODUCTO ---- */
-    drop = async (req, res) => {
+    deleteCart = async (req, res) => {
         try {
             if (req) {
                 let _id = req.params.id;
-                return await knex('productos').select().where('_id', _id).del()
+                return await knex('carrito').select().where('_id', _id).del()
                     .then(() => {
                         res.status(200).json(`PRODUCTO CON ID ${req.params.id} ELIMINADO`)
                     })
@@ -88,26 +88,4 @@ export default class ProductoSql {
         }
     }
 
-    /* ----  ACTUALIZAR PRODUCTO ---- */
-    update = async (req, res) => {
-        try {
-            if (req.body.title == "" || req.body.price == "") {
-                res.status(400).json("FALTAN DATOS PARA ACTUALIZAR EL PRODUCTO")
-            } else {
-                const _id = req.params.id;
-                const prodUpdate = await knex('productos').where('_id', _id).update({
-                    title: req.body.title,
-                    price: req.body.price,
-                    thumbnail: req.body.thumbnail,
-                    stock: req.body.stock,
-                    code: req.body.code,
-                    description: req.body.description
-                })
-                res.status(200).json(`PRODUCTO ${req.body.title} ACTUALIZADO CON EXITO`)
-            };
-        } catch (error) {
-            console.log(error);
-        }
-
-    }
 }
