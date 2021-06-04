@@ -7,5 +7,4 @@ const mysql = {
         database: 'pfcoderhouse'
     }
 };
-
 export default mysql;

@@ -13,8 +13,11 @@ const productosRoutes = express.Router();
 //import ProductoSql from '../controllers/ProductoSqlLocal.js'
 //const producto = new ProductoSql()
 
-import ProductoSqlite3 from '../controllers/ProductoSqlite3.js';
-const producto = new ProductoSqlite3();
+//import ProductoSqlite3 from '../controllers/ProductoSqlite3.js';
+//const producto = new ProductoSqlite3();
+
+import ProductoSqlCloud from '../controllers/ProductoSqlCloud.js';
+const producto = new ProductoSqlCloud;
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)

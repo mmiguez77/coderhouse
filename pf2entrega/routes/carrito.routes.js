@@ -13,8 +13,13 @@ const cartRoutes = express.Router();
 //import CarritoSql from '../controllers/CarritoSqlLocal.js';
 //const cart = new CarritoSql();
 
-import CarritoSqlite3 from '../controllers/CarritoSqlite3.js';
-const cart = new CarritoSqlite3();
+import CarritoSqlCloud from '../controllers/CarritoSqlCloud.js';
+const cart = new CarritoSqlCloud();
+
+CarritoSqlCloud
+
+//import CarritoSqlite3 from '../controllers/CarritoSqlite3.js';
+//const cart = new CarritoSqlite3();
 
 cartRoutes.get('/', cart.viewAllCart);
 cartRoutes.get('/:id', cart.viewByIdCart);

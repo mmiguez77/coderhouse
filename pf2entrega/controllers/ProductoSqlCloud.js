@@ -1,8 +1,8 @@
-import mysql from '../config/mysql.js';
+import mysqlCloud from '../config/mysqlCloud.js';
 import knexFn from 'knex';
-const knex = knexFn(mysql)
+const knex = knexFn(mysqlCloud)
 
-export default class ProductoSql {
+export default class ProductoSqlCloud {
 
     constructor() {
         this.createTable = this.createTableProd()
