@@ -60,6 +60,38 @@ export default class Producto {
         }
     }
 
+    viewByName = async (req, res) => {
+        try {
+            return await this.database.viewByName(req, res)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    viewByCode = async (req, res) => {
+        try {
+            return await this.database.viewByCode(req, res)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    orderByPrice = async (req,res) => {
+        try {
+            return await this.database.orderByPrice(req, res)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    orderByStock = async (req,res) => {
+        try {
+            return await this.database.orderByStock(req, res)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     drop = async (req, res) => {
         try {
             return await this.database.drop(req, res)

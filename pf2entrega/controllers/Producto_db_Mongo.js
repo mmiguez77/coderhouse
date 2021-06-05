@@ -44,24 +44,51 @@ export default class ProductoMongo extends MongooseCnx {
         }
     }
 
-    // viewByName = async (req, res) => {
-    //     const title = req.params.title;
-    //     try {
-    //         if (title === "") {
-    //             return res.status(404).json({ mensaje: 'Producto no encontrado', error });
-    //         } else {
-    //             const prodByName = await ProductoModel.find({ title: title }, function (err, docs) {
-    //                 err => console.log(err)
-    //                 return res.status(200).json(docs);
-    //             });
-                
-    //         };
-    //     } catch (error) {
-    //         return res.status(400).json({ mensaje: 'Ocurrió un error', error })
-    //     }
-    // }
+    viewByName = async (req, res) => {
+        try {
+            const prodByName = await ProductoModel.find({ title: { $eq: req.params.title } }, (error, data) => {
+                if (error) {
+                    console.log(error)
+                } else {
+                    return res.status(200).json(data)
+                }
+            });
+        } catch (error) {
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+        }
+    }
 
+    viewByCode = async (req, res) => {
+        try {
+            const prodByCode = await ProductoModel.find({ code: { $eq: req.params.code } }, (error, data) => {
+                if (error) {
+                    res.status(400).json({ mensaje: 'Error', error })
+                } else {
+                    return res.status(200).json(data)
+                }
+            });
+        } catch (error) {
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+        }
+    }
 
+    orderByPrice = async (req, res) => {
+        try {
+            const byPrice = await ProductoModel.find().sort({ price: parseInt(req.params) })
+            return res.status(200).json(byPrice)
+        } catch (error) {
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+        }
+    }
+
+    orderByStock = async (req, res) => {
+        try {
+            const byStock = await ProductoModel.find().sort({ stock: parseInt(req.params) })
+            return res.status(200).json(byStock)
+        } catch (error) {
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+        }
+    }
 
     /* ----  ELIMINAR PRODUCTO ---- */
     drop = async (req, res) => {
