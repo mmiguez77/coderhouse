@@ -1,7 +1,7 @@
 import express from 'express';
-import Producto from '../controllers/Producto.js';
+import Producto from '../dao/Producto.js';
 const productosRoutes = express.Router();
-const producto = new Producto(6);
+const producto = new Producto(1);
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)
@@ -11,7 +11,7 @@ productosRoutes.put('/:id', producto.update)
 
 export default productosRoutes;
 
-//1 - MongoDB (local / cloud)
+//1 - MongoDB (local / cloud en Producto.js)
 //2 - Firebase
 //3 - FS
 //4 - Sql Local

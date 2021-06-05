@@ -1,10 +1,10 @@
-import ProductoMongo from './ProductoMongo.js';
-import ProductoArray from './Producto_db_Array.js';
-import ProductoFirebase from './Producto_db_Firebase.js';
-import ProductoFs from './Producto_db_FS.js';
-import ProductoSql from './Producto_db_SqlLocal.js';
-import ProductoSqlCloud from './Producto_db_SqlCloud.js';
-import ProductoSqlite3 from './Producto_db_Sqlite3.js';
+import ProductoMongo from '../controllers/Producto_db_Mongo.js';
+import ProductoArray from '../controllers/Producto_db_Array.js';
+import ProductoFirebase from '../controllers/Producto_db_Firebase.js';
+import ProductoFs from '../controllers/Producto_db_FS.js';
+import ProductoSql from '../controllers/Producto_db_SqlLocal.js';
+import ProductoSqlCloud from '../controllers/Producto_db_SqlCloud.js';
+import ProductoSqlite3 from '../controllers/Producto_db_Sqlite3.js';
 
 export default class Producto {
 
