@@ -1,7 +1,7 @@
 import fs from 'fs'
 export let carrito = []
 
-export default class FsCart {
+export default class CarritoFs {
 
     constructor() {
         this.createJson = this.readJson

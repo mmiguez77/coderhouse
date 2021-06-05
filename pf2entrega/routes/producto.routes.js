@@ -1,26 +1,7 @@
 import express from 'express';
+import Producto from '../controllers/Producto.js';
 const productosRoutes = express.Router();
-
-//import Producto from '../controllers/ProductoMongo.js';
-//const producto = new Producto()
-
-//import ArrayProducto from '../controllers/ProductoArray.js'
-//const producto = new ArrayProducto()
-
-//import FsProducto from '../controllers/ProductoFS.js'
-//const producto = new FsProducto();
-
-//import ProductoSql from '../controllers/ProductoSqlLocal.js'
-//const producto = new ProductoSql()
-
-//import ProductoSqlite3 from '../controllers/ProductoSqlite3.js';
-//const producto = new ProductoSqlite3();
-
-//import ProductoSqlCloud from '../controllers/ProductoSqlCloud.js';
-//const producto = new ProductoSqlCloud;
-
-import ProductoFirebase from '../controllers/ProductoFirebase.js'
-const producto = new ProductoFirebase('productos')
+const producto = new Producto(6);
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)
@@ -28,5 +9,12 @@ productosRoutes.post('/', producto.add)
 productosRoutes.delete('/:id', producto.drop)
 productosRoutes.put('/:id', producto.update)
 
-
 export default productosRoutes;
+
+//1 - MongoDB (local / cloud)
+//2 - Firebase
+//3 - FS
+//4 - Sql Local
+//5 - Sql Cloud
+//6 - Sqlite
+//7 - Array (default)

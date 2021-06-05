@@ -1,6 +1,6 @@
 let cartArray = []
 
-export default class ArrayCart {
+export default class CartArray {
 
     /* ---- AGREGAR PRODUCTO ---- */
     addCart = async (req, res) => {

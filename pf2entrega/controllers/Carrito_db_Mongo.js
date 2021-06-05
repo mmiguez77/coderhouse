@@ -1,7 +1,7 @@
 import MongooseCnx from '../config/mongoose.js'
 import CartModel from '../models/cartSchema.js';
 
-export default class Cart extends MongooseCnx {
+export default class CarritoMongo extends MongooseCnx {
     // agrega nuevo producto al carrito con datos del producto
     addCart = async (req, res) => {
         try {

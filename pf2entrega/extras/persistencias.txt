@@ -6,7 +6,7 @@ PRODUCTO
 4) SQLite3          OK
 5) Mongo DB Local   OK
 6) Mongo DB Cloud   OK
-7) Firebase 
+7) Firebase         OK
 
 
 CARRITO
@@ -17,4 +17,4 @@ CARRITO
 4) SQLite3          OK
 5) Mongo DB Local   OK
 6) Mongo DB Cloud   OK
-7) Firebase
+7) Firebase         OK
