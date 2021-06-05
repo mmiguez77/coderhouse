@@ -15,7 +15,8 @@ export default class ProductoFirebase extends FirebaseConfig {
                 thumbnail: req.body.thumbnail,
                 code: req.body.code,
                 stock: req.body.stock,
-                description: req.body.description
+                description: req.body.description,
+                timestamps: Date.now(),
             })
             res.status(200).json({ mensaje: "Producto Agregado" })
         } catch (error) {
@@ -24,12 +25,22 @@ export default class ProductoFirebase extends FirebaseConfig {
     }
 
     /* ---- VER TOTAL DE PRODUCTOS ---- */
-    viewAll = (req, res) => {
+    viewAll = async (req, res) => {
         try {
-            if (productosArray.length < 1) {
-                return res.status(400).json({ mensaje: "No hay productos cargados" })
-            };
-            return res.status(200).json(productosArray);
+            const querySnapshot = await this.query.get()
+            let docs = querySnapshot.docs;
+            const response = docs.map(doc => ({
+                _id: doc.id,
+                title: doc.data().title,
+                price: doc.data().price,
+                thumbnail: doc.data().thumbnail,
+                code: doc.data().code,
+                stock: doc.data().stock,
+                description: doc.data().description,
+                timestamps: doc.data().timestamps
+            }))
+            console.log(response)
+            res.status(200).json(response)
         } catch (error) {
             console.log(error)
         }
@@ -38,13 +49,14 @@ export default class ProductoFirebase extends FirebaseConfig {
     /* ---- VER PRODUCTO POR ID ---- */
     viewByID = async (req, res) => {
         try {
-            if (!req) {
-                return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
-            } else {
-                const _id = await req.params.id
-                let prodById = await productosArray.find(prod => prod._id == parseInt(_id))
-                return res.status(200).json(prodById)
-            }
+            const _id = await req.params.id
+            const doc = this.query.doc(`${_id}`)
+            const item = await doc.get()
+            const response = item.data()
+            response._id = _id
+            console.log(response)
+            return res.status(200).json(response)
+
         } catch (error) {
             console.log(error)
         }
