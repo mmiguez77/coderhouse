@@ -1,9 +1,9 @@
 import FirebaseConfig from '../config/firebase.js'
 
-export default class ProductoFirebase extends FirebaseConfig {
+export default class CarritoFirebase extends FirebaseConfig {
 
     /* ---- AGREGAR PRODUCTO ---- */
-    add = async (req, res) => {
+    addCart = async (req, res) => {
         try {
             if (!req) {
                 return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
@@ -18,14 +18,14 @@ export default class ProductoFirebase extends FirebaseConfig {
                 description: req.body.description,
                 timestamps: Date.now(),
             })
-            res.status(200).json({ mensaje: "Producto Agregado" })
+            res.status(200).json({ mensaje: "Producto Agregado al carrito" })
         } catch (error) {
             console.log(error)
         }
     }
 
     /* ---- VER TOTAL DE PRODUCTOS ---- */
-    viewAll = async (req, res) => {
+    viewAllCart = async (req, res) => {
         try {
             const querySnapshot = await this.query.get()
             let docs = querySnapshot.docs;
@@ -47,7 +47,7 @@ export default class ProductoFirebase extends FirebaseConfig {
     }
 
     /* ---- VER PRODUCTO POR ID ---- */
-    viewByID = async (req, res) => {
+    viewByIdCart = async (req, res) => {
         try {
             const _id = await req.params.id
             const doc = this.query.doc(`${_id}`)
@@ -64,7 +64,7 @@ export default class ProductoFirebase extends FirebaseConfig {
     }
 
     /* ----  ELIMINAR PRODUCTO ---- */
-    drop = async (req, res) => {
+    deleteCart = async (req, res) => {
         try {
             const _id = await req.params.id
             const doc = this.query.doc(`${_id}`)
@@ -75,23 +75,6 @@ export default class ProductoFirebase extends FirebaseConfig {
         }
     }
 
-    /* ----  ACTUALIZAR PRODUCTO ---- */
-    update = async (req, res) => {
-        try {
-            const _id = await req.params.id
-            const doc = this.query.doc(`${_id}`)
-            let item = await doc.update({
-                title: req.body.title,
-                price: req.body.price,
-                thumbnail: req.body.thumbnail,
-                code: req.body.code,
-                stock: req.body.stock,
-                description: req.body.description
-            })
-            return res.status(200).json({ item })
-        } catch (error) {
-            console.log(error)
-        }
-    }
+   
 }
 

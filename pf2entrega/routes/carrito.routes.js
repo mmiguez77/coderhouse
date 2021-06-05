@@ -13,13 +13,14 @@ const cartRoutes = express.Router();
 //import CarritoSql from '../controllers/CarritoSqlLocal.js';
 //const cart = new CarritoSql();
 
-import CarritoSqlCloud from '../controllers/CarritoSqlCloud.js';
-const cart = new CarritoSqlCloud();
-
-CarritoSqlCloud
+//import CarritoSqlCloud from '../controllers/CarritoSqlCloud.js';
+//const cart = new CarritoSqlCloud();
 
 //import CarritoSqlite3 from '../controllers/CarritoSqlite3.js';
 //const cart = new CarritoSqlite3();
+
+import CarritoFirebase from '../controllers/CarritoFirebase.js'
+const cart = new CarritoFirebase('carrito')
 
 cartRoutes.get('/', cart.viewAllCart);
 cartRoutes.get('/:id', cart.viewByIdCart);

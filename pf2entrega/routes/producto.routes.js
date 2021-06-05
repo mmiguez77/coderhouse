@@ -20,7 +20,7 @@ const productosRoutes = express.Router();
 //const producto = new ProductoSqlCloud;
 
 import ProductoFirebase from '../controllers/ProductoFirebase.js'
-const producto = new ProductoFirebase()
+const producto = new ProductoFirebase('productos')
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)
