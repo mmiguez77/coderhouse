@@ -43,7 +43,7 @@ export default class FsProducto {
     viewAll = async (req, res) => {
         try {
             const allProd = await this.readJson();
-            if (!allProd) { res.status(404).send({ error: 'No hay productos en el carrito' }) }
+            if (!allProd) { res.status(404).send({ error: 'No hay producto' }) }
             res.status(200).json(allProd)
         } catch (error) {
             console.log(error)
@@ -66,47 +66,69 @@ export default class FsProducto {
 
     viewByName = async (req, res) => {
         try {
-            const prodByName = await ProductoModel.find({ title: { $eq: req.params.title } }, (error, data) => {
-                if (error) {
-                    console.log(error)
-                } else {
-                    return res.status(200).json(data)
-                }
-            });
+            const prodByName = await this.readJson();
+            const title = await req.params.title;
+            let prodFiltro = await prodByName.find(prod => prod.title == title)
+            if (prodFiltro) { return res.status(200).json(prodFiltro) }
+            res.status(404).json({ error: 'Producto no encontrado' })
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
     viewByCode = async (req, res) => {
         try {
-            const prodByCode = await ProductoModel.find({ code: { $eq: req.params.code } }, (error, data) => {
-                if (error) {
-                    res.status(400).json({ mensaje: 'Error', error })
-                } else {
-                    return res.status(200).json(data)
-                }
-            });
+            const prodByCode = await this.readJson();
+            const code = await req.params.code;
+            let prodFiltro = await prodByCode.find(prod => prod.code == code)
+            if (prodFiltro) { return res.status(200).json(prodFiltro) }
+            res.status(404).json({ error: 'Producto no encontrado' })
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
     orderByPrice = async (req, res) => {
+        const condition = await req.params.condition
+        const allProd = await this.readJson();
+
+        function order(param) {
+            if (param == 'asc') {
+                res.status(200).json(allProd.sort(function (a, b) { return a.price - b.price }))
+            }
+            else if (param == 'desc') {
+                res.status(200).json(allProd.sort(function (b, a) { return a.price - b.price }))
+            } else {
+                res.status(400).json({ mensaje: 'Error' })
+            }
+        }
+
         try {
-            const byPrice = await ProductoModel.find().sort({ price: parseInt(req.params) })
-            return res.status(200).json(byPrice)
+            order(condition)
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
     orderByStock = async (req, res) => {
+        const stock = await req.params.stock
+        const allProd = await this.readJson();
+
+        function order(param) {
+            if (param == 'asc') {
+                res.status(200).json(allProd.sort(function (a, b) { return a.price - b.price }))
+            }
+            else if (param == 'desc') {
+                res.status(200).json(allProd.sort(function (b, a) { return a.price - b.price }))
+            } else {
+                res.status(400).json({ mensaje: 'Error' })
+            }
+        }
+
         try {
-            const byStock = await ProductoModel.find().sort({ stock: parseInt(req.params) })
-            return res.status(200).json(byStock)
+            order(stock)
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 

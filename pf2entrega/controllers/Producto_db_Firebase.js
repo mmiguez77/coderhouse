@@ -98,8 +98,10 @@ export default class ProductoFirebase extends FirebaseConfig {
     }
 
     orderByPrice = async (req, res) => {
+        
+        const condition = req.params.condition
         try {
-            const querySnapshot = await this.query.get()
+            const querySnapshot = await this.query.orderBy('price', condition).get()
             let docs = querySnapshot.docs;
             const response = docs.map(doc => ({
                 _id: doc.id,
@@ -119,8 +121,9 @@ export default class ProductoFirebase extends FirebaseConfig {
     }
 
     orderByStock = async (req, res) => {
+        const stock = req.params.stock
         try {
-            const querySnapshot = await this.query.get()
+            const querySnapshot = await this.query.orderBy('stock', stock).get()
             let docs = querySnapshot.docs;
             const response = docs.map(doc => ({
                 _id: doc.id,
