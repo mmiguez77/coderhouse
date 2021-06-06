@@ -1,7 +1,7 @@
 import express from 'express';
 import Producto from '../dao/Producto.js';
 const productosRoutes = express.Router();
-const producto = new Producto(3);
+const producto = new Producto();
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)
@@ -21,4 +21,4 @@ export default productosRoutes;
 //4 - Sql Local
 //5 - Sql Cloud
 //6 - Sqlite
-//7 - Array (default)
+//Array (default)

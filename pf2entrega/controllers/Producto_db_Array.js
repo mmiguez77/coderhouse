@@ -2,6 +2,10 @@ export let productosArray = []
 
 export default class ProductoArray {
 
+    constructor(){
+        this.msg = console.log('**** Conectado a DB Producto Array')
+    }
+
     /* ---- AGREGAR PRODUCTO ---- */
     add = async (req, res) => {
         try {
@@ -49,47 +53,71 @@ export default class ProductoArray {
 
     viewByName = async (req, res) => {
         try {
-            const prodByName = await ProductoModel.find({ title: { $eq: req.params.title } }, (error, data) => {
-                if (error) {
-                    console.log(error)
-                } else {
-                    return res.status(200).json(data)
-                }
-            });
+            if (!req) {
+                return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
+            } else {
+                const title = await req.params.title
+                let prodBytitle = await productosArray.find(prod => prod.title == title)
+                return res.status(200).json(prodBytitle)
+            }
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
     viewByCode = async (req, res) => {
         try {
-            const prodByCode = await ProductoModel.find({ code: { $eq: req.params.code } }, (error, data) => {
-                if (error) {
-                    res.status(400).json({ mensaje: 'Error', error })
-                } else {
-                    return res.status(200).json(data)
-                }
-            });
+            if (!req) {
+                return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
+            } else {
+                const code = await req.params.code
+                let prodByCode = await productosArray.find(prod => prod.code == code)
+                return res.status(200).json(prodByCode)
+            }
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
     orderByPrice = async (req, res) => {
+        const condition = await req.params.condition
+        
+        function order(param) {
+            if (param == 'asc') {
+                res.status(200).json(productosArray.sort(function (a, b) { return a.price - b.price }))
+            }
+            else if (param == 'desc') {
+                res.status(200).json(productosArray.sort(function (b, a) { return a.price - b.price }))
+            } else {
+                res.status(400).json({ mensaje: 'Error' })
+            }
+        }
+
         try {
-            const byPrice = await ProductoModel.find().sort({ price: parseInt(req.params) })
-            return res.status(200).json(byPrice)
+            order(condition)
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
     orderByStock = async (req, res) => {
+        const stock = await req.params.stock
+        
+        function order(param) {
+            if (param == 'asc') {
+                res.status(200).json(productosArray.sort(function (a, b) { return a.stock - b.stock }))
+            }
+            else if (param == 'desc') {
+                res.status(200).json(productosArray.sort(function (b, a) { return a.stock - b.stock }))
+            } else {
+                res.status(400).json({ mensaje: 'Error' })
+            }
+        }
+
         try {
-            const byStock = await ProductoModel.find().sort({ stock: parseInt(req.params) })
-            return res.status(200).json(byStock)
+            order(stock)
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
