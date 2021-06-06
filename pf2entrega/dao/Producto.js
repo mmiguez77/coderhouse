@@ -30,6 +30,9 @@ export default class Producto {
             case 6:
                 this.database = new ProductoSqlite3();
                 break;
+            case 7:
+                this.database = new ProductoMongo('cloud');
+                break;
             default:
                 this.database = new ProductoArray();
                 break

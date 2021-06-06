@@ -5,6 +5,7 @@ export default class FsProducto {
 
     constructor() {
         this.createJson = this.readJson
+        this.msg = console.log('*** Conectado a DB FS en Producto')
     }
 
     readJson = () => {

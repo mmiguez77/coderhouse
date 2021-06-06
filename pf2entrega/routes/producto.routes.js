@@ -1,7 +1,13 @@
 import express from 'express';
 import Producto from '../dao/Producto.js';
 const productosRoutes = express.Router();
-const producto = new Producto();
+
+/*  -- NUMEROS CORRESPONDIENTES A CADA DB --
+* 1 - MongoDB (Local) / 2 - Firebase / 3 - FS / 4 - Sql Local
+* 5 - Sql Cloud / 6 - Sqlite / 7 - MongoDB (Cloud) / Array (default)
+*/
+
+const producto = new Producto(1); // Cambiar número en parametro para acceder a las diferentes DB
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)
@@ -15,10 +21,4 @@ productosRoutes.put('/:id', producto.update)
 
 export default productosRoutes;
 
-//1 - MongoDB (local / cloud en Producto.js)
-//2 - Firebase
-//3 - FS
-//4 - Sql Local
-//5 - Sql Cloud
-//6 - Sqlite
-//Array (default)
+

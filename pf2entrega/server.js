@@ -1,3 +1,10 @@
+/* ********** NOTA ************ */
+// https://www.getpostman.com/collections/63df217239eed29c7379
+/*
+* En los archivos: carrito.routes.js y producto.routes.js se encuenta
+* la opción para el cambio de tipo de DB
+*/
+
 /* -- DEPENDENCIAS -- */
 import express from 'express';
 import morgan from 'morgan';

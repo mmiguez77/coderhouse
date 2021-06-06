@@ -6,6 +6,7 @@ export default class ProductoSql {
 
     constructor() {
         this.createTable = this.createTableProd()
+        this.msg = console.log('*** Conectado a DB mysql Local en tabla Producto')
     }
 
     createTableProd = async () => {

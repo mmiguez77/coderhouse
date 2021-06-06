@@ -6,6 +6,7 @@ export default class CarritoSqlCloud {
 
     constructor() {
         this.createTable = this.createTableProd()
+        this.msg = console.log('*** Conectado a DB mysql Cloud en tabla Carrito')
     }
 
     createTableProd = async () => {

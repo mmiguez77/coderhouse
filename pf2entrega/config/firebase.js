@@ -6,7 +6,7 @@ export default class FirebaseConfig {
         this.collection = this.connect()
         this.db = admin.firestore()
         this.query = this.db.collection(dbName)
-
+        this.msg = console.log('*** Conectado a DB Firebase')
     }
 
     connect = () => {

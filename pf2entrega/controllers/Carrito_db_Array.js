@@ -2,6 +2,9 @@ let cartArray = []
 
 export default class CartArray {
 
+    constructor(){
+        this.msg = console.log('*** Conectado a DB Array en Carrito')
+    }
     /* ---- AGREGAR PRODUCTO ---- */
     addCart = async (req, res) => {
         try {

@@ -12,7 +12,7 @@ export default class Cart {
     constructor(number) {
         switch (number) {
             case 1:
-                this.database = new CarritoMongo('local');//parametro posible: 'local' - 'cloud'
+                this.database = new CarritoMongo('local');
                 break;
             case 2:
                 this.database = new CarritoFirebase('carrito');
@@ -28,6 +28,9 @@ export default class Cart {
                 break;
             case 6:
                 this.database = new CarritoSqlite3();
+                break;
+            case 7:
+                this.database = new CarritoMongo('cloud');
                 break;
             default:
                 this.database = new CartArray();

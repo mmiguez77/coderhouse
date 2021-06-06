@@ -7,7 +7,7 @@ export default class ProductoMongo extends MongooseCnx {
     add = async (req, res) => {
         try {
             if (!req.body) {
-                return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
+                return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto' });
             } else {
                 const data = await { ...req.body };
                 const newProducto = await ProductoModel.create(data);
@@ -73,20 +73,48 @@ export default class ProductoMongo extends MongooseCnx {
     }
 
     orderByPrice = async (req, res) => {
+        const condition = await req.params.condition
+
+        async function order(param) {
+            if (param == 'asc') {
+                const asc = await ProductoModel.find().sort({ price: 1 })
+                res.status(200).json(asc)
+            }
+            else if (param == 'desc') {
+                const desc = await ProductoModel.find().sort({ price: -1 })
+                res.status(200).json(desc)
+            } else {
+                res.status(400).json({ mensaje: 'Error' })
+            }
+        }
+
         try {
-            const byPrice = await ProductoModel.find().sort({ price: parseInt(req.params.condition) })
-            return res.status(200).json(byPrice)
+            order(condition)
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 
     orderByStock = async (req, res) => {
+        const stock = await req.params.stock
+
+        async function order(param) {
+            if (param == 'asc') {
+                const asc = await ProductoModel.find().sort({ stock: 1 })
+                res.status(200).json(asc)
+            }
+            else if (param == 'desc') {
+                const desc = await ProductoModel.find().sort({ stock: -1 })
+                res.status(200).json(desc)
+            } else {
+                res.status(400).json({ mensaje: 'Error' })
+            }
+        }
+
         try {
-            const byStock = await ProductoModel.find().sort({ stock: parseInt(req.params.stock) })
-            return res.status(200).json(byStock)
+            order(stock)
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            console.log(error)
         }
     }
 

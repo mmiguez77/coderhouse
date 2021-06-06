@@ -6,6 +6,7 @@ export default class ProductoSqlite3 {
 
     constructor() {
         this.createTable = this.createTableProd()
+        this.msg = console.log('*** Conectado a DB sqlite3 Local en tabla Producto')
     }
 
     createTableProd = async () => {

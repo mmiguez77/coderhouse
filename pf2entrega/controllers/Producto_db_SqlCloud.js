@@ -6,6 +6,7 @@ export default class ProductoSqlCloud {
 
     constructor() {
         this.createTable = this.createTableProd()
+        this.msg = console.log('*** Conectado a DB mysql Cloud en tabla Producto')
     }
 
     createTableProd = async () => {

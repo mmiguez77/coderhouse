@@ -6,6 +6,7 @@ export default class CarritoSqlite3 {
 
     constructor() {
         this.createTable = this.createTableProd()
+        this.msg = console.log('*** Conectado a DB sqlite3 Local en tabla Carrito')
     }
 
     createTableProd = async () => {

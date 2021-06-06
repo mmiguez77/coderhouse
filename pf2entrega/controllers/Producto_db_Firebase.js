@@ -2,6 +2,7 @@ import FirebaseConfig from '../config/firebase.js'
 
 export default class ProductoFirebase extends FirebaseConfig {
 
+
     /* ---- AGREGAR PRODUCTO ---- */
     add = async (req, res) => {
         try {

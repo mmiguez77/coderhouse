@@ -6,6 +6,7 @@ export default class CarritoSql {
 
     constructor() {
         this.createTable = this.createTableProd()
+        this.msg = console.log('*** Conectado a DB mysql Local en Carrito')
     }
 
     createTableProd = async () => {
