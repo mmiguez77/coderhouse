@@ -74,7 +74,7 @@ export default class ProductoMongo extends MongooseCnx {
 
     orderByPrice = async (req, res) => {
         try {
-            const byPrice = await ProductoModel.find().sort({ price: parseInt(req.params) })
+            const byPrice = await ProductoModel.find().sort({ price: parseInt(req.params.condition) })
             return res.status(200).json(byPrice)
         } catch (error) {
             return res.status(400).json({ mensaje: 'Ocurrió un error', error })
@@ -83,7 +83,7 @@ export default class ProductoMongo extends MongooseCnx {
 
     orderByStock = async (req, res) => {
         try {
-            const byStock = await ProductoModel.find().sort({ stock: parseInt(req.params) })
+            const byStock = await ProductoModel.find().sort({ stock: parseInt(req.params.stock) })
             return res.status(200).json(byStock)
         } catch (error) {
             return res.status(400).json({ mensaje: 'Ocurrió un error', error })

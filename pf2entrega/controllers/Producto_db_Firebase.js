@@ -63,6 +63,82 @@ export default class ProductoFirebase extends FirebaseConfig {
 
     }
 
+    viewByName = async (req, res) => {
+        try {
+            const title = await req.params.title
+            const doc = await this.query.where('title', '==', title).get()
+
+            doc.forEach(doc => {
+                console.log(doc.id, '=>', doc.data());
+                const response = (doc.id, '=>', doc.data())
+                response._id = doc.id
+                return res.status(200).json(response)
+            });
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    viewByCode = async (req, res) => {
+        try {
+            const code = await req.params.code
+            const doc = await this.query.where('code', '==', code).get()
+
+            doc.forEach(doc => {
+                console.log(doc.id, '=>', doc.data());
+                const response = (doc.id, '=>', doc.data())
+                response._id = doc.id
+                return res.status(200).json(response)
+            });
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    orderByPrice = async (req, res) => {
+        try {
+            const querySnapshot = await this.query.get()
+            let docs = querySnapshot.docs;
+            const response = docs.map(doc => ({
+                _id: doc.id,
+                title: doc.data().title,
+                price: doc.data().price,
+                thumbnail: doc.data().thumbnail,
+                code: doc.data().code,
+                stock: doc.data().stock,
+                description: doc.data().description,
+                timestamps: doc.data().timestamps
+            }))
+            console.log(response)
+            res.status(200).json(response)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    orderByStock = async (req, res) => {
+        try {
+            const querySnapshot = await this.query.get()
+            let docs = querySnapshot.docs;
+            const response = docs.map(doc => ({
+                _id: doc.id,
+                title: doc.data().title,
+                price: doc.data().price,
+                thumbnail: doc.data().thumbnail,
+                code: doc.data().code,
+                stock: doc.data().stock,
+                description: doc.data().description,
+                timestamps: doc.data().timestamps
+            }))
+            console.log(response)
+            res.status(200).json(response)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     /* ----  ELIMINAR PRODUCTO ---- */
     drop = async (req, res) => {
         try {

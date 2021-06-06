@@ -1,13 +1,13 @@
 import express from 'express';
 import Producto from '../dao/Producto.js';
 const productosRoutes = express.Router();
-const producto = new Producto(1);
+const producto = new Producto(2);
 
 productosRoutes.get('/', producto.viewAll)
 productosRoutes.get('/:id', producto.viewByID)
 productosRoutes.get('/title/:title', producto.viewByName)
 productosRoutes.get('/code/:code', producto.viewByCode)
-productosRoutes.get('/price/:number', producto.orderByPrice)
+productosRoutes.get('/price/:condition', producto.orderByPrice)
 productosRoutes.get('/stock/:stock', producto.orderByStock)
 productosRoutes.post('/', producto.add)
 productosRoutes.delete('/:id', producto.drop)

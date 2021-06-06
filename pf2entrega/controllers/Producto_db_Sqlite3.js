@@ -19,7 +19,7 @@ export default class ProductoSqlite3 {
                 table.integer('stock').notNullable();
                 table.string('description', 250).notNullable();
                 table.string('code', 20).notNullable();
-                table.timestamp('timestamp').defaultTo(knex.fn.now());
+                table.date('timestamp')
             });
         } catch (error) {
             console.log(error)
@@ -67,6 +67,58 @@ export default class ProductoSqlite3 {
             } else {
                 const prodId = await knex('productos').select().where('_id', _id)
                 res.status(200).json(prodId)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    viewByName = async (req, res) => {
+        try {
+            if (!req.params.title) {
+                res.status(404).json(`PRODUCTO NO ENCONTRADO`)
+            } else {
+                const prodByName = await knex('productos').select().where('title', req.params.title)
+                res.status(200).json(prodByName)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    viewByCode = async (req, res) => {
+        try {
+            if (!req.params.code) {
+                res.status(404).json(`PRODUCTO NO ENCONTRADO`)
+            } else {
+                const prodByCode = await knex('productos').select().where('code', req.params.code)
+                res.status(200).json(prodByCode)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    orderByPrice = async (req, res) => {
+        try {
+            if (!req.params.condition) {
+                res.status(404).json(`PRODUCTO NO ENCONTRADO`)
+            } else {
+                const prodByPrice = await knex('productos').select().orderBy('price', req.params.condition)
+                res.status(200).json(prodByPrice)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    orderByStock = async (req, res) => {
+        try {
+            if (!req.params.stock) {
+                res.status(404).json(`PRODUCTO NO ENCONTRADO`)
+            } else {
+                const prodByStock = await knex('productos').select().orderBy('stock', req.params.stock)
+                res.status(200).json(prodByStock)
             }
         } catch (error) {
             console.log(error);
