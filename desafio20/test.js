@@ -3,6 +3,7 @@ import utils from "util";
 
 
 const msgOriginal = {
+    "id": "e3162ae4-c76b-4a7e-a96f-48c8c335ec68",
     "messages": [
         {
             "message": {
@@ -74,22 +75,23 @@ const msgOriginal = {
 
 const userSchema = new schema.Entity('users', {}, { idAttribute: 'user', })
 
-const textoSchema = new schema.Entity('texto', {
+const messagesSchema = new schema.Entity('messages', {
+    texto: userSchema
+})
 
+const authorSchema = new schema.Entity('messages', {
+    author: userSchema,
+    texto: [messagesSchema]
 })
 
 
-const messagesSchema = new schema.Entity('author', {
-    author: userSchema,
-    texto: [textoSchema]
-}, { idAttribute: 'messages' })
 
-console.log("/* -------------- ORIGINAL ------------- */");
-console.log(utils.inspect(msgOriginal, false, 4, true));
+// console.log("/* -------------- ORIGINAL ------------- */");
+// console.log(utils.inspect(msgOriginal, false, 4, true));
 
 console.log("/* -------------- NORMALIZED ------------- */");
-const normalizedData = normalize(msgOriginal, messagesSchema);
+const normalizedData = normalize(msgOriginal, authorSchema);
 console.log(utils.inspect(normalizedData, false, 7, true));
 
-//console.log("length Original", JSON.stringify(msgOriginal).length);
+console.log("length Original", JSON.stringify(msgOriginal).length);
 console.log("length Normalize", JSON.stringify(normalizedData).length);
