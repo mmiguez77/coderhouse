@@ -1,0 +1,65 @@
+{
+    "_id": 1623266783782,
+    "messages": [
+        {
+            "message": {
+                "author": {
+                    "user": "pepe@pepe",
+                    "nombre": "Pepe",
+                    "apellido": "Sanchez",
+                    "edad": 22,
+                    "alias": "pepito",
+                    "avatar": "www.ava.com"
+                },
+                "mensaje": "Ahora si debe funcionar"
+            },
+            "_id": "60c0fe73c22115183045076a",
+            "__v": 0
+        },
+        {
+            "message": {
+                "author": {
+                    "user": "juana@gmail.com",
+                    "nombre": "Juana",
+                    "apellido": "Perez",
+                    "edad": 32,
+                    "alias": "juani",
+                    "avatar": "www.avatar"
+                },
+                "mensaje": "Ahora lo toma bien"
+            },
+            "_id": "60c0febdc22115183045076b",
+            "__v": 0
+        },
+        {
+            "message": {
+                "author": {
+                    "user": "pepe@pepe",
+                    "nombre": "Pepe",
+                    "apellido": "Sanchez",
+                    "edad": 22,
+                    "alias": "pepito",
+                    "avatar": "www.ava.com"
+                },
+                "mensaje": "Si, al pelo"
+            },
+            "_id": "60c0fec8c22115183045076c",
+            "__v": 0
+        },
+        {
+            "message": {
+                "author": {
+                    "user": "juana@gmail.com",
+                    "nombre": "Juana",
+                    "apellido": "Perez",
+                    "edad": 32,
+                    "alias": "juani",
+                    "avatar": "www.avatar"
+                },
+                "mensaje": "Buena onda"
+            },
+            "_id": "60c0fecfc22115183045076d",
+            "__v": 0
+        }
+    ]
+}

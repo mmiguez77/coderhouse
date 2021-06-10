@@ -12,12 +12,15 @@
   <link rel="stylesheet" href="./css/style.css">
   <!-- DEPENDECIAS CLIENTE SOCKET IO -->
   <script src="/socket.io/socket.io.js"></script>
-  <title>DESAFIO 18</title>
+  <!-- NORMALIZR -->
+  <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
+
+  <title>DESAFIO 20 - NORMALIZR</title>
 </head>
 
-<body>
+<!-- <body>
   <div>
-    <!-- Inicio Formulario Producto -->
+    
     <h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
     <div class="container bg-secondary text-white p-2">
 
@@ -36,9 +39,7 @@
           autocomplete="off">
       </div>
       <button type="submit" class="btn btn-primary btn-sm" id="btnForm">AGREGAR</button>
-      <!-- Fin Formulario Producto -->
-
-      <!-- Inicio Listado Productos -->
+      
 
     </div>
     <div id="tituloListaProductos">
@@ -63,40 +64,44 @@
           </template>
         </tbody>
 
-      </table>
-
-      <!-- Fin Listado Productos -->
-      <!-- Alerta en caso que no haya productos cargados -->
+      </table> 
       <h3 id="aviso"></h3>
     </div>
-  </div>
+  </div>-->
 
 
-  <hr>
-  <!-- Inicio Chat -->
-  <div class="container bg-secondary text-white p-2" id="divChat">
+<hr>
+<!-- Inicio Chat -->
+<div class="container bg-secondary text-white p-2" id="divChat">
 
-    <h1 style="text-align: center">CHAT</h1>
-    <div style="display:flex; justify-content:space-around">
-      <div>
+  <h1 style="text-align: center">CHAT</h1>
+  <div class="container" style="display:flex; justify-content:space-between">
+    <div>
+      <div class="col-12">
         <div id="ventana">
           <div id="pantallaOld"></div>
           <hr>
           <div id="pantalla"></div>
         </div>
       </div>
-      <div>
-        <button type="submit" id="btnOldMsg" class="btn btn-warning btn-sm">Mensaje Guardados</button>
-        <input type="text" id="userChat" placeholder="E-mail" required>
-        <input type="text" id="messageChat" placeholder="Mensaje" required>
+      <div class="col-6">
+        <button type="submit" id="btnOldMsg" class="btn btn-warning btn-sm my-2">Mensaje Guardados</button>
+        <input type="text" id="userChat" placeholder="E-mail" class="mt-1" required>
+        <input type="text" id="userName" placeholder="Name" class="mt-1"  required>
+        <input type="text" id="userLastName" placeholder="Last Name" class="mt-1"  required>
+        <input type="number" id="userAge" placeholder="Age" class="mt-1"  required>
+        <input type="text" id="userAlias" placeholder="Alias" class="mt-1"  required>
+        <input type="text" id="userAvatar" placeholder="Avatar" class="mt-1"  required>
+        
+        <input type="text" id="messageChat" placeholder="Message" class="mt-1"  required>
         <button type="submit" id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
       </div>
     </div>
-
   </div>
+</div>
 
-  <!-- Fin Chat -->
-  <script src="client.js"></script>
+<!-- Fin Chat -->
+<script src="client.js"></script>
 </body>
 
 </html>

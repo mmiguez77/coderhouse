@@ -4,8 +4,6 @@ import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
 import router from './routes/productos.routes.js'
 import routerMsg from './routes/mensajes.routes.js'
-import routerMocks from './routes/mocks.routes.js'
-
 import mongoose from 'mongoose';
 
 import Mensaje from './controllers/Mensaje.js';
@@ -40,7 +38,6 @@ app.use(express.urlencoded({ extended: true }));
 /* -- ENDPOINTS -- */
 app.use('/api/productos', router);
 app.use('/mensajes', routerMsg);
-app.use('/productos/vista', routerMocks);
 
 
 /* -------------------- Web Sockets ---------------------- */
