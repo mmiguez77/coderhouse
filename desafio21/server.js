@@ -3,12 +3,14 @@ import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
 import mongoose from 'mongoose';
+// import path from 'path';
+// const __dirname = path.resolve()
 import session from 'express-session';
 import cookieParser from 'cookie-parser'
 
 import router from './routes/productos.routes.js';
 import routerMsg from './routes/mensajes.routes.js';
-import loginRouter from './routes/login.routes.js';
+import sessionRoutes from './routes/login.js'
 
 import Mensaje from './controllers/Mensaje.js';
 const msg = new Mensaje();
@@ -33,24 +35,28 @@ mongoose.connect(uri, options)
     )
 
 /* -- ARCHIVOS ESTATICOS -- */
-app.use('/login',express.static('public'));
+//app.use('/', express.static('public'));
 
 /* -- MIDDLEWARES -- */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
-/* -- SESSION STORAGE -- */ 
+/* -- SESSION STORAGE -- */
 app.use(session({
     secret: 'secreto',
     resave: true,
     saveUninitialized: true
 }))
 
+/* -- EJS -- */
+app.set('views', './views');
+app.set('view engine', 'ejs')
+
 /* -- ENDPOINTS -- */
 app.use('/api/productos', router);
 app.use('/mensajes', routerMsg);
-app.use('/login', loginRouter)
+app.use('/', sessionRoutes)
 
 /* -------------------- Web Sockets ---------------------- */
 
@@ -59,7 +65,7 @@ let toChat = []
 io.on('connection', socket => {
     console.log(`Cliente ID:${socket.id} inició conexión`)
     io.sockets.emit('new-message-server', toChat)
-    
+
     socket.on('new-message', async data => {
         const message = await data;
         toChat.push(data);
