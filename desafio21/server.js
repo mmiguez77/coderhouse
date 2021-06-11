@@ -35,7 +35,7 @@ mongoose.connect(uri, options)
     )
 
 /* -- ARCHIVOS ESTATICOS -- */
-//app.use('/', express.static('public'));
+app.use(express.static('public'));
 
 /* -- MIDDLEWARES -- */
 app.use(express.json());
@@ -50,7 +50,7 @@ app.use(session({
 }))
 
 /* -- EJS -- */
-app.set('views', './views');
+app.set('views', './public');
 app.set('view engine', 'ejs')
 
 /* -- ENDPOINTS -- */

@@ -10,22 +10,31 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!-- CSS PROPIO -->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- DEPENDECIAS CLIENTE SOCKET IO -->
+    <script src="/socket.io/socket.io.js"></script>
     <title>DESAFIO 21 - SESSION</title>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h3 style="text-align:center" class="my-4">LOG IN</h3>
-        <form action="/productos.html" method="get" autocomplete="off">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre aquí"
+
+    <% if (name) { %>
+        <div class="container my-5 py-3 bg-secondary text-white text-center">
+
+            <h2>
+                Bienvenido: <%= name %>
+            </h2>
+            <form action="/logout" method="get">
+                <input type="hidden" class="form-control" id="name" value=<%- name %> 
                     aria-label="Recipient's username" aria-describedby="button-addon2" name="name">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
-                </div>
-            </div>
-        </form>
-    </div>
+                <button class="btn-sm btn-warning" type="submit">Logout</button>
+            </form>
+        </div>
+        <% } %>
+
+
+
+            <%- include ('productos.html') -%>
+
 </body>
 
 </html>
