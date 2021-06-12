@@ -46,7 +46,7 @@ app.use(cookieParser())
 app.use(session({
     secret: 'secreto',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
 }))
 
 /* -- EJS -- */

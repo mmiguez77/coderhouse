@@ -16,16 +16,16 @@ function validar() {
     } else {
         let mensaje = {
             author: {
-                user: document.getElementById('userChat').value,
+                email: document.getElementById('userChat').value,
                 nombre: document.getElementById('userName').value,
                 apellido: document.getElementById('userLastName').value,
                 edad: document.getElementById('userAge').value,
                 alias: document.getElementById('userAlias').value,
                 avatar: document.getElementById('userAvatar').value
             },
-            texto: document.getElementById('messageChat').value,
+            text: document.getElementById('messageChat').value,
         };
-        console.log(mensaje)
+        //console.log(mensaje)
         socket.emit('new-message', mensaje);
         document.getElementById('messageChat').value = "";
     };
@@ -66,19 +66,23 @@ function oldMsg(data) {
     let html2 = data.map((elem, i) => {
         return (`
         <div>
-        Usuario: <strong style="color:blue">${elem.message.user}</strong></span>
+        <img src="${elem.author.avatar}" alt="avatar" style="width:8%"/>
+        <strong style="color:blue">${elem.author.email}</strong></span>
         (a las <span>${newDate.toString()}</span>)
-        dijo: <i style="color:green">${elem.message.mensaje}</i></div>`);
+        dijo: <i style="color:green">${elem.text}</i></div>`);
     }).join(' ');
     document.getElementById('pantallaOld').innerHTML = html2;
 };
 
 document.getElementById("btnOldMsg").addEventListener("click", function () {
+
     fetch('http://localhost:8080/mensajes')
-    .then(res => console.log(res))    
-    .then(res => res.json())
-        .then(data => oldMsg(data))
+
+        .then(res => res.json())
+        //.then(data => console.log(data.mensajes))
+        .then(data => oldMsg(data.mensajes))
         .catch(err => console.log(err))
+
 });
 
 /* -------------------  PRODUCTOS -------------------------- */

@@ -49,9 +49,9 @@ io.on('connection', socket => {
     io.sockets.emit('new-message-server', toChat)
     
     socket.on('new-message', async data => {
-        const message = await data;
+        const mensajes = await data;
         toChat.push(data);
-        msg.addMsg({ message })
+        msg.addMsg({ mensajes })
         io.sockets.emit('new-message-server', toChat)
     });
 

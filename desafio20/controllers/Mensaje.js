@@ -11,9 +11,20 @@ class Mensaje {
                 return res.status(404).json({ mensaje: 'Error al agregar un producto' })
             }
             const data = await { ...req }
-            console.log('ESTO LLEGA AL BACK', data)
-            const newMsg = await MensajeModel.create(data);
-            
+            const mensaje = {
+                author : {
+                    email: data.mensajes.author.email,
+                    nombre: data.mensajes.author.nombre,
+                    apellido: data.mensajes.author.apellido,
+                    edad: data.mensajes.author.edad,
+                    alias: data.mensajes.author.alias,
+                    avatar: data.mensajes.author.avatar
+                },
+            }
+            mensaje.text = data.mensajes.text
+            console.log('ESTO LLEGA AL BACK', mensaje)
+            const newMsg = await MensajeModel.create(mensaje);
+
         } catch (error) {
             console.log(error);
         }
@@ -21,9 +32,9 @@ class Mensaje {
 
     async findAllMsg(req, res) {
         try {
-            let messages = await MensajeModel.find();
-            let id = uuidv4()
-            return res.status(200).json({id, messages});
+            let mensajes = await MensajeModel.find();
+            let id = 'mensajes'
+            return res.status(200).json({ id, mensajes });
         } catch (error) {
             return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }

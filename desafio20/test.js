@@ -3,86 +3,106 @@ import utils from "util";
 
 
 const msgOriginal = {
-    "id": "e3162ae4-c76b-4a7e-a96f-48c8c335ec68",
-    "messages": [
+    "id": "mensajes",
+    "mensajes": [
         {
-            "message": {
-                "author": {
-                    "user": "pepe@gmail",
-                    "nombre": "pepe",
-                    "apellido": "sanchez",
-                    "edad": 50,
-                    "alias": "pepito",
-                    "avatar": "https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-128.png"
-                },
-                "texto": "Hola"
+            "author": {
+                "email": "pepe",
+                "nombre": "pepe",
+                "apellido": "sacnchez",
+                "edad": 21,
+                "alias": "pepito",
+                "avatar": "das"
             },
+            "_id": "60c5335b94ce9a20d4dbff40",
+            "text": "Hola",
+            "__v": 0
         },
         {
-            "message": {
-                "author": {
-                    "user": "juana@hotmail.",
-                    "nombre": "Juana",
-                    "apellido": "Perez",
-                    "edad": 52,
-                    "alias": "jauni",
-                    "avatar": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/grandma_elderly_nanny_avatar-128.png"
-                },
-                "texto": "¿que tal?"
+            "author": {
+                "email": "pepe",
+                "nombre": "pepe",
+                "apellido": "sacnchez",
+                "edad": 21,
+                "alias": "pepito",
+                "avatar": "das"
             },
+            "_id": "60c534ba6913e516008bf8ee",
+            "text": "asaaaaaaaaaaaa",
+            "__v": 0
         },
         {
-            "message": {
-                "author": {
-                    "user": "pepe@gmail",
-                    "nombre": "pepe",
-                    "apellido": "sanchez",
-                    "edad": 50,
-                    "alias": "pepito",
-                    "avatar": "https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-128.png"
-                },
-                "texto": "Hola"
+            "author": {
+                "email": "pepe",
+                "nombre": "pepe",
+                "apellido": "sacnchez",
+                "edad": 21,
+                "alias": "pepito",
+                "avatar": "das"
             },
+            "_id": "60c53540f4a2972684d6f8fd",
+            "text": "a",
+            "__v": 0
         },
         {
-            "message": {
-                "author": {
-                    "user": "pepe@gmail",
-                    "nombre": "pepe",
-                    "apellido": "sanchez",
-                    "edad": 50,
-                    "alias": "pepito",
-                    "avatar": "https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-128.png"
-                },
-                "texto": "Todo Ok"
+            "author": {
+                "email": "pepe",
+                "nombre": "pepe",
+                "apellido": "sacnchez",
+                "edad": 21,
+                "alias": "pepito",
+                "avatar": "das"
             },
+            "_id": "60c53540f4a2972684d6f8fe",
+            "text": "b",
+            "__v": 0
         },
         {
-            "message": {
-                "author": {
-                    "user": "juana@hotmail.",
-                    "nombre": "Juana",
-                    "apellido": "Perez",
-                    "edad": 52,
-                    "alias": "jauni",
-                    "avatar": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/grandma_elderly_nanny_avatar-128.png"
-                },
-                "texto": "Me alegro"
+            "author": {
+                "email": "pepe",
+                "nombre": "pepe",
+                "apellido": "sacnchez",
+                "edad": 21,
+                "alias": "pepito",
+                "avatar": "das"
             },
+            "_id": "60c53540f4a2972684d6f8ff",
+            "text": "c",
+            "__v": 0
+        },
+        {
+            "author": {
+                "email": "pepe",
+                "nombre": "pepe",
+                "apellido": "sacnchez",
+                "edad": 21,
+                "alias": "pepito",
+                "avatar": "das"
+            },
+            "_id": "60c53540f4a2972684d6f900",
+            "text": "d",
+            "__v": 0
         }
     ]
 }
 
-const userSchema = new schema.Entity('users', {}, { idAttribute: 'user', })
+// Definimos un esquema de autor
+const schemaAuthor = new schema.Entity('author', {}, { idAttribute: 'email' });
 
-const messagesSchema = new schema.Entity('messages', {
-    texto: userSchema
-})
+// Definimos un esquema de mensaje
+const schemaMensaje = new schema.Entity('mensaje', {
+    author: schemaAuthor
+}, { idAttribute: '_id' })
 
-const authorSchema = new schema.Entity('messages', {
-    author: userSchema,
-    texto: [messagesSchema]
-})
+// Definimos un esquema de posts
+const schemaMensajes = new schema.Entity('mensajes', {
+    mensajes: [schemaMensaje]
+}, { idAttribute: 'id' })
+
+
+// const messagesSchema = new schema.Entity('messages', {
+//     messages: [msgSchema]
+// }, { idAttribute: 'id' })
 
 
 
@@ -90,7 +110,7 @@ const authorSchema = new schema.Entity('messages', {
 // console.log(utils.inspect(msgOriginal, false, 4, true));
 
 console.log("/* -------------- NORMALIZED ------------- */");
-const normalizedData = normalize(msgOriginal, authorSchema);
+const normalizedData = normalize(msgOriginal, schemaMensajes);
 console.log(utils.inspect(normalizedData, false, 7, true));
 
 console.log("length Original", JSON.stringify(msgOriginal).length);
