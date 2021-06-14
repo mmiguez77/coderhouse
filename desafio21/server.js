@@ -10,14 +10,13 @@ import cookieParser from 'cookie-parser'
 
 import router from './routes/productos.routes.js';
 import routerMsg from './routes/mensajes.routes.js';
-import sessionRoutes from './routes/login.js'
 
 import Mensaje from './controllers/Mensaje.js';
 const msg = new Mensaje();
 
 import Producto from './controllers/Producto.js';
+import { appendFile } from 'fs';
 const prodClass = new Producto();
-
 
 // COMIENZO APP
 /* -- CONFIG DEL SERVER -- */
@@ -56,7 +55,45 @@ app.set('view engine', 'ejs')
 /* -- ENDPOINTS -- */
 app.use('/api/productos', router);
 app.use('/mensajes', routerMsg);
-app.use('/', sessionRoutes)
+
+/* -- SESSION -- */
+
+function showSession(req) {
+    console.log('------------ req.session -------------')
+    console.log(req.session)
+  
+    console.log('----------- req.sessionID ------------')
+    console.log(req.sessionID)
+  
+    console.log('----------- req.cookies ------------')
+    console.log(req.cookies)
+  
+    console.log('---------- req.sessionStore ----------')
+    console.log(req.sessionStore)
+  }
+
+app.get('/', (req, res) => {
+    res.render('log');
+})
+
+app.get('/login', (req, res) => {
+    if (!req.query.name) {
+        res.send('Error en el login')
+    } else {
+        showSession(req)
+        req.session.name = req.query.name;
+        
+        res.render('login', { name: req.session.name })
+    }
+})
+
+app.get('/logout', (req, res) => {
+    showSession(req)
+    req.session.destroy();
+    let name = req.query.name
+    res.render('logout', { name: name })
+})
+
 
 /* -------------------- Web Sockets ---------------------- */
 
