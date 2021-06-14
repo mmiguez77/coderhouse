@@ -15,7 +15,6 @@ import Mensaje from './controllers/Mensaje.js';
 const msg = new Mensaje();
 
 import Producto from './controllers/Producto.js';
-import { appendFile } from 'fs';
 const prodClass = new Producto();
 
 // COMIENZO APP
@@ -33,65 +32,76 @@ mongoose.connect(uri, options)
         err => { err }
     )
 
-/* -- ARCHIVOS ESTATICOS -- */
-app.use(express.static('public'));
-
 /* -- MIDDLEWARES -- */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
-/* -- SESSION STORAGE -- */
-app.use(session({
-    secret: 'secreto',
-    resave: true,
-    saveUninitialized: true,
-}))
+/* -- ENDPOINTS -- */
+app.use('/api/productos', router);
+app.use('/mensajes', routerMsg);
+
+/* -- ARCHIVOS ESTATICOS -- */
+app.use(express.static('public'));
 
 /* -- EJS -- */
 app.set('views', './public');
 app.set('view engine', 'ejs')
 
-/* -- ENDPOINTS -- */
-app.use('/api/productos', router);
-app.use('/mensajes', routerMsg);
+/* -- SESSION STORAGE -- */
 
-/* -- SESSION -- */
+// function showSession(req) {
+//     console.log('------------ req.session -------------')
+//     console.log(req.session)
 
-function showSession(req) {
-    console.log('------------ req.session -------------')
-    console.log(req.session)
-  
-    console.log('----------- req.sessionID ------------')
-    console.log(req.sessionID)
-  
-    console.log('----------- req.cookies ------------')
-    console.log(req.cookies)
-  
-    console.log('---------- req.sessionStore ----------')
-    console.log(req.sessionStore)
-  }
+//     console.log('----------- req.sessionID ------------')
+//     console.log(req.sessionID)
+
+//     console.log('----------- req.cookies ------------')
+//     console.log(req.cookies)
+
+//     console.log('---------- req.sessionStore ----------')
+//     console.log(req.sessionStore)
+// }
+
+app.use(session({
+    name: 'Desafio21',
+    secret: 'secreto',
+    resave: true,
+    saveUninitialized: false,
+}))
 
 app.get('/', (req, res) => {
     res.render('log');
+    req.session.name = req.query.name;
+    if(req.session.name) {
+        res.redirect('/login', { name: req.session.name })
+    } else {
+        res.send('Error en el login')
+    }
 })
 
 app.get('/login', (req, res) => {
     if (!req.query.name) {
         res.send('Error en el login')
     } else {
-        showSession(req)
+        //showSession(req)
         req.session.name = req.query.name;
-        
         res.render('login', { name: req.session.name })
     }
 })
 
 app.get('/logout', (req, res) => {
-    showSession(req)
+    //showSession(req)
     req.session.destroy();
     let name = req.query.name
     res.render('logout', { name: name })
+})
+
+app.get('/logout', (req, res) => {
+    (setTimeout(() => {
+        res.render('log')
+    }, 2000))();
 })
 
 
