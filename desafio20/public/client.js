@@ -74,14 +74,40 @@ function oldMsg(data) {
     document.getElementById('pantallaOld').innerHTML = html2;
 };
 
-document.getElementById("btnOldMsg").addEventListener("click", function () {
+// document.getElementById("btnOldMsg").addEventListener("click", function () {
 
-    fetch('http://localhost:8080/mensajes')
+//     fetch('http://localhost:8080/mensajes')
 
+//         .then(res => res.json())
+//         //.then(data => console.log(data))
+//         // .then(data => oldMsg(data.mensajes))
+//         .catch(err => console.log(err))
+
+// });
+
+document.getElementById("btnOldMsg").addEventListener("click", async function () {
+
+    const msgNormalized = await fetch('http://localhost:8080/mensajes/norm')
         .then(res => res.json())
-        //.then(data => console.log(data.mensajes))
-        .then(data => oldMsg(data.mensajes))
+        .then(data => { return data })
         .catch(err => console.log(err))
+
+    const msgNormalizedLength = JSON.stringify(msgNormalized).length
+
+    const schemaAuthor = new normalizr.schema.Entity('author', {}, { idAttribute: 'id' });
+    const schemaMensaje = new normalizr.schema.Entity('post', {
+        author: schemaAuthor
+    }, { idAttribute: '_id' })
+    const schemaMensajes = new normalizr.schema.Entity('posts', {
+        mensajes: [schemaMensaje]
+    }, { idAttribute: 'id' })
+
+    const msgDesnormalizr = normalizr.denormalize(msgNormalized.result, schemaMensajes, msgNormalized.entities)
+
+    const msgDesnormalizrLength = JSON.stringify(msgDesnormalizr).length
+    console.log(msgNormalized, 'Normalizr', msgNormalizedLength);
+    console.log(msgDesnormalizr, 'Desnormalizr',msgDesnormalizrLength);
+
 
 });
 

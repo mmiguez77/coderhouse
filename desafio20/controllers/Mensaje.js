@@ -1,5 +1,6 @@
 import MensajeModel from '../models/mensajeSchema.js';
-import { v4 as uuidv4 } from 'uuid';
+import { normalize, schema, denormalize } from 'normalizr'
+import util from 'util'
 
 class Mensaje {
 
@@ -12,7 +13,7 @@ class Mensaje {
             }
             const data = await { ...req }
             const mensaje = {
-                author : {
+                author: {
                     email: data.mensajes.author.email,
                     nombre: data.mensajes.author.nombre,
                     apellido: data.mensajes.author.apellido,
@@ -22,7 +23,7 @@ class Mensaje {
                 },
             }
             mensaje.text = data.mensajes.text
-            console.log('ESTO LLEGA AL BACK', mensaje)
+            //console.log('ESTO LLEGA AL BACK', mensaje)
             const newMsg = await MensajeModel.create(mensaje);
 
         } catch (error) {
@@ -38,6 +39,43 @@ class Mensaje {
         } catch (error) {
             return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }
+    }
+
+
+    async normalizedData(req, res) {
+        try {
+            let mensajes = await MensajeModel.find();
+            //console.log('********* MNJ **************', mensajes.mensajes.author)
+
+            let msgOriginal = {
+                id: 'mensajes',
+                mensajes: mensajes.map( mensaje => ({...mensaje._doc}))
+            }
+
+           // console.log(msgOriginal)
+
+            const schemaAuthor = new schema.Entity('author', {}, { idAttribute: 'email' });
+
+            const schemaMensaje = new schema.Entity('mensaje', {
+                author: schemaAuthor
+            }, { idAttribute: '_id' })
+
+            const schemaMensajes = new schema.Entity('mensajes', {
+                mensajes: [schemaMensaje]
+            }, { idAttribute: 'id' })
+
+            let normalizedData = normalize(msgOriginal, schemaMensajes);
+
+            console.log(util.inspect(normalizedData, false, 5, true))
+            console.log("length Original", JSON.stringify(msgOriginal).length);
+            console.log("length Normalize", JSON.stringify(normalizedData).length);
+
+            res.send(msgOriginal)
+
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 }
 
