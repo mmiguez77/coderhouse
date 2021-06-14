@@ -70,7 +70,7 @@ class Mensaje {
             console.log("length Original", JSON.stringify(msgOriginal).length);
             console.log("length Normalize", JSON.stringify(normalizedData).length);
 
-            res.send(msgOriginal)
+            res.send(normalizedData)
 
         } catch (error) {
             console.log(error)

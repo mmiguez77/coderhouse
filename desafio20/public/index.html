@@ -70,8 +70,10 @@
 <hr>
 <!-- Inicio Chat -->
 <div class="container bg-secondary text-white p-2" id="divChat">
-
   <h1 style="text-align: center">CHAT</h1>
+  <div style="text-align:center">
+    <h5>Compresión realizada: <span id="compress"></span>%</h5>
+  </div>
   <div class="container" style="display:flex; justify-content:space-between">
     <div>
       <div class="col-12">
@@ -84,13 +86,13 @@
       <div class="col-6">
         <button type="submit" id="btnOldMsg" class="btn btn-warning btn-sm my-2">Mensaje Guardados</button>
         <input type="text" id="userChat" placeholder="E-mail" class="mt-1" required>
-        <input type="text" id="userName" placeholder="Name" class="mt-1" required>
-        <input type="text" id="userLastName" placeholder="Last Name" class="mt-1" required>
-        <input type="number" id="userAge" placeholder="Age" class="mt-1" required>
+        <input type="text" id="userName" placeholder="Nombre" class="mt-1" required>
+        <input type="text" id="userLastName" placeholder="Apellido" class="mt-1" required>
+        <input type="number" id="userAge" placeholder="Edad" class="mt-1" required>
         <input type="text" id="userAlias" placeholder="Alias" class="mt-1" required>
-        <input type="text" id="userAvatar" placeholder="Avatar" class="mt-1" required>
+        <input type="text" id="userAvatar" placeholder="Avatar (url)" class="mt-1" required>
 
-        <input type="text" id="messageChat" placeholder="Message" class="mt-1" required>
+        <input type="text" id="messageChat" placeholder="Mensaje" class="mt-1" required>
         <button type="submit" id="btnChat" class="btn btn-primary btn-sm">Enviar</button>
       </div>
     </div>

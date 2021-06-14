@@ -42,16 +42,15 @@ newDate = [
     date.getSeconds()].join(':');
 
 
-//Funcion que renderiza el array que viene del server para poder ser visto en el document
-
+//Funcion que renderiza el array que viene del server en tiempo real en el document HTML
 function renderMessage(data) {
     let html = data.map((elem, i) => {
         return (`
         <div>
-         
-        <strong style="color:blue">${elem.author.alias}</strong></span>
+        <img src="${elem.author.avatar}" alt="avatar" style="width:8%"/>
+        <strong style="color:blue">${elem.author.email}</strong></span>
         (a las <span>${newDate.toString()}</span>)
-        dijo: <i style="color:green">${elem.texto}</i></div>`);
+        dijo: <i style="color:green">${elem.text}</i></div>`);
     }).join(' ');
     document.getElementById('pantalla').innerHTML = html;
 };
@@ -61,8 +60,9 @@ socket.on('new-message-server', (data) => {
 });
 
 
-// trar mensajes en DB
+// Funcion para renderiza los mensajes antiguos que son traidos desde la DB en el document HTML
 function oldMsg(data) {
+    //console.log(data)
     let html2 = data.map((elem, i) => {
         return (`
         <div>
@@ -75,14 +75,11 @@ function oldMsg(data) {
 };
 
 // document.getElementById("btnOldMsg").addEventListener("click", function () {
-
 //     fetch('http://localhost:8080/mensajes')
-
 //         .then(res => res.json())
 //         //.then(data => console.log(data))
 //         // .then(data => oldMsg(data.mensajes))
 //         .catch(err => console.log(err))
-
 // });
 
 document.getElementById("btnOldMsg").addEventListener("click", async function () {
@@ -92,22 +89,31 @@ document.getElementById("btnOldMsg").addEventListener("click", async function ()
         .then(data => { return data })
         .catch(err => console.log(err))
 
+    //console.log(msgNormalized)
     const msgNormalizedLength = JSON.stringify(msgNormalized).length
 
+    /* -------------- Desnomarlizacion del archivo recibido desde el back -------------- */
     const schemaAuthor = new normalizr.schema.Entity('author', {}, { idAttribute: 'id' });
-    const schemaMensaje = new normalizr.schema.Entity('post', {
+    const schemaMensaje = new normalizr.schema.Entity('mensaje', {
         author: schemaAuthor
     }, { idAttribute: '_id' })
-    const schemaMensajes = new normalizr.schema.Entity('posts', {
+    const schemaMensajes = new normalizr.schema.Entity('mensajes', {
         mensajes: [schemaMensaje]
     }, { idAttribute: 'id' })
 
-    const msgDesnormalizr = normalizr.denormalize(msgNormalized.result, schemaMensajes, msgNormalized.entities)
+    const msgDesnormalized = normalizr.denormalize(msgNormalized.result, schemaMensajes, msgNormalized.entities)
+    //console.log(msgDesnormalized)
+    const msgDesnormalizedLength = JSON.stringify(msgDesnormalized).length
+    console.log('Normalizr Length', msgNormalizedLength);
+    console.log('Desnormalizr Length', msgDesnormalizedLength);
 
-    const msgDesnormalizrLength = JSON.stringify(msgDesnormalizr).length
-    console.log(msgNormalized, 'Normalizr', msgNormalizedLength);
-    console.log(msgDesnormalizr, 'Desnormalizr',msgDesnormalizrLength);
+    /* ---------------------------------------------------------------------------------- */
 
+    oldMsg(msgDesnormalized.mensajes) // Envio del archivo desnormalizo para su render en el front
+
+    let porcentual = parseInt((msgNormalizedLength * 100) / msgDesnormalizedLength)
+    console.log(`Compresión: ${porcentual}%`)
+    document.getElementById('compress').innerText = porcentual
 
 });
 
