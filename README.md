@@ -1,43 +1,40 @@
 # Desafíos Coderhouse
 
-#Desafio 0: 
+#Desafio 1: 
 Funciones constructoras y clases
 
-#Desafio 1:
+#Desafio 2:
 EcmaScript avanzado y Typescript
 
-#Desafio 2:
+#Desafio 3:
 JavaScript Asincrónico
 
-#Desafio 3:
+#Desafio 4:
 Observables / RxJS
 
-#Desafio 4:
+#Desafio 5:
 Servidor en Node.JS
 
-#Desafio 5:
+#Desafio 6:
 Manejo de Archivos
 
-#Desafio 6:
+#Desafio 7:
 Servidor con Express
 
-#Desafio 7:
+#Desafio 8:
 Array de Productos
 
-#Desafio 8:
+#Desafio 9:
 Desafío: API RESTful
 
-#Desafio 9:
+#Desafio 10:
 Desafío: Incorporando Handlebars
 
-#Desafio 10:
+#Desafio 11:
 Desafío: Pug y Ejs
 
-#Desafio 11:
-Desafío: Websocket
-
 #Desafio 12:
-Desafío: Canal de chat
+Desafío: Websocket / Desafío: Canal de chat
 
 #Desafio 13:
 Desafío: Transpiladores
