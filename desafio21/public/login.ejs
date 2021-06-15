@@ -23,7 +23,7 @@
             <h2>
                 Bienvenido: <%= name %>
             </h2>
-            <form method="get">
+            <form method="get" action="/logout">
                 <input type="hidden" class="form-control" id="name" value=<%- name %> 
                     aria-label="Recipient's username" aria-describedby="button-addon2" name="name">
                 <button class="btn-sm btn-warning" type="submit">Logout</button>
