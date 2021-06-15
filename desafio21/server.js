@@ -59,15 +59,16 @@ app.use(session({
     cookie: {
         secure: false,
         maxAge: 5000, //60000 = 1 minuto
+        path: ('/login')
     }
 }))
 
-app.get('/login', (req, res, next) => {
+app.get('/login', (req, res) => {
     req.session.name = req.query.name
     if (req.session.name) {
         res.render('login', { name: req.session.name })
         if (req.session.cookie.maxAge == 0) {
-            next(res.redirect(302, '/logout', { name: req.session.name }))
+            res.redirect(302, '/logout')
         }
     }
     else {
@@ -75,9 +76,9 @@ app.get('/login', (req, res, next) => {
     }
 })
 
-app.get('/logout', (req, res, next) => {
-    req.session.name = req.query.name
-    res.render('logout', { name: req.session.name })
+app.get('/logout', (req, res) => {
+    let name = req.query.name
+    res.render('logout', { name })
     req.session.destroy((err) => {
         if (err) {
             return console.log(err);
