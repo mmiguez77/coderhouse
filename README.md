@@ -1,76 +1,76 @@
 # Desafíos Coderhouse
 
-#Desafio 1: 
+#Desafio 0: 
 Funciones constructoras y clases
 
-#Desafio 2:
+#Desafio 1:
 EcmaScript avanzado y Typescript
 
-#Desafio 3:
+#Desafio 2:
 JavaScript Asincrónico
 
-#Desafio 4:
+#Desafio 3:
 Observables / RxJS
 
-#Desafio 5:
+#Desafio 4:
 Servidor en Node.JS
 
-#Desafio 6:
+#Desafio 5:
 Manejo de Archivos
 
-#Desafio 7:
+#Desafio 6:
 Servidor con Express
 
-#Desafio 8:
+#Desafio 7:
 Array de Productos
 
-#Desafio 9:
+#Desafio 8:
 Desafío: API RESTful
 
-#Desafio 10:
+#Desafio 9:
 Desafío: Incorporando Handlebars
 
-#Desafio 11:
+#Desafio 10:
 Desafío: Pug y Ejs
 
-#Desafio 12:
+#Desafio 11:
 Desafío: Websocket
 
-#Desafio 13:
+#Desafio 12:
 Desafío: Canal de chat
 
-#Desafio 14:
+#Desafio 13:
 Desafío: Transpiladores
 
 #Proyecto Final 1er Entrega:
 Node.js como herramienta de desarrollo
 
-#Desafio 15:
+#Desafio 14:
 Desafío: Nuestra primera Base de Datos
 
-#Desafio 16:
+#Desafio 15:
 Desafío: SQLite3
 
-#Desafio 17:
+#Desafio 16:
 Desafío: MongoDB
 
-#Desafio 18:
+#Desafio 17:
 Desafío: CRUD en MongoDB
 
-#Desafio 19:
+#Desafio 18:
 Desafío: MongoDB y Node.js
 
 #Proyecto Final 2da Entrega:
 DBSaaS y Node.js
 
-#Desafio 20:
+#Desafio 19:
 Desafío: Test View
 
-#Desafio 21:
+#Desafio 20:
 Desafio: Centro de Mensajes
 
-#Desafio 22:
+#Desafio 21:
 Desafío: Log-in por formulario
 
-#Desafio 23:
+#Desafio 22:
 Desafío: Persistir datos de session en Mongo Atlas
