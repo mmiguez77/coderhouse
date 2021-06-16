@@ -59,11 +59,13 @@ app.use(session({
     saveUninitialized: false,
     rolling: true,
     cookie: {
+
         maxAge: 10000, //60000 = 1 minuto
     }
 }))
 
 app.get('/login', (req, res) => {
+
     if (req.session.name) {
         res.render('login', { name: req.session.name })
     } else {
@@ -71,10 +73,11 @@ app.get('/login', (req, res) => {
     }
 })
 
-app.post('/login', (req,res) => {
-    let {user} = req.body
+app.post('/login', (req, res) => {
+    let { user } = req.body
     req.session.user = user
 })
+
 
 app.get('/logout', (req, res) => {
     let user = getNombreSession(req)
