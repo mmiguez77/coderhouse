@@ -50,7 +50,6 @@ app.set('views', './public');
 app.set('view engine', 'ejs')
 
 /* -- SESSION STORAGE -- */
-const getNombreSession = req => req.session.nombre ? req.session.nombre : ''
 
 app.use(session({
     name: 'Desafio21',
@@ -59,43 +58,35 @@ app.use(session({
     saveUninitialized: false,
     rolling: true,
     cookie: {
-
         maxAge: 10000, //60000 = 1 minuto
     }
 }))
 
 app.get('/login', (req, res) => {
-
-    if (req.session.name) {
-        res.render('login', { name: req.session.name })
-    } else {
-        res.sendFile('./public/index.html')
+    req.session.user = req.query.user
+    if (req.session.user) {
+        res.render('login', { name: req.session.user })
+        if (!req.session.user) {
+            res.redirect('/')
+        }
+    }
+    else {
+        res.send(`Error en el Login`)
     }
 })
-
-app.post('/login', (req, res) => {
-    let { user } = req.body
-    req.session.user = user
-})
-
 
 app.get('/logout', (req, res) => {
-    let user = getNombreSession(req)
-    if (user) {
-        req.session.destroy((err) => {
-            if (err) {
-                setTimeout(() => {
-                    res.redirect('/')
-                }, 2000);
-            } else {
-                res.render('logout', { name: user })
-            }
-        })
-    } else {
-        res.redirect('/')
-    }
-
-
+    req.session.destroy(err => {
+        if (err) {
+            res.json({ error: 'Error' })
+        } else {
+            //let name = req.query.name
+            //res.render('logout', { name })
+            return setTimeout(() => {
+                res.redirect('/')
+            }, 2000);
+        }
+    })
 })
 
 /* -------------------- Web Sockets ---------------------- */
@@ -120,6 +111,8 @@ io.on('connection', socket => {
     });
 
 });
+
+
 
 /* ---- SERVIDOR ---- */
 const server = httpServer.listen(PORT, () => {
