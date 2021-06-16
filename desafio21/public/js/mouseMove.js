@@ -1,6 +1,6 @@
 let contador = 0;
 function mouseMove() {
-    if (contador == 10) { // cantidad de segundos
+    if (contador == 60) { // cantidad de segundos
         contador = 0;
         window.location.href = "/";
     } else {
