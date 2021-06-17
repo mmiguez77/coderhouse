@@ -1,50 +1,62 @@
 import express from 'express';
 import session from 'express-session';
-import cookieParser from 'cookie-parser'
+import MongoStore from 'connect-mongo';
+import cookieParser from 'cookie-parser';
 const routerAccess = express.Router();
-routerAccess.use(cookieParser())
+routerAccess.use(cookieParser());
+
+const uri = 'mongodb+srv://proyecto:coder@cluster0.tqtau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
 routerAccess.use(session({
-    name: 'Desafio21',
+    store: MongoStore.create({ mongoUrl: uri, mongoOptions: options }),
+    ttl: 30,
     secret: 'secreto',
     resave: false,
-    saveUninitialized: false,
-    rolling: true,
-    cookie: {
-        maxAge: 60000, //60000 = 1 minuto
-    }
+    saveUninitialized: false
 }))
 
+routerAccess.post('/login', (req, res) => {
+    let username = req.body.user;
+    req.session.username = username;
+    
+    let password = req.body.password;
+    req.session.password = password;
+
+    res.redirect('/access/login')
+})
+
+
 routerAccess.get('/login', (req, res) => {
-    let user = req.body.user
-    req.session.user = user
-    if (req.session.user) {
-        res.render('login', { name: req.session.user })
-        if (!req.session.user) {
-            res.redirect('/')
+    let username = req.body.user;
+    req.session.username = username;
+    if (req.session.username) {
+        res.render('login', { name: req.session.username });
+        if (!req.session.username) {
+            res.redirect('/');
         }
     }
     else {
-        res.send(`Error en el Login`)
+        res.send(`Error en el Login`);
     }
 })
 
 routerAccess.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            res.json({ error: 'Error' })
+            res.json({ error: 'Error' });
         } else {
-            //let name = req.query.name
-            //res.render('logout', { name })
+            //let name = req.query.name;
+            //res.render('logout', { name });
             return setTimeout(() => {
-                res.redirect('/')
+                res.redirect('/');
             }, 2000);
         }
     })
 })
 
 routerAccess.get('/register', (req, res) => {
-    res.render('register')
+    res.render('register');
 })
 
 export default routerAccess;
