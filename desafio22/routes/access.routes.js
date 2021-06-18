@@ -9,55 +9,51 @@ const uri = 'mongodb+srv://proyecto:coder@cluster0.tqtau.mongodb.net/myFirstData
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
 routerAccess.use(session({
-    store: MongoStore.create({ mongoUrl: uri, mongoOptions: options }),
-    ttl: 30,
+    store: MongoStore.create({
+        mongoUrl: uri,
+        mongoOptions: options,
+        ttl: 30, // en segundos
+    }),
     secret: 'secreto',
     resave: false,
     saveUninitialized: false
 }))
 
-routerAccess.post('/login', (req, res) => {
-    let username = req.body.user;
-    req.session.username = username;
-    
-    let password = req.body.password;
-    req.session.password = password;
-
-    res.redirect('/access/login')
-})
+// routerAccess.post('/login', (req, res) => {
+//     let username = req.body.username;
+//     req.session.username = username;
+//     if (req.session.username) {
+//         res.render('login', { name: req.session.username });
+//     } else {
+//         res.redirect('/');
+//     }
+// })
 
 
 routerAccess.get('/login', (req, res) => {
-    let username = req.body.user;
+    let username = req.query.username;
     req.session.username = username;
     if (req.session.username) {
         res.render('login', { name: req.session.username });
-        if (!req.session.username) {
-            res.redirect('/');
-        }
     }
     else {
-        res.send(`Error en el Login`);
+        res.redirect('/');
     }
 })
 
 routerAccess.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            res.json({ error: 'Error' });
-        } else {
-            //let name = req.query.name;
-            //res.render('logout', { name });
-            return setTimeout(() => {
-                res.redirect('/');
-            }, 2000);
-        }
-    })
+    
+        req.session.destroy(err => {
+            if (err) {
+                res.json({ error: 'Error' });
+            } else {
+                return setTimeout(() => {
+                    res.redirect('/');
+                }, 2000);
+            }
+        })
 })
 
-routerAccess.get('/register', (req, res) => {
-    res.render('register');
-})
 
 export default routerAccess;
 
