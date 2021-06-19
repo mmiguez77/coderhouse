@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 // import path from 'path';
 // const __dirname = path.resolve()
 import session from 'express-session';
-import cookieParser from 'cookie-parser'
+import cookieParser from 'cookie-parser';
 
 import router from './routes/productos.routes.js';
 import routerMsg from './routes/mensajes.routes.js';
@@ -26,8 +26,8 @@ const io = new IOServer(httpServer);
 const PORT = 8080;
 
 /* -- MOONGOSE -- */
-const uri = 'mongodb://localhost:27017/ecommerce'
-const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+const uri = 'mongodb://localhost:27017/ecommerce';
+const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true };
 mongoose.connect(uri, options)
     .then(() => { console.log('Conectado a Mongo') },
         err => { err }
@@ -63,27 +63,32 @@ app.use(session({
 }))
 
 app.get('/login', (req, res) => {
-    req.session.user = req.query.user
-    if (req.session.user) {
-        res.render('login', { name: req.session.user })
-        if (!req.session.user) {
-            res.redirect('/')
-        }
+    if (req.session.username) {
+        res.render('login', { name: req.session.username });
     }
     else {
-        res.send(`Error en el Login`)
+        req.session.destroy(() => {
+            res.redirect('/')
+        })
     }
+})
+
+app.post('/login', (req, res, next) => {
+    let username = req.body.username;
+    req.session.username = username;
+    res.redirect('/login');
+    next();
 })
 
 app.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            res.json({ error: 'Error' })
+            res.json({ error: 'Error' });
         } else {
             //let name = req.query.name
             //res.render('logout', { name })
             return setTimeout(() => {
-                res.redirect('/')
+                res.redirect('/');
             }, 2000);
         }
     })
@@ -91,23 +96,23 @@ app.get('/logout', (req, res) => {
 
 /* -------------------- Web Sockets ---------------------- */
 
-let toChat = []
+let toChat = [];
 
 io.on('connection', socket => {
-    console.log(`Cliente ID:${socket.id} inició conexión`)
-    io.sockets.emit('new-message-server', toChat)
+    console.log(`Cliente ID:${socket.id} inició conexión`);
+    io.sockets.emit('new-message-server', toChat);
 
     socket.on('new-message', async data => {
         const message = await data;
         toChat.push(data);
-        msg.addMsg({ message })
-        io.sockets.emit('new-message-server', toChat)
+        msg.addMsg({ message });
+        io.sockets.emit('new-message-server', toChat);
     });
 
     socket.on('new-producto', async data => {
         const producto = await data;
-        prodClass.add({ producto })
-        io.sockets.emit('new-prod-server', producto)
+        prodClass.add({ producto });
+        io.sockets.emit('new-prod-server', producto);
     });
 
 });
