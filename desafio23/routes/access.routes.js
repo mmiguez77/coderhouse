@@ -1,51 +1,55 @@
 import express from 'express';
 import session from 'express-session';
-import cookieParser from 'cookie-parser'
+import MongoStore from 'connect-mongo';
+import cookieParser from 'cookie-parser';
 const routerAccess = express.Router();
-routerAccess.use(cookieParser())
+routerAccess.use(cookieParser());
+
+const uri = 'mongodb+srv://proyecto:coder@cluster0.tqtau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
 routerAccess.use(session({
-    name: 'Desafio21',
+    store: MongoStore.create({
+        mongoUrl: uri,
+        mongoOptions: options,
+        ttl: 60 * 10, // en segundos
+    }),
     secret: 'secreto',
     resave: false,
-    saveUninitialized: false,
-    rolling: true,
-    cookie: {
-        maxAge: 60000, //60000 = 1 minuto
-    }
+    saveUninitialized: false
 }))
 
+routerAccess.post('/login', (req, res, next) => {
+    let username = req.body.username;
+    req.session.username = username;
+    res.redirect('/access/login');
+    next()
+})
+
+
 routerAccess.get('/login', (req, res) => {
-    let user = req.body.user
-    req.session.user = user
-    if (req.session.user) {
-        res.render('login', { name: req.session.user })
-        if (!req.session.user) {
-            res.redirect('/')
-        }
+    if (req.session.username) {
+        res.render('login', { name: req.session.username });
     }
     else {
-        res.send(`Error en el Login`)
+        req.session.destroy(() => {
+            res.redirect('/');
+        })
     }
 })
 
 routerAccess.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            res.json({ error: 'Error' })
+            res.json({ error: 'Error' });
         } else {
-            //let name = req.query.name
-            //res.render('logout', { name })
             return setTimeout(() => {
-                res.redirect('/')
+                res.redirect('/');
             }, 2000);
         }
     })
 })
 
-routerAccess.get('/register', (req, res) => {
-    res.render('register')
-})
 
 export default routerAccess;
 

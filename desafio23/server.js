@@ -7,7 +7,6 @@ import mongoose from 'mongoose';
 // const __dirname = path.resolve()
 //import path from 'path';
 
-
 /* -- Importacion de Rutas -- */
 import router from './routes/productos.routes.js';
 import routerMsg from './routes/mensajes.routes.js';
@@ -30,7 +29,7 @@ const PORT = 8080;
 const uri = 'mongodb://localhost:27017/ecommerce'
 const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 mongoose.connect(uri, options)
-    .then(() => { console.log('Conectado a Mongo') },
+    .then(() => { console.log('Conectado a Mongoose para tabla ecommerce local') },
         err => { err }
     )
 
@@ -48,7 +47,7 @@ app.use('/access', routerAccess)
 app.use(express.static('public'));
 
 /* -- EJS -- */
-app.set('views', './public/views');
+app.set('views', './views');
 app.set('view engine', 'ejs')
 
 
