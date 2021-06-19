@@ -12,46 +12,42 @@ routerAccess.use(session({
     store: MongoStore.create({
         mongoUrl: uri,
         mongoOptions: options,
-        ttl: 30, // en segundos
+        ttl: 60 * 10, // en segundos
     }),
     secret: 'secreto',
     resave: false,
     saveUninitialized: false
 }))
 
-// routerAccess.post('/login', (req, res) => {
-//     let username = req.body.username;
-//     req.session.username = username;
-//     if (req.session.username) {
-//         res.render('login', { name: req.session.username });
-//     } else {
-//         res.redirect('/');
-//     }
-// })
+routerAccess.post('/login', (req, res, next) => {
+    let username = req.body.username;
+    req.session.username = username;
+    res.redirect('/access/login');
+    next()
+})
 
 
 routerAccess.get('/login', (req, res) => {
-    let username = req.query.username;
-    req.session.username = username;
     if (req.session.username) {
         res.render('login', { name: req.session.username });
     }
     else {
-        res.redirect('/');
+        req.session.destroy(() => {
+            res.redirect('/');
+        })
     }
 })
 
 routerAccess.get('/logout', (req, res) => {
-    
-        req.session.destroy(err => {
-            if (err) {
-                res.json({ error: 'Error' });
-            } else {
-                return setTimeout(() => {
-                    res.redirect('/');
-                }, 2000);
-            }
-        })
+    req.session.destroy(err => {
+        if (err) {
+            res.json({ error: 'Error' });
+        } else {
+            return setTimeout(() => {
+                res.redirect('/');
+            }, 2000);
+        }
+    })
 })
 
 
