@@ -1,4 +1,4 @@
-import MensajeModel from '../models/mensajeSchema.js';
+const MensajeModel = require ('../models/mensajeSchema.js');
 
 class Mensaje {
 
@@ -26,4 +26,4 @@ class Mensaje {
     }
 }
 
-export default Mensaje;
+module.exports = Mensaje;

@@ -1,29 +1,6 @@
-import express from 'express';
-import session from 'express-session';
-import MongoStore from 'connect-mongo';
-import cookieParser from 'cookie-parser';
-import mongoose from 'mongoose';
-import passport from 'passport';
-import { Strategy as LocalStrategy } from 'passport-local';
-import userSchema from '../models/userSchema.js'
-
+const express = require ('express');
+const mongoose = require ('mongoose');
 const routerAccess = express.Router();
-routerAccess.use(cookieParser());
-
-const uri = 'mongodb://localhost:27017/session'
-const options = { useNewUrlParser: true, useUnifiedTopology: true };
-
-routerAccess.use(session({
-    store: MongoStore.create({
-        mongoUrl: uri,
-        mongoOptions: options,
-        ttl: 60 * 10, // en segundos
-    }),
-    secret: 'secreto',
-    resave: false,
-    saveUninitialized: false
-}))
-
 
 /* --- Registro --- */
 routerAccess.post('/register', async (req, res) => {
@@ -45,6 +22,12 @@ routerAccess.post('/register', async (req, res) => {
     }
 })
 
+routerAccess.get('/register', (req, res) => {
+    res.render('register');
+})
+
+
+/* --- Log In --- */
 routerAccess.post('/login', async (req, res, next) => {
     try {
         let user = await { ...req.body };
@@ -70,6 +53,8 @@ routerAccess.get('/login', (req, res) => {
     }
 })
 
+/* --- Log Out --- */
+
 routerAccess.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
@@ -82,12 +67,9 @@ routerAccess.get('/logout', (req, res) => {
     })
 })
 
-routerAccess.get('/register', (req, res) => {
-    res.render('register');
-})
 
 
-export default routerAccess;
+module.exports = routerAccess;
 
 
 

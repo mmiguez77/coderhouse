@@ -1,40 +1,43 @@
 /* -- DEPENDENCIAS -- */
-import express from 'express';
-import { Server as HttpServer } from 'http';
-import { Server as IOServer } from 'socket.io';
-
-// import path from 'path';
-// const __dirname = path.resolve()
+const express = require('express');
+const app = express();
+const httpServer = require('http').Server(app)
+const io = require('socket.io')(httpServer)
+const MongoStore = require('connect-mongo');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 /* -- Importacion de Rutas -- */
-import router from './routes/productos.routes.js';
-import routerMsg from './routes/mensajes.routes.js';
-import routerAccess from './routes/access.routes.js';
+const router = require ('./routes/productos.routes.js');
+const routerMsg = require ('./routes/mensajes.routes.js');
+const routerAccess = require ('./routes/access.routes.js');
 
-import Mensaje from './controllers/Mensaje.js';
+const Mensaje = require ('./controllers/Mensaje.js');
 const msg = new Mensaje();
 
-import Producto from './controllers/Producto.js';
+const Producto = require ('./controllers/Producto.js');
 const prodClass = new Producto();
 
-// COMIENZO APP
-/* -- CONFIG DEL SERVER -- */
-const app = express();
-const httpServer = new HttpServer(app);
-const io = new IOServer(httpServer);
-const PORT = 8080;
 
 /* -- MOONGOSE -- */
-// const uri = 'mongodb://localhost:27017/ecommerce'
-// const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-// mongoose.connect(uri, options)
-//     .then(() => { console.log('Conectado a Mongoose para tabla ecommerce local') },
-//         err => { err }
-//     )
+const uri = 'mongodb://localhost:27017/session'
+const options = { useNewUrlParser: true, useUnifiedTopology: true };
+
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: uri,
+        mongoOptions: options,
+        ttl: 60 * 10, // en segundos
+    }),
+    secret: 'secreto',
+    resave: false,
+    saveUninitialized: false
+}))
 
 /* -- MIDDLEWARES -- */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 /* -- ENDPOINTS -- */
@@ -48,8 +51,6 @@ app.use(express.static('public'));
 /* -- EJS -- */
 app.set('views', './views');
 app.set('view engine', 'ejs')
-
-
 
 /* -------------------- Web Sockets ---------------------- */
 
@@ -77,6 +78,7 @@ io.on('connection', socket => {
 
 
 /* ---- SERVIDOR ---- */
+const PORT = 8080;
 const server = httpServer.listen(PORT, () => {
     console.log(`** Servidor HTTP en puerto: ${server.address().port}`);
 })

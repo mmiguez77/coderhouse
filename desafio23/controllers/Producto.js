@@ -1,4 +1,4 @@
-import ProductoModel from '../models/productoSchema.js';
+const ProductoModel = require ('../models/productoSchema.js');
 
 class Producto {
 
@@ -72,4 +72,4 @@ class Producto {
     }
 }
 
-export default Producto
+module.exports = Producto
