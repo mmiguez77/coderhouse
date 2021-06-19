@@ -3,32 +3,31 @@ const express = require('express');
 const app = express();
 const httpServer = require('http').Server(app)
 const io = require('socket.io')(httpServer)
-const MongoStore = require('connect-mongo');
+const mongoose = require ('mongoose')
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
 
 /* -- Importacion de Rutas -- */
-const router = require ('./routes/productos.routes.js');
-const routerMsg = require ('./routes/mensajes.routes.js');
-const routerAccess = require ('./routes/access.routes.js');
-
-const Mensaje = require ('./controllers/Mensaje.js');
+const router = require('./routes/productos.routes.js');
+const routerMsg = require('./routes/mensajes.routes.js');
+const routerAccess = require('./routes/access.routes.js');
+const Mensaje = require('./controllers/Mensaje.js');
 const msg = new Mensaje();
-
-const Producto = require ('./controllers/Producto.js');
+const Producto = require('./controllers/Producto.js');
 const prodClass = new Producto();
+require('./passport/passportAuth.js')
 
 
-/* -- MOONGOSE -- */
+/* -- MONGODB & SESSION-- */
 const uri = 'mongodb://localhost:27017/session'
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
+mongoose.connect(uri, options)
+    .then(
+        () => { console.log('*** Conectado a MongoDB Local') },
+        err => { err })
 
 app.use(session({
-    store: MongoStore.create({
-        mongoUrl: uri,
-        mongoOptions: options,
-        ttl: 60 * 10, // en segundos
-    }),
     secret: 'secreto',
     resave: false,
     saveUninitialized: false
@@ -38,6 +37,8 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 /* -- ENDPOINTS -- */
