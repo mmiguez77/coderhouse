@@ -2,10 +2,15 @@ import express from 'express';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import cookieParser from 'cookie-parser';
+import mongoose from 'mongoose';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import userSchema from '../models/userSchema.js'
+
 const routerAccess = express.Router();
 routerAccess.use(cookieParser());
 
-const uri = 'mongodb+srv://proyecto:coder@cluster0.tqtau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const uri = 'mongodb://localhost:27017/session'
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
 routerAccess.use(session({
@@ -19,11 +24,38 @@ routerAccess.use(session({
     saveUninitialized: false
 }))
 
-routerAccess.post('/login', (req, res, next) => {
-    let username = req.body.username;
-    req.session.username = username;
-    res.redirect('/access/login');
-    next()
+
+/* --- Registro --- */
+routerAccess.post('/register', async (req, res) => {
+    try {
+        let user = await { ...req.body };
+        req.session.username = user.username;
+        req.session.password = user.password;
+
+        console.log(user)
+
+        if (username && password) {
+            res.redirect('/access/login', { msg: 'Registro realizado con éxito' });
+        } else {
+            res.redirect('/access/errLogin');
+        }
+        const usuario = UserModel.create(user)
+    } catch (error) {
+        console.error(error)
+    }
+})
+
+routerAccess.post('/login', async (req, res, next) => {
+    try {
+        let user = await { ...req.body };
+        if (user) {
+            res.redirect('/access/login');
+        }
+        next()
+    } catch (error) {
+        console.error(error)
+    }
+
 })
 
 
@@ -48,6 +80,10 @@ routerAccess.get('/logout', (req, res) => {
             }, 2000);
         }
     })
+})
+
+routerAccess.get('/register', (req, res) => {
+    res.render('register');
 })
 
 

@@ -2,10 +2,9 @@
 import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
-import mongoose from 'mongoose';
+
 // import path from 'path';
 // const __dirname = path.resolve()
-//import path from 'path';
 
 /* -- Importacion de Rutas -- */
 import router from './routes/productos.routes.js';
@@ -26,12 +25,12 @@ const io = new IOServer(httpServer);
 const PORT = 8080;
 
 /* -- MOONGOSE -- */
-const uri = 'mongodb://localhost:27017/ecommerce'
-const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-mongoose.connect(uri, options)
-    .then(() => { console.log('Conectado a Mongoose para tabla ecommerce local') },
-        err => { err }
-    )
+// const uri = 'mongodb://localhost:27017/ecommerce'
+// const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+// mongoose.connect(uri, options)
+//     .then(() => { console.log('Conectado a Mongoose para tabla ecommerce local') },
+//         err => { err }
+//     )
 
 /* -- MIDDLEWARES -- */
 app.use(express.json());
