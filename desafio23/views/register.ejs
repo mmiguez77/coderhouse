@@ -1,6 +1,10 @@
 <%- include ('./layouts/header') -%>
 <%- include ('./layouts/navbar') -%>
     <div class="container mt-5">
+        <% if (error) { %>
+         <h1><%= error %> </h1>
+        <% } %>
+
         <h3 style="text-align:center" class="my-4">REGISTRO DE USUARIO</h3>
         <form method="POST" action="/user/register" autocomplete="off">
             <div class="input-group mb-3">

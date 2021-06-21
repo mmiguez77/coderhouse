@@ -22,12 +22,12 @@ passport.use('register', new LocalStrategy({
     const { username, password } = req.body
     const userInDb = await UserModel.findOne({ username: username });
     if (userInDb) {
-      return done(null, false, console.log({ message: 'Usuario ya registrado' }))
+      return done(null, false, req.flash('error', 'Usuario ya registrado'))
     } else {
       const newUser = new UserModel({ username, password })
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
-      return done(null, newUser, console.log({ message: 'Usuario registrado con éxito' }));
+      return done(null, newUser, req.flash('success','Usuario registrado con éxito'));
     }
   }
   catch (error) {
@@ -45,13 +45,13 @@ passport.use('login', new LocalStrategy({
     const userRegistered = await UserModel.findOne({ username: username });
 
     if (!userRegistered) {
-      return done(null, false, console.log({ message: 'Usuario y/o Password inválido' }));
+      return done(null, false, req.flash('error', 'Usuario y/o Password inválido'));
     } else {
       const matchPassword = await userRegistered.checkPassword(password);
       if (matchPassword) {
-        return done(null, userRegistered, console.log({message: 'Bienvenido' }));
+        return done(null, userRegistered, req.flash('welcome', `Bienvenido ${username}`));
       } else {
-        return done(null, false, console.log({ message: 'Usuario y/o Password inválido' }));
+        return done(null, false, req.flash('error', 'Usuario y/o Password inválido'));
       }
     }
   } catch (error) {

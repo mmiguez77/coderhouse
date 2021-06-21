@@ -5,6 +5,7 @@ import { Server as IOServer } from 'socket.io';
 import session from 'express-session';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
+import flash from 'connect-flash'
 import morgan from 'morgan';
 import('./passport/passport.js')
 
@@ -41,6 +42,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(express.static('public'));
+app.use(flash())
+app.use((req, res,next) => {
+    res.locals.user = req.user;
+    res.locals.error = req.flash("error");
+    next()
+})
 
 /* -- EJS -- */
 app.set('views', './views');
