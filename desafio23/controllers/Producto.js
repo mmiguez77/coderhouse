@@ -1,8 +1,6 @@
-const ProductoModel = require ('../models/productoSchema.js');
+import ProductoModel from '../models/productoSchema.js';
 
 class Producto {
-
-    constructor() { }
 
     async add(req, res) {
         try {
@@ -72,4 +70,4 @@ class Producto {
     }
 }
 
-module.exports = Producto
+export default Producto

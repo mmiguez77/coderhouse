@@ -1,24 +1,24 @@
-const UserModel = require('../models/userSchema.js')
-const passport = require('passport');
-const { Strategy: LocalStrategy } = require('passport-local');
-const bcrypt = require('bcrypt');
+//import { findOne } from '../models/userSchema.js';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import { hash as _hash } from 'bcrypt';
 
-passport.serializeUser((user, done) => {
+serializeUser((user, done) => {
   done(null, user.username);
 });
 
-passport.deserializeUser(async (username, done) => {
-  const user = await UserModel.findOne({ 'username': username });
+deserializeUser(async (username, done) => {
+  const user = await findOne({ 'username': username });
   done(null, user);
 });
 
-passport.use('register', new LocalStrategy({
+use('register', new LocalStrategy({
   // usernameField: 'username',
   // passwordField: 'password',
   passReqToCallback: true
 }, async function (req, username, password, done) {
   try {
-    await UserModel.findOne({ 'username': username }, async function (err, user) {
+    await findOne({ 'username': username }, async function (err, user) {
       if (err)
         return done(err);
       if (user) {
@@ -29,7 +29,7 @@ passport.use('register', new LocalStrategy({
         const password = await req.body.password;
         const saltRounds = 10;
 
-        bcrypt.hash(password, saltRounds, function (err, hash) {
+        _hash(password, saltRounds, function (err, hash) {
           if (err) {
             return console.log(err)
           } else {
@@ -48,13 +48,13 @@ passport.use('register', new LocalStrategy({
   }
 }))
 
-passport.use('login', new LocalStrategy({
+use('login', new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password',
   passReqToCallback: true
 }, async (req, username, password, done) => {
   try {
-    const userRegistered = await UserModel.findOne({ 'username': username });
+    const userRegistered = await findOne({ 'username': username });
 
     if (!userRegistered) {
       return done(null, false, { message: 'Usuario y/o Password inválido' });

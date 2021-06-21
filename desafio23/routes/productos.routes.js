@@ -1,5 +1,5 @@
-const express = require ('express');
-const Producto = require ('../controllers/Producto.js');
+import express from 'express';
+import Producto from '../controllers/Producto.js';
 const router = express.Router();
 const nuevoProducto = new Producto();
 
@@ -12,4 +12,4 @@ router.put('/:id', nuevoProducto.update);
 
 
 
-module.exports = router;
+export default router;

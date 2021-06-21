@@ -1,57 +1,64 @@
 /* -- DEPENDENCIAS -- */
-const express = require('express');
-const app = express();
-const httpServer = require('http').Server(app)
-const io = require('socket.io')(httpServer)
-const mongoose = require ('mongoose')
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const passport = require('passport');
+import express from 'express';
+import { Server as HttpServer } from 'http';
+import { Server as IOServer } from 'socket.io';
+import morgan from 'morgan';
+import MongoStore from 'connect-mongo';
+import session from 'express-session';
 
 /* -- Importacion de Rutas -- */
-const router = require('./routes/productos.routes.js');
-const routerMsg = require('./routes/mensajes.routes.js');
-const routerAccess = require('./routes/access.routes.js');
-const Mensaje = require('./controllers/Mensaje.js');
+import router from './routes/productos.routes.js';
+import routerMsg from './routes/mensajes.routes.js';
+import usersRoutes from './routes/users.routes.js';
+import Mensaje from './controllers/Mensaje.js';
+import Producto from './controllers/Producto.js';
 const msg = new Mensaje();
-const Producto = require('./controllers/Producto.js');
 const prodClass = new Producto();
-require('./passport/passportAuth.js')
 
+// COMIENZO APP
+/* -- CONFIG DEL SERVER -- */
+const app = express();
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer);
+const PORT = 8080;
 
-/* -- MONGODB & SESSION-- */
+/* -- MIDDLEWARES -- */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'))
+
+/* -- EJS -- */
+app.set('views', './views');
+app.set('view engine', 'ejs')
+
+/* -- ENDPOINTS -- */
+app.use('/api/productos', router);
+app.use('/mensajes', routerMsg);
+app.use('/user', usersRoutes)
+app.get('/', function(req, res) {
+    res.render('index');
+});
+
+/* -- SESSION -- */
 const uri = 'mongodb://localhost:27017/session'
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
-mongoose.connect(uri, options)
-    .then(
-        () => { console.log('*** Conectado a MongoDB Local') },
-        err => { err })
 
 app.use(session({
+    store: MongoStore.create({
+        mongoUrl: uri,
+        mongoOptions: options,
+        ttl: 60 * 10, // en segundos
+    }),
     secret: 'secreto',
     resave: false,
     saveUninitialized: false
 }))
 
-/* -- MIDDLEWARES -- */
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(passport.initialize())
-app.use(passport.session())
-
-
-/* -- ENDPOINTS -- */
-app.use('/api/productos', router);
-app.use('/mensajes', routerMsg);
-app.use('/access', routerAccess)
-
 /* -- ARCHIVOS ESTATICOS -- */
 app.use(express.static('public'));
 
-/* -- EJS -- */
-app.set('views', './views');
-app.set('view engine', 'ejs')
+
+
 
 /* -------------------- Web Sockets ---------------------- */
 
@@ -79,7 +86,6 @@ io.on('connection', socket => {
 
 
 /* ---- SERVIDOR ---- */
-const PORT = 8080;
 const server = httpServer.listen(PORT, () => {
     console.log(`** Servidor HTTP en puerto: ${server.address().port}`);
 })
