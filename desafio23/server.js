@@ -2,9 +2,11 @@
 import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
-import morgan from 'morgan';
-import MongoStore from 'connect-mongo';
 import session from 'express-session';
+import passport from 'passport';
+import cookieParser from 'cookie-parser';
+import morgan from 'morgan';
+import('./passport/passport.js')
 
 /* -- Importacion de Rutas -- */
 import router from './routes/productos.routes.js';
@@ -23,9 +25,22 @@ const io = new IOServer(httpServer);
 const PORT = 8080;
 
 /* -- MIDDLEWARES -- */
+app.use(cookieParser())
+app.use(session({
+    secret: 'secreto',
+    rolling: true,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 60000 // tiempo en milisegundos (10 min = 60000 ms * 10)
+    }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan('dev'))
+app.use(morgan('dev'));
+app.use(express.static('public'));
 
 /* -- EJS -- */
 app.set('views', './views');
@@ -35,29 +50,7 @@ app.set('view engine', 'ejs')
 app.use('/api/productos', router);
 app.use('/mensajes', routerMsg);
 app.use('/user', usersRoutes)
-app.get('/', function(req, res) {
-    res.render('index');
-});
-
-/* -- SESSION -- */
-const uri = 'mongodb://localhost:27017/session'
-const options = { useNewUrlParser: true, useUnifiedTopology: true };
-
-app.use(session({
-    store: MongoStore.create({
-        mongoUrl: uri,
-        mongoOptions: options,
-        ttl: 60 * 10, // en segundos
-    }),
-    secret: 'secreto',
-    resave: false,
-    saveUninitialized: false
-}))
-
-/* -- ARCHIVOS ESTATICOS -- */
-app.use(express.static('public'));
-
-
+app.get('/', function (req, res) { res.render('index') });
 
 
 /* -------------------- Web Sockets ---------------------- */

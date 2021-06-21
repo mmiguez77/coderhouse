@@ -15,7 +15,7 @@ UserSchema.methods.encryptPassword = async password => {
 };
 
 UserSchema.methods.checkPassword = async function (password) {
-    await bcrypt.compare(password, this.password);
+    return await bcrypt.compare(password, this.password);
 }
 
 

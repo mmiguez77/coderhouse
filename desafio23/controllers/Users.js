@@ -1,47 +1,19 @@
-import UserModel from '../models/userSchema.js';
-import passport from "passport";
+export default class User {
 
-class User {
-
-
-    async registerGet(req, res, next) {
-
-
+    async registerGet(req, res) {
         res.render('register')
     }
 
-    async registerPost(req, res, next) {
-        console.log('REGISTER', req.body)
-        res.redirect('/user/login')
-        next();
-    }
-
-    async loginGet(req, res, next) {
+    async loginGet(req, res) {
         res.render('login')
     }
 
-    async loginPost(req, res) {
-        console.log(req.body)
-        res.redirect('/user/main')
-    }
-
-    async mainGet(req, res, next) {
+    async mainGet(req, res) {
         res.render('main')
     }
 
     async logout(req, res) {
-        res.send('Logout')
-        // req.session.destroy(err => {
-        //     if (err) {
-        //         res.json({ error: 'Error' });
-        //     } else {
-        //         return setTimeout(() => {
-        //             res.redirect('/');
-        //         }, 2000);
-        //     }
-        // })
+        req.logout();
+        res.redirect('/user/login')
     }
-
 }
-
-export default User

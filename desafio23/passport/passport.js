@@ -1,70 +1,62 @@
-//import { findOne } from '../models/userSchema.js';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { hash as _hash } from 'bcrypt';
+import UserModel from '../models/userSchema.js'
 
-serializeUser((user, done) => {
-  done(null, user.username);
+passport.serializeUser((user, done) => {
+  done(null, user.id);
 });
 
-deserializeUser(async (username, done) => {
-  const user = await findOne({ 'username': username });
-  done(null, user);
+passport.deserializeUser((id, done) => {
+  UserModel.findById(id, (err, user) => {
+    done(err, user);
+  });
 });
 
-use('register', new LocalStrategy({
-  // usernameField: 'username',
-  // passwordField: 'password',
+
+passport.use('register', new LocalStrategy({
+  usernameField: 'username',
+  passwordField: 'password',
   passReqToCallback: true
 }, async function (req, username, password, done) {
   try {
-    await findOne({ 'username': username }, async function (err, user) {
-      if (err)
-        return done(err);
-      if (user) {
-        return done(null, false, { message: 'Usuario ya registrado' });
-      }
-      if (!user) {
-        const username = await req.body.username;
-        const password = await req.body.password;
-        const saltRounds = 10;
-
-        _hash(password, saltRounds, function (err, hash) {
-          if (err) {
-            return console.log(err)
-          } else {
-            return password = hash
-          }
-        })
-        
-        const newUser = {username, password}
-        await newUser.save();
-        return done(null, newUser);
-      }
-    })
+    const { username, password } = req.body
+    const userInDb = await UserModel.findOne({ username: username });
+    if (userInDb) {
+      return done(null, false, console.log({ message: 'Usuario ya registrado' }))
+    } else {
+      const newUser = new UserModel({ username, password })
+      newUser.password = await newUser.encryptPassword(password);
+      await newUser.save();
+      return done(null, newUser, console.log({ message: 'Usuario registrado con éxito' }));
+    }
   }
   catch (error) {
     console.log(error)
   }
 }))
 
-use('login', new LocalStrategy({
+passport.use('login', new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password',
   passReqToCallback: true
 }, async (req, username, password, done) => {
   try {
-    const userRegistered = await findOne({ 'username': username });
+    const { username, password } = req.body
+    const userRegistered = await UserModel.findOne({ username: username });
 
     if (!userRegistered) {
-      return done(null, false, { message: 'Usuario y/o Password inválido' });
+      return done(null, false, console.log({ message: 'Usuario y/o Password inválido' }));
+    } else {
+      const matchPassword = await userRegistered.checkPassword(password);
+      if (matchPassword) {
+        return done(null, userRegistered, console.log({message: 'Bienvenido' }));
+      } else {
+        return done(null, false, console.log({ message: 'Usuario y/o Password inválido' }));
+      }
     }
-    if (!userRegistered.passCompare(password)) {
-      return done(null, false, { message: 'Usuario y/o Password inválido' });
-    }
-    return done(null, userRegistered);
   } catch (error) {
     console.log(error)
   }
-
 }));
+
+export default passport
