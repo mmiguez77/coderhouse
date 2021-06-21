@@ -49,7 +49,7 @@ passport.use('login', new LocalStrategy({
     } else {
       const matchPassword = await userRegistered.checkPassword(password);
       if (matchPassword) {
-        return done(null, userRegistered, req.flash('welcome', `Bienvenido ${username}`));
+        return done(null, userRegistered, req.flash('welcome', `${username}`));
       } else {
         return done(null, false, req.flash('error', 'Usuario y/o Password inválido'));
       }
