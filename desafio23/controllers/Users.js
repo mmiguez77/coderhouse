@@ -3,15 +3,17 @@ import passport from "passport";
 
 class User {
 
-    
+
     async registerGet(req, res, next) {
+
+
         res.render('register')
     }
 
-    async registerPost(req, res) {
-        const data = { ...req.body };
-        console.log(data)
-
+    async registerPost(req, res, next) {
+        console.log('REGISTER', req.body)
+        res.redirect('/user/login')
+        next();
     }
 
     async loginGet(req, res, next) {
@@ -19,6 +21,7 @@ class User {
     }
 
     async loginPost(req, res) {
+        console.log(req.body)
         res.redirect('/user/main')
     }
 
