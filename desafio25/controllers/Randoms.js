@@ -20,10 +20,10 @@ export default class Random {
     async getRandom(req, res) {
         try {
             //let param = await req.params
-            console.log(req.params.number)
-            //let numeros = await generateNumber(param)
+            console.log({ ...req.query.number })
+            //let numeros = await this.generateNumber(param)
             // console.log(numeros)
-            //res.send(numeros)
+            res.redirect('/randoms')
         } catch (error) {
             console.error(error)
         }

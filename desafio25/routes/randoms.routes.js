@@ -5,7 +5,7 @@ const random = new Random();
 
 //randomsRouter.post('/:number', random.postRandom)
 randomsRouter.get('/', random.get)
-randomsRouter.get('/:number', random.getRandom)
+randomsRouter.get('/generate/:number', random.getRandom)
 
 
 export default randomsRouter;

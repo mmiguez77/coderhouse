@@ -2,7 +2,7 @@
 const generador = () => {
 
     let n = [];
-    let iteraciones = req.params.number || 100000000;
+    let iteraciones = 10000;
 
     function number() {
         return Math.floor(Math.random() * (1000 - 1) + 1)
