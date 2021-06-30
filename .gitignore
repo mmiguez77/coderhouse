@@ -5,3 +5,4 @@ exit
 pfcrudmongo
 desafio19
 proyecto19
+*.env

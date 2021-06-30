@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import flash from 'connect-flash'
 import morgan from 'morgan';
 import('./passport/passport.js')
+import config from './config/index.js';
 
 /* -- Importacion de Rutas -- */
 import router from './routes/productos.routes.js';
@@ -23,7 +24,7 @@ const prodClass = new Producto();
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new IOServer(httpServer);
-const PORT = 8080;
+const PORT = config.PORT || 5000;
 
 /* -- MIDDLEWARES -- */
 app.use(cookieParser())
@@ -44,10 +45,10 @@ app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(flash())
 app.use((req, res,next) => {
-    res.locals.user = req.user;
+    res.locals.user = req.user; // user proviene del login con FB
     res.locals.error = req.flash('error');
     res.locals.success = req.flash('success');
-    res.locals.welcome = req.flash('welcome')
+    //res.locals.welcome = req.flash('welcome')
     next()
 })
 

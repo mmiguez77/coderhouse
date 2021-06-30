@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <!-- DEPENDECIAS CLIENTE SOCKET IO -->
   <script src="/socket.io/socket.io.js"></script>
-  
+
 </head>
 
 <body>
@@ -20,22 +20,25 @@
     <!-- Inicio Formulario Producto -->
     <h2 style="text-align:center; margin-top:1rem">FORMULARIO DE INGRESO PRODUCTO</h2>
     <div class="container bg-secondary text-white p-2">
-
-      <div class="mb-3">
-        <label for="title" class="form-label">PRODUCTO</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" autocomplete="off">
-      </div>
-      <div class="mb-3">
-        <label for="price" class="form-label">PRECIO</label>
-        <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 23" autocomplete="off">
-      </div>
-      <div class="mb-3">
-        <label for="thumbnail" class="form-label">IMAGEN</label>
-        <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-          placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon"
-          autocomplete="off">
-      </div>
-      <button type="submit" class="btn btn-primary btn-sm" id="btnForm">AGREGAR</button>
+      
+        <div class="mb-3">
+          <label for="title" class="form-label">PRODUCTO</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe"
+            autocomplete="off">
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">PRECIO</label>
+          <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 23"
+            autocomplete="off">
+        </div>
+        <div class="mb-3">
+          <label for="thumbnail" class="form-label">IMAGEN</label>
+          <input type="text" class="form-control" id="thumbnail" name="thumbnail"
+            placeholder="Ejemplo: https://www.iconfinder.com/icons/889376/barista_coffee_doppio_espresso_icon"
+            autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" id="btnForm">AGREGAR</button>
+      
       <!-- Fin Formulario Producto -->
 
       <!-- Inicio Listado Productos -->

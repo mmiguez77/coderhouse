@@ -5,11 +5,11 @@ const router = express.Router();
 const nuevoProducto = new Producto();
 
 
-router.post('/', validate, nuevoProducto.add);
-router.get('/', validate, nuevoProducto.findAll);
-router.get('/:id', validate, nuevoProducto.findByID);
-router.delete('/:id', validate, nuevoProducto.deleteProd);
-router.put('/:id', validate, nuevoProducto.update);
+router.post('/',  nuevoProducto.add);
+router.get('/',  nuevoProducto.findAll);
+router.get('/:id',  nuevoProducto.findByID);
+router.delete('/:id',  nuevoProducto.deleteProd);
+router.put('/:id',  nuevoProducto.update);
 
 
 

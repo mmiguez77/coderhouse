@@ -5,14 +5,19 @@ import { Server as IOServer } from 'socket.io';
 import session from 'express-session';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
-import flash from 'connect-flash'
+import flash from 'connect-flash';
 import morgan from 'morgan';
-import('./passport/passport.js')
+import('./passport/passport.js');
+import config from './config/index.js';
 
-/* -- Importacion de Rutas -- */
+/* -- Rutas -- */
 import router from './routes/productos.routes.js';
 import routerMsg from './routes/mensajes.routes.js';
 import usersRoutes from './routes/users.routes.js';
+import infoRouter from './routes/info.routes.js';
+import randomsRouter from './routes/randoms.routes.js';
+
+/* -- Controladores -- */
 import Mensaje from './controllers/Mensaje.js';
 import Producto from './controllers/Producto.js';
 const msg = new Mensaje();
@@ -23,7 +28,7 @@ const prodClass = new Producto();
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new IOServer(httpServer);
-const PORT = 8080;
+const PORT = config.PORT || 5000;
 
 /* -- MIDDLEWARES -- */
 app.use(cookieParser())
@@ -59,6 +64,8 @@ app.set('view engine', 'ejs')
 app.use('/api/productos', router);
 app.use('/mensajes', routerMsg);
 app.use('/user', usersRoutes)
+app.use('/info', infoRouter)
+app.use('/randoms', randomsRouter)
 app.get('/', function (req, res) { res.render('index') });
 
 

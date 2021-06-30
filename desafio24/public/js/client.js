@@ -65,7 +65,8 @@ function oldMsg(data) {
 
 document.getElementById("btnOldMsg").addEventListener("click", function () {
     fetch('http://localhost:8080/mensajes')
-        .then(res => res.json())
+    .then(res => res.json())
+    .then(data => console.log(data))    
         .then(data => oldMsg(data))
         .catch(err => console.log(err))
 });

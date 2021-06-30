@@ -8,7 +8,7 @@ export default class User {
         res.render('login')
     }
 
-    async mainGet(req, res) {
+    mainGet(req, res) {
         res.render('main')
     }
 

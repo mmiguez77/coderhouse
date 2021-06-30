@@ -12,11 +12,13 @@
                 </div>
             </div>
             <% } %>
-                <% if (welcome !='' ) { %>
+                <% if (user) { %>
                     <div class="container my-5 py-3 bg-secondary text-white text-center">
                         <h4> 
-                            <strong>Bienvenido</strong> <%= welcome %> 
+                            <strong>Bienvenido</strong> <%= user.displayName %> 
                         </h4>
+                        <img src="<%- user.photos[0].value %>" alt="foto_del_usuario">
+                        <p><%= user.emails[0].value %> </p>
                         <a href="/user/logout">
                             <button class="btn-sm btn-warning" type="submit">Logout</button>
                         </a>

@@ -1,6 +1,10 @@
 import passport from 'passport';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
+import config from '../config/index.js';
 // import UserModel from '../models/userSchema.js'
+
+const FACEBOOK_CLIENT_ID = config.FACEBOOK_CLIENT_ID;
+const FACEBOOK_CLIENT_SECRET = config.FACEBOOK_CLIENT_SECRET;
 
 passport.serializeUser((user, cb) => {
   cb(null, user);
@@ -10,12 +14,10 @@ passport.deserializeUser((obj, cb) => {
   cb(null, obj)
 });
 
-const fbId = '1214142649104287';
-const fbSecret = '84c01a85d5c45f7521e51241103a019e';
 
 passport.use(new FacebookStrategy({
-  clientID: fbId,
-  clientSecret: fbSecret,
+  clientID: FACEBOOK_CLIENT_ID,
+  clientSecret: FACEBOOK_CLIENT_SECRET,
   callbackURL: '/auth/facebook/callback',
   profileFields: ['id', 'displayName', 'photos', 'emails'],
   scope: ['email']
