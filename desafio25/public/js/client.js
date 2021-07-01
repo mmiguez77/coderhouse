@@ -2,8 +2,9 @@ const socket = io.connect();
 
 /* ---------------- CHAT ----------------------- */
 
-let pantalla = document.getElementById('pantalla'); // referencia del btn que envia los msg
-let botonChat = document.getElementById('btnChat'); // referencia del btn que envia los msg
+let pantalla = document.getElementById('pantalla');
+let botonChat = document.getElementById('btnChat');
+
 botonChat.addEventListener('click', () => { validar() }); // al apretar el boton ejecuta la fn valida()
 
 // Funcion que valida que los input no esten vacios y si estan OK envia la informacion al server
@@ -13,11 +14,19 @@ function validar() {
     if (mensaje === "" || user === "") {
         alert(`CAMPOS REQUERIDOS`);
     } else {
-        let nuevoMensaje = {
-            user: document.getElementById('userChat').value,
-            mensaje: document.getElementById('messageChat').value
+        let mensaje = {
+            author: {
+                email: document.getElementById('userChat').value,
+                nombre: document.getElementById('userName').value,
+                apellido: document.getElementById('userLastName').value,
+                edad: document.getElementById('userAge').value,
+                alias: document.getElementById('userAlias').value,
+                avatar: document.getElementById('userAvatar').value
+            },
+            text: document.getElementById('messageChat').value,
         };
-        socket.emit('new-message', nuevoMensaje);
+        //console.log(mensaje)
+        socket.emit('new-message', mensaje);
         document.getElementById('messageChat').value = "";
     };
 };
@@ -33,15 +42,15 @@ newDate = [
     date.getSeconds()].join(':');
 
 
-//Funcion que renderiza el array que viene del server para poder ser visto en el document
-
+//Funcion que renderiza el array que viene del server en tiempo real en el document HTML
 function renderMessage(data) {
     let html = data.map((elem, i) => {
         return (`
         <div>
-        Usuario: <strong style="color:blue">${elem.user}</strong></span>
+        <img src="${elem.author.avatar}" alt="avatar" style="width:8%"/>
+        <strong style="color:blue">${elem.author.email}</strong></span>
         (a las <span>${newDate.toString()}</span>)
-        dijo: <i style="color:green">${elem.mensaje}</i></div>`);
+        dijo: <i style="color:green">${elem.text}</i></div>`);
     }).join(' ');
     document.getElementById('pantalla').innerHTML = html;
 };
@@ -51,24 +60,64 @@ socket.on('new-message-server', (data) => {
 });
 
 
-// trar mensajes en DB
+// Funcion para renderiza los mensajes antiguos que son traidos desde la DB en el document HTML
 function oldMsg(data) {
+    //console.log(data)
     let html2 = data.map((elem, i) => {
         return (`
         <div>
-        Usuario: <strong style="color:blue">${elem.message.user}</strong></span>
+        <img src="${elem.author.avatar}" alt="avatar" style="width:8%"/>
+        <strong style="color:blue">${elem.author.email}</strong></span>
         (a las <span>${newDate.toString()}</span>)
-        dijo: <i style="color:green">${elem.message.mensaje}</i></div>`);
+        dijo: <i style="color:green">${elem.text}</i></div>`);
     }).join(' ');
     document.getElementById('pantallaOld').innerHTML = html2;
 };
 
-document.getElementById("btnOldMsg").addEventListener("click", function () {
-    fetch('http://localhost:8080/mensajes')
+// document.getElementById("btnOldMsg").addEventListener("click", function () {
+//     fetch('http://localhost:8080/mensajes')
+//         .then(res => res.json())
+//         //.then(data => console.log(data))
+//         // .then(data => oldMsg(data.mensajes))
+//         .catch(err => console.log(err))
+// });
+
+document.getElementById("btnOldMsg").addEventListener("click", async function () {
+
+    const msgNormalized = await fetch('http://localhost:8080/mensajes/norm')
         .then(res => res.json())
-        .then(data => oldMsg(data))
+        //.then(data => console.log(data))
+        .then(data => { return data })
         .catch(err => console.log(err))
+
+    //console.log(msgNormalized)
+    const msgNormalizedLength = JSON.stringify(msgNormalized).length
+
+    /* -------------- Desnomarlizacion del archivo recibido desde el back -------------- */
+    const schemaAuthor = new normalizr.schema.Entity('author', {}, { idAttribute: 'id' });
+    const schemaMensaje = new normalizr.schema.Entity('mensaje', {
+        author: schemaAuthor
+    }, { idAttribute: '_id' })
+    const schemaMensajes = new normalizr.schema.Entity('mensajes', {
+        mensajes: [schemaMensaje]
+    }, { idAttribute: 'id' })
+
+    const msgDesnormalized = normalizr.denormalize(msgNormalized.result, schemaMensajes, msgNormalized.entities)
+    //console.log(msgDesnormalized)
+    const msgDesnormalizedLength = JSON.stringify(msgDesnormalized).length
+    console.log('Normalizr Length', msgNormalizedLength);
+    console.log('Desnormalizr Length', msgDesnormalizedLength);
+
+    /* ---------------------------------------------------------------------------------- */
+
+    oldMsg(msgDesnormalized.mensajes) // Envio del archivo desnormalizo para su render en el front
+
+    let porcentual = parseInt((msgNormalizedLength * 100) / msgDesnormalizedLength)
+    console.log(`Compresión: ${porcentual}%`)
+    document.getElementById('compress').innerText = porcentual
+
 });
+
 
 /* -------------------  PRODUCTOS -------------------------- */
 

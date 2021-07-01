@@ -6,5 +6,6 @@ const msg = new Mensaje();
 
 routerMsg.post('/', validate, msg.addMsg);
 routerMsg.get('/', validate, msg.findAllMsg);
+routerMsg.get('/norm', msg.normalizedData);
 
 export default routerMsg;
