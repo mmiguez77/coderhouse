@@ -105,15 +105,15 @@ document.getElementById("btnOldMsg").addEventListener("click", async function ()
     const msgDesnormalized = normalizr.denormalize(msgNormalized.result, schemaMensajes, msgNormalized.entities)
     //console.log(msgDesnormalized)
     const msgDesnormalizedLength = JSON.stringify(msgDesnormalized).length
-    console.log('Normalizr Length', msgNormalizedLength);
-    console.log('Desnormalizr Length', msgDesnormalizedLength);
+    //console.log('Normalizr Length', msgNormalizedLength);
+    //console.log('Desnormalizr Length', msgDesnormalizedLength);
 
     /* ---------------------------------------------------------------------------------- */
 
     oldMsg(msgDesnormalized.mensajes) // Envio del archivo desnormalizo para su render en el front
 
     let porcentual = parseInt((msgNormalizedLength * 100) / msgDesnormalizedLength)
-    console.log(`Compresión: ${porcentual}%`)
+    //console.log(`Compresión: ${porcentual}%`)
     document.getElementById('compress').innerText = porcentual
 
 });

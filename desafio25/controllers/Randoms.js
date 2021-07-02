@@ -5,8 +5,8 @@ export default class Random {
         try {
             let param = await req.query.number
             let numeros = generateNumber(param)
-            
-            res.render('random', {'datos': numeros})
+          
+            res.render('random',{numeros})
             
             function generateNumber(param) {
                 let n = [];

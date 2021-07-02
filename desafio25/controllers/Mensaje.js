@@ -1,7 +1,7 @@
 import MensajeModel from '../models/mensajeSchema.js';
 import EcommerceDbConnect from '../config/mongooseEcommerce.js';
 import { normalize, schema, denormalize } from 'normalizr'
-import util from 'util'
+//import util from 'util'
 
 
 class Mensaje {
@@ -70,9 +70,9 @@ class Mensaje {
 
             let normalizedData = normalize(msgOriginal, schemaMensajes);
 
-            console.log(util.inspect(normalizedData, false, 5, true))
-            console.log("length Original", JSON.stringify(msgOriginal).length);
-            console.log("length Normalize", JSON.stringify(normalizedData).length);
+            // console.log(util.inspect(normalizedData, false, 5, true))
+            // console.log("length Original", JSON.stringify(msgOriginal).length);
+            // console.log("length Normalize", JSON.stringify(normalizedData).length);
 
             res.send(normalizedData)
 
