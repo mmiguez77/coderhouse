@@ -1,27 +1,25 @@
+import { fork } from 'child_process';
+
 export default class Random {
 
+    getRandom(req, res) {
+        res.render('random');
 
-    async get(req, res) {
+    }
+
+    async getNumber(req, res) {
+        let param = await req.query.number;
+        //console.log(param);
         try {
-            let param = await req.query.number
-            let numeros = generateNumber(param)
-          
-            res.render('random',{numeros})
-            
-            function generateNumber(param) {
-                let n = [];
-                let iteraciones = param || 100000000;
-                function number() { return Math.floor(Math.random() * (1000 - 1) + 1) }
-                for (let i = 0; i < iteraciones; i++) { n.push(number()) }
-                let repetidos = n.reduce((acc, cur) => (acc[cur] ? acc[cur] += 1 : acc[cur] = 1, acc), {})
-                return repetidos;
-            }
+            const child = fork('../desafio25/helpers/n.js');
+            child.send('number', parseInt(param) );
+            child.on('message', data => res.send(data));
+            child.exit();
         } catch (error) {
-            console.error(error)
+            console.log(error);
         }
     }
 
-    
 
 
 }

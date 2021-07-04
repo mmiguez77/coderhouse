@@ -48,11 +48,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(flash())
-app.use((req, res,next) => {
+app.use((req, res, next) => {
     res.locals.user = req.user;
-    //res.locals.error = req.flash('error');
-    //res.locals.success = req.flash('success');
-    //res.locals.session = req.session
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
+    res.locals.session = req.session
     next()
 })
 
@@ -67,6 +67,7 @@ app.use('/user', usersRoutes)
 app.use('/info', infoRouter)
 app.use('/randoms', randomsRouter)
 app.get('/', function (req, res) { res.render('index') });
+
 
 
 /* -------------------- Web Sockets ---------------------- */
@@ -99,6 +100,3 @@ const server = httpServer.listen(PORT, () => {
     console.log(`** Servidor HTTP en puerto: ${server.address().port}`);
 })
 server.on("error", error => console.log(`Error en servidor ${error}`));
-
-
-

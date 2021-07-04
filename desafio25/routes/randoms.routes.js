@@ -1,9 +1,10 @@
 import express from 'express';
-import Random from '../controllers/Randoms.js'
+import Random from '../controllers/Randoms.js';
 const randomsRouter = express.Router();
 const random = new Random();
 
-randomsRouter.get('/', random.get)
+randomsRouter.get('/', random.getRandom);
+randomsRouter.get('/number', random.getNumber);
 
 
 

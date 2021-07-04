@@ -14,6 +14,21 @@
       </form>
 
 
+      <div class="mt-4 ml-4">
+        <% if (numeros !='' ) { %>
+
+          <script>
+            let json = ('<%- JSON.stringify(numeros) %>')
+            let text = json.replace(/,/g, '<br>')
+            document.write(text)
+          </script>
+
+          <% } %>
+      </div>
+
+
+
+
     </div>
 
     <%- include ('./layouts/footer') -%>
