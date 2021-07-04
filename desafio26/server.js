@@ -1,4 +1,4 @@
-/* -- DEPENDENCIAS -- */
+/* -------------------- Dependencias ---------------------- */
 import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
@@ -9,38 +9,38 @@ import flash from 'connect-flash';
 import morgan from 'morgan';
 import('./passport/passport.js');
 import config from './config/index.js';
+import cluster from 'cluster';
+import * as os from 'os'
+const numCPUs = os.cpus().length;
 
-/* -- Rutas -- */
+/* -------------------- Rutas ---------------------- */
 import router from './routes/productos.routes.js';
 import routerMsg from './routes/mensajes.routes.js';
 import usersRoutes from './routes/users.routes.js';
 import infoRouter from './routes/info.routes.js';
-import randomsRouter from './routes/randoms.routes.js';
+//import randomsRouter from './routes/randoms.routes.js';
 
-/* -- Controladores -- */
+/* -------------------- Controllers ---------------------- */
 import Mensaje from './controllers/Mensaje.js';
 import Producto from './controllers/Producto.js';
 const msg = new Mensaje();
 const prodClass = new Producto();
 
-// COMIENZO APP
-/* -- CONFIG DEL SERVER -- */
+
+/* -------------------- Configuracion Server ---------------------- */
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new IOServer(httpServer);
 const PORT = config.PORT || 5000;
 
-/* -- MIDDLEWARES -- */
+/* -------------------- Middlewares ---------------------- */
 app.use(cookieParser())
 app.use(session({
     secret: 'secreto',
     rolling: true,
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        maxAge: 60000 // tiempo en milisegundos (10 min = 60000 ms * 10)
-    }
-}));
+    cookie: { maxAge: 60000 /* (10 min = 60000 ms * 10)*/ }}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
@@ -56,19 +56,17 @@ app.use((req, res, next) => {
     next()
 })
 
-/* -- EJS -- */
+/* -------------------- Ejs ---------------------- */
 app.set('views', './views');
 app.set('view engine', 'ejs')
 
-/* -- ENDPOINTS -- */
+/* -------------------- Endpoints ---------------------- */
 app.use('/api/productos', router);
 app.use('/mensajes', routerMsg);
 app.use('/user', usersRoutes)
 app.use('/info', infoRouter)
-app.use('/randoms', randomsRouter)
+//app.use('/randoms', randomsRouter)
 app.get('/', function (req, res) { res.render('index') });
-
-
 
 /* -------------------- Web Sockets ---------------------- */
 
@@ -93,10 +91,30 @@ io.on('connection', socket => {
 
 });
 
+/* -------------------- Servidor ---------------------- */
+const server = servidor(process.argv[2] || 'FORK')
 
+function servidor(args) {
+    if (args == 'FORK') {
+        httpServer.listen(PORT, () => {
+            console.log(`Servidor en Puerto ${PORT} - PID WORKER: ${process.pid}`);
+            app.on("error", error => console.log(`Error en servidor ${error}`));
+        })
+    } else {
+        if (cluster.isMaster) {
+            console.log(numCPUs);
+            console.log(`PID MASTER ${process.pid}`);
 
-/* ---- SERVIDOR ---- */
-const server = httpServer.listen(PORT, () => {
-    console.log(`** Servidor HTTP en puerto: ${server.address().port}`);
-})
-server.on("error", error => console.log(`Error en servidor ${error}`));
+            for (let i = 0; i < numCPUs; i++) {cluster.fork()}
+
+            cluster.on('exit', worker => {
+                console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
+                cluster.fork()
+            })
+        } else {
+            app.listen(PORT, err => {
+                if (!err) console.log(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
+            })
+        }
+    }
+}
