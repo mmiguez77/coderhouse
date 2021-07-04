@@ -31,7 +31,7 @@ const prodClass = new Producto();
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new IOServer(httpServer);
-const PORT = config.PORT || 5000;
+const PORT = parseInt(process.argv[2]) || config.PORT || 5000;
 
 /* -------------------- Middlewares ---------------------- */
 app.use(cookieParser())
@@ -92,7 +92,7 @@ io.on('connection', socket => {
 });
 
 /* -------------------- Servidor ---------------------- */
-const server = servidor(process.argv[2] || 'FORK')
+const server = servidor( 'CLUSTER' /*Completar según el servidor 'CLUSTER' || 'FORK'*/ ) 
 
 function servidor(args) {
     if (args == 'FORK') {
