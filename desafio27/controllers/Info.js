@@ -15,5 +15,7 @@ export default class Info {
             carpeta: process.cwd(),
             procesadores: numCPUs
         })
+
+    
     }
 }
