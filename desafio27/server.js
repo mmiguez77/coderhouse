@@ -48,7 +48,7 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-//app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(flash())
 app.use((req, res, next) => {
     res.locals.user = req.user;
