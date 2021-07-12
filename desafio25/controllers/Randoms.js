@@ -12,9 +12,10 @@ export default class Random {
         //console.log(param);
         try {
             const child = fork('../desafio25/helpers/n.js');
-            child.send('number', parseInt(param) );
-            child.on('message', data => res.send(data));
-            child.exit();
+            child.send({number: parseInt(param)} );
+            
+            child.on('message', async data => await res.send(data));
+            
         } catch (error) {
             console.log(error);
         }
