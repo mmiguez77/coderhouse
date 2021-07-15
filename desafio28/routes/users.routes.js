@@ -1,7 +1,7 @@
-import express from 'express';
-import User from '../controllers/Users.js';
-import passport from 'passport';
-import { validate } from '../passport/auth.js'
+const express = require('express');
+const User = require('../controllers/Users.js');
+const passport = require('passport');
+const validate = require('../passport/auth.js');
 
 const usersRoutes = express.Router();
 const user = new User();
@@ -12,7 +12,7 @@ usersRoutes.get('/auth/facebook/callback', passport.authenticate('facebook',{
     failureRedirect: '/user/login'
 }))
 
-usersRoutes.get('/main', user.mainGet)
+usersRoutes.get('/main', validate, user.mainGet)
 usersRoutes.get('/logout', user.logout)
 usersRoutes.get('/login', user.loginGet)
 usersRoutes.get('/register', user.registerGet)
@@ -29,8 +29,4 @@ usersRoutes.get('/register', user.registerGet)
 
 
 
-export default usersRoutes;
-
-
-
-
+module.exports =  usersRoutes;

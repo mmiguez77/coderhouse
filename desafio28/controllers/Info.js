@@ -1,7 +1,7 @@
-import * as os from 'os'
+const os = require ('os');
 const numCPUs = os.cpus().length;
 
-export default class Info {
+class Info {
 
     getInfo(req, res) {
 
@@ -14,20 +14,8 @@ export default class Info {
             proceso: process.pid,
             carpeta: process.cwd(),
             procesadores: numCPUs
-        })    
-    }
-
-    getInfoZip(req, res) {
-
-        res.render('info', {
-            argumento: process.argv,
-            plataforma: process.platform,
-            version: process.version,
-            memoria: process.memoryUsage(),
-            path: process.execPath,
-            proceso: process.pid,
-            carpeta: process.cwd(),
-            procesadores: numCPUs
-        })    
+        })
     }
 }
+
+module.exports = Info

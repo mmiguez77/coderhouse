@@ -1,4 +1,4 @@
-import winston from 'winston';
+const winston = require('winston');
 
 const format = winston.format.combine(
     winston.format.colorize(),
@@ -56,4 +56,4 @@ winston.createLogger({
 });
 
 
-export default logger;
+module.exports = logger;

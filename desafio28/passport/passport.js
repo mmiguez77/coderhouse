@@ -1,6 +1,6 @@
-import passport from 'passport';
-import { Strategy as FacebookStrategy } from 'passport-facebook';
-import config from '../config/index.js';
+const passport = require ('passport');
+const { Strategy: FacebookStrategy } = require('passport-facebook');
+const config = require ('../config/index.js');
 
 const FACEBOOK_CLIENT_ID = config.FACEBOOK_CLIENT_ID;
 const FACEBOOK_CLIENT_SECRET = config.FACEBOOK_CLIENT_SECRET;

@@ -1,26 +1,26 @@
 /* -------------------- Dependencias ---------------------- */
-import express from 'express';
-import { Server as HttpServer } from 'http';
-import { Server as IOServer } from 'socket.io';
-import session from 'express-session';
-import passport from 'passport';
-import cookieParser from 'cookie-parser';
-import flash from 'connect-flash';
-import morgan from 'morgan';
-import config from './config/index.js';
-import('./passport/passport.js');
-import logger from './config/winston.js'
+const express = require ('express');
+const { Server: HttpServer } = require ('http');
+const { Server: IOServer } = require ('socket.io');
+const session = require ('express-session');
+const passport = require ('passport');
+const cookieParser = require ('cookie-parser');
+const flash = require ('connect-flash');
+const morgan = require ('morgan');
+//const passport = require('./passport/passport.js');
+const config = require ('./config/index.js');
+const logger = require('./config/winston.js');
 
 /* -------------------- Rutas ---------------------- */
-import router from './routes/productos.routes.js';
-import routerMsg from './routes/mensajes.routes.js';
-import usersRoutes from './routes/users.routes.js';
-import infoRouter from './routes/info.routes.js';
-import randomsRouter from './routes/randoms.routes.js';
+const router = require ('./routes/productos.routes.js');
+const routerMsg = require ('./routes/mensajes.routes.js');
+const usersRoutes = require ('./routes/users.routes.js');
+const infoRouter = require ('./routes/info.routes.js');
+const randomsRouter = require ('./routes/randoms.routes.js');
 
 /* -------------------- Controllers ---------------------- */
-import Mensaje from './controllers/Mensaje.js';
-import Producto from './controllers/Producto.js';
+const Mensaje = require ('./controllers/Mensaje.js');
+const Producto = require ('./controllers/Producto.js');
 const msg = new Mensaje();
 const prodClass = new Producto();
 

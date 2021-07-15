@@ -1,8 +1,6 @@
-import MensajeModel from '../models/mensajeSchema.js';
-import EcommerceDbConnect from '../config/mongooseEcommerce.js';
-import { normalize, schema, denormalize } from 'normalizr'
-import logger from '../config/winston.js'
-//import util from 'util'
+const MensajeModel = require('../models/mensajeSchema.js');
+const EcommerceDbConnect = require('../config/mongooseEcommerce.js');
+const { normalize, schema, denormalize } = require('normalizr');
 
 
 class Mensaje {
@@ -28,10 +26,11 @@ class Mensaje {
                 },
             }
             mensaje.text = data.mensajes.text
+            //console.log('ESTO LLEGA AL BACK', mensaje)
             const newMsg = await MensajeModel.create(mensaje);
 
         } catch (error) {
-            logger.error.error(`Error en mensaje ${error.message}`);
+            console.log(error);
         }
     }
 
@@ -41,7 +40,7 @@ class Mensaje {
             let id = 'mensajes'
             return res.status(200).json({ id, mensajes });
         } catch (error) {
-            logger.error.error(`Error en mensaje ${error.message}`)
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }
     }
 
@@ -49,11 +48,14 @@ class Mensaje {
     async normalizedData(req, res) {
         try {
             let mensajes = await MensajeModel.find();
-            
+            //console.log('********* MNJ **************', mensajes.mensajes.author)
+
             let msgOriginal = {
                 id: 'mensajes',
                 mensajes: mensajes.map( mensaje => ({...mensaje._doc}))
             }
+
+           // console.log(msgOriginal)
 
             const schemaAuthor = new schema.Entity('author', {}, { idAttribute: 'email' });
 
@@ -66,13 +68,18 @@ class Mensaje {
             }, { idAttribute: 'id' })
 
             let normalizedData = normalize(msgOriginal, schemaMensajes);
+
+            // console.log(util.inspect(normalizedData, false, 5, true))
+            // console.log("length Original", JSON.stringify(msgOriginal).length);
+            // console.log("length Normalize", JSON.stringify(normalizedData).length);
+
             res.send(normalizedData)
 
         } catch (error) {
-            logger.error.error(`Error en mensaje ${error.message}`);
+            console.log(error)
         }
 
     }
 }
 
-export default Mensaje;
+module.exports = Mensaje;

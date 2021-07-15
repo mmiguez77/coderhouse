@@ -1,5 +1,4 @@
-import ProductoModel from '../models/productoSchema.js';
-import logger from '../config/winston.js'
+const ProductoModel = require('../models/productoSchema.js');
 
 class Producto {
 
@@ -16,7 +15,7 @@ class Producto {
             const newProducto = await ProductoModel.create(data);
 
         } catch (error) {
-            logger.error.error(`Error en producto ${error.message}`);
+            console.log(error);
         }
     }
 
@@ -26,7 +25,7 @@ class Producto {
             return res.status(200).json(prodInDb);
 
         } catch (error) {
-            logger.error.error(`Error en producto ${error.message}`);
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }
     }
 
@@ -41,7 +40,7 @@ class Producto {
             return res.status(200).json(prodById);
 
         } catch (error) {
-            logger.error.error(`Error en producto ${error.message}`);
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }
     }
 
@@ -55,7 +54,7 @@ class Producto {
             if (!prodToDel) { return res.status(404).json({ mensaje: 'Producto no encontrado' }); }
             return res.status(200).json({ mensaje: 'Producto eliminado con exito' });
         } catch (error) {
-            logger.error.error(`Error en producto ${error.message}`);
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }
     }
 
@@ -66,9 +65,9 @@ class Producto {
             const prodUpdated = await ProductoModel.updateOne({ _id }, data, { new: true });
             return res.status(200).json({ prodUpdated, mensaje: 'Producto actualizado' })
         } catch (error) {
-            logger.error.error(`Error en producto ${error.message}`);
+            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
         }
     }
 }
 
-export default Producto
+module.exports =  Producto
