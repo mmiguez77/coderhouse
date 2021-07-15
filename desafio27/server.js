@@ -10,8 +10,7 @@ const morgan = require ('morgan');
 //const passport = require('./passport/passport.js');
 const config = require ('./config/index.js');
 const cluster = require('cluster');
-const os = require ('os');
-const numCPUs = os.cpus().length;
+const numCPUs = require('os').cpus().length
 
 /* -------------------- Rutas ---------------------- */
 const router = require ('./routes/productos.routes.js');
@@ -94,7 +93,34 @@ io.on('connection', socket => {
 });
 
 /* -------------------- Servidor ---------------------- */
-const server = httpServer.listen(PORT, () => {
-    console.log(`Servidor en Puerto ${PORT} - PID WORKER: ${process.pid}`);
-});
-server.on("error", error => console.log(`Error en servidor ${error}`));
+
+const server = servidor (process.argv[3]) 
+//pm2 start server.js --name="serv1" --watch -- 8081 FORK
+//pm2 start server.js --name="serv2" --watch -- 8082 CLUSTER
+
+function servidor(argv) {
+    if (argv == 'FORK') {
+        httpServer.listen(PORT, () => {
+            console.log(`Servidor en Puerto ${PORT} Fork Mode - PID WORKER: ${process.pid}`);
+            app.on("error", error => console.log(`Error en servidor ${error}`));
+        })
+    }
+    if (argv == 'CLUSTER') {
+        if (cluster.isMaster) {
+            console.log(numCPUs);
+            console.log(`PID MASTER · Cluster Mode ${process.pid}`);
+
+            for (let i = 0; i < numCPUs; i++) { cluster.fork() }
+
+            cluster.on('online', function(worker) {
+                console.log('Worker ' + worker.process.pid + ' is online');
+            });
+        
+            cluster.on('exit', function(worker, code, signal) {
+                console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
+                console.log('Starting a new worker');
+                cluster.fork();
+            });
+        }
+    }
+}
