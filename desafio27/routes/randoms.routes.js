@@ -1,11 +1,33 @@
-import express from 'express';
-import Random from '../controllers/Randoms.js';
-const randomsRouter = express.Router();
-const random = new Random();
+const express = require('express');
+const User = require('../controllers/Users.js');
+const passport = require('passport');
+const validate = require('../passport/auth.js');
 
-randomsRouter.get('/', random.getRandom);
-randomsRouter.get('/number', random.getNumber);
+const usersRoutes = express.Router();
+const user = new User();
+
+usersRoutes.get('/auth/facebook', passport.authenticate('facebook'))
+usersRoutes.get('/auth/facebook/callback', passport.authenticate('facebook',{
+    successRedirect: '/user/main',
+    failureRedirect: '/user/login'
+}))
+
+usersRoutes.get('/main', validate, user.mainGet)
+usersRoutes.get('/logout', user.logout)
+usersRoutes.get('/login', user.loginGet)
+usersRoutes.get('/register', user.registerGet)
+
+
+// usersRoutes.post('/register', passport.authenticate("register", {
+//     successRedirect: "/user/main",
+//     failureRedirect: "/user/register",
+//     failureFlash: true,
+//     successFlash: true
+// }))
+
+// usersRoutes.post('/login', passport.authenticate("fb"))
 
 
 
-export default randomsRouter;
+module.exports =  usersRoutes;
+

@@ -1,25 +1,20 @@
-import { fork } from 'child_process';
+const { fork } = require ('child_process');
+const path = require ('path');
 
-export default class Random {
+class Random {
 
     getRandom(req, res) {
         res.render('random');
-
     }
 
-    async getNumber(req, res) {
-        let param = await req.query.number;
-        //console.log(param);
-        try {
-            const child = fork('../desafio25/helpers/n.js');
-            child.send('number', parseInt(param) );
-            child.on('message', data => res.send(data));
-            child.exit();
-        } catch (error) {
-            console.log(error);
-        }
+    getNumber(req, res) {
+        let param = req.query.number;
+
+        const child = fork('/coderhouse/desafio27/n.js');
+
+        child.send({ 'number': parseInt(param) })
+        child.on('message', data => res.send(data));  
     }
-
-
-
 }
+
+module.exports = Random;

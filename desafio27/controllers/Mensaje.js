@@ -1,7 +1,6 @@
-import MensajeModel from '../models/mensajeSchema.js';
-import EcommerceDbConnect from '../config/mongooseEcommerce.js';
-import { normalize, schema, denormalize } from 'normalizr'
-//import util from 'util'
+const MensajeModel = require('../models/mensajeSchema.js');
+const EcommerceDbConnect = require('../config/mongooseEcommerce.js');
+const { normalize, schema, denormalize } = require('normalizr');
 
 
 class Mensaje {
@@ -83,4 +82,4 @@ class Mensaje {
     }
 }
 
-export default Mensaje;
+module.exports = Mensaje;

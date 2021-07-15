@@ -1,7 +1,7 @@
-import * as os from 'os'
+const os = require ('os');
 const numCPUs = os.cpus().length;
 
-export default class Info {
+class Info {
 
     getInfo(req, res) {
 
@@ -15,7 +15,7 @@ export default class Info {
             carpeta: process.cwd(),
             procesadores: numCPUs
         })
-
-    
     }
 }
+
+module.exports = Info

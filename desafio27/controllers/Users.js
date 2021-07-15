@@ -1,4 +1,4 @@
-export default class User {
+class User {
 
     async registerGet(req, res) {
         res.render('register')
@@ -17,3 +17,5 @@ export default class User {
         res.redirect('/user/login')
     }
 }
+
+module.exports = User;
