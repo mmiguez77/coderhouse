@@ -12,12 +12,10 @@ function generador(param) {
 }
 
 
-process.on('number', async msg => {
-    const data = generador(await msg);
-    setTimeout(() => {
-        process.send(data);
-        
-    }, 1000);
+process.on('message', message => {
+    let data = generador(message.number);
+    process.send(data);
+    process.exit();
 })
 
 

@@ -1,4 +1,4 @@
-export default class Info {
+class Info {
 
     getInfo(req, res) {
 
@@ -13,3 +13,5 @@ export default class Info {
         })
     }
 }
+
+module.exports = Info
