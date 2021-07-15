@@ -1,5 +1,5 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "desafio26",
   "version": "1.0.0",
   "description": "",

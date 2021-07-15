@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-export default class EcommerceDbConnect {
+class EcommerceDbConnect {
 
     constructor() {
         this.connection = this.createConnection()
@@ -15,3 +15,4 @@ export default class EcommerceDbConnect {
     }
 }
 
+module.exports = EcommerceDbConnect

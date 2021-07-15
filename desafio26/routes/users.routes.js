@@ -1,7 +1,7 @@
-import express from 'express';
-import User from '../controllers/Users.js';
-import passport from 'passport';
-import { validate } from '../passport/auth.js'
+const express = require('express');
+const User = require('../controllers/Users.js');
+const passport = require('passport');
+const validate = require('../passport/auth.js');
 
 const usersRoutes = express.Router();
 const user = new User();
@@ -29,7 +29,7 @@ usersRoutes.get('/register', user.registerGet)
 
 
 
-export default usersRoutes;
+module.exports =  usersRoutes;
 
 
 

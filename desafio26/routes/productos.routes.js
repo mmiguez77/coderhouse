@@ -1,6 +1,6 @@
-import express from 'express';
-import Producto from '../controllers/Producto.js';
-import { validate } from '../passport/auth.js'
+const express = require ('express');
+const Producto = require ('../controllers/Producto.js');
+const validate = require ('../passport/auth.js');
 const router = express.Router();
 const nuevoProducto = new Producto();
 
@@ -13,4 +13,4 @@ router.put('/:id', validate, nuevoProducto.update);
 
 
 
-export default router;
+module.exports = router;
