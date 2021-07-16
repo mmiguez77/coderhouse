@@ -30,30 +30,4 @@ const logger = {
 }
 
 
-winston.createLogger({
-    transports: [
-        new winston.transports.File({
-
-            filename: 'log/error.log',
-
-            level: 'warn',
-            filename: 'log/warn.log',
-            format: winston.format.combine(
-                winston.format.timestamp({ format: 'MMM-DD-YYYY HH:mm:ss' }),
-                winston.format.align(),
-                winston.format.printf(warn => `${warn.level}: ${[warn.timestamp]}: ${warn.message}`)
-            ),
-        }),
-        new winston.transports.Console({
-            level: 'info',
-            format: winston.format.combine(
-                winston.format.timestamp({ format: 'MMM-DD-YYYY HH:mm:ss' }),
-                winston.format.align(),
-                winston.format.printf(info => `${info.level}: ${[info.timestamp]}: ${info.message}`)
-            ),
-        }),
-    ]
-});
-
-
 module.exports = logger;
