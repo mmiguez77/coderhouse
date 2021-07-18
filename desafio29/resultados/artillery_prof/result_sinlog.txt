@@ -1,0 +1,150 @@
+Statistical profiling result from info_sinlog.log, (1428 ticks, 1 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   1122   78.6%          C:\WINDOWS\SYSTEM32\ntdll.dll
+    296   20.7%          C:\Program Files\nodejs\node.exe
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      2    0.1%   20.0%  RegExp: [ \t]*<%_
+      1    0.1%   10.0%  RegExp: (<%%|%%>|<%=|<%-|<%_|<%#|<%|%>|-%>|_%>)
+      1    0.1%   10.0%  LazyCompile: *readFileSync fs.js:374:22
+      1    0.1%   10.0%  LazyCompile: *processTicksAndRejections internal/process/task_queues.js:65:35
+      1    0.1%   10.0%  LazyCompile: *parseTemplateText G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:749:31
+      1    0.1%   10.0%  LazyCompile: *next G:\coderhouse\desafio29\node_modules\express\lib\router\index.js:176:16
+      1    0.1%   10.0%  LazyCompile: *Hash internal/crypto/hash.js:37:14
+      1    0.1%   10.0%  LazyCompile: *<anonymous> internal/per_context/primordials.js:23:10
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      9    0.6%   90.0%  JavaScript
+      0    0.0%    0.0%  C++
+      7    0.5%   70.0%  GC
+   1418   99.3%          Shared libraries
+      1    0.1%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   1122   78.6%  C:\WINDOWS\SYSTEM32\ntdll.dll
+     17    1.5%    LazyCompile: *readFileSync fs.js:374:22
+     16   94.1%      LazyCompile: ~fileLoader G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:290:20
+     16  100.0%        LazyCompile: ~handleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:208:21
+     14   87.5%          LazyCompile: ~includeFile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:307:21
+     14  100.0%            LazyCompile: ~include G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:685:30
+      2   12.5%          LazyCompile: ~tryHandleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:252:24
+      2  100.0%            LazyCompile: ~exports.renderFile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:439:31
+      1    5.9%      LazyCompile: *include G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:685:30
+      1  100.0%        Eval: ~<anonymous> :1:20
+      1  100.0%          LazyCompile: ~anonymous G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:684:59
+      1  100.0%            LazyCompile: ~tryHandleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:252:24
+
+    296   20.7%  C:\Program Files\nodejs\node.exe
+    220   74.3%    C:\Program Files\nodejs\node.exe
+    104   47.3%      LazyCompile: ~handleWriteReq internal/stream_base_commons.js:47:24
+     90   86.5%        LazyCompile: ~writeGeneric internal/stream_base_commons.js:143:22
+     90  100.0%          LazyCompile: ~Socket._writeGeneric net.js:759:42
+     90  100.0%            LazyCompile: ~Socket._write net.js:796:35
+     14   13.5%        LazyCompile: *writeOrBuffer internal/streams/writable.js:334:23
+     14  100.0%          LazyCompile: ~Writable.write internal/streams/writable.js:258:36
+      9   64.3%            LazyCompile: ~value internal/console/constructor.js:258:20
+      5   35.7%            LazyCompile: ~logRequest G:\coderhouse\desafio29\node_modules\morgan\index.js:116:25
+     13    5.9%      C:\Program Files\nodejs\node.exe
+      3   23.1%        LazyCompile: *scanLine G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:803:22
+      2   66.7%          LazyCompile: *generateSource G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:709:28
+      2  100.0%            LazyCompile: *compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:569:21
+      1   33.3%          LazyCompile: ~<anonymous> G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:730:32
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      2   15.4%        LazyCompile: *Template G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:507:18
+      2  100.0%          LazyCompile: ~compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:379:35
+      2  100.0%            LazyCompile: ~handleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:208:21
+      2   15.4%        C:\Program Files\nodejs\node.exe
+      1   50.0%          LazyCompile: ~touch G:\coderhouse\desafio29\node_modules\express-session\session\memory.js:147:45
+      1  100.0%            LazyCompile: ~end G:\coderhouse\desafio29\node_modules\express-session\index.js:250:27
+      1   50.0%          LazyCompile: ~SafeSet internal/per_context/primordials.js:102:3
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/loaders.js:1:1
+      1    7.7%        LazyCompile: ~stat internal/modules/cjs/loader.js:132:14
+      1  100.0%          LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      1    7.7%        LazyCompile: ~generateSource G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:709:28
+      1  100.0%          LazyCompile: ~compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:569:21
+      1  100.0%            LazyCompile: ~compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:379:35
+      1    7.7%        LazyCompile: ~generateHolderClass G:\coderhouse\desafio29\node_modules\bluebird\js\release\join.js:28:39
+      1  100.0%          LazyCompile: ~module.exports G:\coderhouse\desafio29\node_modules\bluebird\js\release\join.js:3:9
+      1  100.0%            LazyCompile: ~module.exports G:\coderhouse\desafio29\node_modules\bluebird\js\release\promise.js:2:26
+      1    7.7%        LazyCompile: ~exports.escapeRegExpChars G:\coderhouse\desafio29\node_modules\ejs\lib\utils.js:39:38
+      1  100.0%          LazyCompile: ~createRegex G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:558:25
+      1  100.0%            LazyCompile: ~Template G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:507:18
+      1    7.7%        LazyCompile: ~createRegex G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:558:25
+      1  100.0%          LazyCompile: ~Template G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:507:18
+      1  100.0%            LazyCompile: ~compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:379:35
+      1    7.7%        Eval: ~<anonymous> G:\coderhouse\desafio29\node_modules\engine.io\node_modules\debug\src\node.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1017:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+     10    4.5%      LazyCompile: ~existsSync fs.js:249:20
+     10  100.0%        LazyCompile: ~getIncludePath G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:154:24
+     10  100.0%          LazyCompile: ~includeFile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:307:21
+     10  100.0%            LazyCompile: ~include G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:685:30
+      9    4.1%      LazyCompile: ~writevGeneric internal/stream_base_commons.js:118:23
+      9  100.0%        LazyCompile: ~Socket._writeGeneric net.js:759:42
+      9  100.0%          LazyCompile: ~Socket._writev net.js:791:36
+      9  100.0%            LazyCompile: ~doWrite internal/streams/writable.js:367:17
+      9    4.1%      LazyCompile: ~wrapSafe internal/modules/cjs/loader.js:964:18
+      9  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1017:37
+      9  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      9  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      6    2.7%      LazyCompile: ~stat internal/modules/cjs/loader.js:132:14
+      5   83.3%        LazyCompile: ~tryFile internal/modules/cjs/loader.js:334:17
+      5  100.0%          LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:350:23
+      4   80.0%            LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      1   20.0%            LazyCompile: ~tryPackage internal/modules/cjs/loader.js:288:20
+      1   16.7%        LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      1  100.0%          LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      4    1.8%      LazyCompile: ~getSession G:\coderhouse\desafio29\node_modules\express-session\session\memory.js:164:20
+      3   75.0%        LazyCompile: ~touch G:\coderhouse\desafio29\node_modules\express-session\session\memory.js:147:45
+      3  100.0%          LazyCompile: ~end G:\coderhouse\desafio29\node_modules\express-session\index.js:250:27
+      3  100.0%            LazyCompile: ~send G:\coderhouse\desafio29\node_modules\express\lib\response.js:107:25
+      1   25.0%        LazyCompile: ~get G:\coderhouse\desafio29\node_modules\express-session\session\memory.js:106:41
+      1  100.0%          LazyCompile: ~session G:\coderhouse\desafio29\node_modules\express-session\index.js:179:26
+      1  100.0%            LazyCompile: ~handle G:\coderhouse\desafio29\node_modules\express\lib\router\layer.js:86:49
+      4    1.8%      LazyCompile: ~compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:569:21
+      4  100.0%        LazyCompile: ~compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:379:35
+      4  100.0%          LazyCompile: ~handleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:208:21
+      3   75.0%            LazyCompile: ~includeFile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:307:21
+      1   25.0%            LazyCompile: ~tryHandleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:252:24
+      4    1.8%      LazyCompile: ~Hash internal/crypto/hash.js:37:14
+      4  100.0%        LazyCompile: ~createHash crypto.js:114:20
+      2   50.0%          LazyCompile: ~hash G:\coderhouse\desafio29\node_modules\express-session\index.js:596:14
+      2  100.0%            LazyCompile: ~isSaved G:\coderhouse\desafio29\node_modules\express-session\index.js:430:21
+      2   50.0%          LazyCompile: ~entitytag G:\coderhouse\desafio29\node_modules\etag\index.js:39:20
+      2  100.0%            LazyCompile: ~etag G:\coderhouse\desafio29\node_modules\etag\index.js:70:15
+      4    1.8%      LazyCompile: *compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:569:21
+      3   75.0%        LazyCompile: ~compile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:379:35
+      3  100.0%          LazyCompile: ~handleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:208:21
+      2   66.7%            LazyCompile: ~tryHandleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:252:24
+      1   33.3%            LazyCompile: ~includeFile G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:307:21
+      1   25.0%        LazyCompile: *include G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:685:30
+      1  100.0%          Eval: ~<anonymous> :1:20
+      1  100.0%            LazyCompile: ~anonymous G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:684:59
+      3    1.4%      LazyCompile: ~statSync fs.js:1081:18
+      3  100.0%        LazyCompile: ~tryStat G:\coderhouse\desafio29\node_modules\express\lib\view.js:174:17
+      3  100.0%          LazyCompile: ~resolve G:\coderhouse\desafio29\node_modules\express\lib\view.js:146:42
+      3  100.0%            LazyCompile: ~lookup G:\coderhouse\desafio29\node_modules\express\lib\view.js:104:40
+      3    1.4%      LazyCompile: ~openSync fs.js:467:18
+      3  100.0%        LazyCompile: ~readFileSync fs.js:374:22
+      2   66.7%          LazyCompile: ~fileLoader G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:290:20
+      2  100.0%            LazyCompile: ~handleCache G:\coderhouse\desafio29\node_modules\ejs\lib\ejs.js:208:21
+      1   33.3%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+

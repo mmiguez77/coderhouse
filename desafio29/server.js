@@ -92,7 +92,32 @@ io.on('connection', socket => {
 });
 
 /* -------------------- Servidor ---------------------- */
-const server = httpServer.listen(PORT, () => {
-    logger.info.info(`Se inició servidor en Puerto ${PORT} - PID WORKER: ${process.pid}`);
-});
-server.on("error", error => logger.error.error(`Error al iniciar servidor ${error}`));
+
+const server = servidor (process.argv[3] || 'FORK') 
+
+function servidor(argv) {
+    if (argv == 'FORK') {
+        httpServer.listen(PORT, () => {
+            console.log(`Servidor en Puerto ${PORT} Fork Mode - PID WORKER: ${process.pid}`);
+            app.on("error", error => console.log(`Error en servidor ${error}`));
+        })
+    }
+    if (argv == 'CLUSTER') {
+        if (cluster.isMaster) {
+            console.log(numCPUs);
+            console.log(`PID MASTER · Cluster Mode ${process.pid}`);
+
+            for (let i = 0; i < numCPUs; i++) { cluster.fork() }
+
+            cluster.on('online', function(worker) {
+                console.log('Worker ' + worker.process.pid + ' is online');
+            });
+        
+            cluster.on('exit', function(worker, code, signal) {
+                console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
+                console.log('Starting a new worker');
+                cluster.fork();
+            });
+        }
+    }
+}
