@@ -31,10 +31,10 @@ class User {
                     host: "smtp.ethereal.email",
                     port: 587,
                     secure: false,
-                    //service: 'gmail',
+                    //service: 'gmail' ** caso que sea gmail comentar host, port, secure,
                     auth: {
-                        user: 'blaze.mccullough70@ethereal.email', //'mail de gmail'
-                        pass: 'mhb7HJm8pBB8qxgdKc'// 'pass de gmail'
+                        user: /*'direccion de mail ethereal o gmail'*/'',
+                        pass: /*'password ethereal o gmail'*/''
                     },
                     tls: {
                         rejectUnauthorized: false
@@ -78,11 +78,10 @@ class User {
                 let transporter = nodemailer.createTransport({
                     host: "smtp.ethereal.email",
                     port: 587,
-                    //service: 'gmail',
-                    secure: false,
+                    //service: 'gmail' ** caso que sea gmail comentar host, port, secure,
                     auth: {
-                        user: 'blaze.mccullough70@ethereal.email', //'mail de gmail'
-                        pass: 'mhb7HJm8pBB8qxgdKc' // 'pass de gmail'
+                        user: /*'direccion de mail ethereal o gmail'*/'',
+                        pass: /*'password ethereal o gmail'*/''
                     },
                     tls: {
                         rejectUnauthorized: false
