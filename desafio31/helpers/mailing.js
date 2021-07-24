@@ -1,39 +1,48 @@
-const nodemailer = require ('nodemailer');
+const nodemailer = require('nodemailer');
 
-function createMail(config) {
+async function main(subjet, html) {
+  let testAccount = await nodemailer.createTestAccount();
 
-  const transporter = nodemailer.createTransport(config);
-
-  return async function sendMail({ to, subject, text, html }) {
-    const mailOptions = { from: config.auth.user, to, subject, text, html };
-    return await transporter.sendMail(mailOptions)
-  }
-}
-
-function mailEthereal() {
-  return createMail({
-    host: 'smtp.ethereal.email',
+  let transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
     port: 587,
+    secure: false,
     auth: {
-        user: 'blaze.mccullough70@ethereal.email',
-        pass: 'mhb7HJm8pBB8qxgdKc'
+      user: 'blaze.mccullough70@ethereal.email',
+      pass: 'mhb7HJm8pBB8qxgdKc'
+    },
+    tls: {
+        rejectUnauthorized: false
     }
-  })
+  });
+ 
+  let info = await transporter.sendMail({
+    from: 'blaze.mccullough70@ethereal.email', 
+    to: "blaze.mccullough70@ethereal.email", 
+    subject: subjet, 
+    text: "Hello world?", 
+    html: html,
+  });
 }
 
-module.exports = mailEthereal
+main().catch(console.error);
 
 
-// const sendMail = mailEthereal()
+// ------- 
+// // twilio
 
-// const fakeAccount = 'blaze.mccullough70@ethereal.email'
-// const subject = process.argv[2] || 'sin asunto'
-// const html = process.argv[3] || 'nada para decir'
+// const accountSid = 'AAAAAAAAAAAAAAAAA';
+// const authToken = '999999999999999999';
 
-// const info = await sendMail({
-//   to: fakeAccount,
-//   subject: subject,
-//   html: html
-// })
+// const twilio = require('twilio');
 
-// console.log(info)
+// const client = twilio(accountSid, authToken);
+
+// const enviarSMS = (mensaje) => { 
+//   let rta = client.messages.create({
+//           body: mensaje, 
+//           from: '+12566009360',
+//           to: '+54111234567'
+//   })
+//   return rta;   
+// }

@@ -22,11 +22,7 @@ passport.use(new FacebookStrategy({
   scope: ['email']
 }, async function (accessToken, refreshToken, userProfile, done) {
   //console.log('Foto:',userProfile.photos[0].value, 'User:',userProfile.displayName);
-  const photo = userProfile.photos[0].value;
-  const userName = userProfile.displayName;
-  const newUser = new UserModel({ photo, userName });
-  await newUser.save();
-  return done(null, userProfile);
+    return done(null, userProfile);
 }));
 
 module.exports = passport

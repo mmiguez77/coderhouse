@@ -28,7 +28,7 @@ const prodClass = new Producto();
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new IOServer(httpServer);
-const PORT = process.argv[2] || config.PORT || 8080;
+const PORT = config.PORT || 8080;
 
 
 /* -------------------- Middlewares ---------------------- */
@@ -93,6 +93,6 @@ io.on('connection', socket => {
 /* -------------------- Servidor ---------------------- */
 
 const server = httpServer.listen(PORT, () => {
-    console.log(`** Servidor HTTP en puerto: ${server.address().port}`);
-})
-server.on("error", error => console.log(`Error en servidor ${error}`));
+    logger.info.info(`Se inició servidor en Puerto ${PORT} - PID WORKER: ${process.pid}`);
+});
+server.on("error", error => logger.error.error(`Error al iniciar servidor ${error}`));
