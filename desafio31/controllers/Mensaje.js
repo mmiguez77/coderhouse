@@ -17,16 +17,16 @@ class Mensaje {
             const data = await { ...req }
             const mensaje = {
                 author: {
-                    email: data.mensajes.author.email,
-                    nombre: data.mensajes.author.nombre,
-                    apellido: data.mensajes.author.apellido,
-                    edad: data.mensajes.author.edad,
-                    alias: data.mensajes.author.alias,
-                    avatar: data.mensajes.author.avatar
+                    email: data.message.author.email,
+                    nombre: data.message.author.nombre,
+                    apellido: data.message.author.apellido,
+                    edad: data.message.author.edad,
+                    alias: data.message.author.alias,
+                    avatar: data.message.author.avatar
                 },
             }
-            mensaje.text = data.mensajes.text
             //console.log('ESTO LLEGA AL BACK', mensaje)
+            mensaje.text = data.message.text
             const newMsg = await MensajeModel.create(mensaje);
 
         } catch (error) {

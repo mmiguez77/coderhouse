@@ -6,13 +6,22 @@ let pantalla = document.getElementById('pantalla');
 let botonChat = document.getElementById('btnChat');
 
 botonChat.addEventListener('click', () => { validar() }); // al apretar el boton ejecuta la fn valida()
-
 // Funcion que valida que los input no esten vacios y si estan OK envia la informacion al server
 function validar() {
     let user = document.getElementById('userChat').value;
     let mensaje = document.getElementById('messageChat').value;
+    console.log(mensaje);
     if (mensaje === "" || user === "") {
         alert(`CAMPOS REQUERIDOS`);
+    } else if (mensaje.includes("administrador") || mensaje.includes("Administrador") || mensaje.includes("ADMINISTRADOR") ) {
+        let msgAdmin = {
+            author: {
+                nombre: document.getElementById('userName').value,
+            },
+            text: document.getElementById('messageChat').value,
+        };
+        socket.emit('messageAdmin', msgAdmin);
+        document.getElementById('messageChat').value = "";
     } else {
         let mensaje = {
             author: {
@@ -25,11 +34,11 @@ function validar() {
             },
             text: document.getElementById('messageChat').value,
         };
-        //console.log(mensaje)
         socket.emit('new-message', mensaje);
         document.getElementById('messageChat').value = "";
     };
 };
+
 
 // Generar la fecha
 let date = new Date()
@@ -42,7 +51,7 @@ newDate = [
     date.getSeconds()].join(':');
 
 
-//Funcion que renderiza el array que viene del server en tiempo real en el document HTML
+//Funcion que renderiza en el document HTML, el array que viene del server.js en tiempo real 
 function renderMessage(data) {
     let html = data.map((elem, i) => {
         return (`
@@ -82,6 +91,7 @@ function oldMsg(data) {
 //         .catch(err => console.log(err))
 // });
 
+// Normalizr de mensajes antiguos guardados en la DB, Fecth a la API para traer los msg
 document.getElementById("btnOldMsg").addEventListener("click", async function () {
 
     const msgNormalized = await fetch('http://localhost:8080/mensajes/norm')
@@ -119,6 +129,8 @@ document.getElementById("btnOldMsg").addEventListener("click", async function ()
 });
 
 
+
+
 /* -------------------  PRODUCTOS -------------------------- */
 
 // ENVIAR PRODUCTOS POR SOCKET
@@ -138,7 +150,7 @@ function validarForm() {
             thumbnail: document.getElementById('thumbnail').value
         };
         socket.emit('new-producto', newProd)
-        
+
         document.getElementById('title').value = ""
         document.getElementById('price').value = ""
         document.getElementById('thumbnail').value = ""
@@ -176,8 +188,8 @@ const verProdHtml = data => {
 
 
 socket.on('new-prod-server', async data => {
-    let array = [] 
+    let array = []
     array.push(await data)
     verProdHtml(array)
-    
+
 })

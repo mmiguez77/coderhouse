@@ -1,25 +1,26 @@
 /* -------------------- Dependencias ---------------------- */
-const express = require ('express');
-const { Server: HttpServer } = require ('http');
-const { Server: IOServer } = require ('socket.io');
-const session = require ('express-session');
-const cookieParser = require ('cookie-parser');
-const flash = require ('connect-flash');
-const morgan = require ('morgan');
+const express = require('express');
+const { Server: HttpServer } = require('http');
+const { Server: IOServer } = require('socket.io');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+const morgan = require('morgan');
 const passport = require('./passport/passport.js');
-const config = require ('./config/index.js');
+const config = require('./config/index.js');
 const logger = require('./config/winston.js');
+const { twilioSms } = require('./helpers/twilio.js')
 
 /* -------------------- Rutas ---------------------- */
-const router = require ('./routes/productos.routes.js');
-const routerMsg = require ('./routes/mensajes.routes.js');
-const usersRoutes = require ('./routes/users.routes.js');
-const infoRouter = require ('./routes/info.routes.js');
-const randomsRouter = require ('./routes/randoms.routes.js');
+const router = require('./routes/productos.routes.js');
+const routerMsg = require('./routes/mensajes.routes.js');
+const usersRoutes = require('./routes/users.routes.js');
+const infoRouter = require('./routes/info.routes.js');
+const randomsRouter = require('./routes/randoms.routes.js');
 
 /* -------------------- Controllers ---------------------- */
-const Mensaje = require ('./controllers/Mensaje.js');
-const Producto = require ('./controllers/Producto.js');
+const Mensaje = require('./controllers/Mensaje.js');
+const Producto = require('./controllers/Producto.js');
 const msg = new Mensaje();
 const prodClass = new Producto();
 
@@ -81,6 +82,15 @@ io.on('connection', socket => {
         msg.addMsg({ message });
         io.sockets.emit('new-message-server', toChat);
     });
+
+    socket.on('messageAdmin', async data => {
+        const msgAdmin = await data;
+        let name = await msgAdmin.author.nombre;
+        let msg = await msgAdmin.text;
+        let mensajeAlAdmin = `El usuario: ${name} | Envia el siguiente mensaje: ${msg}`;
+        twilioSms(mensajeAlAdmin);
+    });
+
 
     socket.on('new-producto', async data => {
         const producto = await data;

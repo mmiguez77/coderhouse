@@ -1,4 +1,4 @@
-const UserModel = require('../models/userSchema.js');
+//const UserModel = require('../models/userSchema.js');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const config = require('../config/index.js');
@@ -21,7 +21,6 @@ passport.use(new FacebookStrategy({
   profileFields: ['id', 'displayName', 'photos', 'emails'],
   scope: ['email']
 }, async function (accessToken, refreshToken, userProfile, done) {
-  //console.log('Foto:',userProfile.photos[0].value, 'User:',userProfile.displayName);
     return done(null, userProfile);
 }));
 

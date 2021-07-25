@@ -150,3 +150,256 @@
 2021-07-24T20:29:09.427Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 16452
 2021-07-24T20:36:49.364Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 13488
 2021-07-24T20:37:23.452Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 8512
+2021-07-24T20:37:39.211Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 18252
+2021-07-24T21:22:20.421Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17456
+2021-07-24T21:22:36.407Z [32minfo[39m: 	Cliente ID:ONRpT5OS7kAaAP9YAAAB inició conexión a traves de Socket
+2021-07-24T21:24:34.292Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 9780
+2021-07-24T21:24:34.612Z [32minfo[39m: 	Cliente ID:YCRj2dVTA7KUwGH4AAAB inició conexión a traves de Socket
+2021-07-24T21:24:51.001Z [32minfo[39m: 	Cliente ID:ECRBOpjhuYJK337dAAAD inició conexión a traves de Socket
+2021-07-24T21:28:34.536Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 18004
+2021-07-24T21:28:34.925Z [32minfo[39m: 	Cliente ID:S64LOPHzn5hq6q2MAAAB inició conexión a traves de Socket
+2021-07-24T21:28:44.201Z [32minfo[39m: 	Cliente ID:6eyRm6WLdB0s1DLIAAAD inició conexión a traves de Socket
+2021-07-24T21:31:10.443Z [32minfo[39m: 	Cliente ID:82Nu--vvDYzEvj1kAAAF inició conexión a traves de Socket
+2021-07-24T21:31:49.838Z [32minfo[39m: 	Cliente ID:yS9blOUrl9x-hRIcAAAH inició conexión a traves de Socket
+2021-07-24T21:31:53.884Z [32minfo[39m: 	Cliente ID:bTPtgMNXv92PnN_-AAAJ inició conexión a traves de Socket
+2021-07-24T23:19:37.495Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14784
+2021-07-24T23:19:58.746Z [32minfo[39m: 	Cliente ID:SIro5WYLZTttiZd5AAAB inició conexión a traves de Socket
+2021-07-24T23:23:15.126Z [32minfo[39m: 	Cliente ID:pz8Jwd8zH4VvzqTNAAAD inició conexión a traves de Socket
+2021-07-24T23:26:01.883Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 7996
+2021-07-24T23:26:02.571Z [32minfo[39m: 	Cliente ID:7vU9jxLwVvjM4GX3AAAB inició conexión a traves de Socket
+2021-07-24T23:26:49.039Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14076
+2021-07-24T23:27:12.392Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 8928
+2021-07-24T23:27:42.714Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 13652
+2021-07-24T23:27:57.038Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 13812
+2021-07-24T23:28:25.391Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12952
+2021-07-24T23:31:18.089Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 10936
+2021-07-24T23:31:19.944Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 2332
+2021-07-24T23:33:38.623Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 8604
+2021-07-24T23:34:06.681Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 8072
+2021-07-24T23:34:20.473Z [32minfo[39m: 	Cliente ID:azoGGkSqCvdxxKrFAAAB inició conexión a traves de Socket
+2021-07-24T23:37:05.452Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 2536
+2021-07-24T23:37:19.268Z [32minfo[39m: 	Cliente ID:0RihVHzuinC38Q5jAAAB inició conexión a traves de Socket
+2021-07-24T23:37:37.044Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 5052
+2021-07-24T23:37:37.303Z [32minfo[39m: 	Cliente ID:Zs7kymO2ytXtVg4qAAAB inició conexión a traves de Socket
+2021-07-24T23:37:37.562Z [32minfo[39m: 	Cliente ID:LyINdmiVI-WUX3IKAAAD inició conexión a traves de Socket
+2021-07-24T23:46:24.992Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 8416
+2021-07-24T23:46:25.254Z [32minfo[39m: 	Cliente ID:LKYot5ho3dZUSjiSAAAB inició conexión a traves de Socket
+2021-07-24T23:46:39.146Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 6524
+2021-07-24T23:46:39.826Z [32minfo[39m: 	Cliente ID:EYIri-wDrEXoIKtwAAAB inició conexión a traves de Socket
+2021-07-24T23:47:56.749Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 11712
+2021-07-24T23:47:56.961Z [32minfo[39m: 	Cliente ID:MyCCpRvieBXUWBboAAAB inició conexión a traves de Socket
+2021-07-24T23:48:45.818Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 7796
+2021-07-24T23:48:46.147Z [32minfo[39m: 	Cliente ID:5_3PY4JdciiXAvthAAAB inició conexión a traves de Socket
+2021-07-24T23:49:14.516Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14256
+2021-07-24T23:49:14.681Z [32minfo[39m: 	Cliente ID:nMYL-DWngR6-ILqAAAAB inició conexión a traves de Socket
+2021-07-24T23:49:37.581Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12376
+2021-07-24T23:49:37.851Z [32minfo[39m: 	Cliente ID:TGfINt4rvnsoAieaAAAB inició conexión a traves de Socket
+2021-07-24T23:50:04.670Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17324
+2021-07-24T23:50:04.711Z [32minfo[39m: 	Cliente ID:S2oLhuQZ82Uy0togAAAB inició conexión a traves de Socket
+2021-07-24T23:50:13.924Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 11020
+2021-07-24T23:50:14.171Z [32minfo[39m: 	Cliente ID:1afOG9695dnFxGnhAAAB inició conexión a traves de Socket
+2021-07-24T23:51:52.195Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14216
+2021-07-24T23:51:52.291Z [32minfo[39m: 	Cliente ID:NcY3UFhVRHHCHgwKAAAB inició conexión a traves de Socket
+2021-07-24T23:53:24.287Z [32minfo[39m: 	Cliente ID:nq359Qg76pTGQB3GAAAD inició conexión a traves de Socket
+2021-07-24T23:53:26.789Z [32minfo[39m: 	Cliente ID:hg2IsipG2hBiUJsPAAAF inició conexión a traves de Socket
+2021-07-24T23:56:17.125Z [32minfo[39m: 	Cliente ID:TbJrP7iC4o253DzSAAAH inició conexión a traves de Socket
+2021-07-24T23:56:46.299Z [32minfo[39m: 	Cliente ID:caANWf_aigTD5BA1AAAJ inició conexión a traves de Socket
+2021-07-24T23:56:52.056Z [32minfo[39m: 	Cliente ID:SwjExBF7RB0ZIQxPAAAL inició conexión a traves de Socket
+2021-07-24T23:58:42.925Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12768
+2021-07-24T23:58:42.992Z [32minfo[39m: 	Cliente ID:3N33Hv4dntbtD7fYAAAB inició conexión a traves de Socket
+2021-07-24T23:58:49.893Z [32minfo[39m: 	Cliente ID:w6Fskgj6p1PYbYDJAAAD inició conexión a traves de Socket
+2021-07-25T00:00:41.315Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 1376
+2021-07-25T00:00:41.583Z [32minfo[39m: 	Cliente ID:WQli0AnUE-8TJoFUAAAB inició conexión a traves de Socket
+2021-07-25T00:02:40.148Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 9528
+2021-07-25T00:02:40.405Z [32minfo[39m: 	Cliente ID:pmesiQEBzUu9N2wJAAAB inició conexión a traves de Socket
+2021-07-25T00:03:17.118Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12884
+2021-07-25T00:03:17.439Z [32minfo[39m: 	Cliente ID:9ZJ03mk0rk7Zg8YtAAAB inició conexión a traves de Socket
+2021-07-25T00:03:46.729Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 7288
+2021-07-25T00:03:46.928Z [32minfo[39m: 	Cliente ID:50ZBiOGEoNcK-GhHAAAB inició conexión a traves de Socket
+2021-07-25T00:04:52.464Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 5976
+2021-07-25T00:04:52.649Z [32minfo[39m: 	Cliente ID:Kzewiep-ylGi32KrAAAB inició conexión a traves de Socket
+2021-07-25T00:05:33.976Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14428
+2021-07-25T00:05:34.033Z [32minfo[39m: 	Cliente ID:UigwMbrv3aNU5SlSAAAB inició conexión a traves de Socket
+2021-07-25T00:06:27.573Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 11324
+2021-07-25T00:06:27.632Z [32minfo[39m: 	Cliente ID:IT3x5Uhwn95-lly1AAAB inició conexión a traves de Socket
+2021-07-25T00:06:34.319Z [32minfo[39m: 	Cliente ID:0msdhnnwHRZ_xXkhAAAD inició conexión a traves de Socket
+2021-07-25T00:08:46.052Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 11124
+2021-07-25T00:08:46.240Z [32minfo[39m: 	Cliente ID:uOWuBrxsyaorsoeIAAAB inició conexión a traves de Socket
+2021-07-25T00:11:08.536Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 18064
+2021-07-25T00:11:08.781Z [32minfo[39m: 	Cliente ID:pbEGEBJ0-idbqxzrAAAB inició conexión a traves de Socket
+2021-07-25T00:11:12.186Z [32minfo[39m: 	Cliente ID:ScUcsDYxspuTskA5AAAD inició conexión a traves de Socket
+2021-07-25T00:12:08.037Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 5316
+2021-07-25T00:12:08.392Z [32minfo[39m: 	Cliente ID:v7sHPDnxpxGwGhM2AAAB inició conexión a traves de Socket
+2021-07-25T00:13:04.794Z [32minfo[39m: 	Cliente ID:QLApc89GiowbNW8LAAAD inició conexión a traves de Socket
+2021-07-25T00:14:43.812Z [32minfo[39m: 	Cliente ID:03CDotDdrblhdr9RAAAF inició conexión a traves de Socket
+2021-07-25T00:16:23.146Z [32minfo[39m: 	Cliente ID:kqG7_kya0Ki7g8ueAAAH inició conexión a traves de Socket
+2021-07-25T00:16:30.640Z [32minfo[39m: 	Cliente ID:SsIvo6AbQZDaYB8cAAAJ inició conexión a traves de Socket
+2021-07-25T00:16:40.889Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17812
+2021-07-25T00:16:41.275Z [32minfo[39m: 	Cliente ID:Nh6Aga2uxlX0icSqAAAB inició conexión a traves de Socket
+2021-07-25T00:16:46.681Z [32minfo[39m: 	Cliente ID:teUFP_FClzv_GEn2AAAD inició conexión a traves de Socket
+2021-07-25T00:17:47.922Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 15544
+2021-07-25T00:17:48.241Z [32minfo[39m: 	Cliente ID:JMNJkUwLCqcd66soAAAB inició conexión a traves de Socket
+2021-07-25T00:17:53.106Z [32minfo[39m: 	Cliente ID:oNmXECfGi8VpBBNMAAAD inició conexión a traves de Socket
+2021-07-25T00:18:16.362Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14804
+2021-07-25T00:18:16.929Z [32minfo[39m: 	Cliente ID:JkS0FlkZmOODUQIBAAAB inició conexión a traves de Socket
+2021-07-25T00:20:18.529Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12332
+2021-07-25T00:20:19.051Z [32minfo[39m: 	Cliente ID:DF4a0zIWt1v-o57rAAAB inició conexión a traves de Socket
+2021-07-25T00:22:39.390Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 18204
+2021-07-25T00:22:40.279Z [32minfo[39m: 	Cliente ID:4biaNBvmg38Xv9rsAAAB inició conexión a traves de Socket
+2021-07-25T00:23:09.542Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 1632
+2021-07-25T00:23:10.295Z [32minfo[39m: 	Cliente ID:TGZWBFFnU7IsGHfoAAAB inició conexión a traves de Socket
+2021-07-25T00:24:13.742Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 15576
+2021-07-25T00:24:14.289Z [32minfo[39m: 	Cliente ID:D3Z4uj_NJlFsww58AAAB inició conexión a traves de Socket
+2021-07-25T00:24:22.526Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 16260
+2021-07-25T00:24:23.297Z [32minfo[39m: 	Cliente ID:ghwJTbAJYxHwOQ3ZAAAB inició conexión a traves de Socket
+2021-07-25T00:25:39.589Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 13360
+2021-07-25T00:25:39.628Z [32minfo[39m: 	Cliente ID:r3QEnkA6S-Qzw-YMAAAB inició conexión a traves de Socket
+2021-07-25T00:25:45.035Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 5744
+2021-07-25T00:25:45.544Z [32minfo[39m: 	Cliente ID:QvarJ9emRhSiM_oiAAAB inició conexión a traves de Socket
+2021-07-25T00:25:49.589Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 11924
+2021-07-25T00:25:49.805Z [32minfo[39m: 	Cliente ID:4GvCaXy-KZtwN4OsAAAB inició conexión a traves de Socket
+2021-07-25T00:26:21.488Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 1356
+2021-07-25T00:26:21.709Z [32minfo[39m: 	Cliente ID:IidAw4G_iFfyL-N_AAAB inició conexión a traves de Socket
+2021-07-25T00:26:52.764Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 18288
+2021-07-25T00:26:53.049Z [32minfo[39m: 	Cliente ID:1hUIv6A0zu9Ne9XbAAAB inició conexión a traves de Socket
+2021-07-25T00:28:11.816Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12728
+2021-07-25T00:28:11.978Z [32minfo[39m: 	Cliente ID:3j8D3Fvm1Zrf4eg9AAAB inició conexión a traves de Socket
+2021-07-25T00:28:43.701Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 10844
+2021-07-25T00:28:43.808Z [32minfo[39m: 	Cliente ID:2lFhL7Ldi9AX3uEsAAAB inició conexión a traves de Socket
+2021-07-25T00:30:17.698Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 13240
+2021-07-25T00:30:17.916Z [32minfo[39m: 	Cliente ID:0SXv3JG9Oonj0UHpAAAB inició conexión a traves de Socket
+2021-07-25T00:31:31.063Z [32minfo[39m: 	Cliente ID:3Uq45UmJIAV6uZ1NAAAD inició conexión a traves de Socket
+2021-07-25T00:31:34.658Z [32minfo[39m: 	Cliente ID:YxH79DfT6ydEL8R3AAAF inició conexión a traves de Socket
+2021-07-25T00:31:44.292Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 376
+2021-07-25T00:31:44.327Z [32minfo[39m: 	Cliente ID:WZSgkAEElkANJqwmAAAB inició conexión a traves de Socket
+2021-07-25T00:31:45.334Z [32minfo[39m: 	Cliente ID:GVfLwqWlJKLLo2MjAAAD inició conexión a traves de Socket
+2021-07-25T00:34:45.870Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4212
+2021-07-25T00:34:46.022Z [32minfo[39m: 	Cliente ID:MRA5LpFx1BjoJeDTAAAB inició conexión a traves de Socket
+2021-07-25T00:34:51.958Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 6812
+2021-07-25T00:34:52.030Z [32minfo[39m: 	Cliente ID:3ma3yD5RY4XDPmbVAAAB inició conexión a traves de Socket
+2021-07-25T00:35:31.841Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 6320
+2021-07-25T00:35:31.891Z [32minfo[39m: 	Cliente ID:hO6xqGEVISYTRapXAAAB inició conexión a traves de Socket
+2021-07-25T00:38:25.709Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17464
+2021-07-25T00:38:26.315Z [32minfo[39m: 	Cliente ID:ssHA8zKzj_IXXrsLAAAB inició conexión a traves de Socket
+2021-07-25T00:38:59.509Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 16084
+2021-07-25T00:38:59.707Z [32minfo[39m: 	Cliente ID:_MffvyOYz1kWwgZAAAAB inició conexión a traves de Socket
+2021-07-25T00:40:19.845Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4148
+2021-07-25T00:40:20.061Z [32minfo[39m: 	Cliente ID:agar4tkDUwiociZiAAAB inició conexión a traves de Socket
+2021-07-25T00:41:26.588Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 15496
+2021-07-25T00:41:26.659Z [32minfo[39m: 	Cliente ID:t9q7lUzSAvfGPW1YAAAB inició conexión a traves de Socket
+2021-07-25T00:41:29.894Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 16764
+2021-07-25T00:41:29.968Z [32minfo[39m: 	Cliente ID:CFN8zzMQeIJDWI3dAAAB inició conexión a traves de Socket
+2021-07-25T00:41:32.271Z [32minfo[39m: 	Cliente ID:HqdkZvDBPh0uZF7ZAAAD inició conexión a traves de Socket
+2021-07-25T00:42:37.047Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 5392
+2021-07-25T00:42:37.112Z [32minfo[39m: 	Cliente ID:-XLtnZFQyr82NGyjAAAB inició conexión a traves de Socket
+2021-07-25T00:44:05.395Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 1500
+2021-07-25T00:44:05.516Z [32minfo[39m: 	Cliente ID:8sCEndSjWY2FLQmmAAAB inició conexión a traves de Socket
+2021-07-25T00:44:42.237Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 15324
+2021-07-25T00:44:42.276Z [32minfo[39m: 	Cliente ID:-4iHj6oi8kBrLG2FAAAB inició conexión a traves de Socket
+2021-07-25T00:44:58.438Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 1276
+2021-07-25T00:44:58.504Z [32minfo[39m: 	Cliente ID:M1atCMt_2ikEOEmGAAAB inició conexión a traves de Socket
+2021-07-25T00:45:32.244Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 9024
+2021-07-25T00:45:32.398Z [32minfo[39m: 	Cliente ID:RjWuUhzPUQvw_730AAAB inició conexión a traves de Socket
+2021-07-25T00:45:36.721Z [32minfo[39m: 	Cliente ID:0a9VrK31_FW9ZUaeAAAD inició conexión a traves de Socket
+2021-07-25T00:46:58.521Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17292
+2021-07-25T00:46:58.589Z [32minfo[39m: 	Cliente ID:yhVXAE4MRNFx3JcxAAAB inició conexión a traves de Socket
+2021-07-25T00:47:11.431Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17096
+2021-07-25T00:47:11.494Z [32minfo[39m: 	Cliente ID:YmcEIWYQHi3GzhpIAAAB inició conexión a traves de Socket
+2021-07-25T00:47:13.857Z [32minfo[39m: 	Cliente ID:un02DVBoxfMRHdRFAAAD inició conexión a traves de Socket
+2021-07-25T00:47:48.417Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 2108
+2021-07-25T00:47:48.475Z [32minfo[39m: 	Cliente ID:KLm4MnCir2bhxaWnAAAB inició conexión a traves de Socket
+2021-07-25T00:47:50.067Z [32minfo[39m: 	Cliente ID:KKcLevzelO6wS1JbAAAD inició conexión a traves de Socket
+2021-07-25T00:49:44.254Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14152
+2021-07-25T00:49:44.324Z [32minfo[39m: 	Cliente ID:PQjVFCFubYjpyZfpAAAB inició conexión a traves de Socket
+2021-07-25T00:50:17.929Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 8440
+2021-07-25T00:50:17.983Z [32minfo[39m: 	Cliente ID:ZMlIC4Wb_xfVdcRrAAAB inició conexión a traves de Socket
+2021-07-25T00:50:21.103Z [32minfo[39m: 	Cliente ID:RBWdu4nio9L_BtA1AAAD inició conexión a traves de Socket
+2021-07-25T00:50:55.597Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4084
+2021-07-25T00:50:55.773Z [32minfo[39m: 	Cliente ID:TxQhDvrXML65D-csAAAB inició conexión a traves de Socket
+2021-07-25T00:51:20.278Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4268
+2021-07-25T00:51:20.325Z [32minfo[39m: 	Cliente ID:-758KEwttldla5hhAAAB inició conexión a traves de Socket
+2021-07-25T00:51:49.406Z [32minfo[39m: 	Cliente ID:xCnhgBLWJBpt0ppUAAAD inició conexión a traves de Socket
+2021-07-25T00:53:00.140Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4748
+2021-07-25T00:53:00.364Z [32minfo[39m: 	Cliente ID:1KGplEzTPxtgZ0z3AAAB inició conexión a traves de Socket
+2021-07-25T00:54:10.809Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 6308
+2021-07-25T00:54:10.883Z [32minfo[39m: 	Cliente ID:lNQmRIiKMGPpSuWsAAAB inició conexión a traves de Socket
+2021-07-25T00:54:12.778Z [32minfo[39m: 	Cliente ID:lDmzMwqVU76KygQbAAAD inició conexión a traves de Socket
+2021-07-25T00:55:06.486Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12456
+2021-07-25T00:55:06.532Z [32minfo[39m: 	Cliente ID:-vD9UGoUMNix0w0LAAAB inició conexión a traves de Socket
+2021-07-25T00:55:14.779Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4580
+2021-07-25T00:55:14.852Z [32minfo[39m: 	Cliente ID:r9ZLoMWNTgco2madAAAB inició conexión a traves de Socket
+2021-07-25T00:55:38.547Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 16524
+2021-07-25T00:55:38.595Z [32minfo[39m: 	Cliente ID:tSkyoMBUthTjV0B-AAAB inició conexión a traves de Socket
+2021-07-25T00:55:43.488Z [32minfo[39m: 	Cliente ID:8VBXivaFvqhybdAVAAAD inició conexión a traves de Socket
+2021-07-25T00:56:33.362Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4480
+2021-07-25T00:56:33.590Z [32minfo[39m: 	Cliente ID:1dAPBAMK2h3CoXV0AAAC inició conexión a traves de Socket
+2021-07-25T00:56:36.786Z [32minfo[39m: 	Cliente ID:CEnnJqajpQ7K4hlhAAAE inició conexión a traves de Socket
+2021-07-25T00:57:00.687Z [32minfo[39m: 	Cliente ID:ILYS8CpCHcFKEaosAAAG inició conexión a traves de Socket
+2021-07-25T00:57:40.703Z [32minfo[39m: 	Cliente ID:IIu5JoRb7hxmUNzVAAAI inició conexión a traves de Socket
+2021-07-25T00:58:16.866Z [32minfo[39m: 	Cliente ID:cdgSo6Ki1IndKngnAAAK inició conexión a traves de Socket
+2021-07-25T01:13:28.204Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 10276
+2021-07-25T01:13:28.332Z [32minfo[39m: 	Cliente ID:QUxx1B_uhlLfLjAkAAAB inició conexión a traves de Socket
+2021-07-25T01:13:30.836Z [32minfo[39m: 	Cliente ID:0juv8vcsMccQtNreAAAD inició conexión a traves de Socket
+2021-07-25T01:27:24.675Z [32minfo[39m: 	Cliente ID:WDGSgiZfZk5eTYwYAAAF inició conexión a traves de Socket
+2021-07-25T01:27:31.736Z [32minfo[39m: 	Cliente ID:DoVJuxS0KC05ANKSAAAH inició conexión a traves de Socket
+2021-07-25T01:28:09.658Z [32minfo[39m: 	Cliente ID:cw1yBZ2GTgsQhltdAAAJ inició conexión a traves de Socket
+2021-07-25T01:28:11.687Z [32minfo[39m: 	Cliente ID:N2UWiGuqHsrXzTsBAAAL inició conexión a traves de Socket
+2021-07-25T01:28:32.109Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 6052
+2021-07-25T01:28:32.231Z [32minfo[39m: 	Cliente ID:Oaj_ZQ8R21hTHfWsAAAB inició conexión a traves de Socket
+2021-07-25T01:28:32.283Z [32minfo[39m: 	Cliente ID:Z9J89-3qTfzr-eXkAAAD inició conexión a traves de Socket
+2021-07-25T01:28:37.087Z [32minfo[39m: 	Cliente ID:UYES-e1-Miq1gDHRAAAF inició conexión a traves de Socket
+2021-07-25T01:28:39.096Z [32minfo[39m: 	Cliente ID:ubOgqDPCgQLjHPxGAAAH inició conexión a traves de Socket
+2021-07-25T01:29:55.726Z [32minfo[39m: 	Cliente ID:NDCgdvmgb0_8EmhpAAAJ inició conexión a traves de Socket
+2021-07-25T01:29:57.146Z [32minfo[39m: 	Cliente ID:hyRT3a6h0uWIIO0lAAAL inició conexión a traves de Socket
+2021-07-25T01:31:46.000Z [32minfo[39m: 	Cliente ID:m9ztdLyoKJ0HwUycAAAN inició conexión a traves de Socket
+2021-07-25T01:32:10.032Z [32minfo[39m: 	Cliente ID:kqMbREsa_xWU6dmUAAAP inició conexión a traves de Socket
+2021-07-25T01:39:17.598Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 5320
+2021-07-25T01:39:17.822Z [32minfo[39m: 	Cliente ID:CH-oh1UMntN3VpnHAAAB inició conexión a traves de Socket
+2021-07-25T01:39:22.462Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 14128
+2021-07-25T01:39:22.551Z [32minfo[39m: 	Cliente ID:APC18zGocon9J_KFAAAB inició conexión a traves de Socket
+2021-07-25T01:39:32.257Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17784
+2021-07-25T01:39:33.664Z [32minfo[39m: 	Cliente ID:8B0YKB0VuixsCVUmAAAB inició conexión a traves de Socket
+2021-07-25T01:39:44.245Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 9492
+2021-07-25T01:39:45.037Z [32minfo[39m: 	Cliente ID:KrYnUMmPk1uDkO1dAAAB inició conexión a traves de Socket
+2021-07-25T01:41:01.410Z [32minfo[39m: 	Cliente ID:E_rsJQMLy3BMXSeKAAAD inició conexión a traves de Socket
+2021-07-25T01:41:45.045Z [32minfo[39m: 	Cliente ID:nkfXhL1W9WebeluFAAAF inició conexión a traves de Socket
+2021-07-25T01:42:39.626Z [32minfo[39m: 	Cliente ID:GXt5nTsboP2q0U3zAAAH inició conexión a traves de Socket
+2021-07-25T01:47:40.916Z [32minfo[39m: 	Cliente ID:Rgh9L_ouxYQ80PyvAAAJ inició conexión a traves de Socket
+2021-07-25T01:47:43.508Z [32minfo[39m: 	Cliente ID:4R_vcy-6c8tdilULAAAL inició conexión a traves de Socket
+2021-07-25T01:48:06.293Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 17532
+2021-07-25T01:48:06.403Z [32minfo[39m: 	Cliente ID:KT-ce7lutOTRPFK6AAAB inició conexión a traves de Socket
+2021-07-25T01:48:21.260Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 18252
+2021-07-25T01:48:21.848Z [32minfo[39m: 	Cliente ID:T3AR4lHS5yZ8WthKAAAC inició conexión a traves de Socket
+2021-07-25T01:49:22.843Z [32minfo[39m: 	Cliente ID:lRq_tNszqGQRm5jBAAAE inició conexión a traves de Socket
+2021-07-25T01:50:35.238Z [32minfo[39m: 	Cliente ID:sbQ0RiIgVV4ubQBcAAAG inició conexión a traves de Socket
+2021-07-25T01:51:15.456Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 8772
+2021-07-25T01:58:47.049Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12032
+2021-07-25T01:59:19.979Z [32minfo[39m: 	Cliente ID:qdcBCbcX74qVWo25AAAB inició conexión a traves de Socket
+2021-07-25T02:00:47.805Z [32minfo[39m: 	Cliente ID:6PUyPQjZYKYFGiiyAAAD inició conexión a traves de Socket
+2021-07-25T02:01:34.991Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 12320
+2021-07-25T02:01:35.347Z [32minfo[39m: 	Cliente ID:-BBLtSS4G3GePlKJAAAC inició conexión a traves de Socket
+2021-07-25T02:02:09.533Z [32minfo[39m: 	Cliente ID:Sj8hGFZNo4j88g_lAAAE inició conexión a traves de Socket
+2021-07-25T02:02:16.563Z [32minfo[39m: 	Cliente ID:iJN8TTcFg63ECkz4AAAG inició conexión a traves de Socket
+2021-07-25T02:02:36.894Z [32minfo[39m: 	Cliente ID:iu5mGiPFLPzcPcoDAAAI inició conexión a traves de Socket
+2021-07-25T02:03:11.609Z [32minfo[39m: 	Cliente ID:Bd2rweXYHmFg58uCAAAK inició conexión a traves de Socket
+2021-07-25T02:04:05.591Z [32minfo[39m: 	Cliente ID:KLwR9o_mN0YjXUaDAAAM inició conexión a traves de Socket
+2021-07-25T02:04:56.628Z [32minfo[39m: 	Cliente ID:xqXCMWLSGU5nOuHSAAAO inició conexión a traves de Socket
+2021-07-25T02:05:50.457Z [32minfo[39m: 	Cliente ID:0OyNmhuy2tIp6oGSAAAQ inició conexión a traves de Socket
+2021-07-25T02:11:36.291Z [32minfo[39m: 	Cliente ID:RKGkKZkwPMT1RTBwAAAS inició conexión a traves de Socket
+2021-07-25T02:13:07.720Z [32minfo[39m: 	Cliente ID:d5MPoaxpxaRa1l1vAAAU inició conexión a traves de Socket
+2021-07-25T02:13:10.007Z [32minfo[39m: 	Cliente ID:N3emQQPBo5zXKmXAAAAW inició conexión a traves de Socket
+2021-07-25T02:13:32.732Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 4580
+2021-07-25T02:13:32.944Z [32minfo[39m: 	Cliente ID:NSefG5vcTZXaNHacAAAB inició conexión a traves de Socket
+2021-07-25T02:13:38.084Z [32minfo[39m: 	Cliente ID:svI_3JMmFu3iAt3RAAAD inició conexión a traves de Socket
+2021-07-25T02:13:40.781Z [32minfo[39m: 	Cliente ID:6epd_sbMCPmJPSUBAAAF inició conexión a traves de Socket
+2021-07-25T02:14:11.248Z [32minfo[39m: 	Cliente ID:JSAqsH-DOHyfD_PBAAAH inició conexión a traves de Socket
+2021-07-25T02:15:35.668Z [32minfo[39m: 	Cliente ID:SUlr3Gu5_VuakrJSAAAJ inició conexión a traves de Socket
+2021-07-25T02:15:58.759Z [32minfo[39m: 	Cliente ID:JV4tZJTNZT4Bt2SaAAAL inició conexión a traves de Socket
+2021-07-25T02:16:52.997Z [32minfo[39m: 	Cliente ID:bd4DIE4WLxOQ9QirAAAN inició conexión a traves de Socket
+2021-07-25T02:17:42.883Z [32minfo[39m: 	Cliente ID:lU6owoDQ3USYFV3JAAAP inició conexión a traves de Socket
+2021-07-25T02:17:55.856Z [32minfo[39m: 	Cliente ID:J8mpcbN2pwQwA1BmAAAR inició conexión a traves de Socket
+2021-07-25T02:22:58.442Z [32minfo[39m: 	Se inició servidor en Puerto 8080 - PID WORKER: 13256
+2021-07-25T02:23:12.767Z [32minfo[39m: 	Cliente ID:Eyxb2uDjO3BFUGlbAAAB inició conexión a traves de Socket
+2021-07-25T02:23:40.515Z [32minfo[39m: 	Cliente ID:N2wpOjKuXESztgcLAAAD inició conexión a traves de Socket
+2021-07-25T02:23:41.722Z [32minfo[39m: 	Cliente ID:SGbZtMrP0nkceEKrAAAF inició conexión a traves de Socket
+2021-07-25T02:23:42.806Z [32minfo[39m: 	Cliente ID:phl3VrD_c8CbGX-8AAAH inició conexión a traves de Socket
