@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Cafecito",
+        "price": 10,
+        "stock": 20,
+        "code": "C-50",
+        "thumbnail": "https://cdn2.iconfinder.com/data/icons/coffee-19/450/Coffee_bag-128.png",
+        "description": "Cafe",
+        "_id": 1,
+        "timestamp": 1622994051691
+    },
+    {
+        "title": "Cafecito88",
+        "price": 100,
+        "stock": 200,
+        "code": "C-50",
+        "thumbnail": "https://cdn2.iconfinder.com/data/icons/coffee-19/450/Coffee_bag-128.png",
+        "description": "Cafe",
+        "_id": 2,
+        "timestamp": 1622994068788
+    }
+]
