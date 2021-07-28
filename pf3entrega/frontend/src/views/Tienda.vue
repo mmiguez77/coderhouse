@@ -18,7 +18,7 @@
               </div>
               <div class="card-text">$ {{item.price}} </div>
               <div>
-                <a href="#" type="submit" @click="addCart(item._id)"><img src="../assets/shopping-cart.png" alt="" class="my-1 mx-4"></a>
+                <a href="#" type="submit" @click="addToCart(item._id)"><img src="../assets/shopping-cart.png" alt="" class="my-1 mx-4"></a>
                 <a href="#"><img src="../assets/magnifying-glass.png" alt="" class="my-1 mx-4"></a>
               </div>
 
@@ -56,14 +56,15 @@ export default {
           console.log(error.response);
         })
     },
-    async addCart(id){
-      const prodToCart = await this.productos.find(prod => prod._id === id )
+    addToCart(_id){
+      const prodToCart = this.productos.find(prod => prod._id === _id )
       console.log('PRODUCTO ENVIADO', prodToCart)
       this.axios.post("/cart", prodToCart)
       // .then(res => {
        // console.log('ESTA ES LA RTA EN RES.DATA',res.data)
       //   this.cart.push(res.data)
     // })
+
     }
   }
 }
@@ -110,7 +111,7 @@ a {
 .card-action:hover {
   color: #fff;
   background: #f0f0f0;
-  -webkit-animation: pulse 1.5s infinite;
+  animation: pulse 1.5s infinite;
 }
 
 .card-heading {
@@ -143,7 +144,7 @@ a {
   color: #fff;
 }
 
-@-webkit-keyframes pulse {
+@keyframes pulse {
   0% {
     -moz-transform: scale(0.9);
     -ms-transform: scale(0.9);

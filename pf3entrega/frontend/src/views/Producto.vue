@@ -16,37 +16,37 @@
                     <label class="form-control-label px-3"
                       >Nombre del Producto<span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" 
-                    v-model="productosUpdate.title" required/>
+                    v-model="productosUpdate.title"/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Precio<span class="text-danger"> *</span></label>
-                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="productosUpdate.price" required/>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="productosUpdate.price"/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex">
                     <label class="form-control-label px-3">Código<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="productosUpdate.code" required/>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="productosUpdate.code"/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left mb-2">
                     <div class="form-group col-sm-6 flex-column d-flex">
                       <label class="form-control-label px-3">Stock<span class="text-danger"> *</span></label>
                       <input type="number" class="form-control" id="stock" name="stock" placeholder="Ejemplo: 10" 
-                      v-model.number="productosUpdate.stock" required/>
+                      v-model.number="productosUpdate.stock"/>
                     </div>
                   </div>
                   <!--  -->
                   <div class="form-group col-12 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Imagen (url) <span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="productosUpdate.thumbnail" required/>
+                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="productosUpdate.thumbnail"/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left">
                     <div class="form-group col-12 flex-column d-flex">
                       <label class="form-control-label px-3">Descripción<span class="text-danger"> *</span></label>
-                      <textarea name="description" id="description" rows="10" v-model="productosUpdate.description" required></textarea>
+                      <textarea name="description" id="description" rows="10" v-model="productosUpdate.description"></textarea>
                     </div>
                   </div>
                 </div>
@@ -71,37 +71,37 @@
                     <label class="form-control-label px-3"
                       >Nombre del Producto<span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Ejemplo: Cafe" 
-                    v-model="inputProducto.title" required/>
+                    v-model="inputProducto.title"/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Precio<span class="text-danger"> *</span></label>
-                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="inputProducto.price" required/>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Ejemplo: 1500" v-model.number="inputProducto.price"/>
                   </div>
                   <!--  -->
                   <div class="form-group col-sm-6 flex-column d-flex">
                     <label class="form-control-label px-3">Código<span class="text-danger"> *</span></label>
-                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="inputProducto.code" required/>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Ejemplo: PC-23" v-model="inputProducto.code"/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left mb-2">
                     <div class="form-group col-sm-6 flex-column d-flex">
                       <label class="form-control-label px-3">Stock<span class="text-danger"> *</span></label>
                       <input type="number" class="form-control" id="stock" name="stock" placeholder="Ejemplo: 10" 
-                      v-model.number="inputProducto.stock" required/>
+                      v-model.number="inputProducto.stock"/>
                     </div>
                   </div>
                   <!--  -->
                   <div class="form-group col-12 flex-column d-flex mb-2">
                     <label class="form-control-label px-3">Imagen (url) <span class="text-danger"> *</span></label>
                     <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="inputProducto.thumbnail" required/>
+                    placeholder="Ejemplo: https://linkalaimagen.com" v-model="inputProducto.thumbnail"/>
                   </div>
                   <!--  -->
                   <div class="row justify-content-between text-left">
                     <div class="form-group col-12 flex-column d-flex">
                       <label class="form-control-label px-3">Descripción<span class="text-danger"> *</span></label>
-                      <textarea name="description" id="description" rows="5" v-model="inputProducto.description" required></textarea>
+                      <textarea name="description" id="description" rows="5" v-model="inputProducto.description"></textarea>
                     </div>
                   </div>
                 </div>
@@ -178,7 +178,7 @@ export default {
       this.axios
         .get("/api/productos")
         .then((res) => {
-          console.log(res.data);
+          //console.log(res.data);
           this.productos = res.data;
         })
         .catch((error) => {
@@ -233,18 +233,17 @@ export default {
     edit(prodUpdate){
       this.axios.put(`/api/productos/${prodUpdate._id}`, prodUpdate)
       .then(res => {
-        console.log(res)
-        // let index = this.productos.findIndex(prod => prod._id === res.data._id );
-        // this.productos[index].title= res.data.title; 
-        // this.productos[index].price= res.data.price,
-        // this.productos[index].stock= res.data.stock; 
-        // this.productos[index].thumbnail= res.data.thumbnail;
-        // this.productos[index].code= res.data.code; 
-        // this.productos[index].description=res.data.description;
-        // this.mensaje.color = "success",
-        // this.mensaje.texto = 'Producto modificado con éxito',
-        // this.showAlert();         
-        // this.editar = false
+        let index = this.productos.findIndex(prod => prod._id === res.data._id );
+        this.productos[index].title= res.data.title; 
+        this.productos[index].price= res.data.price,
+        this.productos[index].stock= res.data.stock; 
+        this.productos[index].thumbnail= res.data.thumbnail;
+        this.productos[index].code= res.data.code; 
+        this.productos[index].description=res.data.description;
+        this.mensaje.color = "success",
+        this.mensaje.texto = 'Producto modificado con éxito',
+        this.showAlert();         
+        this.editar = false
       })
       .catch(error => {
         console.log(error)

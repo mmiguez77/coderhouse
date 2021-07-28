@@ -17,7 +17,6 @@ usersRoutes.post('/register', passport.authenticate("register", {
     successFlash: true
 }))
 
-
 usersRoutes.post('/login', passport.authenticate("login", {
     successRedirect: "/user/main",
     failureRedirect: "/user/login",
