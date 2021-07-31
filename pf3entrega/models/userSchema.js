@@ -6,7 +6,7 @@ const UserSchema = new Schema({
     username: String,
     password: String,
     email: String,
-    adress: String,
+    address: String,
     age: Number,
     phone: String,
     avatar: String
@@ -21,8 +21,6 @@ UserSchema.methods.encryptPassword = async password => {
 UserSchema.methods.checkPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 }
-
-
 
 const UserModel = mongoose.model('UserModel', UserSchema);
 export default UserModel

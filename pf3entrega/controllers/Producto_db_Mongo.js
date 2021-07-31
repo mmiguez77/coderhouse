@@ -1,5 +1,6 @@
 import ProductoModel from '../models/productoSchema.js';
 import MongooseCnx from '../config/mongoose.js'
+import logger from '../config/winston.js';
 
 export default class ProductoMongo extends MongooseCnx {
 
@@ -14,7 +15,7 @@ export default class ProductoMongo extends MongooseCnx {
                 return res.status(200).json(newProducto)
             }
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -25,7 +26,7 @@ export default class ProductoMongo extends MongooseCnx {
             return res.status(200).json(prod);
 
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -40,7 +41,7 @@ export default class ProductoMongo extends MongooseCnx {
                 return res.status(200).json(prodById);
             };
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -54,7 +55,7 @@ export default class ProductoMongo extends MongooseCnx {
                 }
             });
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -68,7 +69,7 @@ export default class ProductoMongo extends MongooseCnx {
                 }
             });
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -91,7 +92,7 @@ export default class ProductoMongo extends MongooseCnx {
         try {
             order(condition)
         } catch (error) {
-            console.log(error)
+            logger.error.error(error);
         }
     }
 
@@ -114,7 +115,7 @@ export default class ProductoMongo extends MongooseCnx {
         try {
             order(stock)
         } catch (error) {
-            console.log(error)
+            logger.error.error(error);
         }
     }
 
@@ -130,7 +131,7 @@ export default class ProductoMongo extends MongooseCnx {
                 return res.status(200).json(prodToDel);
             };
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     };
 
@@ -144,7 +145,7 @@ export default class ProductoMongo extends MongooseCnx {
             const prodUpdated = await ProductoModel.findByIdAndUpdate(_id, data, { new: true });
             return res.status(200).json(prodUpdated)
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
 
     }

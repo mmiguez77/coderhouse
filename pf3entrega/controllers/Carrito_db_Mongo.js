@@ -1,4 +1,7 @@
 import CartModel from '../models/cartSchema.js';
+import mail from '../helpers/nodemailer.js';
+import logger from '../config/winston.js';
+import { twilioWapp, twilioSms } from '../helpers/twilio.js';
 
 export default class CarritoMongo {
     // agrega nuevo producto al carrito con datos del producto
@@ -8,12 +11,11 @@ export default class CarritoMongo {
                 return res.status(400).json({ mensaje: 'No se ha podido agregar nuevo producto', error });
             } else {
                 const data = await { ...req.body };
-                //console.log(data);
                 const newProducto = await CartModel.create(data);
-                return res.status(200).json(newProducto)
+                return res.status(200).json(newProducto);
             }
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -22,9 +24,8 @@ export default class CarritoMongo {
         try {
             const prod = await CartModel.find({});
             return res.status(200).json(prod);
-
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -39,7 +40,7 @@ export default class CarritoMongo {
                 return res.status(200).json(prodById);
             };
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     }
 
@@ -55,9 +56,34 @@ export default class CarritoMongo {
                 return res.status(200).json(prodToDel);
             };
         } catch (error) {
-            return res.status(400).json({ mensaje: 'Ocurrió un error', error })
+            logger.error.error(error);
         }
     };
 
+    checkoutProduct = async (req, res) => {
 
+        try {
+            const products = { ...req.body };
+            const user = req.user;
+            const username = user.username;
+            const email = 'blaze.mccullough70@ethereal.email' //user.email;
+
+            const subjet = `Nuevo pedido de ${username} ${email}`;
+            const text = `
+            Compra realizada:
+            - Cliente: ${username}
+            - Contacto: ${email} 
+            - Producto: ${products.title}
+            - Precio: ${products.price}
+            `;
+            
+            mail(email, subjet, text);
+            twilioWapp(text);
+            twilioSms("Pedido ha sido recibido y se encuentra en proceso")
+
+            return res.status(200).json('Compra realizada con exito');
+        } catch (error) {
+            logger.error.error(error);
+        }
+    }
 }

@@ -8,6 +8,7 @@ cartRoutes.get('/', cart.viewAllCart);
 cartRoutes.get('/:id', cart.viewByIdCart);
 cartRoutes.post('/', cart.addCart);
 cartRoutes.delete('/:id', cart.deleteCart);
+cartRoutes.post('/checkout', cart.checkoutProduct);
 
 export default cartRoutes;
 
