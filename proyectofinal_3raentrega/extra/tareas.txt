@@ -2,7 +2,7 @@
 
 1) Passport Local
 a) Registro con datos					OK
-b) Poder guardar imagen en DB			PENDIENTE
+b) Poder guardar imagen en DB			OK
 
 2) Formulario de Registro y Login --> Home
 a) Login con vista del Home y btn de Logout			OK
@@ -18,4 +18,4 @@ b) Checkout --> Envio de msg de texto "Pedido ha sido recibido		OK
 a) Base de datos 	OK 
 b) Modo Cluster		OK
 c) Loggers			OK
-d) Artillery		PENDIENTE
+d) Artillery		OK

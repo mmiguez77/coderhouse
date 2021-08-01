@@ -10,7 +10,6 @@ const UserSchema = new Schema({
     age: Number,
     phone: String,
     avatar: String
-
 })
 
 UserSchema.methods.encryptPassword = async password => {

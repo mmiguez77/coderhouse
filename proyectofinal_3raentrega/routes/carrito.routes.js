@@ -1,14 +1,15 @@
 import express from 'express';
 import CarritoMongo from '../controllers/Carrito_db_Mongo.js';
+import { validate } from '../passport/auth.js';
 const cartRoutes = express.Router();
 
 const cart = new CarritoMongo();
 
-cartRoutes.get('/', cart.viewAllCart);
-cartRoutes.get('/:id', cart.viewByIdCart);
-cartRoutes.post('/', cart.addCart);
-cartRoutes.delete('/:id', cart.deleteCart);
-cartRoutes.post('/checkout', cart.checkoutProduct);
+cartRoutes.get('/',  validate, cart.viewAllCart);
+cartRoutes.get('/:id',  validate, cart.viewByIdCart);
+cartRoutes.post('/',  validate, cart.addCart);
+cartRoutes.delete('/:id',  validate, cart.deleteCart);
+cartRoutes.post('/checkout',  validate, cart.checkoutProduct);
 
 export default cartRoutes;
 

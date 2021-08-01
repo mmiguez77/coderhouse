@@ -3,6 +3,9 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import UserModel from '../models/userSchema.js';
 import mail from '../helpers/nodemailer.js';
 import logger from '../config/winston.js';
+import path from 'path';
+import upload from '../helpers/upload.js';
+const __dirname = path.resolve();
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -14,22 +17,30 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-
 passport.use('register', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
 }, async function (req, username, password, done) {
   try {
-    const { username, password, email, address, age, phone, avatar } = req.body
+    const { username, password, email, address, age, phone} = req.body
+    
+    upload(req); // funcion que guarda la imagen en carpeta upload
+    const imgName = req.files.avatar.name; 
+    
     const userInDb = await UserModel.findOne({ email: email });
-    //console.log(email, userInDb.email);
-    if (userInDb.email == email) {
+    
+    if (userInDb.email.length > 0) {
       return done(null, false, ('Usuario ya registrado'))
     } else {
-      const newUser = new UserModel({ username, password, email, address, age, phone, avatar })
+      const newUser = new UserModel({ username, password, email, address, age, phone })
+
       newUser.password = await newUser.encryptPassword(password);
+      newUser.avatar = path.join(__dirname + '/uploads/' + imgName);
+
       await newUser.save();
+
+      //------------ Envio de mail -------------- //
       let text = (`Datos del nuevo registro: 
       - Username: ${newUser.username},
       - Email: ${newUser.email},
@@ -38,7 +49,9 @@ passport.use('register', new LocalStrategy({
       - Phone: ${newUser.phone},
       - avatar: ${newUser.avatar}
       `)
-      mail(/*newUser.email*/'blaze.mccullough70@ethereal.email', 'Nuevo Registo', text)
+      mail(/*newUser.email*/'blaze.mccullough70@ethereal.email', 'Nuevo Registo', text);
+      //------------ Fin Envio de mail -------------- //
+
       return done(null, newUser, req.flash('success', 'Usuario registrado con éxito'));
     }
   }
@@ -70,5 +83,6 @@ passport.use('login', new LocalStrategy({
     logger.error.error(error);
   }
 }));
+
 
 export default passport

@@ -1,3 +1,9 @@
+
+/* -------------------- LINK POSTMAN ---------------------- */
+//https://www.getpostman.com/collections/63df217239eed29c7379
+/* -------------------------------------------------------- */
+
+
 /* -------------------- Dependencias ---------------------- */
 import express from 'express';
 import morgan from 'morgan';
@@ -12,6 +18,11 @@ import config from './config/index.js';
 import logger from './config/winston.js';
 import('./passport/passport.js');
 const __dirname = path.resolve();
+import fileUpload from 'express-fileupload';
+import cluster from 'cluster';
+import { cpus } from 'os';
+
+const numCPUs = cpus().length;
 
 /* -------------------- Import Routes ---------------------- */
 import productosRoutes from './routes/producto.routes.js';
@@ -48,6 +59,9 @@ app.use((req, res,next) => {
     res.locals.welcome = req.flash('welcome')
     next()
 })
+app.use(fileUpload({
+    preserveExtension: true
+}));
 
 /* -------------------- Endpoints ---------------------- */
 //app.use('/', indexRoutes);
@@ -58,9 +72,6 @@ app.use('/user', usersRoutes);
 /* -------------------- Static Files & Vue History ---------------------- */
 app.use(history());
 app.use(express.static(path.join(__dirname, 'public')));
-
-///// VARIABLE ADMINISTRADORA  
-const administrador = false;
 
 /* -------------------- Server ---------------------- */
 const server = servidor (process.argv[3] || 'FORK') 
@@ -74,16 +85,16 @@ function servidor(argv) {
     }
     if (argv == 'CLUSTER') {
         if (cluster.isMaster) {
-            logger.info.info(numCPUs);
+            logger.info.info(`Number of CPUs is ${numCPUs}`);
             logger.info.info(`PID MASTER · Cluster Mode ${process.pid}`);
-
+            
             for (let i = 0; i < numCPUs; i++) { cluster.fork() }
 
             cluster.on('online', function(worker) {
                 logger.info.info('Worker ' + worker.process.pid + ' is online');
             });
         
-            cluster.on('exit', function(worker, code, signal) {
+            cluster.on('exit', (worker, code, signal) => {
                 logger.info.info('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
                 logger.info.info('Starting a new worker');
                 cluster.fork();
