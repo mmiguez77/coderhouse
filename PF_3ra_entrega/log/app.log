@@ -1,0 +1,302 @@
+2021-07-31T03:25:14.752Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8284
+2021-07-31T03:25:29.342Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11792
+2021-07-31T03:25:34.215Z [32minfo[39m: 	User Login
+2021-07-31T03:25:37.535Z [32minfo[39m: 	User Cart: {
+  _id: 61037ee989aede10c4c01d62,
+  username: 'Manolo',
+  password: '$2a$10$T8SnLtyBOT2pbjwTadwXtesz7O2qT8d1QhT5f3Vt77WhBrSUYCZTq',
+  email: 'manolo@manolo.com',
+  address: 'Calle Esquina 123',
+  age: 40,
+  avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/bear_russian_animal_avatar-128.png',
+  __v: 0
+}
+2021-07-31T03:25:37.538Z [32minfo[39m: 	Productos comprados: [object Object]
+2021-07-31T03:28:43.242Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2928
+2021-07-31T03:30:54.743Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14804
+2021-07-31T03:32:40.963Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1300
+2021-07-31T03:32:51.612Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8348
+2021-07-31T03:33:45.751Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2244
+2021-07-31T03:34:09.725Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6040
+2021-07-31T03:34:34.488Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17404
+2021-07-31T03:35:13.779Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8424
+2021-07-31T03:35:25.010Z [32minfo[39m: 	User Login
+2021-07-31T03:37:05.885Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11632
+2021-07-31T03:37:38.943Z [32minfo[39m: 	User Login
+2021-07-31T03:39:44.846Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1760
+2021-07-31T03:39:54.159Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13400
+2021-07-31T03:40:01.510Z [32minfo[39m: 	User Login
+2021-07-31T03:40:37.144Z [32minfo[39m: 	User Login
+2021-07-31T03:41:30.303Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8560
+2021-07-31T03:41:56.150Z [32minfo[39m: 	User Login
+2021-07-31T03:51:54.354Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18100
+2021-07-31T03:58:02.999Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18092
+2021-07-31T03:58:18.160Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5432
+2021-07-31T03:58:22.954Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2360
+2021-07-31T03:58:40.154Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15536
+2021-07-31T04:00:21.111Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17368
+2021-07-31T04:00:23.283Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8480
+2021-07-31T04:01:10.975Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17308
+2021-07-31T04:02:30.329Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6948
+2021-07-31T04:03:52.262Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9600
+2021-07-31T04:13:03.728Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10956
+2021-07-31T04:15:42.642Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8300
+2021-07-31T04:16:42.099Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14376
+2021-07-31T04:17:48.718Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13248
+2021-07-31T04:19:28.318Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9764
+2021-07-31T04:19:31.757Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2932
+2021-07-31T04:20:21.917Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9316
+2021-07-31T04:20:53.034Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15272
+2021-07-31T04:31:11.876Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8820
+2021-07-31T04:31:48.026Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14492
+2021-07-31T04:31:52.102Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2628
+2021-07-31T04:33:11.669Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12548
+2021-07-31T04:34:46.317Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2820
+2021-07-31T04:34:53.549Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15088
+2021-07-31T04:34:58.475Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2356
+2021-07-31T04:35:22.716Z [32minfo[39m: 	User Login
+2021-07-31T04:36:54.185Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11976
+2021-07-31T04:37:07.081Z [32minfo[39m: 	User Login
+2021-07-31T04:38:26.260Z [32minfo[39m: 	User Login
+2021-07-31T04:40:47.318Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12428
+2021-07-31T04:43:05.245Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10760
+2021-07-31T04:44:17.185Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15612
+2021-07-31T04:44:30.497Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11812
+2021-07-31T04:45:35.013Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15468
+2021-07-31T04:45:41.809Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15072
+2021-07-31T04:46:09.875Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16476
+2021-07-31T04:48:08.256Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3376
+2021-07-31T04:49:07.249Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1900
+2021-07-31T04:49:17.599Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1920
+2021-07-31T04:50:30.188Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17440
+2021-07-31T04:51:45.340Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18188
+2021-07-31T04:52:14.336Z [32minfo[39m: 	User Login
+2021-07-31T04:54:14.614Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18132
+2021-07-31T04:54:34.396Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16032
+2021-07-31T04:54:37.948Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5452
+2021-07-31T04:54:48.879Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5348
+2021-07-31T04:55:07.588Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6260
+2021-07-31T04:55:13.842Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17728
+2021-07-31T04:55:20.385Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1040
+2021-07-31T04:56:00.047Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15628
+2021-07-31T04:56:46.529Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17820
+2021-07-31T04:57:01.982Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1512
+2021-07-31T04:57:33.708Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3276
+2021-07-31T04:57:40.699Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 592
+2021-07-31T04:57:47.781Z [32minfo[39m: 	User Login
+2021-07-31T05:01:26.481Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5284
+2021-07-31T05:05:44.813Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8348
+2021-07-31T05:05:47.973Z [32minfo[39m: 	User Login
+2021-07-31T05:07:08.243Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10740
+2021-07-31T05:07:56.542Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11412
+2021-07-31T05:08:09.454Z [32minfo[39m: 	User Login
+2021-07-31T05:15:47.788Z [32minfo[39m: 	User Login
+2021-07-31T05:16:20.998Z [32minfo[39m: 	User Login
+2021-07-31T05:16:31.614Z [32minfo[39m: 	User Login
+2021-07-31T05:17:16.746Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15836
+2021-07-31T05:17:22.265Z [32minfo[39m: 	User Login
+2021-07-31T05:17:51.624Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 592
+2021-07-31T05:17:56.647Z [32minfo[39m: 	User Login
+2021-07-31T05:18:24.240Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11908
+2021-07-31T05:19:00.893Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15272
+2021-07-31T05:19:25.052Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 656
+2021-07-31T05:20:08.039Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15088
+2021-07-31T05:20:37.789Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10856
+2021-07-31T05:21:04.858Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14396
+2021-07-31T05:21:29.515Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5960
+2021-07-31T05:22:46.672Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15144
+2021-07-31T05:22:49.650Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2528
+2021-07-31T05:22:58.203Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14532
+2021-07-31T05:23:19.934Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11180
+2021-07-31T05:23:53.363Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2640
+2021-07-31T05:23:57.577Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13612
+2021-07-31T16:58:22.785Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10128
+2021-07-31T16:59:56.238Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17976
+2021-07-31T20:12:33.003Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1356
+2021-07-31T21:00:59.790Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17896
+2021-07-31T21:01:49.158Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14556
+2021-07-31T21:37:05.374Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12232
+2021-07-31T21:37:30.036Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14700
+2021-07-31T22:52:54.545Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5416
+2021-07-31T22:53:29.105Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12784
+2021-07-31T22:56:21.393Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17900
+2021-08-01T02:39:35.423Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16168
+2021-08-01T02:41:38.642Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1140
+2021-08-01T02:44:46.613Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9852
+2021-08-01T02:48:11.698Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12084
+2021-08-01T02:51:56.008Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 7384
+2021-08-01T02:52:40.810Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12716
+2021-08-01T02:53:04.457Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14504
+2021-08-01T02:53:25.977Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9264
+2021-08-01T02:53:36.682Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18168
+2021-08-01T02:54:05.670Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 4784
+2021-08-01T02:54:33.314Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14288
+2021-08-01T02:54:52.709Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1876
+2021-08-01T02:55:17.633Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10608
+2021-08-01T02:55:45.338Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1000
+2021-08-01T02:55:51.254Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3136
+2021-08-01T02:57:19.520Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12916
+2021-08-01T02:58:07.462Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14984
+2021-08-01T02:58:14.492Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11260
+2021-08-01T02:58:48.812Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6140
+2021-08-01T02:59:18.054Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17876
+2021-08-01T02:59:39.049Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1924
+2021-08-01T02:59:58.562Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 7612
+2021-08-01T03:00:46.810Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3236
+2021-08-01T03:03:12.902Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5124
+2021-08-01T03:03:32.398Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15400
+2021-08-01T03:03:59.857Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11640
+2021-08-01T03:06:10.569Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11424
+2021-08-01T03:06:33.954Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15624
+2021-08-01T03:06:50.967Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 7888
+2021-08-01T03:07:13.804Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9540
+2021-08-01T03:07:38.742Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16768
+2021-08-01T03:42:41.408Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3240
+2021-08-01T03:58:50.329Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14396
+2021-08-01T04:00:29.294Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8540
+2021-08-01T04:01:12.619Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9740
+2021-08-01T04:26:20.162Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16936
+2021-08-01T04:29:44.175Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13204
+2021-08-01T04:30:20.238Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8164
+2021-08-01T04:30:53.312Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16788
+2021-08-01T04:31:41.029Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9272
+2021-08-01T04:32:00.010Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10988
+2021-08-01T04:32:46.981Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10764
+2021-08-01T04:33:55.018Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16876
+2021-08-01T04:34:39.444Z [32minfo[39m: 	User Login
+2021-08-01T04:39:26.238Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15408
+2021-08-01T04:39:31.762Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5180
+2021-08-01T04:40:27.913Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 7944
+2021-08-01T04:41:35.460Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15300
+2021-08-01T04:42:09.416Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1236
+2021-08-01T04:42:34.305Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10796
+2021-08-01T04:42:46.115Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17096
+2021-08-01T04:43:50.001Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 4360
+2021-08-01T04:45:44.543Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8540
+2021-08-01T04:45:47.478Z [32minfo[39m: 	User Login
+2021-08-01T04:46:08.084Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13628
+2021-08-01T04:47:55.975Z [32minfo[39m: 	User Login
+2021-08-01T04:48:23.390Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8732
+2021-08-01T04:49:16.595Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12144
+2021-08-01T04:57:38.561Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 540
+2021-08-01T19:22:32.836Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17080
+2021-08-01T19:24:13.336Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2768
+2021-08-01T19:26:25.618Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 7544
+2021-08-01T19:26:57.309Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13236
+2021-08-01T19:29:10.505Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3644
+2021-08-01T19:29:58.688Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10276
+2021-08-01T19:31:45.256Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13776
+2021-08-01T19:33:47.701Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6080
+2021-08-01T19:34:20.098Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18288
+2021-08-01T19:34:47.560Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18236
+2021-08-01T19:35:47.694Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6852
+2021-08-01T19:35:49.610Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16440
+2021-08-01T19:36:29.799Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8232
+2021-08-01T20:07:06.787Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5328
+2021-08-01T20:09:38.864Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15864
+2021-08-01T20:09:54.235Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16084
+2021-08-01T20:12:03.335Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5248
+2021-08-01T20:12:09.883Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9080
+2021-08-01T20:12:18.914Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15132
+2021-08-01T20:12:22.321Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6184
+2021-08-01T20:13:01.916Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17188
+2021-08-01T20:13:16.658Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 452
+2021-08-01T20:13:45.448Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17720
+2021-08-01T20:14:08.464Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 7476
+2021-08-01T20:14:30.798Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9308
+2021-08-01T20:15:00.066Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10040
+2021-08-01T20:15:12.258Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9572
+2021-08-01T20:15:43.999Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11708
+2021-08-01T20:16:54.366Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13104
+2021-08-01T20:17:00.652Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10808
+2021-08-01T20:17:17.765Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17164
+2021-08-01T20:17:51.426Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3616
+2021-08-01T20:42:30.286Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15760
+2021-08-01T20:42:41.577Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16588
+2021-08-01T20:44:11.963Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14440
+2021-08-01T21:34:42.022Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5692
+2021-08-01T21:37:39.970Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11460
+2021-08-01T21:38:22.140Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15740
+2021-08-01T21:38:51.890Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17548
+2021-08-01T21:41:12.620Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2984
+2021-08-01T21:41:27.706Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13288
+2021-08-01T21:41:39.695Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8832
+2021-08-01T21:42:25.362Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 4244
+2021-08-01T21:42:55.517Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10308
+2021-08-01T21:43:28.988Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12384
+2021-08-01T21:44:25.987Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17740
+2021-08-01T21:45:38.959Z [32minfo[39m: 	User Login
+2021-08-01T21:46:43.976Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2804
+2021-08-01T21:48:56.149Z [32minfo[39m: 	User Login
+2021-08-01T21:49:22.231Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15816
+2021-08-01T21:49:29.568Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6916
+2021-08-01T21:49:35.935Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16016
+2021-08-01T21:49:59.589Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13876
+2021-08-01T21:50:35.158Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17564
+2021-08-01T21:52:45.743Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15788
+2021-08-01T21:52:54.227Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11144
+2021-08-01T21:53:12.701Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11372
+2021-08-01T21:53:35.614Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 12792
+2021-08-01T21:54:08.845Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16184
+2021-08-01T21:54:21.983Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10808
+2021-08-01T21:55:02.169Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 3252
+2021-08-01T21:55:08.102Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2528
+2021-08-01T21:56:32.527Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6976
+2021-08-01T21:57:20.292Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 8844
+2021-08-01T21:58:15.590Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16832
+2021-08-01T21:59:11.989Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6416
+2021-08-01T22:00:17.173Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16680
+2021-08-01T22:00:55.267Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 16876
+2021-08-01T22:01:04.253Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9976
+2021-08-01T22:02:07.028Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14084
+2021-08-01T22:02:15.375Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17104
+2021-08-01T22:03:40.810Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6172
+2021-08-01T22:03:47.370Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11804
+2021-08-01T22:04:31.852Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 4864
+2021-08-01T22:04:46.042Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11944
+2021-08-01T22:04:49.830Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 10996
+2021-08-01T22:04:58.211Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18120
+2021-08-01T22:05:16.131Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15104
+2021-08-01T22:05:24.840Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9428
+2021-08-01T22:05:32.772Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 18040
+2021-08-01T22:05:35.736Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 17668
+2021-08-01T22:05:37.564Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2456
+2021-08-01T22:05:50.015Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13248
+2021-08-01T22:08:00.383Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11800
+2021-08-01T22:08:40.172Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 1584
+2021-08-01T22:09:04.487Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14932
+2021-08-01T22:09:11.652Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14480
+2021-08-01T22:09:20.408Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 13108
+2021-08-01T22:09:53.042Z [32minfo[39m: 	User Login
+2021-08-01T22:15:26.798Z [32minfo[39m: 	User Login
+2021-08-01T22:17:02.223Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 2984
+2021-08-01T22:20:24.090Z [32minfo[39m: 	4
+2021-08-01T22:20:24.093Z [32minfo[39m: 	PID MASTER · Cluster Mode 6948
+2021-08-01T22:20:24.183Z [32minfo[39m: 	Worker 8668 is online
+2021-08-01T22:20:24.187Z [32minfo[39m: 	Worker 4920 is online
+2021-08-01T22:20:24.189Z [32minfo[39m: 	Worker 15544 is online
+2021-08-01T22:20:24.193Z [32minfo[39m: 	Worker 8304 is online
+2021-08-01T22:25:08.372Z [32minfo[39m: 	4
+2021-08-01T22:25:08.374Z [32minfo[39m: 	PID MASTER · Cluster Mode 6584
+2021-08-01T22:25:08.464Z [32minfo[39m: 	Worker 624 is online
+2021-08-01T22:25:08.475Z [32minfo[39m: 	Worker 12828 is online
+2021-08-01T22:25:08.476Z [32minfo[39m: 	Worker 14768 is online
+2021-08-01T22:25:08.477Z [32minfo[39m: 	Worker 10540 is online
+2021-08-01T22:31:33.764Z [32minfo[39m: 	4
+2021-08-01T22:31:33.766Z [32minfo[39m: 	PID MASTER · Cluster Mode 11640
+2021-08-01T22:31:33.848Z [32minfo[39m: 	Worker 16304 is online
+2021-08-01T22:31:33.852Z [32minfo[39m: 	Worker 16472 is online
+2021-08-01T22:31:33.859Z [32minfo[39m: 	Worker 7804 is online
+2021-08-01T22:31:33.862Z [32minfo[39m: 	Worker 17424 is online
+2021-08-01T22:43:52.043Z [32minfo[39m: 	Number of CPUs is 4
+2021-08-01T22:43:52.054Z [32minfo[39m: 	PID MASTER · Cluster Mode 18424
+2021-08-01T22:44:54.309Z [32minfo[39m: 	Number of CPUs is 4
+2021-08-01T22:44:54.312Z [32minfo[39m: 	PID MASTER · Cluster Mode 11184
+2021-08-01T23:00:07.509Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5396
+2021-08-01T23:00:07.553Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5148
+2021-08-01T23:00:07.616Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 15272
+2021-08-01T23:00:07.691Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 14540
+2021-08-01T23:03:20.075Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 6224
+2021-08-01T23:03:20.101Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 9980
+2021-08-01T23:03:20.127Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 11804
+2021-08-01T23:03:20.126Z [32minfo[39m: 	Servidor en Puerto 5000 Fork Mode - PID WORKER: 5736
