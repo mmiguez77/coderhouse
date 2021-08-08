@@ -6,7 +6,8 @@ class Producto {
     async add(req, res) {
         try {
             if (!req) {return res.status(404).json({ mensaje: 'Error al agregar un producto' })};
-            const data = { ... await req.producto};
+            const data = { ... await req.body}; //para que funcione con sockets.io cambiar a req.productos
+            console.log(data);
             addServiceProducto(data);
         } catch (error) {
             logger.error.error(error);
