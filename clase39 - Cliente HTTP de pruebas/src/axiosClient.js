@@ -34,6 +34,7 @@ const producto = {
 // 
 // axiosPost();
 
+
 // const axiosPut = async () => {
 //     try {
 //         let prod = { 
