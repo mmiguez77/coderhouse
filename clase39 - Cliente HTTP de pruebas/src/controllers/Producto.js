@@ -7,8 +7,8 @@ class Producto {
         try {
             if (!req) {return res.status(404).json({ mensaje: 'Error al agregar un producto' })};
             const data = { ... await req.body}; //para que funcione con sockets.io cambiar a req.productos
-            console.log(data);
             addServiceProducto(data);
+            return res.status(200).json('Producto agregado correctamente');
         } catch (error) {
             logger.error.error(error);
         }
