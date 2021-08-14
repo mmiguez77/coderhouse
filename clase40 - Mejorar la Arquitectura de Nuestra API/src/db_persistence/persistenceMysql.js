@@ -1,27 +1,10 @@
 const logger = require("../helpers/winston.js");
-const mysql = require("../databases/mysql.js");
-const knexFn = require("knex");
-const knex = knexFn(mysql);
+const MysqlCxn = require("../config/MysqlCxn.js");
 
-export class ProductoMysql {
+class MysqlDb {
   constructor() {
-    this.createTable = this.createTableProd();
-    this.msg = console.log("*** Conectado a DB mysql Local en Carrito");
+    this.knex = new MysqlCxn();
   }
-
-  createTableProd = async () => {
-    try {
-      await knex.schema.hasTable("productos");
-      return await knex.schema.createTableIfNotExists("productos", (table) => {
-        table.increments("_id").primary();
-        table.string("title", 50).notNullable();
-        table.integer("price").notNullable();
-        table.string("thumbnail", 150).notNullable();
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   async addPersistenceProducto(dataToDb) {
     try {
@@ -75,3 +58,5 @@ export class ProductoMysql {
     }
   }
 }
+
+module.exports = MysqlDb;

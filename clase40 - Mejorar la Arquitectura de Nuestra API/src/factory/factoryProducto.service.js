@@ -1,10 +1,8 @@
-const ProductoMongo = require ('../controllers/Producto_db_Mongo.js');
-const ProductoArray = require ('../controllers/Producto_db_Array.js');
-const ProductoFs = require ('../controllers/Producto_db_FS.js');
-const ProductoSql = require ('../controllers/Producto_db_SqlLocal.js');
+const { addPersistenceProducto, findAllPersistenceProducto, deletePersistenceProducto, updatePersistenceProducto, findByIDPersistenceProducto } = require('../db_persistence/productosPersistence.js');
+const logger = require('../helpers/winston.js');
 
 
-export default class Producto {
+class FactoryProducto {
 
     database;
 
@@ -65,3 +63,5 @@ export default class Producto {
         }
     }
 }
+
+module.exports = FactoryProducto

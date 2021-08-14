@@ -1,6 +1,6 @@
 const { buildSchema } = require('graphql');
 const ProductoModel = require('../models/productoSchema.js');
-const logger = require('../config/winston.js');
+const logger = require('../helpers/winston.js');
 
 const schema = buildSchema(`
   input ProductInput {
