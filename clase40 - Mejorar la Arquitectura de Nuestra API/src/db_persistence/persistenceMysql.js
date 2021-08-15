@@ -1,15 +1,18 @@
 const logger = require("../helpers/winston.js");
 const MysqlCxn = require("../database/MysqlCxn.js");
+const mysql = require("../config/mysql.js");
+const knexFn = require("knex");
 
 class MysqlDb {
   constructor() {
-    this.knex = new MysqlCxn();
+    this.cxn = new MysqlCxn(mysql);
+    this.knex = knexFn(mysql);
     this.msg = console.log('*** Base de Datos Mysql');
   }
 
   async addPersistenceProducto(dataToDb) {
     try {
-      const nvoProd = await knex("productos").insert({
+      const nvoProd = await this.knex("productos").insert({
         title: dataToDb.title,
         price: dataToDb.price,
         thumbnail: dataToDb.thumbnail,
@@ -22,7 +25,7 @@ class MysqlDb {
 
   async findAllPersistenceProducto() {
     try {
-      const productos = await knex("productos").select();
+      const productos = await this.knex("productos").select();
       return productos;
     } catch (error) {
       logger.error.error(error);
@@ -31,7 +34,7 @@ class MysqlDb {
 
   async findByIDPersistenceProducto(_id) {
     try {
-      const prodId = await knex("productos").select().where("_id", _id);
+      const prodId = await this.knex("productos").select().where("_id", _id);
       return prodId;
     } catch (error) {
       logger.error.error(error);
@@ -40,7 +43,7 @@ class MysqlDb {
 
   async deletePersistenceProducto(_id) {
     try {
-      return await knex("productos").select().where("_id", _id).del();
+      return await this.knex("productos").select().where("_id", _id).del();
     } catch (error) {
       logger.error.error(error);
     }
@@ -48,7 +51,7 @@ class MysqlDb {
 
   async updatePersistenceProducto(_id, data) {
     try {
-      const prodUpdate = await knex("productos").where("_id", _id).update({
+      const prodUpdate = await this.knex("productos").where("_id", _id).update({
         title: data.title,
         price: data.price,
         thumbnail: data.thumbnail,

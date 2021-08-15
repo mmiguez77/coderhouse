@@ -6,11 +6,11 @@ class MysqlCxn {
       return MysqlCxn.instancia;
     }
 
-    this.createTable = this.databaseConnection(config);
+    this.createTable = this.createTableProd(config);
     MysqlCxn.instancia = this;
   }
 
-  async databaseConnection (config) {
+  async createTableProd (config) {
     try {
       const knex = knexFn(config);
 
