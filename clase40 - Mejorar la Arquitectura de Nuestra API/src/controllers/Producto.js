@@ -1,12 +1,12 @@
-//const { addServiceProducto, findAllServiceProducto, deleteServiceProducto, updateServiceProducto, findByIDServiceProducto } = require('../service/productos.service.js');
+//* https://www.getpostman.com/collections/63df217239eed29c7379
+//* LINK POSTMAN
+
 const FactoryProducto = require("../factory/factoryProducto.service.js");
 const logger = require("../helpers/winston.js");
 
-
 //* params para ingresar en new Producto según DB
 //* 1 - MongoDB (Cloud) / 2 - FS / 3 - Sql Local / Array (default)
-
-const factory = new FactoryProducto();
+const factory = new FactoryProducto(2);
 
 class Producto {
   async add(req, res) {
@@ -27,6 +27,7 @@ class Producto {
   async findAll(req, res) {
     try {
       const prodInDb = await factory.findAllServiceProducto();
+      if (!prodInDb) { res.status(404).send({ mensaje: 'No hay producto' }) }
       return res.status(200).json(prodInDb);
     } catch (error) {
       logger.error.error(error);
@@ -55,13 +56,13 @@ class Producto {
     const _id = req.params.id;
     try {
       if (_id === "") {
-        return res.status(404).json({ mensaje: "Producto no encontrado" });
+        return res.status(404).json({ mensaje: "No se declaró ID de producto" });
       }
       const prodToDel = await factory.deleteServiceProducto(_id);
       if (!prodToDel) {
         return res.status(404).json({ mensaje: "Producto no encontrado" });
       }
-      return res.status(200).json({ mensaje: "Producto eliminado con exito" });
+      return res.status(200).json({ mensaje: "Producto eliminado con éxito" });
     } catch (error) {
       logger.error.error(error);
     }
@@ -74,7 +75,7 @@ class Producto {
       const prodUpdated = await factory.updateServiceProducto(_id, data);
       return res
         .status(200)
-        .json({ prodUpdated, mensaje: "Producto actualizado" });
+        .json({ prodUpdated, mensaje: "Producto actualizado correctamente" });
     } catch (error) {
       logger.error.error(error);
     }

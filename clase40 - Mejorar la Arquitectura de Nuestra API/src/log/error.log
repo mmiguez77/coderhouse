@@ -227,3 +227,30 @@
 2021-08-15T20:16:45.519Z [31merror[39m: 	knex is not defined
 2021-08-15T20:32:13.621Z [31merror[39m: 	req is not defined
 2021-08-15T20:52:59.757Z [31merror[39m: 	req is not defined
+2021-08-15T21:02:51.472Z [31merror[39m: 	readJson is not defined
+2021-08-15T21:03:03.338Z [31merror[39m: 	saveJson is not defined
+2021-08-15T21:04:47.396Z [31merror[39m: 	readJson is not defined
+2021-08-15T21:06:37.968Z [31merror[39m: 	saveJson is not defined
+2021-08-15T21:15:13.779Z [31merror[39m: 	readJson is not defined
+2021-08-15T21:15:38.587Z [31merror[39m: 	readJson is not defined
+2021-08-15T21:17:08.253Z [31merror[39m: 	readJson is not defined
+2021-08-15T21:17:46.102Z [31merror[39m: 	readJson is not defined
+2021-08-15T21:18:22.069Z [31merror[39m: 	readJson is not defined
+2021-08-15T21:18:27.276Z [31merror[39m: 	saveJson is not defined
+2021-08-15T21:34:29.107Z [31merror[39m: 	Unexpected end of JSON input
+2021-08-15T21:36:33.553Z [31merror[39m: 	Unexpected end of JSON input
+2021-08-15T21:40:49.240Z [31merror[39m: 	producto is not defined
+2021-08-15T21:41:04.647Z [31merror[39m: 	producto is not defined
+2021-08-15T21:41:06.424Z [31merror[39m: 	producto is not defined
+2021-08-15T21:41:36.772Z [31merror[39m: 	producto is not defined
+2021-08-15T21:43:58.278Z [31merror[39m: 	Unexpected end of JSON input
+2021-08-15T22:00:30.860Z [31merror[39m: 	Unexpected end of JSON input
+2021-08-15T22:12:58.230Z [31merror[39m: 	prodFiltro.map is not a function
+2021-08-15T22:13:34.665Z [31merror[39m: 	prodFiltro.map is not a function
+2021-08-15T22:16:20.424Z [31merror[39m: 	res is not defined
+2021-08-15T22:18:08.012Z [31merror[39m: 	res is not defined
+2021-08-15T22:18:52.623Z [31merror[39m: 	res is not defined
+2021-08-15T22:19:21.737Z [31merror[39m: 	res is not defined
+2021-08-15T22:20:11.586Z [31merror[39m: 	res is not defined
+2021-08-15T22:20:41.471Z [31merror[39m: 	res is not defined
+2021-08-15T22:21:40.149Z [31merror[39m: 	res is not defined
