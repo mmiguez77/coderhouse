@@ -1,11 +1,11 @@
 const MensajeModel = require('../models/mensajeSchema.js');
-const EcommerceDbConnect = require('../config/mongooseEcommerce.js');
-const logger = require('../config/winston.js');
+const MongoCxn = require("../database/MongoCxn.js");
+const logger = require('../helpers/winston.js');
 
 class MensajePersistence {
 
     constructor() {
-        this.cxn = new EcommerceDbConnect();
+        this.cxn = new MongoCxn();
     }
 
     async addMsgPersistence(mensaje) {

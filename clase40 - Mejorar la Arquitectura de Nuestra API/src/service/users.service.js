@@ -1,6 +1,6 @@
 const { mainGetPersistance, logoutPersistence } = require('../db_persistence/usersPersistence.js')
 //const mail = require('../helpers/nodemailer.js');
-const logger = require('../config/winston.js');
+const logger = require('../helpers/winston.js');
 
 async function mainGetService(userInfo) {
     try {

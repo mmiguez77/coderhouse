@@ -2,9 +2,14 @@ const logger = require("../helpers/winston.js");
 let productosArray = [];
 
 class ArrayDb {
+  constructor() {
+    this.msg = console.log("*** Base de Datos Array");
+  }
+
   async addPersistenceProducto(dataToDb) {
     try {
       let newProducto = await { ...dataToDb };
+      newProducto._id = productosArray.length + 1;
       productosArray.push(newProducto);
     } catch (error) {
       logger.error.error(error);
@@ -21,10 +26,7 @@ class ArrayDb {
 
   async findByIDPersistenceProducto(_id) {
     try {
-      const _id = await req.params.id;
-      let prodById = await productosArray.find(
-        (prod) => prod._id == parseInt(_id)
-      );
+      let prodById = await productosArray.find((prod) => prod._id == parseInt(_id));
       return prodById;
     } catch (error) {
       logger.error.error(error);
@@ -45,8 +47,10 @@ class ArrayDb {
 
   async updatePersistenceProducto(_id, data) {
     try {
-      const newProd = { _id, ...req.body };
+      const newProd = { _id, ... data };
+      console.log(newProd);
       const index = productosArray.findIndex((p) => p._id == _id);
+      console.log(index);
       if (index !== -1) {
         productosArray.splice(index, 1, newProd);
         return newProd;

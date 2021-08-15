@@ -3,7 +3,12 @@ const fs = require("fs");
 let producto = [];
 
 class FsDb {
-  readJson = () => {
+
+  constructor() {
+    this.msg = console.log('*** Base de Datos FS');
+  }
+
+  readJson () {
     if (!fs.existsSync("productos.json")) {
       fs.writeFileSync("productos.json", JSON.stringify(producto));
     } else {
@@ -12,7 +17,7 @@ class FsDb {
     }
   };
 
-  saveJson = (data) => {
+  saveJson (data) {
     let stringifyData = JSON.stringify(data);
     fs.writeFileSync("productos.json", stringifyData);
   };

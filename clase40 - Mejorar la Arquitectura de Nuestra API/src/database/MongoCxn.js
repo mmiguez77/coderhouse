@@ -19,9 +19,7 @@ class MongoCxn {
       useUnifiedTopology: true,
     };
     mongoose.connect(uri, options).then(
-      () => {
-        console.log("Conectado a Mongo");
-      },
+      () => {},
       (err) => {
         err;
       }

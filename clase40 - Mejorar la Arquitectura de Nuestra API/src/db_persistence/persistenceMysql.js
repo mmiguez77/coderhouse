@@ -1,9 +1,10 @@
 const logger = require("../helpers/winston.js");
-const MysqlCxn = require("../config/MysqlCxn.js");
+const MysqlCxn = require("../database/MysqlCxn.js");
 
 class MysqlDb {
   constructor() {
     this.knex = new MysqlCxn();
+    this.msg = console.log('*** Base de Datos Mysql');
   }
 
   async addPersistenceProducto(dataToDb) {

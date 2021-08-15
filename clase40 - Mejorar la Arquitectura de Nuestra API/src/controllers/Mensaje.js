@@ -1,5 +1,5 @@
 const { addMsgService, findAllMsgService, normalizedDataService } = require('../service/mensajes.service.js');
-const logger = require('../config/winston.js');
+const logger = require('../helpers/winston.js');
 
 class Mensaje {
 

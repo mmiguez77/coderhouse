@@ -10,7 +10,7 @@ class MysqlCxn {
     MysqlCxn.instancia = this;
   }
 
-  databaseConnection = async function (config) {
+  async databaseConnection (config) {
     try {
       const knex = knexFn(config);
 

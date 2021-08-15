@@ -1,7 +1,7 @@
 const MensajePersistence = require('../db_persistence/mensajesPersistence.js');
 const dbMensaje = new MensajePersistence();
 const { normalize, schema, denormalize } = require('normalizr');
-const logger = require('../config/winston.js');
+const logger = require('../helpers/winston.js');
 
 async function addMsgService(data) {
     try {

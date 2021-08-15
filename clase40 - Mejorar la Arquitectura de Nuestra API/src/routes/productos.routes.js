@@ -1,13 +1,9 @@
 const express = require ('express');
-//const Producto = require ('../controllers/Producto.js');
-//const validate = require ('../middlewares/auth.js');
+const Producto = require ('../controllers/Producto.js');
+const validate = require ('../middlewares/auth.js');
 const router = express.Router();
-const FactoryProducto = ('../factory/factoryProducto.js');
+const nuevoProducto = new Producto();
 
-//* params para ingresar en new Producto según DB
-//* 1 - MongoDB (Cloud) / 2 - FS / 3 - Sql Local / Array (default)
-
-const nuevoProducto = new FactoryProducto();
 
 router.post('/', nuevoProducto.add);
 router.get('/', nuevoProducto.findAll);

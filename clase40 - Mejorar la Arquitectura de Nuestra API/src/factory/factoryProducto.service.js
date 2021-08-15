@@ -1,67 +1,80 @@
-const { addPersistenceProducto, findAllPersistenceProducto, deletePersistenceProducto, updatePersistenceProducto, findByIDPersistenceProducto } = require('../db_persistence/productosPersistence.js');
-const logger = require('../helpers/winston.js');
-
+const logger = require("../helpers/winston.js");
+const MongoDb = require("../db_persistence/persistenceMongo.js");
+const FsDb = require("../db_persistence/persistenceFs.js");
+const ArrayDb = require("../db_persistence/persistenceArray.js");
+const MysqlDb = require("../db_persistence/persistenceMysql.js");
+const database = "";
 
 class FactoryProducto {
-
-    database;
-
-    constructor(number) {
-        switch (number) {
-            case 1:
-                this.database = new ProductoMongo();
-                break;
-            case 2:
-                this.database = new ProductoFs();
-                break;
-            case 3:
-                this.database = new ProductoSql();
-                break;
-            default:
-                this.database = new ProductoArray();
-                break
-        }
+  constructor(number) {
+    this.database = database;
+    switch (number) {
+      case 1:
+        this.database = new MongoDb();
+        break;
+      case 2:
+        this.database = new FsDb();
+        break;
+      case 3:
+        this.database = new MysqlDb();
+        break;
+      default:
+        this.database = new ArrayDb();
+        break;
     }
+  }
 
-    add = async (req, res) => {
-        try {
-            return await this.database.add(req, res)
-        } catch (error) {
-            console.error(error)
-        }
+  async addServiceProducto(data) {
+    try {
+      const dataToDb = {
+        title: data.title,
+        price: data.price,
+        thumbnail: data.thumbnail,
+      };
+      return await this.database.addPersistenceProducto(dataToDb);
+    } catch (error) {
+      logger.error.error(error);
     }
+  }
 
-    findAll = async (req, res) => {
-        try {
-            return await this.database.viewAll(req, res)
-        } catch (error) {
-            console.error(error)
-        }
+  async findAllServiceProducto() {
+    try {
+      const prodInDb = await this.database.findAllPersistenceProducto();
+      return prodInDb;
+    } catch (error) {
+      logger.error.error(error);
     }
+  }
 
-    findByID = async (req, res) => {
-        try {
-            return await this.database.viewByID(req, res)
-        } catch (error) {
-            console.error(error)
-        }
+  async findByIDServiceProducto(_id) {
+    try {
+      const prodById = await this.database.findByIDPersistenceProducto(_id);
+      return prodById;
+    } catch (error) {
+      logger.error.error(error);
     }
+  }
 
-    deleteProd = async (req, res) => {
-        try {
-            return await this.database.drop(req, res)
-        } catch (error) {
-            console.error(error)
-        }
+  async deleteServiceProducto(_id) {
+    try {
+      const prodToDel = await this.database.deletePersistenceProducto(_id);
+      return prodToDel;
+    } catch (error) {
+      logger.error.error(error);
     }
+  }
 
-    update = async (req, res) => {
-        try {
-            return await this.database.update(req, res)
-        } catch (error) {
-            console.error(error)
-        }
+  async updateServiceProducto(_id, data) {
+    try {
+      const prodUpdated = await this.database.updatePersistenceProducto(
+        _id,
+        data
+      );
+      return prodUpdated;
+    } catch (error) {
+      logger.error.error(error);
     }
+  }
 }
 
-module.exports = FactoryProducto
+module.exports = FactoryProducto;

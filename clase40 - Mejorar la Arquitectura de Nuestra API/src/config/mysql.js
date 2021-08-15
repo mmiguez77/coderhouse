@@ -1,4 +1,4 @@
-export const mysql = {
+const mysql = {
   client: "mysql",
   connection: {
     host: "localhost",
@@ -7,3 +7,5 @@ export const mysql = {
     database: "test",
   },
 };
+
+module.exports = mysql;

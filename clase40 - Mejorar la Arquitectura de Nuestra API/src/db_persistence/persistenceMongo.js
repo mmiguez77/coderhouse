@@ -1,7 +1,14 @@
 const logger = require("../helpers/winston.js");
 const ProductoModel = require("../models/productoSchema.js");
+const MongoCxn = require("../database/MongoCxn.js");
 
 class MongoDb {
+
+  constructor () {
+    this.cxn = new MongoCxn();
+    this.msg = console.log('*** Base de Datos Mongo');
+  }
+
   async addPersistenceProducto(dataToDb) {
     try {
       await ProductoModel.create(dataToDb);
