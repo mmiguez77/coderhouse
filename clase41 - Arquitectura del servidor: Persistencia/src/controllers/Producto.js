@@ -6,7 +6,8 @@ const logger = require("../helpers/winston.js");
 
 //* params para ingresar en new Producto según DB
 //* 1 - MongoDB (Cloud) / 2 - FS / 3 - Sql Local / Array (default)
-const factory = new FactoryProducto(3);
+const dbNum = process.argv[2];
+const factory = new FactoryProducto(parseInt(dbNum));
 
 class Producto {
   async add(req, res) {

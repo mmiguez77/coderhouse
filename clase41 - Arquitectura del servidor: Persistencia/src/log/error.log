@@ -261,3 +261,17 @@
 2021-08-15T22:35:32.722Z [31merror[39m: 	this.knex is not a function
 2021-08-15T22:35:35.963Z [31merror[39m: 	this.knex is not a function
 2021-08-15T22:36:31.035Z [31merror[39m: 	this.knex is not a function
+2021-08-16T00:00:16.068Z [31merror[39m: 	Error al iniciar servidor Error: listen EADDRINUSE: address already in use :::8080
+2021-08-16T00:03:17.355Z [31merror[39m: 	Error al iniciar servidor Error: listen EADDRINUSE: address already in use :::8080
+2021-08-16T00:06:00.107Z [31merror[39m: 	Error al iniciar servidor Error: listen EADDRINUSE: address already in use :::8080
+2021-08-16T00:06:29.449Z [31merror[39m: 	Error al iniciar servidor Error: listen EADDRINUSE: address already in use :::8080
+2021-08-16T00:06:43.578Z [31merror[39m: 	Error al iniciar servidor Error: listen EADDRINUSE: address already in use :::8080
+2021-08-16T00:06:59.975Z [31merror[39m: 	Error al iniciar servidor Error: listen EADDRINUSE: address already in use :::8080
+2021-08-16T03:50:54.912Z [31merror[39m: 	productoDto is not a function
+2021-08-16T03:53:49.930Z [31merror[39m: 	productoDto is not a function
+2021-08-16T03:54:25.191Z [31merror[39m: 	productoDto is not a function
+2021-08-16T03:54:40.468Z [31merror[39m: 	productoDto is not a function
+2021-08-16T03:55:59.451Z [31merror[39m: 	productoDto is not a function
+2021-08-16T03:56:33.102Z [31merror[39m: 	productoDto is not a function
+2021-08-16T03:57:05.943Z [31merror[39m: 	productoDto is not a function
+2021-08-16T03:57:57.660Z [31merror[39m: 	productoDto is not a function

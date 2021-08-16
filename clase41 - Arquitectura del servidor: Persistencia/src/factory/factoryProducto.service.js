@@ -1,8 +1,8 @@
 const logger = require("../helpers/winston.js");
-const MongoDb = require("../db_persistence/persistenceMongo.js");
-const FsDb = require("../db_persistence/persistenceFs.js");
-const ArrayDb = require("../db_persistence/persistenceArray.js");
-const MysqlDb = require("../db_persistence/persistenceMysql.js");
+const MongoDb = require("../db_persistence/persistenceMongoDao.js");
+const FsDb = require("../db_persistence/persistenceFsDao.js");
+const ArrayDb = require("../db_persistence/persistenceArrayDao.js");
+const MysqlDb = require("../db_persistence/persistenceMysqlDao.js");
 const database = "";
 
 class FactoryProducto {

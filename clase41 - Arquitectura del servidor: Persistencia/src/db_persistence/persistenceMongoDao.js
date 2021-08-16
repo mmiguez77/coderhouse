@@ -1,10 +1,14 @@
-const logger = require("../helpers/winston.js");
+const DatabaseProductoDao = require("../DAO/DatabaseProductoDao.js");
 const ProductoModel = require("../models/productoSchema.js");
 const MongoCxn = require("../database/MongoCxn.js");
+const logger = require("../helpers/winston.js");
+const productoDto = require ("../DTO/productoDto.js");
 
-class MongoDb {
+
+class MongoDb extends DatabaseProductoDao {
 
   constructor () {
+    super()
     this.cxn = new MongoCxn();
     this.msg = console.log('*** Base de Datos Mongo');
   }
@@ -29,7 +33,9 @@ class MongoDb {
   async findByIDPersistenceProducto(_id) {
     try {
       const prodById = await ProductoModel.findOne({ _id });
-      return prodById;
+      const myDto = productoDto(await prodById);
+      console.log('DTO',myDto);
+      return myDto;
     } catch (error) {
       logger.error.error(error);
     }

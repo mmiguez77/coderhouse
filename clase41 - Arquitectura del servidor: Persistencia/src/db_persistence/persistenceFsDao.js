@@ -1,14 +1,14 @@
-const logger = require("../helpers/winston.js");
+const DatabaseProductoDao = require("../DAO/DatabaseProductoDao.js");
 const fs = require("fs");
+const logger = require("../helpers/winston.js");
 const path = require("path");
 const _dirname = path.resolve(__dirname);
-
+const productoDto = require ("../DTO/productoDto.js");
 let producto = [];
 
-console.log(_dirname + "/files/productos.json");
-
-class FsDb {
+class FsDb extends DatabaseProductoDao {
   constructor() {
+    super()
     this.createJson = this.readJson;
     this.msg = console.log("*** Base de Datos FS");
   }
@@ -54,7 +54,8 @@ class FsDb {
     try {
       const prodById = await this.readJson();
       let prodFiltro = await prodById.find((prod) => prod._id == parseInt(_id));
-      return prodFiltro;
+      const myDto = productoDto(prodFiltro)
+      return myDto;
     } catch (error) {
       logger.error.error(error);
     }

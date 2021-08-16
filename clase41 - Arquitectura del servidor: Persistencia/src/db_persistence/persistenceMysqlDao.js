@@ -1,13 +1,16 @@
-const logger = require("../helpers/winston.js");
+const DatabaseProductoDao = require("../DAO/DatabaseProductoDao.js");
 const MysqlCxn = require("../database/MysqlCxn.js");
+const logger = require("../helpers/winston.js");
 const mysql = require("../config/mysql.js");
 const knexFn = require("knex");
+const productoDto = require ("../DTO/productoDto.js");
 
-class MysqlDb {
+class MysqlDb extends DatabaseProductoDao {
   constructor() {
+    super()
     this.cxn = new MysqlCxn(mysql);
     this.knex = knexFn(mysql);
-    this.msg = console.log('*** Base de Datos Mysql');
+    this.msg = console.log("*** Base de Datos Mysql");
   }
 
   async addPersistenceProducto(dataToDb) {
@@ -35,7 +38,8 @@ class MysqlDb {
   async findByIDPersistenceProducto(_id) {
     try {
       const prodId = await this.knex("productos").select().where("_id", _id);
-      return prodId;
+      const myDto = productoDto(prodId);
+      return myDto;
     } catch (error) {
       logger.error.error(error);
     }
