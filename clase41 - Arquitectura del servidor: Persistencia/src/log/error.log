@@ -275,3 +275,7 @@
 2021-08-16T03:56:33.102Z [31merror[39m: 	productoDto is not a function
 2021-08-16T03:57:05.943Z [31merror[39m: 	productoDto is not a function
 2021-08-16T03:57:57.660Z [31merror[39m: 	productoDto is not a function
+2021-08-17T03:08:56.870Z [31merror[39m: 	Cannot read property '0' of undefined
+2021-08-17T03:42:32.546Z [31merror[39m: 	Cannot read property '0' of undefined
+2021-08-17T03:45:10.121Z [31merror[39m: 	Cannot read property '0' of undefined
+2021-08-17T03:45:50.370Z [31merror[39m: 	MensajeModel is not defined
